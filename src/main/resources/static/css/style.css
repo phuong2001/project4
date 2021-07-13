@@ -1892,18 +1892,6 @@ blockquote.text-white cite span {
     position: relative
 }
 
-.menu.sf-arrows .sf-with-ul::after {
-    font-family: 'molla';
-    content: '\f110';
-    position: absolute;
-    right: 0;
-    top: 50%;
-    display: block;
-    font-size: 1rem;
-    line-height: 1;
-    margin-top: -.5rem
-}
-
 .menu.sf-arrows ul .sf-with-ul {
     padding-right: 4rem
 }
