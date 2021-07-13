@@ -12,7 +12,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 	<div class="limiter">
 		<div class="container-login100" th:style="'background-image: url(images/login_home/bg-01.jpg)'">
 			<div class="wrap-login100"  style="padding: 65px 55px 54px 55px;">
-				<form class="login100-form validate-form" method="post" th:action="@{/login_dc}">
+				<form class="login100-form validate-form" name="f" method="POST" th:action="@{/login_security}">
 					<span class="login100-form-title" style="padding-bottom: 49px">
 						Login
 					</span>
@@ -24,7 +24,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 
 					<div class="wrap-input100 validate-input">
 						<i class="las la-lock"></i><span>Password</span>
-						<input class="input100" type="password" name="pass" placeholder="Type your password">
+						<input class="input100" type="password" name="password" placeholder="Type your password">
 					</div>
 
 					<div style="padding-top: 20px ; padding-bottom: 20px">
@@ -38,7 +38,7 @@ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
 					<div class="container-login100-form-btn">
 						<div class="wrap-login100-form-btn">
 							<div class="login100-form-bgbtn"></div>
-							<button class="login100-form-btn">
+							<button class="login100-form-btn" name="submit" type="submit">
 								Login
 							</button>
 						</div>
