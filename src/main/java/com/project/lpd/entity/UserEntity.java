@@ -1,7 +1,12 @@
 package com.project.lpd.entity;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 
+@Data
+@NoArgsConstructor
 @Entity
 @Table(name = "user")
 public class UserEntity {
@@ -16,56 +21,16 @@ public class UserEntity {
     private int phone;
     @Column(name = "roleid")
     private int roleid;
+    @Column(name = "fullName")
+    private String fullName;
+    @Column(name = "email")
+    private String email;
+    @Column(name = "address")
+    private String address;
 
     @OneToOne
     @JoinColumn(name = "roleid", insertable = false, updatable = false)
     private RoleEntity role;
 
-    public int getId() {
-        return id;
-    }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getPhone() {
-        return phone;
-    }
-
-    public void setPhone(int phone) {
-        this.phone = phone;
-    }
-
-    public int getRoleid() {
-        return roleid;
-    }
-
-    public void setRoleid(int roleid) {
-        this.roleid = roleid;
-    }
-
-    public RoleEntity getRole() {
-        return role;
-    }
-
-    public void setRole(RoleEntity role) {
-        this.role = role;
-    }
 }

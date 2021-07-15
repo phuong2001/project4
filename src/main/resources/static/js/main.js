@@ -262,7 +262,7 @@ $(document).ready(function () {
                 margin: 0,
                 responsiveClass: true,
                 nav: true,
-                navText: ['<i class="icon-angle-left">', '<i class="icon-angle-right">'],
+                navText: ['<i class="las la-angle-left"></i>', '<i class="las la-angle-right"></i>'],
                 dots: true,
                 smartSpeed: 400,
                 autoplay: false,
