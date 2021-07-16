@@ -10,4 +10,9 @@ public class WebController {
         return "index";
     }
 
+    @GetMapping("/create_product")
+    public String createProduct(){
+        return "create_product";
+    }
+
 }
