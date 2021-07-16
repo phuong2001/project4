@@ -18,6 +18,9 @@ public class WebController {
         return "login_home";
     }
 
+    @GetMapping("/productDetail")
+    public String productDetail(){ return "detailProduct";}
+
 
 
 }
