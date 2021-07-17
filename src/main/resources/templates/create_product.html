@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/template.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>create product</title>
+    <link rel="stylesheet" th:href="@{css/create_product.css}">
+    <link type="text/css" th:src="@{js/bootstrap.min.js}">
+    <script type="text/javascript" th:src="@{js/jquery.min.js}"></script>
+    <script type="text/javascript" th:src="@{js/create_product.js}"></script>
+</head>
+<body>
+
+<main class="main" layout:fragment="content">
+<form action="#" method="post">
+    <div class="wrapper">
+
+        <h1 class="active">Add product</h1>
+
+        <div class="sections">
+            <section class="active">
+
+                <div class="name_product" style="width: 600px;float: left;margin: 0 100px">
+                    <label for="namep">Name</label>
+                    <br/>
+                    <input id="namep" type="text">
+                </div>
+                <div class="quantity_product" style="float: left;margin: 0 100px">
+                    <label for="quantity">Quantity product</label><br/>
+                    <input type="number" id="quantity" min="1">
+                </div>
+
+                <div class="description_product" style="float: left; width: 100%;margin: 0 100px">
+                    <label for="description">Description product</label>
+                    <br>
+                    <textarea id="description" rows="5" cols="150%"></textarea>
+                </div>
+
+
+                <div class="images">
+                    <div class="pic">
+                        add image product
+                    </div>
+                </div>
+
+                <div class="price" style="width: 200px; margin-left: 100px">
+                    <label for="price">Price</label>
+                    <br/>
+                    <input id="price" type="text">
+                </div>
+
+                <button class="button_form">Add product</button>
+            </section>
+        </div>
+
+
+    </div>
+</form>
+</main>
+
+
+</body>
+
+</html>
