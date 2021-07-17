@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -32,5 +33,17 @@ public class UserEntity {
     @JoinColumn(name = "roleid", insertable = false, updatable = false)
     private RoleEntity role;
 
+    @ManyToOne()
+    @JoinColumn(name = "reviewid", insertable = false, updatable = false)
+    private UserEntity review;
 
+    @OneToMany(mappedBy = "user")
+    private List<CartEntity> cart;
+
+    @OneToMany(mappedBy = "user")
+    private List<CardEntity> card;
+
+    @ManyToOne()
+    @JoinColumn(name = "transactionid", insertable = false, updatable = false)
+    private UserEntity transaction;
 }
