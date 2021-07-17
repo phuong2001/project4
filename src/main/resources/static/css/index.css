@@ -386,13 +386,13 @@ body {
 .btn-product {
     padding-top: 1.2rem;
     padding-bottom: 1.2rem;
-    color: #333;
-    background-color: rgba(252, 184, 66, 0.95);
+    color: #fcb842;
+    background-color: #ffffff;
     text-transform: uppercase
 }
 
 .btn-product span {
-    color: #333;
+    color: #fcb842;
     font-size: 1.4rem
 }
 
@@ -403,11 +403,11 @@ body {
 
 .btn-product:hover, .btn-product:focus {
     color: #fcb842;
-    background-color: #fff
+    background-color: #fcb842;
 }
 
 .btn-product:hover span, .btn-product:focus span {
-    color: #fcb842;
+    color: #ffffff;
     box-shadow: none
 }
 
@@ -822,4 +822,5 @@ img.banner-title-img, .owl-carousel .owl-item img.banner-title-img {
         padding-left: 3rem !important
     }
 }
+
 

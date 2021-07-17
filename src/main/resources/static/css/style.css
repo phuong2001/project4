@@ -7512,19 +7512,9 @@ p {
 .btn-product-icon + .btn-product-icon {
     margin-top: 1rem
 }
-
-.btn-cart:before {
-    content: '\e812'
-}
-
 .btn-wishlist {
     font-size: 1.6rem
 }
-
-.btn-wishlist:before {
-    content: '\f234'
-}
-
 .product-body .btn-wishlist {
     position: absolute;
     top: 3.4rem;
@@ -7551,11 +7541,6 @@ p {
 .btn-quickview:before {
     content: '\f145'
 }
-
-.btn-compare:before {
-    content: '\f2d0'
-}
-
 .btn-expandable {
     position: relative
 }
@@ -12151,7 +12136,6 @@ button:focus {
 
 .product-details-action .btn-cart span {
     font-size: 1.4rem;
-    color: inherit;
     text-transform: uppercase;
     box-shadow: none;
     transition: box-shadow .35s ease, color 0s ease

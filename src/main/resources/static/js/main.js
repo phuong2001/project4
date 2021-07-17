@@ -302,12 +302,11 @@ $(document).ready(function () {
         $('.product-gallery-item').on('click', function (e) {
             $('#product-zoom-gallery').find('a').removeClass('active');
             $(this).addClass('active');
-
             e.preventDefault();
         });
 
         var ez = $('#product-zoom').data('elevateZoom');
-
+        ez.changeState('disable');
         // Open popup - product images
         $('#btn-product-gallery').on('click', function (e) {
             if ( $.fn.magnificPopup ) {
@@ -321,7 +320,6 @@ $(document).ready(function () {
                     removalDelay: 600,
                     closeBtnInside: false
                 }, 0);
-
                 e.preventDefault();
             }
         });
