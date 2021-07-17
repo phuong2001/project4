@@ -13,6 +13,7 @@ public class CategoryEntity {
     @Column(name = "name")
     private String name;
 
-    @OneToMany(mappedBy = "category")
-    private List<ProductEntity> product;
+    @ManyToOne()
+    @JoinColumn(name = "productid", insertable = false, updatable = false)
+    private ProductEntity product;
 }

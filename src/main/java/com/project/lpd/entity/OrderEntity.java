@@ -27,14 +27,16 @@ public class OrderEntity {
     @Column(name = "updateAt")
     private Date updatedAt;
 
-    @ManyToMany
-    @JoinTable(name = "product_order", joinColumns = @JoinColumn(name = "productid"), inverseJoinColumns = @JoinColumn(name = "orderid"))
-    private List<ProductEntity> product;
+    @OneToMany(mappedBy = "order")
+    private List<TransactionEntity> transaction;
 
     @ManyToOne()
-    @JoinColumn(name = "transactionid", insertable = false, updatable = false)
-    private OrderEntity transaction;
+    @JoinColumn(name = "shipperid", insertable = false, updatable = false)
+    private ShipperEntity shipper;
 
-    @OneToMany(mappedBy = "order")
-    private List<ShipperEntity> shipper;
+    @ManyToMany
+    @JoinTable(name = "product_order",
+            joinColumns = @JoinColumn(name = "orderid"),
+            inverseJoinColumns = @JoinColumn(name = "productid"))
+    private List<ProductEntity> product;
 }

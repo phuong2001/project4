@@ -14,9 +14,11 @@ public class ReviewEntity {
     @Column(name = "star")
     private int star;
 
-    @OneToMany(mappedBy = "review")
-    private List<ProductEntity> product;
+    @ManyToOne()
+    @JoinColumn(name = "productid", insertable = false, updatable = false)
+    private ProductEntity product;
 
-    @OneToMany(mappedBy = "review")
-    private List<UserEntity> user;
+    @ManyToOne()
+    @JoinColumn(name = "userid", insertable = false, updatable = false)
+    private UserEntity user;
 }

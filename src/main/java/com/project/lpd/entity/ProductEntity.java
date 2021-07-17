@@ -30,17 +30,14 @@ public class ProductEntity {
     @Column(name = "updateAt")
     private Date updatedAt;
 
-    @ManyToOne()
-    @JoinColumn(name = "categoryid", insertable = false, updatable = false)
-    private CategoryEntity category;
+    @OneToMany(mappedBy = "product")
+    private List<CategoryEntity> category;
 
-    @ManyToOne()
-    @JoinColumn(name = "brandid", insertable = false, updatable = false)
-    private BrandEntity brand;
+    @OneToMany(mappedBy = "product")
+    private List<BrandEntity> brand;
 
-    @ManyToOne()
-    @JoinColumn(name = "reviewid", insertable = false, updatable = false)
-    private ReviewEntity review;
+    @OneToMany(mappedBy = "product")
+    private List<ReviewEntity> review;
 
     @ManyToMany(mappedBy = "product")
     private List<CartEntity> cart;

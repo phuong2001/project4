@@ -21,9 +21,11 @@ public class TransactionEntity {
     @Column(name = "updateAt")
     private Date updatedAt;
 
-    @OneToMany(mappedBy = "transaction")
-    private List<UserEntity> user;
+    @ManyToOne()
+    @JoinColumn(name = "userid", insertable = false, updatable = false)
+    private UserEntity user;
 
-    @OneToMany(mappedBy = "transaction")
-    private List<OrderEntity> order;
+    @ManyToOne()
+    @JoinColumn(name = "orderid", insertable = false, updatable = false)
+    private OrderEntity order;
 }

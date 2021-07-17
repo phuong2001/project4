@@ -1,6 +1,7 @@
 package com.project.lpd.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "card")
@@ -15,8 +16,7 @@ public class CardEntity {
     @Column(name = "fund")
     private double fund;
 
-    @ManyToOne()
-    @JoinColumn(name = "userid", insertable = false, updatable = false)
-    private CardEntity user;
+    @OneToMany(mappedBy = "card")
+    private List<UserEntity> user;
 
 }

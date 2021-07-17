@@ -1,6 +1,7 @@
 package com.project.lpd.entity;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name = "shipper")
@@ -13,7 +14,6 @@ public class ShipperEntity {
     @Column(name = "phone")
     private String phone;
 
-    @ManyToOne
-    @JoinColumn(name = "orderid", insertable = false, updatable = false)
-    private OrderEntity order;
+    @OneToMany(mappedBy = "shipper")
+    private List<OrderEntity> order;
 }

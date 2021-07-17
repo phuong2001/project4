@@ -34,16 +34,16 @@ public class UserEntity {
     private RoleEntity role;
 
     @ManyToOne()
-    @JoinColumn(name = "reviewid", insertable = false, updatable = false)
-    private UserEntity review;
-
-    @OneToMany(mappedBy = "user")
-    private List<CartEntity> cart;
-
-    @OneToMany(mappedBy = "user")
-    private List<CardEntity> card;
+    @JoinColumn(name = "cartid", insertable = false, updatable = false)
+    private CartEntity cart;
 
     @ManyToOne()
-    @JoinColumn(name = "transactionid", insertable = false, updatable = false)
-    private UserEntity transaction;
+    @JoinColumn(name = "cardid", insertable = false, updatable = false)
+    private CardEntity card;
+
+    @OneToMany(mappedBy = "user")
+    private List<ReviewEntity> review;
+
+    @OneToMany(mappedBy = "user")
+    private List<TransactionEntity> transaction;
 }

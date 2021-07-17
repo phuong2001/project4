@@ -21,11 +21,12 @@ public class CartEntity {
     @Column(name = "updateAt")
     private Date updatedAt;
 
-    @ManyToMany
-    @JoinTable(name = "product_cart", joinColumns = @JoinColumn(name = "productid"), inverseJoinColumns = @JoinColumn(name = "cartid"))
-    private List<ProductEntity> product;
+    @OneToMany(mappedBy = "cart")
+    private List<UserEntity> user;
 
-    @ManyToOne()
-    @JoinColumn(name = "userid", insertable = false, updatable = false)
-    private CartEntity user;
+    @ManyToMany
+    @JoinTable(name = "product_cast",
+            joinColumns = @JoinColumn(name = "cartid"),
+            inverseJoinColumns = @JoinColumn(name = "productid"))
+    private List<ProductEntity> product;
 }
