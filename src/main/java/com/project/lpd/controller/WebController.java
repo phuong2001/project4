@@ -25,10 +25,14 @@ public class WebController {
     public String product() { return "products"; }
 
 
-
     @GetMapping("/create_product")
     public String createProduct(){
         return "create_product";
+    }
+
+    @GetMapping("/cart")
+    public String Cart(){
+        return "cart";
     }
 
 }
