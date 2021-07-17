@@ -15,6 +15,11 @@ public class WebController {
         return "login_home";
     }
 
+    @GetMapping("/register")
+    public String register(){
+        return "register";
+    }
+
     @GetMapping("/productDetail")
     public String productDetail(){ return "detailProduct";}
 
