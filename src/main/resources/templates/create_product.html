@@ -6,57 +6,54 @@
     <meta charset="UTF-8">
     <title>create product</title>
     <link rel="stylesheet" th:href="@{css/create_product.css}">
-    <link type="text/css" th:src="@{js/bootstrap.min.js}">
-    <script type="text/javascript" th:src="@{js/jquery.min.js}"></script>
     <script type="text/javascript" th:src="@{js/create_product.js}"></script>
 </head>
 <body>
 
 <main class="main" layout:fragment="content">
-<form action="#" method="post">
-    <div class="wrapper">
+    <div class="form_wrapperss" style="margin-top: 20px; padding-bottom: 20px">
+        <h1>Create Product</h1>
+        <form class="form_img" action="#" method="post" id="form_img">
+            <div class="name_product" style="width: 600px;float: left;margin: 0 0 20px 200px">
+                <label for="namep">Product Name</label>
+                <br/>
+                <input id="namep" type="text">
+            </div>
+            <div class="quantity_product" style="float: left;margin: 0 0px 20px -300px">
+                <label for="quantity">Quantity product</label><br/>
+                <input type="number"  id="quantity" min="1">
+            </div>
+            <div class="price_product" style="float: left;margin: 0 0 20px 20px">
+                <label for="pr">Product Price</label>
+                <br/>
+                <input id="pr" type="text">
+            </div>
 
-        <h1 class="active">Add product</h1>
-
-        <div class="sections">
-            <section class="active">
-
-                <div class="name_product" style="width: 600px;float: left;margin: 0 100px">
-                    <label for="namep">Name</label>
-                    <br/>
-                    <input id="namep" type="text">
-                </div>
-                <div class="quantity_product" style="float: left;margin: 0 100px">
-                    <label for="quantity">Quantity product</label><br/>
-                    <input type="number" id="quantity" min="1">
-                </div>
-
-                <div class="description_product" style="float: left; width: 100%;margin: 0 100px">
-                    <label for="description">Description product</label>
-                    <br>
-                    <textarea id="description" rows="5" cols="150%"></textarea>
-                </div>
-
-
-                <div class="images">
-                    <div class="pic">
-                        add image product
+            <div class="description_product" style="float: left; width: 100%;margin: 0 0 20px 200px">
+                <label for="description">Description product</label>
+                <br>
+                <textarea id="description" rows="5" cols="126%"></textarea>
+            </div>
+            <div class="img_test" style="width: 75%; margin: auto">
+                <div class="container_images mt-3 w-100" style="margin-left: 60px">
+                    <div class="card shadow-sm w-100 ">
+                        <div class="card-header d-flex justify-content-between">
+                            <h4>Image Product</h4>
+                            <input type="file" name="Image" id="image" multiple="" class="d-none" onchange="image_select()">
+                            <button class="btn btn-sm btn-primary" type="button" style="border-radius: 20px; margin-top: 20px"
+                                    onclick="document.getElementById('image').click()">Add Images
+                            </button>
+                        </div>
+                        <div class="card-body d-flex flex-wrap justify-content-start" id="containers">
+                            <!-- Image will be show here-->
+                        </div>
                     </div>
                 </div>
-
-                <div class="price" style="width: 200px; margin-left: 100px">
-                    <label for="price">Price</label>
-                    <br/>
-                    <input id="price" type="text">
-                </div>
-
-                <button class="button_form">Add product</button>
-            </section>
-        </div>
-
-
+            </div>
+            <button type="button" class="btn"
+                    style="background-color: #1da1f2; float: right;">Add</button>
+        </form>
     </div>
-</form>
 </main>
 
 
