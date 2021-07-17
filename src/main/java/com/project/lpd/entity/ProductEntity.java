@@ -44,4 +44,8 @@ public class ProductEntity {
 
     @ManyToMany(mappedBy = "product")
     private List<OrderEntity> order;
+
+    @ManyToOne()
+    @JoinColumn(name = "userid", insertable = false, updatable = false)
+    private UserEntity user;
 }
