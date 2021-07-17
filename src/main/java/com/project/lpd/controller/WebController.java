@@ -18,6 +18,12 @@ public class WebController {
     @GetMapping("/productDetail")
     public String productDetail(){ return "detailProduct";}
 
+    @GetMapping({"/about"})
+    public String about2() { return "about"; }
+
+    @GetMapping({"/products"})
+    public String product() { return "products"; }
+
 
 
     @GetMapping("/create_product")
