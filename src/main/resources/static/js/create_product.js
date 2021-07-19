@@ -1,31 +1,47 @@
+var images = [];
 
-(function ($) {
-    $(document).ready(function () {
-        uploadImage()
-        resetButton()
-
-        function uploadImage() {
-            var button = $('.images .pic')
-            var uploader = $('<input  type="file" accept="image/*" />')
-            var images = $('.images')
-
-            button.on('click', function () {
-                uploader.click()
+function image_select() {
+    var image = document.getElementById('image').files;
+    for (i = 0; i < image.length; i++) {
+        if (check_duplicate(image[i].name)) {
+            images.push({
+                "name": image[i].name,
+                "url": URL.createObjectURL(image[i]),
+                "file": image[i],
             })
-
-            uploader.on('change', function () {
-                var reader = new FileReader()
-                reader.onload = function (event) {
-                    images.prepend('<div  class="img" style="background-image: url(\'' + event.target.result + '\'); " rel="' + event.target.result + '"><span>remove</span></div>')
-                }
-                reader.readAsDataURL(uploader[0].files[0])
-
-            })
-
-            images.on('click', '.img', function () {
-                $(this).remove()
-            })
-
+        } else {
+            alert(image[i].name + " is already added to the list");
         }
+    }
+    document.getElementById('form_img').reset();
+    document.getElementById('containers').innerHTML = image_show();
+}
+
+function image_show() {
+    var image = "";
+    images.forEach((i) => {
+        image += `<div class="image_container d-flex justify-content-center position-relative">
+   	  	  	  	  <img src="` + i.url + `" alt="Image">
+   	  	  	  	  <span class="position-absolute" onclick="delete_image(` + images.indexOf(i) + `)">&times;</span>
+   	  	  	  </div>`;
     })
-})(jQuery)
+    return image;
+}
+
+function delete_image(e) {
+    images.splice(e, 1);
+    document.getElementById('containers').innerHTML = image_show();
+}
+
+function check_duplicate(name) {
+    var image = true;
+    if (images.length > 0) {
+        for (e = 0; e < images.length; e++) {
+            if (images[e].name == name) {
+                image = false;
+                break;
+            }
+        }
+    }
+    return image;
+}
