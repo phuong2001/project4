@@ -28,6 +28,9 @@ public class WebController {
     public String pay() { return "pay"; }
 
 
+    @GetMapping({"/profile"})
+    public String profile() { return "profile"; }
+
     @GetMapping("/create_product")
     public String createProduct(){
         return "create_product";

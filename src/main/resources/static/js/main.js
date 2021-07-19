@@ -236,8 +236,8 @@ $(document).ready(function () {
     function quantityInputs() {
         if ( $.fn.inputSpinner ) {
             $("input[type='number']").inputSpinner({
-                decrementButton: '<i class="icon-minus"></i>',
-                incrementButton: '<i class="icon-plus"></i>',
+                decrementButton: '<i class="las la-minus"></i>',
+                incrementButton: '<i class="las la-plus"></i>',
                 groupClass: 'input-spinner',
                 buttonsClass: 'btn-spinner',
                 buttonsWidth: '26px'
@@ -597,7 +597,7 @@ $(document).ready(function () {
         var content =   '<address>' +
                             '88 Pine St,<br>' +
                             'New York, NY 10005, USA<br>'+
-                            '<a href="#" class="direction-link" target="_blank">Get Directions <i class="icon-angle-right"></i></a>'+
+                            '<a href="#" class="direction-link" target="_blank">Get Directions <i class="las la-angle-right"></i></a>'+
                         '</address>';
 
         var latLong = new google.maps.LatLng(40.8127911,-73.9624553);
