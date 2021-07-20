@@ -1,0 +1,48 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Login</title>
+    <link rel="stylesheet" type="text/css" th:href="@{css/login_home.css}">
+</head>
+<body>
+<div class="form_wrapper">
+    <div class="form_container">
+        <div class="title_container">
+            <h2>Sign in</h2>
+            <div class="text-center">
+                <span style="font-size: 10px;">New Here? <a href="#" style="font-size: 10px;text-decoration: none;" class="font-weight-bold">Create an Account</a></span>
+            </div>
+        </div>
+        <div class="row clearfix">
+            <div class="">
+                <form name="f" method="POST" th:action="@{/login_security}">
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                        <input type="text" name="username" placeholder="Username" required />
+                    </div>
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                        <input type="password" name="password" placeholder="Password" required />
+                    </div>
+
+                    <div class="row clearfix">
+                        <div class="col_half">
+                            <div class="input_field checkbox_option">
+                                <input type="checkbox" id="cb1">
+                                <label for="cb1">Remember Me</label>
+                            </div>
+                        </div>
+                        <div class="col_half">
+                            <div class="input_field">
+                                <a href="#" style="font-size: 10px;text-decoration: none;">
+                                    Forgot Your Password?</a>
+                            </div>
+                        </div>
+                    </div>
+                    <input class="button" name="submit" type="submit" value="Login" />
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript" th:href="@{login_home.js}"></script>
+</html>

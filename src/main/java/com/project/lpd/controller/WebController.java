@@ -10,9 +10,9 @@ public class WebController {
         return "index";
     }
 
-    @GetMapping("/loginHome")
+    @GetMapping("/login")
     public String loginHome(){
-        return "login_home";
+        return "login";
     }
 
     @GetMapping("/register")
