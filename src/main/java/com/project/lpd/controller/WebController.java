@@ -50,4 +50,9 @@ public class WebController {
         return "news";
     }
 
+    @GetMapping("/help")
+    public String Help(){
+        return "help";
+    }
+
 }
