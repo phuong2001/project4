@@ -4,16 +4,16 @@ import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@Table(name = "category")
-public class CategoryEntity {
+@Table(name = "shipper")
+public class ShipperEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-
     @Column(name = "name")
     private String name;
+    @Column(name = "phone")
+    private String phone;
 
-    @ManyToOne()
-    @JoinColumn(name = "productid", insertable = false, updatable = false)
-    private ProductEntity product;
+    @OneToMany(mappedBy = "shipper")
+    private List<OrderEntity> order;
 }
