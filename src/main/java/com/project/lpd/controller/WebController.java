@@ -32,7 +32,6 @@ public class WebController {
     @GetMapping({"/pay"})
     public String pay() { return "pay"; }
 
-
     @GetMapping({"/profile"})
     public String profile() { return "profile"; }
 

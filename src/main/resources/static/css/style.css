@@ -687,7 +687,7 @@ blockquote.text-white cite span {
 }
 
 .header-dropdown > a::after, .header-dropdown > span::after {
-    font-family: "Poppins";
+     font-family: "LineAwesome";
     content: '\f110';
     position: absolute;
     right: 0;
@@ -1604,7 +1604,7 @@ blockquote.text-white cite span {
     }
 
     .top-menu:not(.top-link-menu) > li::after {
-        font-family: "Poppins";
+         font-family: "LineAwesome";
         content: '\f110';
         position: absolute;
         right: 0;
@@ -2371,7 +2371,7 @@ blockquote.text-white cite span {
 
 .menu-vertical.sf-arrows .sf-with-ul::after {
     display: block;
-    font-family: 'Poppins';
+    font-family: 'LineAwesome';
     content: '\f112';
     position: absolute;
     right: 1.8rem;
@@ -2710,7 +2710,7 @@ blockquote.text-white cite span {
 }
 
 .mmenu-btn::after {
-    font-family: "Poppins";
+     font-family: "LineAwesome";
     content: '\f110';
     display: inline-block
 }
@@ -5764,7 +5764,7 @@ p {
 .breadcrumb-item + .breadcrumb-item:before {
     color: #999999;
     content: '\f112';
-    font-family: "Poppins";
+    font-family: "LineAwesome";
     padding-right: .7rem;
     font-size: 1.1rem;
     vertical-align: middle;
@@ -6084,7 +6084,7 @@ p {
     right: 1.2rem;
     top: 50%;
     color: #c96;
-    font-family: "Poppins";
+     font-family: "LineAwesome";
     line-height: 1;
     transform: translateY(-50%);
     -ms-transform: translateY(-50%);
@@ -7336,7 +7336,7 @@ p {
     font-size: 1.4rem;
     letter-spacing: 0.1em;
     line-height: 1;
-    font-family: "Poppins"
+    font-family: "LineAwesome";
 }
 
 .ratings:before, .ratings-val:before {
@@ -7430,7 +7430,7 @@ p {
 }
 
 .btn-product:before {
-    font-family: "Poppins";
+     font-family: "LineAwesome";
     margin-right: .9rem
 }
 
@@ -9549,7 +9549,7 @@ small.form-text {
 }
 
 .select-custom::after {
-    font-family: "Poppins";
+     font-family: "LineAwesome";
     content: '\f110';
     position: absolute;
     display: inline-block;
@@ -10553,7 +10553,7 @@ small.form-text {
     height: 5rem;
     margin-top: -2.5rem;
     margin-left: -2.5rem;
-    font-family: "Poppins";
+     font-family: "LineAwesome";
     position: absolute;
     left: 50%;
     top: 50%;
@@ -12880,7 +12880,7 @@ button:focus {
 
 .entry-video a:after {
     content: '\ec2c';
-    font-family: "Poppins";
+     font-family: "LineAwesome";
     display: -ms-inline-flexbox;
     display: inline-flex;
     align-items: center;
@@ -13139,7 +13139,7 @@ button:focus {
     color: #fff;
     position: absolute;
     content: '\f24d';
-    font-family: "Poppins";
+     font-family: "LineAwesome";
     top: 2.6rem
 }
 
@@ -15675,7 +15675,7 @@ button:focus {
 }
 
 .nav-dashboard .nav-link:before {
-    font-family: "Poppins";
+     font-family: "LineAwesome";
     content: '\f274';
     display: block;
     font-size: 1.5rem;
@@ -16940,7 +16940,7 @@ button:focus {
 }
 
 [class^="icon-"]:before, [class*=" icon-"]:before {
-    font-family: "Poppins";
+     font-family: "LineAwesome";
     font-style: normal;
     font-weight: normal;
     speak: none;
