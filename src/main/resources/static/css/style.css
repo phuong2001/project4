@@ -11583,7 +11583,7 @@ button:focus {
     color: #333;
     content: '\f110';
     display: block;
-    font-family: 'Poppins';
+    font-family: 'LineAwesome';
     font-size: 1.4rem;
     line-height: 1;
     position: absolute;
