@@ -12986,7 +12986,7 @@ button:focus {
 }
 
 .read-more:after {
-    font-family: 'Poppins';
+    font-family: 'LineAwesome';
     content: '\f274';
     font-size: 1.5rem;
     line-height: 1;

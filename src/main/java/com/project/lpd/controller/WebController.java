@@ -45,4 +45,9 @@ public class WebController {
         return "cart";
     }
 
+    @GetMapping("/news")
+    public String News(){
+        return "news";
+    }
+
 }
