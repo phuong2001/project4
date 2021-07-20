@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/template.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<div class="page-wrapper" layout:fragment="content">
+    <main class="main">
+        <div class="page-header text-center" style="background-image: url('assets/images/page-header-bg.jpg')">
+            <div class="container">
+                <h1 class="page-title">Welcome to Games Store player support</span></h1>
+            </div>
+        </div>
+        <nav aria-label="breadcrumb" class="breadcrumb-nav">
+            <div class="container">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Help</a></li>
+                </ol>
+            </div>
+        </nav>
+        <div class="page-content">
+            <div class="container">
+                <h2 class="title text-center mb-3">Common topics</h2>
+                <div class="accordion accordion-rounded" id="accordion-1">
+                    <div class="card card-box card-sm bg-light">
+                        <div class="card-header" id="heading-1">
+                            <h2 class="card-title">
+                                <a role="button" data-toggle="collapse" href="#collapse-1" aria-expanded="true" aria-controls="collapse-1">
+                                    HOW TO ACTIVATE THE FREE 3-MONTH DISCORD NITRO SUBSCRIPTION ON THE EPIC GAMES STORE?
+                                </a>
+                            </h2>
+                        </div>
+                        <div id="collapse-1" class="collapse show" aria-labelledby="heading-1" data-parent="#accordion-1">
+                            <div class="card-body">
+                                We will email you an activation link valid for three (3) months of access to Discord Nitro from June 10, 2021. We will send the activation link to the email address associated with your account Epic Games. Check that the email address associated with your account is correct! Please allow 24 hours to receive the email and remember to check your spam folder.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-box card-sm bg-light">
+                        <div class="card-header" id="heading-2">
+                            <h2 class="card-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-2" aria-expanded="false" aria-controls="collapse-2">
+                                    Why can't I download more free games?
+                                </a>
+                            </h2>
+                        </div>
+                        <div id="collapse-2" class="collapse" aria-labelledby="heading-2" data-parent="#accordion-1">
+                            <div class="card-body">
+                                If you see this error message: " It is not possible to download other free games to your account at this time" , try the following troubleshooting steps:
+
+                                1. Disable your VPN, if applicable.
+                                2. Try using a mobile device that is not connected to the Wi-Fi network.
+                                If these two options did not resolve your issue, you will need to wait at least 24 hours before trying to get a free game from the Epic Games Store.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-box card-sm bg-light">
+                        <div class="card-header" id="heading-3">
+                            <h2 class="card-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-3" aria-expanded="false" aria-controls="collapse-3">
+                                    Why haven't I received my refund yet?
+                                </a>
+                            </h2>
+                        </div>
+                        <div id="collapse-3" class="collapse" aria-labelledby="heading-3" data-parent="#accordion-1">
+                            <div class="card-body">
+                                For self-refunded games or refunds requested from support, it may take up to 14 working days for the refund to be returned to your card.
+
+                                If you have not received a refund after this time, please contact your payment method provider who will be able to assist you.
+
+                                Important note: if your refund was sent to a payment method that is no longer active, please contact your bank or the supplier of your payment method.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-box card-sm bg-light">
+                        <div class="card-header" id="heading-4">
+                            <h2 class="card-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse-4" aria-expanded="false" aria-controls="collapse-4">
+                                    Chapter 2 Season 7 Launch Known Issues
+                                </a>
+                            </h2>
+                        </div>
+                        <div id="collapse-4" class="collapse" aria-labelledby="heading-4" data-parent="#accordion-1">
+                            <div class="card-body">
+                                With the launch of Chapter 2 Season 7, we are currently working on addressing some known issues.
+
+                                To see the list of known issues for v17.0, you can visit our Community Board here: https://trello.com/b/Bs7hgkma/fortnite-community-issues
+
+                                You can also stay up to date on our concerns, via our Fortnite Status page here: https://twitter.com/FortniteStatus
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <h2 class="title text-center mb-3">Orders and Returns</h2>
+                <div class="accordion accordion-rounded" id="accordion-2">
+                    <div class="card card-box card-sm bg-light">
+                        <div class="card-header" id="heading2-1">
+                            <h2 class="card-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse2-1" aria-expanded="false" aria-controls="collapse2-1">
+                                    Tracking my order
+                                </a>
+                            </h2>
+                        </div>
+                        <div id="collapse2-1" class="collapse" aria-labelledby="heading2-1" data-parent="#accordion-2">
+                            <div class="card-body">
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-box card-sm bg-light">
+                        <div class="card-header" id="heading2-2">
+                            <h2 class="card-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse2-2" aria-expanded="false" aria-controls="collapse2-2">
+                                    I haven’t received my order
+                                </a>
+                            </h2>
+                        </div>
+                        <div id="collapse2-2" class="collapse" aria-labelledby="heading2-2" data-parent="#accordion-2">
+                            <div class="card-body">
+                                Ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-box card-sm bg-light">
+                        <div class="card-header" id="heading2-3">
+                            <h2 class="card-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse2-3" aria-expanded="false" aria-controls="collapse2-3">
+                                    How can I return an item?
+                                </a>
+                            </h2>
+                        </div>
+                        <div id="collapse2-3" class="collapse" aria-labelledby="heading2-3" data-parent="#accordion-2">
+                            <div class="card-body">
+                                Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h2 class="title text-center mb-3">Payments</h2>
+                <div class="accordion accordion-rounded" id="accordion-3">
+                    <div class="card card-box card-sm bg-light">
+                        <div class="card-header" id="heading3-1">
+                            <h2 class="card-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse3-1" aria-expanded="false" aria-controls="collapse3-1">
+                                    What payment types can I use?
+                                </a>
+                            </h2>
+                        </div><!-- End .card-header -->
+                        <div id="collapse3-1" class="collapse" aria-labelledby="heading3-1" data-parent="#accordion-3">
+                            <div class="card-body">
+                                Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card card-box card-sm bg-light">
+                        <div class="card-header" id="heading3-2">
+                            <h2 class="card-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse3-2" aria-expanded="false" aria-controls="collapse3-2">
+                                    Can I pay by Gift Card?
+                                </a>
+                            </h2>
+                        </div>
+                        <div id="collapse3-2" class="collapse" aria-labelledby="heading3-2" data-parent="#accordion-3">
+                            <div class="card-body">
+                                Ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-box card-sm bg-light">
+                        <div class="card-header" id="heading3-3">
+                            <h2 class="card-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse3-3" aria-expanded="false" aria-controls="collapse3-3">
+                                    I can't make a payment
+                                </a>
+                            </h2>
+                        </div>
+                        <div id="collapse3-3" class="collapse" aria-labelledby="heading3-3" data-parent="#accordion-3">
+                            <div class="card-body">
+                                Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="card card-box card-sm bg-light">
+                        <div class="card-header" id="heading3-4">
+                            <h2 class="card-title">
+                                <a class="collapsed" role="button" data-toggle="collapse" href="#collapse3-4" aria-expanded="false" aria-controls="collapse3-4">
+                                    Has my payment gone through?
+                                </a>
+                            </h2>
+                        </div><!-- End .card-header -->
+                        <div id="collapse3-4" class="collapse" aria-labelledby="heading3-4" data-parent="#accordion-3">
+                            <div class="card-body">
+                                Nullam malesuada erat ut turpis. Suspendisse urna nibh, viverra non, semper suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros. Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat mattis eros.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta cta-display bg-image pt-4 pb-4" style="background-image: url(static/images/index/banners/banner-1-title.png);">
+            <div class="container">
+                <div class="row justify-content-center">
+                    <div class="col-md-10 col-lg-9 col-xl-7">
+                        <div class="row no-gutters flex-column text-center">
+                            <div class="col">
+                                <h3 class="cta-title text-white">Contact us for support</h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <main class="main">
+        <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0" style="margin-top: 15px">
+            <div class="page-content pb-0">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-6 mb-2 mb-lg-0" style="margin-top: 15px">
+                            <h2 class="title mb-1">Contact Information</h2><!-- End .title mb-2 -->
+                            <p class="mb-3">Vestibulum volutpat, lacus a ultrices sagittis, mi neque euismod dui, eu pulvinar nunc sapien ornare nisl. Phasellus pede arcu, dapibus eu, fermentum et, dapibus sed, urna.</p>
+                            <div class="row">
+                                <div class="col-sm-7">
+                                    <div class="contact-info">
+                                        <h3>The Office</h3>
+
+                                        <ul class="contact-list">
+                                            <li>
+                                                <i class="icon-map-marker"></i>
+                                                70 Washington Square South New York, NY 10012, United States
+                                            </li>
+                                            <li>
+                                                <i class="icon-phone"></i>
+                                                <a href="tel:#">+92 423 567</a>
+                                            </li>
+                                            <li>
+                                                <i class="icon-envelope"></i>
+                                                <a href="mailto:#">info@Molla.com</a>
+                                            </li>
+                                        </ul><!-- End .contact-list -->
+                                    </div><!-- End .contact-info -->
+                                </div><!-- End .col-sm-7 -->
+
+                                <div class="col-sm-5">
+                                    <div class="contact-info">
+                                        <h3>The Office</h3>
+
+                                        <ul class="contact-list">
+                                            <li>
+                                                <i class="icon-clock-o"></i>
+                                                <span class="text-dark">Monday-Saturday</span> <br>11am-7pm ET
+                                            </li>
+                                            <li>
+                                                <i class="icon-calendar"></i>
+                                                <span class="text-dark">Sunday</span> <br>11am-6pm ET
+                                            </li>
+                                        </ul><!-- End .contact-list -->
+                                    </div><!-- End .contact-info -->
+                                </div><!-- End .col-sm-5 -->
+                            </div><!-- End .row -->
+                        </div><!-- End .col-lg-6 -->
+                        <div class="col-lg-6" style="margin-top: 15px">
+                            <h2 class="title mb-1">Got Any Questions?</h2><!-- End .title mb-2 -->
+                            <p class="mb-2">Use the form below to get in touch with the sales team</p>
+
+                            <form action="#" class="contact-form mb-3">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label for="cname" class="sr-only">Name</label>
+                                        <input type="text" class="form-control" id="cname" placeholder="Name *" required>
+                                    </div><!-- End .col-sm-6 -->
+
+                                    <div class="col-sm-6">
+                                        <label for="cemail" class="sr-only">Email</label>
+                                        <input type="email" class="form-control" id="cemail" placeholder="Email *" required>
+                                    </div><!-- End .col-sm-6 -->
+                                </div><!-- End .row -->
+
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <label for="cphone" class="sr-only">Phone</label>
+                                        <input type="tel" class="form-control" id="cphone" placeholder="Phone">
+                                    </div><!-- End .col-sm-6 -->
+
+                                    <div class="col-sm-6">
+                                        <label for="csubject" class="sr-only">Subject</label>
+                                        <input type="text" class="form-control" id="csubject" placeholder="Subject">
+                                    </div><!-- End .col-sm-6 -->
+                                </div><!-- End .row -->
+
+                                <label for="cmessage" class="sr-only">Message</label>
+                                <textarea class="form-control" cols="30" rows="4" id="cmessage" required placeholder="Message *"></textarea>
+
+                                <button type="submit" class="btn btn-outline-primary-2 btn-minwidth-sm">
+                                    <span>SUBMIT</span>
+                                    <i class="icon-long-arrow-right"></i>
+                                </button>
+                            </form><!-- End .contact-form -->
+                        </div><!-- End .col-lg-6 -->
+                    </div>
+
+    </main>
+</div>
+</body>
+</html>
+
