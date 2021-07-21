@@ -49,6 +49,4 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "user")
     private List<ProductEntity> product;
-
-
 }
