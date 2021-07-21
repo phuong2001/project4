@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>
+        Material Dashboard by Creative Tim
+    </title>
+
+
+</head>
+
+<body>
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Update Product</h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" th:action="@{/update}" th:object="${role}">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="id" class="bmd-label-floating">ID</label>
+                                        <input type="text" name="id" th:field="${role.id}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label for="name" class="bmd-label-floating">Name</label>
+                                        <input type="text" name="name" th:field="${role.name}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary pull-right">Update</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
