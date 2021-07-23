@@ -1,22 +1,26 @@
 package com.project.lpd.controller;
 
+import com.project.lpd.entity.NewsEntity;
 import com.project.lpd.entity.UserEntity;
 import com.project.lpd.model.MapperDto;
 import com.project.lpd.model.UserDto;
+import com.project.lpd.service.NewsService;
 import com.project.lpd.service.UserService;
 import com.project.lpd.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class WebController {
     @Autowired
     UserService userService;
+
 
     MapperDto mapperDto;
 
@@ -82,5 +86,7 @@ public class WebController {
     public String Help(){
         return "help";
     }
+
+
 
 }
