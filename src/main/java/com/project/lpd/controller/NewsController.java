@@ -18,8 +18,19 @@ public class NewsController{
     @Autowired
     NewsService newsService;
 
+    @GetMapping({"/news"})
+    public String News(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "5") int size) {
+        List<NewsEntity> gameNews = newsService.getAllNews(PageRequest.of(page, size));
+        int totalPage  = newsService.getTotalPage(PageRequest.of(page, size));
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("size", size);
+        model.addAttribute("page", page);
+        model.addAttribute("gameNews", gameNews);
+        return "news";
+    }
+
     @GetMapping({"/listnew"})
-    public String pageableNews(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "5") int size) {
+    public String pageableNews(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "10") int size) {
         List<NewsEntity> gameNews = newsService.getAllNews(PageRequest.of(page, size));
         int totalPage  = newsService.getTotalPage(PageRequest.of(page, size));
         model.addAttribute("totalPage", totalPage);

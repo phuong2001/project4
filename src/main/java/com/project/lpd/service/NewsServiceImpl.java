@@ -18,6 +18,7 @@ public class NewsServiceImpl implements NewsService{
         return newsRepo.findAll(pageable).getContent();
     }
 
+
     @Override
     public int getTotalPage(Pageable pageable) {
         return newsRepo.findAll(pageable).getTotalPages();
