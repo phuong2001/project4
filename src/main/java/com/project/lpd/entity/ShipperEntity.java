@@ -14,6 +14,6 @@ public class ShipperEntity {
     @Column(name = "phone")
     private String phone;
 
-    @OneToMany(mappedBy = "shipper")
-    private List<OrderEntity> order;
+//    @OneToMany(mappedBy = "shipper")
+//    private List<OrderEntity> order;
 }

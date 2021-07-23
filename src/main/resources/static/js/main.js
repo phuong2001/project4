@@ -245,6 +245,15 @@ $(document).ready(function () {
         }
     }
 
+	var $ItemTotal = $(".total-col")
+    var $changedInput = $("#changedinput")
+    var $price = $(".price")
+    $changedInput.on("change", function (event) {
+        $ItemTotal.html($changedInput.val() * $price.val());
+    });
+
+
+
     // Sticky Content - Sidebar - Social Icons etc..
     // Wrap elements with <div class="sticky-content"></div> if you want to make it sticky
     if ( $.fn.stick_in_parent && $(window).width() >= 992 ) {
@@ -590,44 +599,6 @@ $(document).ready(function () {
         }, 800);
         e.preventDefault();
     });
-
-    // Google Map api v3 - Map for contact pages
-    if ( document.getElementById("map") && typeof google === "object" ) {
-
-        var content =   '<address>' +
-                            '88 Pine St,<br>' +
-                            'New York, NY 10005, USA<br>'+
-                            '<a href="#" class="direction-link" target="_blank">Get Directions <i class="las la-angle-right"></i></a>'+
-                        '</address>';
-
-        var latLong = new google.maps.LatLng(40.8127911,-73.9624553);
-
-        var map = new google.maps.Map(document.getElementById('map'), {
-            zoom: 14,
-            center: latLong, // Map Center coordinates
-            scrollwheel: false,
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-
-        });
-
-        var infowindow = new google.maps.InfoWindow({
-            content: content,
-            maxWidth: 360
-        });
-
-        var marker;
-        marker = new google.maps.Marker({
-            position: latLong,
-            map: map,
-            animation: google.maps.Animation.DROP
-        });
-
-        google.maps.event.addListener(marker, 'click', (function (marker) {
-            return function() {
-              infowindow.open(map, marker);
-            }
-        })(marker));
-    }
 
     var $viewAll = $('.view-all-demos');
     $viewAll.on('click', function (e) {

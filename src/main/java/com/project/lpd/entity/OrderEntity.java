@@ -1,42 +1,41 @@
 package com.project.lpd.entity;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "order")
 public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-    @Column(name = "name")
-    private String name;
-    @Column(name = "email")
-    private String email;
-    @Column(name = "phone")
-    private String phone;
+    private int Orderid;
+    @Column(name = "currency")
+    private String currency;
     @Column(name = "status")
-    private Short status;
-    @Column(name = "total")
-    private double toatl;
-    @Column(name = "discount")
-    private double discount;
+    private String status;
+    @Column(name = "price")
+    private double price;
+    @Column(name = "description")
+    private String description;
     @Column(name = "createAt")
     private Date createdAt;
-    @Column(name = "updateAt")
-    private Date updatedAt;
 
     @OneToMany(mappedBy = "order")
     private List<TransactionEntity> transaction;
 
-    @ManyToOne()
-    @JoinColumn(name = "shipperid", insertable = false, updatable = false)
-    private ShipperEntity shipper;
+//    @ManyToMany
+//    @JoinTable(
+//            name = "order_product",
+//            joinColumns = @JoinColumn(name = "Orderid"),
+//            inverseJoinColumns = @JoinColumn(name = "Productid"))
+//    List<ProductEntity> products;
 
-    @ManyToMany
-    @JoinTable(name = "product_order",
-            joinColumns = @JoinColumn(name = "orderid"),
-            inverseJoinColumns = @JoinColumn(name = "productid"))
-    private List<ProductEntity> product;
+    
+
 }
