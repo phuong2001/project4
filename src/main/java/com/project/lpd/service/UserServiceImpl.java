@@ -6,6 +6,7 @@ import com.project.lpd.exception.UserAlreadyExistException;
 import com.project.lpd.model.UserDto;
 import com.project.lpd.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -27,6 +28,49 @@ public class UserServiceImpl implements UserService {
     UserRepo userRepo;
 
     BCryptPasswordEncoder bCryptPasswordEncoder;
+
+    @Override
+    public List<UserEntity> getAllUser(Pageable pageable) {
+        return userRepo.findAll(pageable).getContent() ;
+    }
+
+    @Override
+    public int getTotalPage(Pageable pageable) {
+        return userRepo.findAll(pageable).getTotalPages();
+    }
+
+    @Override
+    public UserEntity getUserById(int id) {
+        return userRepo.findById( id).get();
+    }
+
+    /*@Override
+    public UserEntity createUser(UserEntity p) {
+        return userRepo.save(p);
+    }*/
+
+    @Override
+    public void deleteUser(int id) {
+        userRepo.deleteById(id);
+
+    }
+
+    @Override
+    public UserEntity updateUser(UserEntity p) {
+        return userRepo.save(p);
+    }
+
+    @Override
+    public List<UserEntity> listAll(String keyword) {
+        if (keyword != null){
+            return userRepo.search(keyword);
+        }
+        return  userRepo.findAll();
+    }
+
+
+
+
 
 
     @Override
