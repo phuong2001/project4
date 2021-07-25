@@ -77,8 +77,6 @@ public class WebController {
         return "cart";
     }
 
-
-
     @GetMapping("/help")
     public String Help(){
         return "help";
