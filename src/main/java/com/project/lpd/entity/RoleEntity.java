@@ -8,8 +8,18 @@ public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
     @Column(name = "name")
     private String name;
+
+    public RoleEntity() {
+    }
+
+    public RoleEntity(int id, String name, UserEntity user) {
+        this.id = id;
+        this.name = name;
+        this.user = user;
+    }
 
     public UserEntity getUser() {
         return user;
