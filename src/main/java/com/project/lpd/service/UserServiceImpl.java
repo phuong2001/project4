@@ -1,6 +1,7 @@
 package com.project.lpd.service;
 
 
+import com.project.lpd.entity.RoleEntity;
 import com.project.lpd.entity.UserEntity;
 import com.project.lpd.exception.UserAlreadyExistException;
 import com.project.lpd.model.UserDto;
@@ -15,9 +16,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
@@ -35,21 +34,18 @@ public class UserServiceImpl implements UserService {
         if (userEntity == null) {
             throw new UsernameNotFoundException("Not found username");
         }
-        Set<GrantedAuthority> authorities = new HashSet<>();
-        authorities.add(new SimpleGrantedAuthority(userEntity.getRole().getName()));
-        return new User(username, userEntity.getPassword(), authorities);
+        return new User(username, userEntity.getPassword(), mapRolesToAuthorities(userEntity.getRoles()));
     }
 
     @Override
     public UserEntity signUpUser(UserDto userDto){
-        if(emailExists(userDto.getEmail())){
-            throw new UserAlreadyExistException("There is an account with that email address: " + userDto.getEmail());
-        }
-        final UserEntity user = new UserEntity();
-        user.setFullName(userDto.getFullName());
-        user.setPassword(bCryptPasswordEncoder.encode(userDto.getPassword()));
-        user.setEmail(userDto.getEmail());
-        return userRepo.save(user);
+        UserEntity userEntity = new UserEntity(userDto.getFullName(),userDto.getEmail(),
+                bCryptPasswordEncoder.encode(userDto.getPassword()), Arrays.asList(new RoleEntity("USER")));
+        return userRepo.save(userEntity);
+    }
+
+    private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<RoleEntity> roles){
+        return roles.stream().map(role -> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
     }
 
 

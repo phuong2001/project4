@@ -33,17 +33,15 @@ public class WebController {
     }
 
     @GetMapping("/login")
-    public String loginHome(){
-        return "login";
-    }
-
+    public String Login(){return "login";}
+    
     @GetMapping("/register")
     public String register(){
         return "register";
     }
 
     @PostMapping("/register")
-    public String register(@Valid @RequestBody UserDto userDto , HttpServletRequest request, Error error){
+    public String register(@ModelAttribute("user") UserDto userDto){
         userService.signUpUser(userDto);
         return "redirect:/index";
     }
@@ -56,9 +54,6 @@ public class WebController {
 
     @GetMapping({"/products"})
     public String product() { return "products"; }
-
-    @GetMapping({"/pay"})
-    public String pay() { return "pay"; }
 
     @GetMapping({"/profile"})
     public String profile() { return "profile"; }

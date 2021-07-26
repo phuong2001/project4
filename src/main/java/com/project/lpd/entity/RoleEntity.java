@@ -8,7 +8,7 @@ import javax.persistence.*;
 @Entity
 @Table(name = "role")
 @Data
-@NoArgsConstructor
+
 public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,4 +17,8 @@ public class RoleEntity {
     @Column(name = "name")
     private String name;
 
+    public RoleEntity(String name) {
+        super();
+        this.name = name;
+    }
 }

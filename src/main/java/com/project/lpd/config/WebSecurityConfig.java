@@ -41,20 +41,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return auth;
     }
 
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/**").csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/login","/productDetail","/about","/products","/cart","/create_product","/pay","/profile","/register","/news","/help").permitAll()
+                .antMatchers("/", "/index","/productDetail","/about","/products","/cart","/create_product","/pay","/profile","/register","/news","/help","/login").permitAll()
                 .antMatchers("/adminIndex").permitAll()
                 .antMatchers("/css/**","/js/**","/images/**","vendors/**").permitAll()
-                .antMatchers("/admin").hasAuthority("admin")
-                .antMatchers("/user").hasAnyAuthority("member","admin")
+                .antMatchers("/admin").hasAuthority("ADMIN")
+                .antMatchers("/user").hasAnyAuthority("USER","ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
+                .permitAll()
                 .loginProcessingUrl("/login_security")
                 .failureUrl("/login?error")
                 .usernameParameter("username")

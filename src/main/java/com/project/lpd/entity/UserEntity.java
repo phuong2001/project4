@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Collection;
 import java.util.List;
 
 @Data
@@ -37,7 +38,7 @@ public class UserEntity {
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "roleid"))
 
-    private List<RoleEntity> roles;
+    private Collection<RoleEntity> roles;
 
     @ManyToOne()
     @JoinColumn(name = "cartid", insertable = false, updatable = false)
@@ -55,4 +56,11 @@ public class UserEntity {
 
     @OneToMany(mappedBy = "user")
     private List<ProductEntity> product;
+
+    public UserEntity(String fullName, String email, String password, Collection<RoleEntity> roles) {
+        this.fullName = fullName;
+        this.email = email;
+        this.password = password;
+        this.roles = roles;
+    }
 }
