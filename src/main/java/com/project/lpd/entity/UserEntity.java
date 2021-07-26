@@ -13,7 +13,7 @@ import java.util.List;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int userid;
     @Column(name = "username")
     private String username;
     @Column(name = "password")

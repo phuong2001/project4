@@ -1,10 +1,27 @@
 package com.project.lpd.controller;
 
+import com.project.lpd.entity.RoleEntity;
+import com.project.lpd.model.UserDto;
+import com.project.lpd.service.RoleService;
+import com.project.lpd.service.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class WebController {
+
+    @Autowired
+    UserService userService;
+
+    @Autowired
+    RoleService roleService;
     @GetMapping({"/", "/index"})
     public String index() {
         return "index";
@@ -26,7 +43,7 @@ public class WebController {
     }
 
     @PostMapping("/register")
-    public String register(@Valid @RequestBody UserDto userDto , HttpServletRequest request,Error error){
+    public String register(@Valid @RequestBody UserDto userDto , HttpServletRequest request, Error error){
         userService.signUpUser(userDto);
         return "redirect:/index";
     }
