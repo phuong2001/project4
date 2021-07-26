@@ -14,15 +14,13 @@ import java.util.List;
 public class UserEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int userid;
+    private int id;
     @Column(name = "username")
     private String username;
     @Column(name = "password")
     private String password;
     @Column(name = "phone")
     private int phone;
-    @Column(name = "roleid")
-    private int roleid;
     @Column(name = "fullName")
     private String fullName;
     @Column(name = "email")
@@ -34,7 +32,7 @@ public class UserEntity {
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "userid"),
+                    name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(
                     name = "role_id", referencedColumnName = "roleid"))
 

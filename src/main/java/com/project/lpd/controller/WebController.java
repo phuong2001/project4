@@ -36,12 +36,14 @@ public class WebController {
     public String Login(){return "login";}
     
     @GetMapping("/register")
-    public String register(){
+    public String register(Model model){
+        UserDto userDto = new UserDto();
+        model.addAttribute("user",userDto);
         return "register";
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute("user") UserDto userDto){
+    public String register(@ModelAttribute("user") UserDto userDto, Model model){
         userService.signUpUser(userDto);
         return "redirect:/index";
     }

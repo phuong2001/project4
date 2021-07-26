@@ -12,6 +12,7 @@ import javax.persistence.*;
 public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "roleid")
     private int roleid;
 
     @Column(name = "name")
