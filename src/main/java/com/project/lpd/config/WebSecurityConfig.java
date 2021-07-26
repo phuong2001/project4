@@ -6,7 +6,6 @@ import com.project.lpd.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -24,10 +23,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     UserService userService;
 
-
     @Bean
     public PasswordEncoder passwordEncoder(){
-        return new BCryptPasswordEncoder(11);
+        return new BCryptPasswordEncoder();
+    }
+
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(userServiceImpl).passwordEncoder(passwordEncoder());
     }
 
     @Bean
@@ -38,20 +41,20 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return auth;
     }
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/**").csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/index","/productDetail","/about","/products","/cart","/create_product","/pay","/profile","/register","/news","/help","/login").permitAll()
+                .antMatchers("/", "/index", "/login","/productDetail","/about","/products","/cart","/create_product","/pay","/profile","/register","/news","/help","/listnew","/updatenew","/createnew","/deletenew","/adminIndex").permitAll()
                 .antMatchers("/adminIndex").permitAll()
                 .antMatchers("/css/**","/js/**","/images/**","vendors/**").permitAll()
-                .antMatchers("/admin").hasAuthority("ADMIN")
-                .antMatchers("/user").hasAnyAuthority("USER","ADMIN")
+                .antMatchers("/admin").hasAuthority("admin")
+                .antMatchers("/user").hasAnyAuthority("member","admin")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .permitAll()
                 .loginProcessingUrl("/login_security")
                 .failureUrl("/login?error")
                 .usernameParameter("username")

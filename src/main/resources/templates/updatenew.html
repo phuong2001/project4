@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/adminlayout/template_admin.html}">
+<head>
+
+    <title>
+       Dashboard
+    </title>
+
+
+</head>
+
+<body>
+<div class="main-panel" layout:fragment="content">
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Update </h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" th:action="@{/createnew}" th:object="${gameNew}">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="id" class="bmd-label-floating">ID</label>
+                                        <input type="text" name="id" th:field="${gameNew.id}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label for="name" class="bmd-label-floating">Name</label>
+                                        <input type="text" name="name" th:field="${gameNew.name}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="image" class="bmd-label-floating">Image</label>
+                                        <input type="text" name="image" th:field="${gameNew.image}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="description" class="bmd-label-floating">Description</label>
+                                        <input type="text" name="description" th:field="${gameNew.description}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary pull-right">Update News</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+
+</html>
