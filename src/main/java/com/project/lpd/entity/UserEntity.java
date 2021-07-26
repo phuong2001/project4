@@ -29,9 +29,15 @@ public class UserEntity {
     @Column(name = "address")
     private String address;
 
-    @OneToOne
-    @JoinColumn(name = "roleid", insertable = false, updatable = false)
-    private RoleEntity role;
+    @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @JoinTable(
+            name = "users_roles",
+            joinColumns = @JoinColumn(
+                    name = "user_id", referencedColumnName = "userid"),
+            inverseJoinColumns = @JoinColumn(
+                    name = "role_id", referencedColumnName = "roleid"))
+
+    private List<RoleEntity> roles;
 
     @ManyToOne()
     @JoinColumn(name = "cartid", insertable = false, updatable = false)
