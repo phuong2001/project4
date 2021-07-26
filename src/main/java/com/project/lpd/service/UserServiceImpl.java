@@ -5,8 +5,10 @@ import com.project.lpd.entity.RoleEntity;
 import com.project.lpd.entity.UserEntity;
 import com.project.lpd.exception.UserAlreadyExistException;
 import com.project.lpd.model.UserDto;
+import com.project.lpd.repository.RoleRepo;
 import com.project.lpd.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -25,6 +27,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     UserRepo userRepo;
+    @Autowired
+    RoleRepo roleRepo;
+
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -42,7 +47,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserEntity signUpUser(UserDto userDto){
         UserEntity userEntity = new UserEntity(userDto.getFullName(),userDto.getEmail(),
-                passwordEncoder.encode(userDto.getPassword()), Arrays.asList(new RoleEntity("USER")));
+                passwordEncoder.encode(userDto.getPassword()), Arrays.asList(roleRepo.findByName("USER")));
         return userRepo.save(userEntity);
     }
 

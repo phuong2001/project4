@@ -4,11 +4,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Collection;
 
 @Entity
-@Table(name = "role")
 @Data
-
+@NoArgsConstructor
+@Table(name = "role")
 public class RoleEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,8 +19,12 @@ public class RoleEntity {
     @Column(name = "name")
     private String name;
 
-    public RoleEntity(String name) {
+    @ManyToMany(mappedBy = "roles")
+    private Collection<UserEntity> users;
+
+    public RoleEntity(final String name) {
         super();
         this.name = name;
     }
+
 }
