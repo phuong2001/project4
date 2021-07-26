@@ -37,7 +37,7 @@ public class DataLoad implements ApplicationListener<ContextRefreshedEvent> {
         final RoleEntity admin = createRoleIfNotFound("ADMIN");
         final RoleEntity user = createRoleIfNotFound("USER");
 
-        createUserIfNotFound("admin@gmail.com","ADMIN","123456",new ArrayList<>(Arrays.asList(admin)));
+        createUserIfNotFound("admin","admin@gmail.com","Store game","123456",new ArrayList<>(Arrays.asList(admin)));
         alreadySetup = true;
     }
     @Transactional
@@ -50,13 +50,14 @@ public class DataLoad implements ApplicationListener<ContextRefreshedEvent> {
         return role;
     }
     @Transactional
-    UserEntity createUserIfNotFound(final String email, final String fullName, final String password, final Collection<RoleEntity> roles) {
+    UserEntity createUserIfNotFound(final String username,final String email, final String fullName, final String password, final Collection<RoleEntity> roles) {
         UserEntity user = userRepo.findByEmail(email);
         if (user == null) {
             user = new UserEntity();
             user.setFullName(fullName);
             user.setPassword(crypt.encode(password));
             user.setEmail(email);
+            user.setUsername(username);
         }
         user.setRoles(roles);
         user = userRepo.save(user);

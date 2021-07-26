@@ -14,6 +14,9 @@
             <div>
                 <form action="/register" method="post" th:object="${user}">
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                        <input th:field = "*{username}" type="text" name="fullname" placeholder="Full Name" required  />
+                    </div>
+                    <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
                         <input th:field = "*{fullName}" type="text" name="fullname" placeholder="Full Name" required  />
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>

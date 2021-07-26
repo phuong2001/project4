@@ -1,24 +1,28 @@
 package com.project.lpd.controller;
 
+import com.project.lpd.entity.RoleEntity;
 import com.project.lpd.entity.UserEntity;
 import com.project.lpd.model.MapperDto;
 import com.project.lpd.model.UserDto;
+import com.project.lpd.service.RoleService;
 import com.project.lpd.service.UserService;
 import com.project.lpd.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @Controller
 public class WebController {
     @Autowired
     UserService userService;
 
-    MapperDto mapperDto;
+    @Autowired
+    RoleService roleService;
 
     @GetMapping({"/", "/index"})
     public String index() {
@@ -43,7 +47,6 @@ public class WebController {
     @PostMapping("/register")
     public String register(@ModelAttribute("user") UserDto userDto, Model model){
         userService.signUpUser(userDto);
-        UserEntity userEntity = mapperDto.convertToEntity(userDto);
         return "redirect:/index";
     }
 
@@ -56,9 +59,6 @@ public class WebController {
     @GetMapping({"/products"})
     public String product() { return "products"; }
 
-    @GetMapping({"/pay"})
-    public String pay() { return "pay"; }
-
     @GetMapping({"/profile"})
     public String profile() { return "profile"; }
 
@@ -70,11 +70,6 @@ public class WebController {
     @GetMapping("/cart")
     public String Cart(){
         return "cart";
-    }
-
-    @GetMapping("/news")
-    public String News(){
-        return "news";
     }
 
     @GetMapping("/help")

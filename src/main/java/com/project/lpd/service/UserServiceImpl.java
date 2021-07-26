@@ -46,7 +46,7 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity signUpUser(UserDto userDto){
-        UserEntity userEntity = new UserEntity(userDto.getFullName(),userDto.getEmail(),
+        UserEntity userEntity = new UserEntity(userDto.getUsername(),userDto.getFullName(),userDto.getEmail(),
                 passwordEncoder.encode(userDto.getPassword()), Arrays.asList(roleRepo.findByName("USER")));
         return userRepo.save(userEntity);
     }

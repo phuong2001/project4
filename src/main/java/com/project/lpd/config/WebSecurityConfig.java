@@ -24,13 +24,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     UserService userService;
 
     @Bean
-    public PasswordEncoder passwordEncoder(){
+    public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userServiceImpl).passwordEncoder(passwordEncoder());
     }
 
     @Bean
@@ -46,11 +41,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/**").csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/login","/productDetail","/about","/products","/cart","/create_product","/pay","/profile","/register","/news","/help","/listnew","/updatenew","/createnew","/deletenew","/adminIndex").permitAll()
+                .antMatchers("/", "/index", "/login", "/productDetail", "/about", "/products", "/cart", "/create_product", "/pay",
+                        "/profile", "/register", "/news", "/help", "/listnew",
+                        "/updatenew", "/createnew", "/deletenew", "/adminIndex").permitAll()
                 .antMatchers("/adminIndex").permitAll()
-                .antMatchers("/css/**","/js/**","/images/**","vendors/**").permitAll()
+                .antMatchers("/css/**", "/js/**", "/images/**", "vendors/**").permitAll()
                 .antMatchers("/admin").hasAuthority("admin")
-                .antMatchers("/user").hasAnyAuthority("member","admin")
+                .antMatchers("/user").hasAnyAuthority("member", "admin")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
