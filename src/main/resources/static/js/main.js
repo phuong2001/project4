@@ -244,13 +244,14 @@ $(document).ready(function () {
             });
         }
     }
-
-	var $ItemTotal = $(".total-col")
+    var $ItemTotal = $(".total-col")
     var $changedInput = $("#changedinput")
-    var $price = $(".price")
-    $changedInput.on("change", function (event) {
-        $ItemTotal.html($changedInput.val() * $price.val());
+    var $priceItem = $("#price-item")
+    $changedInput.on("change", function () {
+        var total = parseInt($changedInput.val()) * parseInt($priceItem.val())
+        $ItemTotal.html(total);
     });
+
 
 
 

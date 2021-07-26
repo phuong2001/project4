@@ -1,15 +1,20 @@
 package com.project.lpd.entity;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
+@Data
+@NoArgsConstructor
 @Table(name = "cart")
 public class CartEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private int cartid;
 
     @Column(name = "name")
     private String name;
@@ -29,4 +34,6 @@ public class CartEntity {
             joinColumns = @JoinColumn(name = "cartid"),
             inverseJoinColumns = @JoinColumn(name = "productid"))
     private List<ProductEntity> product;
+
+
 }
