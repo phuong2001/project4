@@ -46,9 +46,15 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity signUpUser(UserDto userDto){
-        UserEntity userEntity = new UserEntity(userDto.getUsername(),userDto.getFullName(),userDto.getEmail(),
-                passwordEncoder.encode(userDto.getPassword()), Arrays.asList(roleRepo.findByName("USER")));
-        return userRepo.save(userEntity);
+        if (emailExists(userDto.getEmail())) {
+            throw new UserAlreadyExistException("There is an account with that email address: " + userDto.getEmail());
+        } else if (usernameExists(userDto.getUsername())){
+            throw new UserAlreadyExistException("Username already taken " + userDto.getUsername());
+        } else {
+            UserEntity userEntity = new UserEntity(userDto.getUsername(), userDto.getFullName(), userDto.getEmail(),
+                    passwordEncoder.encode(userDto.getPassword()), Arrays.asList(roleRepo.findByName("USER")));
+            return userRepo.save(userEntity);
+        }
     }
 
     private Collection<? extends GrantedAuthority> mapRolesToAuthorities(Collection<RoleEntity> roles){
@@ -59,5 +65,6 @@ public class UserServiceImpl implements UserService {
     private boolean emailExists(final String email) {
         return userRepo.findByEmail(email) != null;
     }
+    private boolean usernameExists(final String username){return userRepo.findByUsername(username) != null;}
 
 }

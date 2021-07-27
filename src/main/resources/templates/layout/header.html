@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <body>
         <div class="wrap-container" layout:fragment="header">
             <header class="header header-intro-clearance header-3">
@@ -25,7 +26,8 @@
                                                 </div><!-- End .header-menu -->
                                             </div>
                                         </li>
-                                        <li><a href="/login">Sign in / Sign up</a></li>
+                                        <li sec:authorize="!isAuthenticated()"><a href="/login">Sign in / Sign up</a></li>
+                                        <li><a href="/logout" sec:authorize="isAuthenticated()">Logout</a></li>
                                     </ul>
                                 </li>
                             </ul><!-- End .top-menu -->
@@ -58,7 +60,7 @@
                             </div><!-- End .header-search -->
                         </div>
 
-                        <div class="header-right">
+                        <div class="header-right" sec:authorize="isAuthenticated()">
                             <div class="header-dropdown-link">
                                 <div class="account">
                                     <a href="/profile" title="My account">

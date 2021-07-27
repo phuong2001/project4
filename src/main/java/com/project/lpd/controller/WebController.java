@@ -9,10 +9,15 @@ import com.project.lpd.service.UserService;
 import com.project.lpd.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -29,6 +34,14 @@ public class WebController {
         return "index";
     }
 
+    @GetMapping({"/default"})
+    public String defaultafterlogin(HttpServletRequest request){
+        if(request.isUserInRole("ADMIN")){
+            return "redirect:/adminIndex" ;
+        }
+        return "redirect:/index";
+    }
+
     @GetMapping("/adminIndex")
     public String adminindex() {
         return "AdminIndex";
@@ -36,6 +49,21 @@ public class WebController {
 
     @GetMapping("/login")
     public String Login(){return "login";}
+
+    @GetMapping("/login-error")
+    public String login(HttpServletRequest request, Model model) {
+        HttpSession session = request.getSession(false);
+        String errorMessage = null;
+        if (session != null) {
+            AuthenticationException ex = (AuthenticationException) session
+                    .getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
+            if (ex != null) {
+                errorMessage = ex.getMessage();
+            }
+        }
+        model.addAttribute("errorMessage", errorMessage);
+        return "login";
+    }
 
     @GetMapping("/register")
     public String register(Model model){
