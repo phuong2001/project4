@@ -1,14 +1,11 @@
 package com.project.lpd.service;
 
 
-import com.project.lpd.entity.RoleEntity;
 import com.project.lpd.entity.UserEntity;
 import com.project.lpd.exception.UserAlreadyExistException;
 import com.project.lpd.model.UserDto;
-import com.project.lpd.repository.RoleRepo;
 import com.project.lpd.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -16,7 +13,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -33,6 +29,45 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private PasswordEncoder passwordEncoder;
+
+    @Override
+    public List<UserEntity> getAllUser(Pageable pageable) {
+        return userRepo.findAll(pageable).getContent() ;
+    }
+
+    @Override
+    public int getTotalPage(Pageable pageable) {
+        return userRepo.findAll(pageable).getTotalPages();
+    }
+
+    @Override
+    public UserEntity getUserById(int id) {
+        return userRepo.findById( id).get();
+    }
+
+    /*@Override
+    public UserEntity createUser(UserEntity p) {
+        return userRepo.save(p);
+    }*/
+
+    @Override
+    public void deleteUser(int id) {
+        userRepo.deleteById(id);
+
+    }
+
+    @Override
+    public UserEntity updateUser(UserEntity p) {
+        return userRepo.save(p);
+    }
+
+    @Override
+    public List<UserEntity> getUserByFullName(String name) {
+        return userRepo.findByFullName(name);
+
+    }
+
+
 
 
     @Override
