@@ -1,12 +1,16 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/adminlayout/template_admin.html}">
 <head>
     <title>
-        Material Dashboard by Creative Tim
+        Update role
     </title>
 </head>
 <body>
+<div class="main-panel" layout:fragment="content">
 <div class="content">
+
     <div class="container-fluid">
         <div class="row">
             <div class="col-md-8">
@@ -15,12 +19,12 @@
                         <h4 class="card-title">Update Product</h4>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="/updateRole" th:object="${role}">
+                        <form method="post" action="/updaterole" th:object="${role}">
                             <div class="row">
                                 <div class="col-md-3">
                                     <div class="form-group">
                                         <label for="id" class="bmd-label-floating">ID</label>
-                                        <input type="text" name="id" th:field="${role.id}" class="form-control">
+                                        <input type="text" name="id" th:field="${role.roleid}" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-9">
@@ -39,7 +43,7 @@
         </div>
     </div>
 </div>
-
+</div>
 </body>
 
 </html>
