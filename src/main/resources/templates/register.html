@@ -14,13 +14,15 @@
             <div>
                 <form action="/register" method="post" th:object="${user}">
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input th:field = "*{username}" type="text" name="fullname" placeholder="Full Name" required  />
+                        <input th:field = "*{username}" type="text" name="username" placeholder="Username" required  />
+                        <span id="usernameError" class="alert alert-danger col-sm-4" style="display:none"></span>
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input th:field = "*{fullName}" type="text" name="fullname" placeholder="Full Name" required  />
+                        <input th:field = "*{fullName}" type="text" name="fullname" placeholder="Fullname" required  />
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
                         <input th:field = "*{email}" type="email" name="email" placeholder="Email" required />
+                        <span id="emailError" class="alert alert-danger col-sm-4" style="display:none"></span>
                     </div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-lock"></i></span>
                         <input th:field = "*{password}" type="password" name="password" placeholder="Password" required />

@@ -41,6 +41,7 @@ public class UserServiceImpl implements UserService {
         if (userEntity == null) {
             throw new UsernameNotFoundException("Not found username");
         }
+
         return new User(username, userEntity.getPassword(), mapRolesToAuthorities(userEntity.getRoles()));
     }
 
