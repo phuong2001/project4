@@ -16,8 +16,7 @@ public class UserController {
 
     @Autowired
     UserService userService;
-
-
+    
 
     @GetMapping({"/list"})
     public String pageableUser(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "10") int size) {
@@ -50,14 +49,13 @@ public class UserController {
         userService.updateUser(userEntity);
         return "redirect:/list";
     }
-    @RequestMapping("/list")
-    public String viewListUser(Model model, @Param("keyword") String keyword) {
-        List<UserEntity> user = userService.listAll(keyword);
-        model.addAttribute("user", user);
-        model.addAttribute("keyword", keyword);
 
-        return "list_user";
-    }
+  @PostMapping("/search")
+  public String userSearch(@RequestParam String name, Model model) {
+      List<UserEntity> users = userService.getUserByFullName(name);
+      model.addAttribute("users", users);
+      return  "list_user";
+  }
 
 
 }

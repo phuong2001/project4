@@ -61,14 +61,10 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserEntity> listAll(String keyword) {
-        if (keyword != null){
-            return userRepo.search(keyword);
-        }
-        return  userRepo.findAll();
+    public List<UserEntity> getUserByFullName(String name) {
+        return userRepo.findByFullName(name);
+
     }
-
-
 
 
 
