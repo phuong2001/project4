@@ -39,7 +39,6 @@
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Address</th>
-                                    <th scope="col">Role</th>
                                     <th scope="col"></th>
                                     <th scope="col"></th>
                                     </thead>
@@ -52,7 +51,6 @@
                                         <td th:text="${user.phone}"></td>
                                         <td th:text="${user.email}"></td>
                                         <td th:text="${user.address}"></td>
-                                        <td th:text="${user.role.name}"></td>
                                         <td><a th:href="@{/update(id=${user.id})}" th:text="Edit"></a></td>
                                         <td><a th:href="@{/delete(id=${user.id})}" th:text="Delete"></a></td>
                                     </tr>

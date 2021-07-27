@@ -1,11 +1,14 @@
 package com.project.lpd.service;
 
 
+import com.project.lpd.entity.RoleEntity;
 import com.project.lpd.entity.UserEntity;
 import com.project.lpd.exception.UserAlreadyExistException;
 import com.project.lpd.model.UserDto;
+import com.project.lpd.repository.RoleRepo;
 import com.project.lpd.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -13,6 +16,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
@@ -45,11 +49,6 @@ public class UserServiceImpl implements UserService {
         return userRepo.findById( id).get();
     }
 
-    /*@Override
-    public UserEntity createUser(UserEntity p) {
-        return userRepo.save(p);
-    }*/
-
     @Override
     public void deleteUser(int id) {
         userRepo.deleteById(id);
@@ -66,10 +65,6 @@ public class UserServiceImpl implements UserService {
         return userRepo.findByFullName(name);
 
     }
-
-
-
-
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity userEntity = userRepo.findByUsername(username);

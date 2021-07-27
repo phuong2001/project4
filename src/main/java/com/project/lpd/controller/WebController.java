@@ -105,7 +105,7 @@ public class WebController {
         return "help";
     }
 
-    @GetMapping({"/list"})
+    @GetMapping({"/listRole"})
     public String pageableRole(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "4") int size) {
         List<RoleEntity> roles = roleService.getAllRole(PageRequest.of(page, size));
         int totalPage  = roleService.getTotalPage(PageRequest.of(page, size));
@@ -116,14 +116,14 @@ public class WebController {
         return "listrole";
     }
 
-    @GetMapping("/update")
+    @GetMapping("/updateRole")
     public String viewUpdateRole(Model model, @RequestParam(value = "id", defaultValue = "0") int id) {
         RoleEntity role = roleService.getRoleById(id);
         model.addAttribute("role", role);
         return "updaterole";
     }
 
-    @PostMapping("/update")
+    @PostMapping("/updateRole")
     public String updateRole(@ModelAttribute RoleEntity roleEntity, Model model) {
         roleService.updateRole(roleEntity);
         return "redirect:/list";
