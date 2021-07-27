@@ -128,4 +128,7 @@ public class WebController {
         roleService.updateRole(roleEntity);
         return "redirect:/list";
     }
+
+    @GetMapping("/error")
+    public String ErrorPage(){return "error";}
 }
