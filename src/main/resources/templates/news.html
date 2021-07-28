@@ -27,12 +27,12 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-9">
-                    <article th:each="news : ${gameNews}" class="entry entry-list">
+                    <article  th:each="news : ${gameNews}" class="entry entry-list">
                         <div class="row align-items-center">
                             <div class="col-md-5">
                                 <figure class="entry-media">
-                                    <a href="single.html">
-                                        <img th:src="${news.image}"  alt="image desc">
+                                    <a  th:href="@{/detailnews(id=${news.id})}">
+                                        <img  th:src="${news.image}"  alt="image desc">
                                     </a>
                                 </figure><!-- End .entry-media -->
                             </div><!-- End .col-md-5 -->
@@ -41,7 +41,7 @@
                                 <div class="entry-body">
 
                                     <h2 class="entry-title">
-                                        <a href="single.html" th:text="${news.name}"></a>
+                                        <a th:href="@{/detailnews(id=${news.id})}" th:text="${news.name}"></a>
                                     </h2><!-- End .entry-title -->
 
                                     <div class="entry-content">

@@ -29,6 +29,14 @@ public class NewsController{
         return "news";
     }
 
+    @GetMapping("/detailnews")
+    public String Detail(Model model, @RequestParam(value = "id", defaultValue = "0") int id){
+        NewsEntity news = newsService.getNewById(id);
+        model.addAttribute("news", news);
+        return "detailnews";
+    }
+
+
     @GetMapping({"/listnew"})
     public String pageableNews(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "10") int size) {
         List<NewsEntity> gameNews = newsService.getAllNews(PageRequest.of(page, size));
@@ -73,4 +81,6 @@ public class NewsController{
         newsService.updateNew(newsEntity);
         return "redirect:/listnew";
     }
+
+
 }

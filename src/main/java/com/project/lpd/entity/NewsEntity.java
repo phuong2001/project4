@@ -22,6 +22,8 @@ public class NewsEntity {
     private String image;
     @Column(name = "description")
     private String description;
+    @Column(name = "detailed_description")
+    private String detailed_description;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "createAt")

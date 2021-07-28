@@ -1,0 +1,44 @@
+
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/template.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main class="main" layout:fragment="content">
+    <div class="page-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-9">
+                    <article th:object="${news}"  class="entry single-entry">
+                        <figure class="entry-media">
+                            <img  th:src="${news.image}"  alt="image desc">
+                        </figure><!-- End .entry-media -->
+
+                        <div class="entry-body">
+                            <div class="entry-meta">
+                                <p th:text="${news.updatedAt}"></p>
+                            </div><!-- End .entry-meta -->
+
+                            <h2 th:text="${news.name}" class="entry-title">
+
+                            </h2><!-- End .entry-title -->
+
+                            <div class="entry-content editor-content">
+                                <p th:text="${news.description}"></p>
+                            </div>
+
+                            <div class="entry-content editor-content">
+                                <p th:text="${news.detailed_description}"></p>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+</body>
+</html>

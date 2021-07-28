@@ -2,58 +2,61 @@
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/adminlayout/template_admin.html}">
+<title>list game news</title>
 
 <body >
 <div class="main-panel" layout:fragment="content">
-<div class="content">
-    <div class="container-fluid">
-        <div class="row">
-            <div class="col-md-12">
-                <div class="card">
-                    <div class="card-header card-header-primary">
-                        <h4 class="card-title ">List </h4>
-                        <p class="card-category"> Here are list</p>
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead class=" text-primary">
-                                <th scope="col">ID</th>
-                                <th scope="col">Name</th>
-                                <th scope="col">Image</th>
-                                <th scope="col">Description</th>
-                                <th scope="col">createdAt</th>
-                                <th scope="col">updatedAt</th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-                                </thead>
-                                <tbody>
-                                <tr th:each="news : ${gameNews}">
-                                    <th scope="row" th:text="${news.id}"></th>
-                                    <td th:text="${news.name}"></td>
-                                    <td th:text="${news.image}"></td>
-                                    <td th:text="${news.description}"></td>
-                                    <td th:text="${news.createdAt}"></td>
-                                    <td th:text="${news.updatedAt}"></td>
-                                    <td><a th:href="@{/updatenew(id=${news.id})}" th:text="Edit"></a></td>
-                                    <td><a th:href="@{/deletenew(id=${news.id})}" th:text="Delete"></a></td>
-                                </tr>
-                                </tbody>
-                            </table>
-                            <nav aria-label="Page navigation">
-                                <ul class="pagination">
-                                    <li th:if="${totalPage > 0}" class="page-item" th:each="t : ${#numbers.sequence( 0, (totalPage - 1)/1)}" th:classappend="${t==page} ? active">
-                                        <a class="page-link" th:href="@{/list(size=${size}, page=${t})}" th:text="${t+1}"></a>
-                                    </li>
-                                </ul>
-                            </nav>
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title ">List </h4>
+                            <p class="card-category"> Here are list</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-primary">
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Image</th>
+                                    <th scope="col">Description</th>
+                                    <th scope="col">Detailed description</th>
+                                    <th scope="col">createdAt</th>
+                                    <th scope="col">updatedAt</th>
+                                    <th scope="col"></th>
+                                    <th scope="col"></th>
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="news : ${gameNews}">
+                                        <th scope="row" th:text="${news.id}"></th>
+                                        <td th:text="${news.name}"></td>
+                                        <td th:text="${news.image}"></td>
+                                        <td th:text="${news.description}"></td>
+                                        <td th:text="${news.detailed_description}"></td>
+                                        <td th:text="${news.createdAt}"></td>
+                                        <td th:text="${news.updatedAt}"></td>
+                                        <td><a th:href="@{/updatenew(id=${news.id})}" th:text="Edit"></a></td>
+                                        <td><a th:href="@{/deletenew(id=${news.id})}" th:text="Delete"></a></td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                                <nav aria-label="Page navigation">
+                                    <ul class="pagination">
+                                        <li th:if="${totalPage > 0}" class="page-item" th:each="t : ${#numbers.sequence( 0, (totalPage - 1)/1)}" th:classappend="${t==page} ? active">
+                                            <a class="page-link" th:href="@{/list(size=${size}, page=${t})}" th:text="${t+1}"></a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 </div>
 
 </body>
