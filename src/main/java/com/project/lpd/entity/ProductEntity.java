@@ -14,6 +14,7 @@ import java.util.List;
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "productid")
     private int productid;
     @Column(name = "name")
     private String name;
@@ -39,11 +40,9 @@ public class ProductEntity {
     @OneToMany(mappedBy = "product")
     private List<ReviewEntity> review;
 
-    @ManyToMany(mappedBy = "product")
-    private List<CartEntity> cart;
-
-//    @ManyToMany(mappedBy = "product")
-//    private List<OrderEntity> order;
+    @ManyToOne()
+    @JoinColumn(name = "cartid", insertable = false, updatable = false)
+    private CartEntity carts;
 
     @ManyToOne()
     @JoinColumn(name = "userid", insertable = false, updatable = false)

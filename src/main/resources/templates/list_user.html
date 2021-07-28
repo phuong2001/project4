@@ -35,24 +35,24 @@
                                     <th scope="col">ID</th>
                                     <th scope="col">Name</th>
                                     <th scope="col">User Name</th>
-                                    <th scope="col">PassWord</th>
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Address</th>
-                                    <th scope="col"></th>
-                                    <th scope="col"></th>
+                                    <th scope="col">Action</th>
+
                                     </thead>
                                     <tbody>
                                     <tr th:each="user:${users}">
                                         <th scope="row" th:text="${user.id}"></th>
                                         <td th:text="${user.fullName}"></td>
                                         <td th:text="${user.username}"></td>
-                                        <td th:text="${user.password}"></td>
                                         <td th:text="${user.phone}"></td>
                                         <td th:text="${user.email}"></td>
                                         <td th:text="${user.address}"></td>
-                                        <td><a th:href="@{/update(id=${user.id})}" th:text="Edit"></a></td>
-                                        <td><a th:href="@{/delete(id=${user.id})}" th:text="Delete"></a></td>
+                                        <td>
+                                            <a th:href="@{/update(id=${user.id})}" th:text="Edit"></a>
+                                            <a th:href="@{/delete(id=${user.id})}" th:text="Delete"></a>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>

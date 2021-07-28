@@ -18,10 +18,6 @@ public interface UserService extends UserDetailsService {
 //    UserEntity createUser(UserEntity p);
     void deleteUser(int id);
     UserEntity updateUser(UserEntity p);
-
     List<UserEntity> getUserByFullName(String name);
 
-/*
-    List<UserEntity> listAll(String keyword);
-*/
 }

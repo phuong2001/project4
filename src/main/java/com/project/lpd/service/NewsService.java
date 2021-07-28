@@ -7,7 +7,6 @@ import java.util.List;
 
 public interface NewsService {
     List<NewsEntity> getAllNews(Pageable pageable);
-
     int getTotalPage(Pageable pageable);
     NewsEntity getNewById(int id);
     NewsEntity createNew(NewsEntity p);
