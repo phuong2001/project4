@@ -13,11 +13,11 @@
 <main class="main" layout:fragment="content">
     <div class="form_wrapperss" style="margin-top: 20px; padding-bottom: 20px">
         <h1>Create Product</h1>
-        <form class="form_img" action="#" method="post" id="form_img">
+        <form class="form_img" action="/updateproduct" method="post" id="form_img" th:object="${model}">
             <div class="name_product" style="width: 600px;float: left;margin: 0 0 20px 200px">
                 <label for="namep">Product Name</label>
                 <br/>
-                <input id="namep" type="text">
+                <input id="namep" type="text" name="name">
             </div>
             <div class="quantity_product" style="float: left;margin: 0 0px 20px -300px">
                 <label for="quantity">Quantity product</label><br/>
@@ -39,7 +39,7 @@
                     <div class="card shadow-sm w-100 ">
                         <div class="card-header d-flex justify-content-between">
                             <h4>Image Product</h4>
-                            <input type="file" name="Image" id="image" multiple="" class="d-none" onchange="image_select()">
+                            <input type="file" name="image" id="image" multiple class="d-none" onchange="image_select()" accept="image/png, image/jpeg" required>
                             <button class="btn btn-sm btn-primary" type="button" style="border-radius: 20px; margin-top: 20px"
                                     onclick="document.getElementById('image').click()">Add Images
                             </button>

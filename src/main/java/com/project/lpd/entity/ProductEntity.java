@@ -2,6 +2,7 @@ package com.project.lpd.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -30,6 +31,9 @@ public class ProductEntity {
     private Date createdAt;
     @Column(name = "updateAt")
     private Date updatedAt;
+    private byte[] files;
+    @Column(name = "image")
+    private String file;
 
     @OneToMany(mappedBy = "product")
     private List<CategoryEntity> category;
