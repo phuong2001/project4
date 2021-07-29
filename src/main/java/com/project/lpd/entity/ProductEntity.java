@@ -31,7 +31,6 @@ public class ProductEntity {
     private Date createdAt;
     @Column(name = "updateAt")
     private Date updatedAt;
-    private byte[] files;
     @Column(name = "image")
     private String file;
 

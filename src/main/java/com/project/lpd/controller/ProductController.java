@@ -5,6 +5,7 @@ import com.project.lpd.entity.NewsEntity;
 import com.project.lpd.entity.ProductEntity;
 import com.project.lpd.entity.RoleEntity;
 import com.project.lpd.service.ProductService;
+import com.project.lpd.ultils.FileUploadUtil;
 import org.apache.commons.fileupload.FileUpload;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -32,17 +33,18 @@ public class ProductController {
 
     @GetMapping("/createproduct")
     public String CreateProductForm(Model model) {
-        ProductEntity productEntity= new ProductEntity();
-        model.addAttribute("model", productEntity);
-        return "createnew";
+        ProductEntity product= new ProductEntity();
+        model.addAttribute("product", product);
+        return "create_product";
     }
     @PostMapping("/createproduct")
-    public String CreateProduct(ProductEntity p, @RequestParam("image") MultipartFile file,Model model) throws IOException {
+    public String CreateProduct(@ModelAttribute ProductEntity product, @RequestParam("image") MultipartFile file) throws IOException {
         String imagename = StringUtils.cleanPath(file.getOriginalFilename());
-        p.setFile(imagename);
-        productService.createProduct(p);
-        String uploadDir = "/images" + p.getProductid();
-        return "createnew";
+        product.setFile(imagename);
+        productService.createProduct(product);
+        String uploadDir = "/images" + product.getProductid();
+        FileUploadUtil.saveFile(uploadDir,imagename,file);
+        return "redirect:/index";
     }
 
     @GetMapping({"/listproduct"})

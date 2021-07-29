@@ -13,7 +13,7 @@
 <main class="main" layout:fragment="content">
     <div class="form_wrapperss" style="margin-top: 20px; padding-bottom: 20px">
         <h1>Create Product</h1>
-        <form class="form_img" action="/updateproduct" method="post" id="form_img" th:object="${model}">
+        <form class="form_img" action="/createproduct" method="post" id="form_img" th:object="${product}" enctype="multipart/form-data">
             <div class="name_product" style="width: 600px;float: left;margin: 0 0 20px 200px">
                 <label for="namep">Product Name</label>
                 <br/>
@@ -34,26 +34,21 @@
                 <br>
                 <textarea id="description" rows="5" cols="126%"></textarea>
             </div>
-            <div class="img_test" style="width: 75%; margin: auto">
-                <div class="container_images mt-3 w-100" style="margin-left: 60px">
-                    <div class="card shadow-sm w-100 ">
-                        <div class="card-header d-flex justify-content-between">
-                            <h4>Image Product</h4>
-                            <input type="file" name="image" id="image" multiple class="d-none" onchange="image_select()" accept="image/png, image/jpeg" required>
-                            <button class="btn btn-sm btn-primary" type="button" style="border-radius: 20px; margin-top: 20px"
-                                    onclick="document.getElementById('image').click()">Add Images
-                            </button>
-                        </div>
-                        <div class="card-body d-flex flex-wrap justify-content-start" id="containers">
-                            <!-- Image will be show here-->
-                        </div>
-                    </div>
+            <div class="form-group">
+                <div class="custom-file">
+                    <input type="file" class="custom-file-input" id="customFile" name="file" th:field="${product.file}">
+                    <label class="custom-file-label" for="customFile">Choose file</label>
                 </div>
             </div>
-            <button type="button" class="btn"
-                    style="background-color: #1da1f2; float: right;">Add</button>
+            <div class="d-flex justify-content-center">
+                <button type="submit" class="btn btn-success"  >Add Product</button>
+            </div>
         </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+    <script>
+        bsCustomFileInput.init();
+    </script>
 </main>
 
 
