@@ -18,7 +18,7 @@ public class CategoryEntity {
     @Column(name = "name")
     private String name;
 
-    @ManyToOne()
-    @JoinColumn(name = "productid", insertable = false, updatable = false)
-    private ProductEntity product;
+//    @ManyToOne()
+//    @JoinColumn(name = "productid", insertable = false, updatable = false)
+//    private ProductEntity product;
 }

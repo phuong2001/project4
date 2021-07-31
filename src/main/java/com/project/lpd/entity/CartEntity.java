@@ -16,14 +16,24 @@ public class CartEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int cartid;
 
+    @Column(name = "buyerId")
+    private int buyerId;
+
     @Column(name = "status")
     private Short status;
+
+    @Column(name = "total")
+    private double Total;
 
     @Column(name = "createAt")
     private Date createdAt;
 
-    @OneToMany(fetch = FetchType.LAZY)
-    @JoinColumn(name = "productid", insertable = false, updatable = false)
-    private List<ProductEntity> products;
+//    @OneToOne
+//    @JoinColumn(name = "id" )
+//    UserEntity user;
+//
+//    @OneToMany(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "productid", insertable = false, updatable = false)
+//    private List<ProductEntity> products;
 
 }

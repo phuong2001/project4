@@ -168,12 +168,12 @@
                                         </div><!-- End .product -->
                                     </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
 
-                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3">
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3" th:each="product : ${products}">
                                         <div class="product product-7 text-center">
                                             <figure class="product-media">
                                                 <span class="product-label label-out">Out of Stock</span>
-                                                <a href="product.html">
-                                                    <img src="images/index/banners/banner-7.jpg" alt="Product image" class="product-image">
+                                                <a th:href="@{/detailproduct(id=${product.productid})}">
+                                                    <img th:src="@{${'/images/' + product.image}}" alt="Product image" class="product-image">
                                                 </a>
 
                                                 <div class="product-action-vertical">
@@ -191,9 +191,9 @@
                                                 <div class="product-cat">
                                                     <a href="#">Jackets</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title"><a href="product.html">Khaki utility boiler jumpsuit</a></h3><!-- End .product-title -->
+                                                <h3 class="product-title" th:text="${product.name}"><a href="product.html">Khaki utility boiler jumpsuit</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
-                                                    <span class="out-price">$120.00</span>
+                                                    <span class="out-price" th:text="${product.price}">$120.00</span>
                                                 </div><!-- End .product-price -->
                                                 <div class="ratings-container">
                                                     <div class="ratings">

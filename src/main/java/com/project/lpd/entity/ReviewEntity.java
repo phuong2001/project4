@@ -14,9 +14,9 @@ public class ReviewEntity {
     @Column(name = "star")
     private int star;
 
-    @ManyToOne()
-    @JoinColumn(name = "productid", insertable = false, updatable = false)
-    private ProductEntity product;
+//    @ManyToOne()
+//    @JoinColumn(name = "productid", insertable = false, updatable = false)
+//    private ProductEntity product;
 
     @ManyToOne()
     @JoinColumn(name = "userid", insertable = false, updatable = false)

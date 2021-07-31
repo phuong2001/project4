@@ -1,5 +1,6 @@
 package com.project.lpd.model;
 
+import com.project.lpd.entity.ProductEntity;
 import com.project.lpd.entity.UserEntity;
 import org.mapstruct.Mapper;
 import org.mapstruct.NullValueCheckStrategy;
@@ -8,4 +9,5 @@ import org.mapstruct.NullValueCheckStrategy;
 public interface MapperDto {
     UserEntity convertToEntity(UserDto userDto);
     UserDto convertToDto(UserEntity userEntity);
+    ProductEntity convertEntityProduct(ProductDto productDto);
 }

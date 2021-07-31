@@ -83,9 +83,6 @@ public class WebController {
     @GetMapping({"/about"})
     public String about2() { return "about"; }
 
-    @GetMapping({"/products"})
-    public String product() { return "products"; }
-
     @GetMapping({"/profile"})
     public String profile() { return "profile"; }
 

@@ -49,8 +49,8 @@ public class UserEntity {
     @OneToMany(mappedBy = "user")
     private List<TransactionEntity> transaction;
 
-    @OneToMany(mappedBy = "user")
-    private List<ProductEntity> product;
+//    @OneToMany(mappedBy = "user")
+//    private List<ProductEntity> product;
 
     public UserEntity(String username,String fullName, String email, String password, Collection<RoleEntity> roles) {
         this.fullName = fullName;

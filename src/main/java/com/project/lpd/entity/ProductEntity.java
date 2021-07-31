@@ -25,29 +25,36 @@ public class ProductEntity {
     private int quantity;
     @Column(name = "description")
     private String description;
-    @Column(name = "discount")
-    private double discount;
+//    @Column(name = "discount")
+//    private double discount;
     @Column(name = "createAt")
     private Date createdAt;
-    @Column(name = "updateAt")
-    private Date updatedAt;
+    @Lob
     @Column(name = "image")
-    private String file;
+    private String image;
 
-    @OneToMany(mappedBy = "product")
-    private List<CategoryEntity> category;
+    public ProductEntity(String name, double price, int quantity, String description, String image) {
+        this.name = name;
+        this.price = price;
+        this.quantity = quantity;
+        this.description = description;
+        this.image = image;
+    }
 
-    @OneToMany(mappedBy = "product")
-    private List<BrandEntity> brand;
+//    @OneToMany(mappedBy = "product")
+//    private List<CategoryEntity> category;
+//
+//    @OneToMany(mappedBy = "product")
+//    private List<BrandEntity> brand;
+//
+//    @OneToMany(mappedBy = "product")
+//    private List<ReviewEntity> review;
 
-    @OneToMany(mappedBy = "product")
-    private List<ReviewEntity> review;
+//    @ManyToOne()
+//    @JoinColumn(name = "cartid", insertable = false, updatable = false)
+//    private CartEntity carts;
 
-    @ManyToOne()
-    @JoinColumn(name = "cartid", insertable = false, updatable = false)
-    private CartEntity carts;
-
-    @ManyToOne()
-    @JoinColumn(name = "userid", insertable = false, updatable = false)
-    private UserEntity user;
+//    @ManyToOne()
+//    @JoinColumn(name = "userid", insertable = false, updatable = false)
+//    private UserEntity user;
 }

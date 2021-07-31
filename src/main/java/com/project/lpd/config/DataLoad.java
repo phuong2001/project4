@@ -6,11 +6,14 @@ import com.project.lpd.repository.RoleRepo;
 import com.project.lpd.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationListener;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Lazy;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartResolver;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -63,4 +66,6 @@ public class DataLoad implements ApplicationListener<ContextRefreshedEvent> {
         user = userRepo.save(user);
         return user;
     }
+
+
 }
