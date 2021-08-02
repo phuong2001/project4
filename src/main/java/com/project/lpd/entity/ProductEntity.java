@@ -48,10 +48,6 @@ public class ProductEntity {
 //    @OneToMany(mappedBy = "product")
 //    private List<ReviewEntity> review;
 
-//    @ManyToOne()
-//    @JoinColumn(name = "cartid", insertable = false, updatable = false)
-//    private CartEntity carts;
-
     @ManyToOne()
     @JoinColumn(name = "userid", insertable = false, updatable = false)
     private UserEntity user;

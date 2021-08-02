@@ -26,19 +26,9 @@ public class WebController {
     @Autowired
     UserService userService;
 
-
-
     @GetMapping({"/", "/index"})
     public String index() {
         return "index";
-    }
-
-    @GetMapping({"/default"})
-    public String defaultafterlogin(HttpServletRequest request){
-        if(request.isUserInRole("ADMIN")){
-            return "redirect:/adminIndex" ;
-        }
-        return "redirect:/index";
     }
 
     @GetMapping("/adminIndex")
@@ -77,8 +67,6 @@ public class WebController {
         return "redirect:/index";
     }
 
-
-
     @GetMapping({"/about"})
     public String about2() { return "about"; }
 
@@ -88,11 +76,6 @@ public class WebController {
     @GetMapping("/create_product")
     public String createProduct(){
         return "create_product";
-    }
-
-    @GetMapping("/cart")
-    public String Cart(){
-        return "cart";
     }
 
     @GetMapping("/help")

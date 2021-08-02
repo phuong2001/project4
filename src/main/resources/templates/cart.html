@@ -40,7 +40,7 @@
                                 </tr>
                                 </thead>
 
-                                <tbody>
+                                <tbody th:each="item : ${cartItem}">
                                 <tr>
                                     <td class="product-col">
                                         <div class="product">
@@ -52,15 +52,15 @@
                                             </figure>
 
                                             <h3 class="product-title">
-                                                <a href="#">Beige knitted elastic runner shoes</a>
-                                                <span>Address seller:So 8,Ton That Thuyet, Ha Noi</span>
+                                                <a href="#" th:text="${item.product.name}">Beige knitted elastic runner shoes</a>
+                                                <span th:text="${item.user.address}">Address seller:So 8,Ton That Thuyet, Ha Noi</span>
                                             </h3><!-- End .product-title -->
                                         </div><!-- End .product -->
                                     </td>
-                                    <td class="price-col">$84.00</td>
+                                    <td class="price-col" th:text="${item.product.price}">84.00</td>
                                     <td class="quantity-col">
                                         <div class="cart-product-quantity">
-                                            <input id = "changedinput"   type="number" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required>
+                                            <input type="number" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required th:value="${item.quantity}">
                                         </div><!-- End .cart-product-quantity -->
                                     </td>
                                     <td class="total-col">$84.00</td>

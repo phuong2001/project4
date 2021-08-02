@@ -32,13 +32,13 @@
 
     <div class="page-content">
         <div class="container">
-            <div class="product-details-top mb-2">
+            <div class="product-details-top mb-2" >
                 <div class="row">
                     <div class="col-md-6">
                         <div class="product-gallery product-gallery-vertical">
                             <div class="row">
-                                <figure th:object="${products}" class="product-main-image">
-                                    <img id="product-zoom" th:src="@{${'/images/' + products.image}}"
+                                <figure th:object="${product}" class="product-main-image">
+                                    <img id="product-zoom" th:src="@{${'/images/' + product.image}}"
                                          data-zoom-image="images/index/products/product-3.jpg" alt="product image">
                                     </a>
                                 </figure><!-- End .product-main-image -->
@@ -47,25 +47,25 @@
                                     <a class="product-gallery-item" href="#"
                                        data-image="images/index/products/product-3.jpg"
                                        data-zoom-image="images/index/products/product-3.jpg">
-                                        <img th:src="@{${'/images/' + products.image}}" alt="product side">
+                                        <img th:src="@{${'/images/' + product.image}}" alt="product side">
                                     </a>
 
                                     <a class="product-gallery-item" href="#"
                                        data-image="images/index/products/product-2.jpg"
                                        data-zoom-image="images/index/products/product-2.jpg">
-                                        <img th:src="@{${'/images/' + products.image}}" alt="product cross">
+                                        <img th:src="@{${'/images/' + product.image}}" alt="product cross">
                                     </a>
 
                                     <a class="product-gallery-item" href="#"
                                        data-image="images/index/products/product-3.jpg"
                                        data-zoom-image="images/index/products/product-3.jpg">
-                                        <img th:src="@{${'/images/' + products.image}}" alt="product with model">
+                                        <img th:src="@{${'/images/' + product.image}}" alt="product with model">
                                     </a>
 
                                     <a class="product-gallery-item active" href="#"
                                        data-image="images/index/products/product-4.jpg"
                                        data-zoom-image="images/index/products/product-4.jpg">
-                                        <img th:src="@{${'/images/' + products.image}}" alt="product back">
+                                        <img th:src="@{${'/images/' + product.image}}" alt="product back">
                                     </a>
                                 </div><!-- End .product-image-gallery -->
                             </div><!-- End .row -->
@@ -74,7 +74,7 @@
 
                     <div class="col-md-6">
                         <div class="product-details product-details-centered">
-                            <h1 th:text="${products.name}" class="product-title">Beige metal hoop tote bag</h1><!-- End .product-title -->
+                            <h1 th:text="${product.name}" class="product-title">Beige metal hoop tote bag</h1><!-- End .product-title -->
 
                             <div class="ratings-container">
                                 <div class="ratings">
@@ -83,14 +83,14 @@
                                 <a class="ratings-text" href="#product-review-link" id="review-link">( 2 Reviews )</a>
                             </div><!-- End .rating-container -->
 
-                            <div th:text="${products.price}" class="product-price">
+                            <div th:text="${product.price}" class="product-price">
                                 $76.00
                             </div><!-- End .product-price -->
 
                             <div class="product-content">
-                                <p th:text="${products.description}">Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus
+                                <p th:text="${product.description}">Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus
                                     libero eu augue. Morbi purus libero.</p>
-                                <p>Adress: Ha Noi</p>
+                                <p th:text="${product.user.address}">Adress: Ha Noi</p>
                             </div><!-- End .product-content -->
                             <div class="details-filter-row details-row-size">
                                 <label for="size">Option:</label>

@@ -95,9 +95,6 @@
 
                             <div class="products mb-3">
                                 <div class="row justify-content-center">
-
-
-
                                     <div class="col-6 col-md-4 col-lg-4 col-xl-3" th:each="product : ${products}">
                                         <div class="product product-7 text-center">
                                             <figure class="product-media">
@@ -121,7 +118,7 @@
                                                 <div class="product-cat">
                                                     <a href="#">Jackets</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title" th:text="${product.name}"><a href="product.html">Khaki utility boiler jumpsuit</a></h3><!-- End .product-title -->
+                                                <h3 class="product-title" ><a th:href="@{/productdetail(id=${product.productid})}" th:text="${product.name}">Khaki utility boiler jumpsuit</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
                                                     <span class="out-price" th:text="${product.price}">$120.00</span>
                                                 </div><!-- End .product-price -->

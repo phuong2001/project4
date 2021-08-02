@@ -14,7 +14,7 @@
     <div class="form_wrapperss" style="margin-top: 20px; padding-bottom: 20px">
         <h1>Create Product</h1>
         <form class="form_img" action="/createproduct" method="post" id="form_img" th:object="${productDto}" enctype="multipart/form-data">
-            <input type="hidden" name="id" th:field="*{productid}">
+            <input type="hidden" name="id" th:field="${productDto.productid}">
             <div class="name_product" style="width: 600px;float: left;margin: 0 0 20px 200px">
                 <label for="namep">Product Name</label>
                 <br/>

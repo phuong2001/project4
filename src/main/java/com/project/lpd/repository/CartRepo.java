@@ -1,8 +1,12 @@
 package com.project.lpd.repository;
 
-import com.project.lpd.entity.CartEntity;
+import com.project.lpd.entity.CartItemEntity;
+import com.project.lpd.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface CartRepo extends JpaRepository<CartEntity,Integer> {
-    CartEntity findById(int id);
+import java.util.List;
+
+public interface CartRepo extends JpaRepository<CartItemEntity,Integer> {
+    CartItemEntity findById(int id);
+    List<CartItemEntity> findByUser(UserEntity userEntity);
 }

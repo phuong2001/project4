@@ -2,7 +2,6 @@ package com.project.lpd.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -35,12 +34,6 @@ public class UserEntity  {
             joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"),
             inverseJoinColumns = @JoinColumn(name = "role_id", referencedColumnName = "roleid"))
     private Collection<RoleEntity> roles;
-
-    @ManyToOne()
-    @JoinColumn(name = "cartid", insertable = false, updatable = false)
-    private CartEntity cart;
-
-
 
     @OneToMany(mappedBy = "user")
     private List<ReviewEntity> review;
