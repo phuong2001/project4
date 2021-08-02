@@ -28,12 +28,12 @@ public class CartEntity {
     @Column(name = "createAt")
     private Date createdAt;
 
-//    @OneToOne
-//    @JoinColumn(name = "id" )
-//    UserEntity user;
-//
-//    @OneToMany(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "productid", insertable = false, updatable = false)
-//    private List<ProductEntity> products;
+    @ManyToOne
+    @JoinColumn(name = "id",insertable = false, updatable = false)
+    UserEntity user;
+
+    @ManyToOne
+    @JoinColumn(name = "productid", insertable = false, updatable = false)
+    private ProductEntity products;
 
 }

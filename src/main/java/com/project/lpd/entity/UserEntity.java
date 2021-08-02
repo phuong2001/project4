@@ -2,6 +2,7 @@ package com.project.lpd.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.security.core.userdetails.UserDetails;
 
 import javax.persistence.*;
 import java.util.Collection;
@@ -11,7 +12,7 @@ import java.util.List;
 @NoArgsConstructor
 @Entity
 @Table(name = "user")
-public class UserEntity {
+public class UserEntity  {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -39,9 +40,7 @@ public class UserEntity {
     @JoinColumn(name = "cartid", insertable = false, updatable = false)
     private CartEntity cart;
 
-    @ManyToOne()
-    @JoinColumn(name = "cardid", insertable = false, updatable = false)
-    private CardEntity card;
+
 
     @OneToMany(mappedBy = "user")
     private List<ReviewEntity> review;
@@ -49,8 +48,8 @@ public class UserEntity {
     @OneToMany(mappedBy = "user")
     private List<TransactionEntity> transaction;
 
-//    @OneToMany(mappedBy = "user")
-//    private List<ProductEntity> product;
+    @OneToMany(mappedBy = "user")
+    private List<ProductEntity> products;
 
     public UserEntity(String username,String fullName, String email, String password, Collection<RoleEntity> roles) {
         this.fullName = fullName;

@@ -8,13 +8,19 @@ import com.project.lpd.entity.UserEntity;
 import com.project.lpd.model.MapperDto;
 import com.project.lpd.model.ProductDto;
 import com.project.lpd.service.ProductService;
+import com.project.lpd.service.UserService;
 import com.project.lpd.ultils.FileUploadUtil;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.util.StringUtils;
@@ -25,6 +31,7 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
+import java.security.Principal;
 import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
@@ -35,17 +42,22 @@ public class ProductController {
 
     @Autowired
     ProductService productService;
+    @Autowired
+    UserService userService;
 
     @GetMapping("/createproduct")
     public String CreateProductForm(Model model) {
         ProductDto productDto = new ProductDto();
         model.addAttribute("productDto", productDto);
-        return "create_product";
+             return "create_product";
     }
     @PostMapping(value = "/createproduct")
     public String CreateProduct(@ModelAttribute("productDto") ProductDto productDto,
                                 @RequestParam("filename") MultipartFile file,
-                                @RequestParam("imgname") String imgname) throws IOException {
+                                @RequestParam("imgname") String imgname , Authentication authentication) throws IOException {
+
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
        ProductEntity product = new ProductEntity();
        product.setName(productDto.getName());
        product.setQuantity(productDto.getQuantity());
@@ -60,6 +72,7 @@ public class ProductController {
            imageUUID = imgname;
        }
        product.setImage(imageUUID);
+       product.setUserid(userEntity.getId());
        productService.createProduct(product);
        return "redirect:/products";
 

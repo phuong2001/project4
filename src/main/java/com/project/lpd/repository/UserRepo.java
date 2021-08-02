@@ -12,8 +12,6 @@ import java.util.List;
 public interface UserRepo extends JpaRepository<UserEntity,Integer> {
         UserEntity findByUsername(String username);
         UserEntity findByEmail(String email);
-
-
         @Query("select b from UserEntity b where b.fullName like %:name%")
         List<UserEntity> findByFullName(String name);
 }

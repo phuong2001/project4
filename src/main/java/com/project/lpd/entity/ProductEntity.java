@@ -1,5 +1,6 @@
 package com.project.lpd.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.springframework.web.multipart.MultipartFile;
@@ -12,6 +13,7 @@ import java.util.List;
 @Table(name = "product")
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,19 +29,15 @@ public class ProductEntity {
     private String description;
 //    @Column(name = "discount")
 //    private double discount;
-    @Column(name = "createAt")
-    private Date createdAt;
+//    @Column(name = "createAt")
+//    private Date createdAt;
     @Lob
     @Column(name = "image")
     private String image;
 
-    public ProductEntity(String name, double price, int quantity, String description, String image) {
-        this.name = name;
-        this.price = price;
-        this.quantity = quantity;
-        this.description = description;
-        this.image = image;
-    }
+    @Column(name = "userid")
+    private int userid;
+
 
 //    @OneToMany(mappedBy = "product")
 //    private List<CategoryEntity> category;
@@ -54,7 +52,7 @@ public class ProductEntity {
 //    @JoinColumn(name = "cartid", insertable = false, updatable = false)
 //    private CartEntity carts;
 
-//    @ManyToOne()
-//    @JoinColumn(name = "userid", insertable = false, updatable = false)
-//    private UserEntity user;
+    @ManyToOne()
+    @JoinColumn(name = "userid", insertable = false, updatable = false)
+    private UserEntity user;
 }

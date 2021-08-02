@@ -15,7 +15,7 @@ public interface UserService extends UserDetailsService {
     List<UserEntity> getAllUser(Pageable pageable);
     int getTotalPage(Pageable pageable);
     UserEntity getUserById(int id);
-//    UserEntity createUser(UserEntity p);
+    UserEntity getUserByName(String name);
     void deleteUser(int id);
     UserEntity updateUser(UserEntity p);
     List<UserEntity> getUserByFullName(String name);
