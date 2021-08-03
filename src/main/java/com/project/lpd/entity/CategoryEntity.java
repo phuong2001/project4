@@ -13,12 +13,12 @@ import java.util.List;
 public class CategoryEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    @Column(name = "categoryid")
+    private int categoryid;
 
     @Column(name = "name")
     private String name;
 
-//    @ManyToOne()
-//    @JoinColumn(name = "productid", insertable = false, updatable = false)
-//    private ProductEntity product;
+    @OneToMany(mappedBy = "category" )
+    private List<ProductEntity> product;
 }

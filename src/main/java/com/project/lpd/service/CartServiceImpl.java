@@ -43,7 +43,7 @@ public class CartServiceImpl implements CartService {
     public int AddProductToCart(UserEntity user, int productid, int quantity) {
         int addQuantity = quantity;
         ProductEntity productEntity = productRepo.findById(productid);
-        CartItemEntity cartItemEntity = cartRepo.getCartByCustomerAndProduct(user,productEntity);
+        CartItemEntity cartItemEntity = cartRepo.getCartByUserAndProduct(user,productEntity);
         if(cartItemEntity != null){
             addQuantity = cartItemEntity.getQuantity() + quantity;
             cartItemEntity.setQuantity(addQuantity);

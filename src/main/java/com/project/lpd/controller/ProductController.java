@@ -1,12 +1,10 @@
 package com.project.lpd.controller;
 
 
-import com.project.lpd.entity.NewsEntity;
-import com.project.lpd.entity.ProductEntity;
-import com.project.lpd.entity.RoleEntity;
-import com.project.lpd.entity.UserEntity;
+import com.project.lpd.entity.*;
 import com.project.lpd.model.MapperDto;
 import com.project.lpd.model.ProductDto;
+import com.project.lpd.service.CategoryService;
 import com.project.lpd.service.ProductService;
 import com.project.lpd.service.UserService;
 import com.project.lpd.ultils.FileUploadUtil;
@@ -44,17 +42,23 @@ public class ProductController {
     ProductService productService;
     @Autowired
     UserService userService;
+    @Autowired
+    CategoryService categoryService;
 
     @GetMapping("/createproduct")
     public String CreateProductForm(Model model) {
         ProductDto productDto = new ProductDto();
+        List<CategoryEntity> category = categoryService.getAllCategory();
         model.addAttribute("productDto", productDto);
-             return "create_product";
+        model.addAttribute("category",category);
+        return "create_product";
     }
     @PostMapping(value = "/createproduct")
     public String CreateProduct(@ModelAttribute("productDto") ProductDto productDto,
                                 @RequestParam("filename") MultipartFile file,
-                                @RequestParam("imgname") String imgname , Authentication authentication) throws IOException {
+                                @RequestParam("imgname") String imgname,
+                                @RequestParam("category") int id,
+                                Authentication authentication) throws IOException {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
        ProductEntity product = new ProductEntity();
@@ -72,6 +76,7 @@ public class ProductController {
        }
        product.setImage(imageUUID);
        product.setUserid(userEntity.getId());
+       product.setCategory(categoryService.getCategoryById(id));
        productService.createProduct(product);
        return "redirect:/products";
     }

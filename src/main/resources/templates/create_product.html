@@ -45,6 +45,12 @@
                     <img th:src="@{${'/images/' + productDto.image}}">
                 </div>
             </div>
+            <div class="select-custom">
+                <label for="category">Category</label>
+                <select class="form-control" aria-label="category" id="category" name="category" >
+                    <option th:value="${item.categoryid}" th:text="${item.name}" th:each="item:${category}"></option>
+                </select>
+            </div>
             <div class="d-flex justify-content-center">
                 <button type="submit" class="btn btn-success" >Add Product</button>
             </div>
