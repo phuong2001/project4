@@ -27,6 +27,7 @@
                                             </div>
                                         </li>
                                         <li sec:authorize="!isAuthenticated()"><a href="/login">Sign in / Sign up</a></li>
+                                        <li><a href="/adminIndex" sec:authorize="hasAnyAuthority('ADMIN')">Admin Page</a></li>
                                         <li><a href="/logout" sec:authorize="isAuthenticated()">Logout</a></li>
                                     </ul>
                                 </li>

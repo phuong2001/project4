@@ -57,7 +57,7 @@ public class ProductController {
     public String CreateProduct(@ModelAttribute("productDto") ProductDto productDto,
                                 @RequestParam("filename") MultipartFile file,
                                 @RequestParam("imgname") String imgname,
-                                @RequestParam("category") int id,
+                                @RequestParam("categoryid") int id,
                                 Authentication authentication) throws IOException {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
@@ -76,7 +76,7 @@ public class ProductController {
        }
        product.setImage(imageUUID);
        product.setUserid(userEntity.getId());
-       product.setCategory(categoryService.getCategoryById(id));
+//       product.setCategoryid(id);
        productService.createProduct(product);
        return "redirect:/products";
     }

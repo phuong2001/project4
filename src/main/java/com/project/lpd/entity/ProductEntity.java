@@ -38,9 +38,12 @@ public class ProductEntity {
     @Column(name = "userid")
     private int userid;
 
-    @ManyToOne()
-    @JoinColumn(name = "categoryid", insertable = false, updatable = false)
-    private CategoryEntity category;
+//    @Column(name = "categoryid")
+//    private int categoryid;
+
+//    @ManyToOne()
+//    @JoinColumn(name = "categoryid", insertable = false, updatable = false)
+//    private CategoryEntity category;
 
 //    @OneToMany(mappedBy = "product")
 //    private List<BrandEntity> brand;
