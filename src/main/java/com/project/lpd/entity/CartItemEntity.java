@@ -19,16 +19,13 @@ public class CartItemEntity {
     @Column(name = "quantity")
     private int quantity;
 
-    @Column(name = "total")
-    private double Total;
+    @ManyToOne
+    @JoinColumn(name = "productid", insertable = false, updatable = false)
+    private ProductEntity product;
 
     @ManyToOne
     @JoinColumn(name = "buyerid",insertable = false, updatable = false)
     UserEntity user;
-
-    @ManyToOne
-    @JoinColumn(name = "productid", insertable = false, updatable = false)
-    private ProductEntity product;
 
 
 

@@ -26,8 +26,13 @@ public class OrderEntity {
     @Column(name = "createAt")
     private Date createdAt;
 
-    @OneToMany(mappedBy = "order")
-    private List<TransactionEntity> transaction;
+    @OneToMany
+    @JoinColumn(name = "catId",insertable = false,updatable = false)
+    List<CartItemEntity> carts;
+
+    @ManyToOne
+    @JoinColumn(name = "buyerid",insertable = false, updatable = false)
+    UserEntity user;
 
 //    @ManyToMany
 //    @JoinTable(
