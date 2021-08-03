@@ -27,6 +27,11 @@ public class CartItemEntity {
     @JoinColumn(name = "buyerid",insertable = false, updatable = false)
     UserEntity user;
 
+    @Column(name = "productid")
+    private int productid;
+
+    @Column(name = "buyerid")
+    private int userid;
 
 
 }

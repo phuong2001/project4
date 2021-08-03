@@ -9,7 +9,9 @@ import java.util.List;
 
 public interface CartService {
     CartItemEntity getCartById(int id);
-    CartItemEntity updateCart(CartItemEntity cartEntity);
     List<CartItemEntity> getCartByUser(UserEntity userEntity);
     int AddProductToCart(UserEntity user , int productid, int quantity);
+    //void UpdateCart(int productid, int editQuantity);
+    void RemoveItemFromCart(int id);
+    void clear();
 }

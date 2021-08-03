@@ -29,10 +29,6 @@ public class CartServiceImpl implements CartService {
         return null;
     }
 
-    @Override
-    public CartItemEntity updateCart(CartItemEntity cartEntity) {
-        return null;
-    }
 
     @Override
     public List<CartItemEntity> getCartByUser(UserEntity userEntity) {
@@ -50,12 +46,28 @@ public class CartServiceImpl implements CartService {
         } else {
             cartItemEntity = new CartItemEntity();
             cartItemEntity.setQuantity(quantity);
-            cartItemEntity.setUser(user);
-            cartItemEntity.setProduct(productEntity);
+            cartItemEntity.setUserid(user.getId());
+            cartItemEntity.setProductid(productid);
         }
         cartRepo.save(cartItemEntity);
         return addQuantity;
     }
+/*
+    public void UpdateCart(UserEntity user, int productid, int editQuantity){
+        ProductEntity productEntity = productRepo.findById(productid);
+        CartItemEntity cartItemEntity = cartRepo.getCartByUserAndProduct(user,productEntity);
+        cartItemEntity.setQuantity(editQuantity);
+    }
 
+ */
 
+    @Override
+    public void RemoveItemFromCart(int id){
+        cartRepo.deleteById(id);
+    }
+
+    @Override
+    public void clear(){
+        cartRepo.deleteAll();
+    }
 }

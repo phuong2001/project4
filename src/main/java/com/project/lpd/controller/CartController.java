@@ -2,6 +2,7 @@ package com.project.lpd.controller;
 
 
 import com.project.lpd.entity.CartItemEntity;
+import com.project.lpd.entity.ProductEntity;
 import com.project.lpd.entity.UserEntity;
 import com.project.lpd.service.CartService;
 import com.project.lpd.service.ProductService;
@@ -22,6 +23,10 @@ public class CartController {
     CartService cartService;
     @Autowired
     UserService userService;
+    @Autowired
+    ProductService productService;
+
+
 
     @GetMapping("/cart")
     public String showCart(Model model, Authentication authentication){
@@ -34,13 +39,20 @@ public class CartController {
 
     @PostMapping("/addcart")
     public String addCart(@RequestParam(value = "pid") int productid , @RequestParam(value = "qty" ,defaultValue = "1") int quantity, Authentication authentication ){
+
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         cartService.AddProductToCart(userEntity,productid,quantity);
+
+        return "redirect:/cart";
+    }
+
+/*
+    @PostMapping("/updatecart")
+    public String updateCart(@PathVariable("pid") int productid, @PathVariable("qty") int editQuantity ){
+        cartService.UpdateCart(productid,editQuantity);
         return "cart";
     }
 
-
-
-
+ */
 }

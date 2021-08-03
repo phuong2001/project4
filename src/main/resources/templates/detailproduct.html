@@ -32,7 +32,8 @@
 
     <div class="page-content">
         <div class="container">
-            <div class="product-details-top mb-2" >
+            <form method="POST" action="/addcart" >
+                <div class="product-details-top mb-2" >
                 <div class="row">
                     <div class="col-md-6">
                         <div class="product-gallery product-gallery-vertical">
@@ -110,8 +111,8 @@
                                                step="1" data-decimals="0"
                                                required="" style="display: none;">
                                     </div><!-- End .product-details-quantity -->
-
-                                    <a href="#" class="btn-product btn-cart"><span><i class="las la-cart-plus"></i>add to cart</span></a>
+                                    <input type="hidden" name ="pid" id="pid" th:value ="${product.productid}">
+                                    <button type="submit" class="btn-product btn-cart"><span><i class="las la-cart-plus"></i>add to cart</span></button>
                                 </div><!-- End .details-action-col -->
 
                                 <div class="details-action-wrapper">
@@ -144,7 +145,7 @@
                     </div><!-- End .col-md-6 -->
                 </div><!-- End .row -->
             </div><!-- End .product-details-top -->
-
+            </form>
             <div class="product-details-tab">
                 <ul class="nav nav-pills justify-content-center" role="tablist">
                     <li class="nav-item">
@@ -348,7 +349,7 @@
                                     </div><!-- End .product-action-vertical -->
 
                                     <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                        <a href="#" class="btn-product btn-cart" th:href="/addcart"><span>add to cart</span></a>
                                     </div><!-- End .product-action -->
                                 </figure><!-- End .product-media -->
 
