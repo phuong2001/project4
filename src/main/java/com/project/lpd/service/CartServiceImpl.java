@@ -10,9 +10,11 @@ import com.project.lpd.repository.UserRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
+@Transactional
 public class CartServiceImpl implements CartService {
     @Autowired
     CartRepo cartRepo;
@@ -62,8 +64,9 @@ public class CartServiceImpl implements CartService {
  */
 
     @Override
-    public void RemoveItemFromCart(int id){
-        cartRepo.deleteById(id);
+    public void RemoveItemFromCart(UserEntity user,int productid){
+        ProductEntity productEntity = productRepo.findById(productid);
+        cartRepo.deleteByUserAndProduct(user, productEntity);
     }
 
     @Override

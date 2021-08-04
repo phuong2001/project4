@@ -12,6 +12,6 @@ public interface CartService {
     List<CartItemEntity> getCartByUser(UserEntity userEntity);
     int AddProductToCart(UserEntity user , int productid, int quantity);
     //void UpdateCart(int productid, int editQuantity);
-    void RemoveItemFromCart(int id);
+    void RemoveItemFromCart(UserEntity user,int productid);
     void clear();
 }

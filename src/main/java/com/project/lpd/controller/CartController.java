@@ -46,7 +46,6 @@ public class CartController {
 
         return "redirect:/cart";
     }
-
 /*
     @PostMapping("/updatecart")
     public String updateCart(@PathVariable("pid") int productid, @PathVariable("qty") int editQuantity ){
@@ -55,4 +54,12 @@ public class CartController {
     }
 
  */
+    @GetMapping("/removecart")
+    public String removeCart(@RequestParam(value = "id" ,defaultValue = "0") int productid , Authentication authentication ){
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
+        cartService.RemoveItemFromCart(userEntity, productid);
+        return "redirect:/cart";
+    }
+
 }
