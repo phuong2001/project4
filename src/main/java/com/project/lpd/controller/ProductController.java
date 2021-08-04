@@ -47,10 +47,8 @@ public class ProductController {
 
     @GetMapping("/createproduct")
     public String CreateProductForm(Model model) {
-        ProductDto productDto = new ProductDto();
-        List<CategoryEntity> category = categoryService.getAllCategory();
-        model.addAttribute("productDto", productDto);
-        model.addAttribute("category",category);
+        model.addAttribute("category", categoryService.getAllCategory());
+        model.addAttribute("productDto", new ProductDto());
         return "create_product";
     }
     @PostMapping(value = "/createproduct")
@@ -76,7 +74,7 @@ public class ProductController {
        }
        product.setImage(imageUUID);
        product.setUserid(userEntity.getId());
-//       product.setCategoryid(id);
+       product.setCategoryid(id);
        productService.createProduct(product);
        return "redirect:/products";
     }

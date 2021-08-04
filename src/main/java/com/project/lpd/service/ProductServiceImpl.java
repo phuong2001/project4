@@ -33,6 +33,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductEntity createProduct(ProductEntity productEntity){
         //ProductEntity product = new ProductEntity(productEntity.getName(),productEntity.getPrice(),productEntity.getQuantity(),productEntity.getDescription(),file.getBytes().toString());
+
         return productRepo.save(productEntity);
     }
 

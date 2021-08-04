@@ -11,6 +11,7 @@ import java.util.List;
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
     CategoryRepo categoryRepo;
+
     @Override
     public List<CategoryEntity> getAllCategory() {
         return categoryRepo.findAll();
@@ -18,6 +19,6 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryEntity getCategoryById(int id) {
-        return categoryRepo.getByCategoryid(id);
+        return categoryRepo.getById(id);
     }
 }

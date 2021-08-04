@@ -1,5 +1,6 @@
 package com.project.lpd.entity;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +10,7 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 @Table(name = "category")
 public class CategoryEntity {
     @Id
@@ -17,7 +19,7 @@ public class CategoryEntity {
 
     @Column(name = "name")
     private String name;
-//
-//    @OneToMany(mappedBy = "category" )
-//    private List<ProductEntity> product;
+
+    @OneToMany(mappedBy = "category" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
+    private List<ProductEntity> product;
 }

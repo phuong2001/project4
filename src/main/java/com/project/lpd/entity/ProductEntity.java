@@ -38,12 +38,12 @@ public class ProductEntity {
     @Column(name = "userid")
     private int userid;
 
-//    @Column(name = "categoryid")
-//    private int categoryid;
+    @Column(name = "categoryid")
+    private int categoryid;
 
-//    @ManyToOne()
-//    @JoinColumn(name = "categoryid", insertable = false, updatable = false)
-//    private CategoryEntity category;
+   @ManyToOne( fetch = FetchType.LAZY)
+   @JoinColumn(name = "categoryid", insertable = false, updatable = false)
+   private CategoryEntity category;
 
 //    @OneToMany(mappedBy = "product")
 //    private List<BrandEntity> brand;
