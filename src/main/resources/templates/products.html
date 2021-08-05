@@ -95,7 +95,6 @@
 
                             <div class="products mb-3">
                                 <div class="row justify-content-center">
-                                    <form method="POST" action="/addcart">
                                     <div class="col-6 col-md-4 col-lg-4 col-xl-3" th:each="product : ${products}">
                                         <div class="product product-7 text-center">
                                             <figure class="product-media">
@@ -103,12 +102,6 @@
                                                 <a th:href="@{/productdetail(id=${product.productid})}">
                                                     <img th:src="@{${'/images/' + product.image}}" alt="Product image" class="product-image">
                                                 </a>
-
-                                                <div class="product-action-vertical">
-                                                    <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                                    <a href="popup/quickView.html" class="btn-product-icon btn-quickview" title="Quick view"><span>Quick view</span></a>
-                                                    <a href="#" class="btn-product-icon btn-compare" title="Compare"><span>Compare</span></a>
-                                                </div><!-- End .product-action-vertical -->
                                                 <div class="product-action">
                                                     <button type="submit" class="btn-product btn-cart" ><span>add to cart</span></button>
                                                 </div><!-- End .product-action -->
@@ -116,7 +109,7 @@
 
                                             <div class="product-body">
                                                 <div class="product-cat">
-                                                    <a href="#">Jackets</a>
+                                                    <a href="#" th:text="${product.category.name}">Jackets</a>
                                                 </div><!-- End .product-cat -->
                                                 <h3 class="product-title" ><a th:href="@{/productdetail(id=${product.productid})}" th:text="${product.name}">Khaki utility boiler jumpsuit</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
@@ -131,7 +124,6 @@
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product -->
                                     </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
-                                    </form>
 
                                 </div><!-- End .row -->
                             </div><!-- End .products -->
