@@ -34,4 +34,9 @@ public class CartItemEntity {
     private int userid;
 
 
+    @Transient
+    public double getSubtotal(){
+          return this.product.getPrice() * quantity;
+    }
+
 }
