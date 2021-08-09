@@ -33,5 +33,8 @@ public class CartItemEntity {
     @Column(name = "buyerid")
     private int userid;
 
+    @Column(name = "subTotal")
+    private double subtotal;
+
 
 }

@@ -64,7 +64,7 @@
                                                 <input type="number" class="form-control" value="1" min="1" max="10" step="1" data-decimals="0" required th:value="${item.quantity}">
                                             </div><!-- End .cart-product-quantity -->
                                         </td>
-                                        <td class="total-col">$84.00</td>
+                                        <td class="total-col" th:text="${item.subtotal}">$84.00</td>
                                         <td class="remove-col" >
                                                 <a th:href="@{/removecart(id=${item.product.productid})}" class="btn-remove"><i class="las la-times"></i></a>
                                         </td>
@@ -152,7 +152,7 @@
                                     </tbody>
                                 </table><!-- End .table table-summary -->
 
-                                <a href="checkout.html" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO
+                                <a href="/pay" class="btn btn-outline-primary-2 btn-order btn-block">PROCEED TO
                                     CHECKOUT</a>
                             </div><!-- End .summary -->
 

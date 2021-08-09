@@ -28,7 +28,7 @@ public class CartServiceImpl implements CartService {
 
     @Override
     public CartItemEntity getCartById(int id) {
-        return null;
+        return cartRepo.getById(id);
     }
 
 
@@ -45,11 +45,13 @@ public class CartServiceImpl implements CartService {
         if(cartItemEntity != null){
             addQuantity = cartItemEntity.getQuantity() + quantity;
             cartItemEntity.setQuantity(addQuantity);
+            cartItemEntity.setSubtotal(addQuantity * productEntity.getPrice());
         } else {
             cartItemEntity = new CartItemEntity();
             cartItemEntity.setQuantity(quantity);
             cartItemEntity.setUserid(user.getId());
             cartItemEntity.setProductid(productid);
+            cartItemEntity.setSubtotal(quantity * productEntity.getPrice());
         }
         cartRepo.save(cartItemEntity);
         return addQuantity;

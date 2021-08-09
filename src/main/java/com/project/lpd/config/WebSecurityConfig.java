@@ -37,23 +37,21 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return auth;
     }
 
-
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/**").csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/login", "/productDetail", "/about", "/products", "/cart",  "/pay",
-                         "/register", "/news", "/help","/updatenew", "/createnew", "/deletenew", "/adminIndex", "/updaterole","/list","/productdetail").permitAll()
+                .antMatchers("/", "/index", "/login", "/productDetail", "/about", "/products", "/cart", "/pay",
+                         "/register", "/news", "/help","/list","/productdetail").permitAll()
                 .antMatchers("/css/**", "/js/**", "/images/**", "vendors/**").permitAll()
-                .antMatchers("/adminIndex","/listrole", "/listnew").hasAnyAuthority("ADMIN")
+                .antMatchers("/adminIndex","/listrole", "/listnew","/updatenew", "/createnew", "/deletenew", "/adminIndex", "/updaterole").hasAnyAuthority("ADMIN")
                 .antMatchers("/profile","/createproduct").hasAnyAuthority("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login_security")
-                .failureUrl("/error")
+                .failureUrl("/login?error")
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .defaultSuccessUrl("/index")

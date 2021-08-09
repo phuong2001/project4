@@ -2,6 +2,7 @@ package com.project.lpd.controller;
 
 
 import com.project.lpd.entity.CartItemEntity;
+import com.project.lpd.entity.OrderEntity;
 import com.project.lpd.entity.ProductEntity;
 import com.project.lpd.entity.UserEntity;
 import com.project.lpd.service.CartService;
@@ -46,6 +47,7 @@ public class CartController {
 
         return "redirect:/cart";
     }
+
 /*
     @PostMapping("/updatecart")
     public String updateCart(@PathVariable("pid") int productid, @PathVariable("qty") int editQuantity ){
@@ -61,5 +63,8 @@ public class CartController {
         cartService.RemoveItemFromCart(userEntity, productid);
         return "redirect:/cart";
     }
+
+
+
 
 }

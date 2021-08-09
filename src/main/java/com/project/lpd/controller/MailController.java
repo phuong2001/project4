@@ -36,10 +36,10 @@ public  String sendMail(HttpServletRequest request){
 
     simpleMailMessage.setTo("dudqth1908047@fpt.edu.vn");
 
-    String mailSubject = name + "has sent a message";
-    String mailContent = "Subject: " + subject + "\n";
+     String mailSubject = name + "has sent a message";
+     String mailContent = "Subject: " + subject + "\n";
      mailContent += "Name: " + name + "\n";
-    mailContent += "Email: " + email + "\n";
+     mailContent += "Email: " + email + "\n";
      mailContent += "Subject: " + subject + "\n";
      mailContent += "Phone: " + phone + "\n";
      mailContent += "Message: " + message + "\n";

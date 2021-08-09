@@ -10,29 +10,27 @@ import java.util.List;
 @Entity
 @Data
 @NoArgsConstructor
-@Table(name = "order")
+@Table(name = "order_detail")
 public class OrderEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int Orderid;
-    @Column(name = "currency")
-    private String currency;
     @Column(name = "status")
     private String status;
-    @Column(name = "price")
-    private double price;
+    @Column(name = "price_total")
+    private double priceTotal;
+//    @Column(name = "curency")
+//    private String currency;
     @Column(name = "description")
     private String description;
-    @Column(name = "createAt")
-    private Date createdAt;
-
-    @OneToMany
-    @JoinColumn(name = "catId",insertable = false,updatable = false)
-    List<CartItemEntity> carts;
-
+    @Column(name = "userid")
+    private int userid;
     @ManyToOne
-    @JoinColumn(name = "buyerid",insertable = false, updatable = false)
+    @JoinColumn(name = "userid",insertable = false, updatable = false)
     UserEntity user;
+
+    @OneToMany(mappedBy = "orders")
+    private List<OrderItem> orderItems;
 
 //    @ManyToMany
 //    @JoinTable(
