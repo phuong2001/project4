@@ -14,5 +14,7 @@ public interface CartRepo extends JpaRepository<CartItemEntity,Integer> {
     CartItemEntity findById(int id);
     List<CartItemEntity> findByUser(UserEntity userEntity);
     CartItemEntity getCartByUserAndProduct(UserEntity userEntity , ProductEntity productEntity);
+//    void updateQuantityyy(UserEntity userEntity, ProductEntity productEntity, int quantity);
     void deleteByUserAndProduct(UserEntity userEntity , ProductEntity productEntity);
+
 }

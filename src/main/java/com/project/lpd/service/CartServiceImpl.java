@@ -54,14 +54,14 @@ public class CartServiceImpl implements CartService {
         cartRepo.save(cartItemEntity);
         return addQuantity;
     }
-/*
-    public void UpdateCart(UserEntity user, int productid, int editQuantity){
-        ProductEntity productEntity = productRepo.findById(productid);
-        CartItemEntity cartItemEntity = cartRepo.getCartByUserAndProduct(user,productEntity);
-        cartItemEntity.setQuantity(editQuantity);
-    }
 
- */
+//    public double updateQuantity(UserEntity user, int productid, int quantity){
+//        ProductEntity product = productRepo.findById(productid);
+//        cartRepo.updateQuantityyy(user,product,quantity);
+//        double subtotal = product.getPrice() * quantity;
+//        return subtotal;
+//    }
+
 
     @Override
     public void RemoveItemFromCart(UserEntity user,int productid){

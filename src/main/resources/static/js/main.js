@@ -754,6 +754,7 @@ $(document).ready(function () {
 //subtotal-cart.html
 $(document).ready(function () {
     updateTotal();
+    updateQuantity();
 });
 
 function updateTotal() {
