@@ -14,7 +14,8 @@ public class OrderDto {
     private int Orderid;
     private String status;
     private double priceTotal;
-//    @Column(name = "curency")
-//    private String currency;
+    private String currency;
     private String description;
+    private String address;
+    private String fullname;
 }

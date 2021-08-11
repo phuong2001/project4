@@ -23,6 +23,10 @@ public class OrderEntity {
 //    private String currency;
     @Column(name = "description")
     private String description;
+    @Column(name = "address")
+    private String address;
+    @Column(name = "fullname")
+    private String fullname;
     @Column(name = "userid")
     private int userid;
     @ManyToOne

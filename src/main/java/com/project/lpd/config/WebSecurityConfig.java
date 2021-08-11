@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.antMatcher("/**").csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/index", "/login", "/productDetail", "/about", "/products", "/cart", "/pay",
-                         "/register", "/news", "/help","/list","/productdetail").permitAll()
+                         "/register", "/news", "/help","/list","/productdetail","/charge").permitAll()
                 .antMatchers("/css/**", "/js/**", "/images/**", "vendors/**").permitAll()
                 .antMatchers("/adminIndex","/listrole", "/listnew","/updatenew", "/createnew", "/deletenew", "/adminIndex", "/updaterole").hasAnyAuthority("ADMIN")
                 .antMatchers("/profile","/createproduct").hasAnyAuthority("USER")

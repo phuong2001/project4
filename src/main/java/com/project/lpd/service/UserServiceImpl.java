@@ -88,7 +88,7 @@ public class UserServiceImpl implements UserService {
             throw new UserAlreadyExistException("Username already taken " + userDto.getUsername());
         } else {
             UserEntity userEntity = new UserEntity(userDto.getUsername(), userDto.getFullName(), userDto.getEmail(),
-                    passwordEncoder.encode(userDto.getPassword()), Arrays.asList(roleRepo.findByName("USER")));
+                    passwordEncoder.encode(userDto.getPassword()), Arrays.asList(roleRepo.findByName("USER")),0);
             return userRepo.save(userEntity);
         }
     }

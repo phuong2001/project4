@@ -25,8 +25,10 @@ public class UserEntity  {
     private String fullName;
     @Column(name = "email")
     private String email;
-    @Column(name = "address")
+    @Column(name = "address",nullable = true)
     private String address;
+    @Column(name = "wallet",nullable = true)
+    private double wallet;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
@@ -44,11 +46,12 @@ public class UserEntity  {
     @OneToMany(mappedBy = "user")
     private List<ProductEntity> products;
 
-    public UserEntity(String username,String fullName, String email, String password, Collection<RoleEntity> roles) {
+    public UserEntity(String username,String fullName, String email, String password, Collection<RoleEntity> roles,double wallet) {
         this.fullName = fullName;
         this.email = email;
         this.password = password;
         this.roles = roles;
         this.username = username;
+        this.wallet = wallet;
     }
 }
