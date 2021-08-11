@@ -14,7 +14,7 @@ public class ActivateController {
     @Autowired
     ActivateService activateService;
 
-    @GetMapping("/")
+    @GetMapping("/crete_shipper")
     public String getActivate(Model model){
         List<ShipActivateEntity> activate = activateService.getall();
         model.addAttribute("activate",activate);
