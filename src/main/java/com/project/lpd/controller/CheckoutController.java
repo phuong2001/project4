@@ -64,6 +64,9 @@ public class CheckoutController {
             orderEntity.setStatus(orderDto.getStatus());
             orderEntity.setPriceTotal(totalPrice);
             orderEntity.setUserid(userEntity.getId());
+            orderEntity.setAddress(orderDto.getAddress());
+            orderEntity.setFullname(orderDto.getFullname());
+            orderEntity.setPhone(orderDto.getPhone());
             userEntity.setWallet(userEntity.getWallet() - totalPrice);
             userService.updateUser(userEntity);
             orderService.createOrder(orderEntity);

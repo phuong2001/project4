@@ -19,8 +19,8 @@ public class OrderEntity {
     private String status;
     @Column(name = "price_total")
     private double priceTotal;
-//    @Column(name = "curency")
-//    private String currency;
+    @Column(name = "phone")
+    private String phone;
     @Column(name = "description")
     private String description;
     @Column(name = "address")

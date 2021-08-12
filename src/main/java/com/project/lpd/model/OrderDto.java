@@ -14,8 +14,8 @@ public class OrderDto {
     private int Orderid;
     private String status;
     private double priceTotal;
-    private String currency;
     private String description;
     private String address;
     private String fullname;
+    private String phone;
 }
