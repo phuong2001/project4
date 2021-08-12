@@ -33,8 +33,6 @@ public class OrderServiceImpl implements OrderService {
         return orderRepo.findAll(pageable).getTotalPages();
     }
 
-
-
     @Override
     public List<OrderEntity> getOrderByUser(UserEntity userEntity) {
         return orderRepo.findByUser(userEntity);

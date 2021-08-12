@@ -41,12 +41,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/**").csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/login", "/productDetail", "/about", "/products", "/cart", "/create_product", "/pay",
-                         "/register", "/news", "/help", "/listnew",
-                        "/updatenew", "/createnew", "/deletenew", "/adminIndex","/listProductUser",
-                        "/updateProductUser", "/createProductUser", "/deleteProductUser""/list","/productdetail","/charge","/profile").permitAll()
+                .antMatchers("/", "/index", "/login", "/productDetail", "/about", "/products", "/cart", "/create_product",
+                        "/pay","/register", "/news", "/help", "/adminIndex", "/list", "/productdetail", "/charge","/profile").permitAll()
                 .antMatchers("/css/**", "/js/**", "/images/**", "vendors/**").permitAll()
-                .antMatchers("/adminIndex","/listrole", "/listnew","/updatenew", "/createnew", "/deletenew", "/adminIndex", "/updaterole").hasAnyAuthority("ADMIN")
+                .antMatchers("/adminIndex", "/listrole", "/listnew", "/updatenew", "/createnew", "/deletenew",
+                        "/adminIndex", "/updaterole", "/listProductUser",
+                        "/updateProductUser", "/createProductUser", "/deleteProductUser").hasAnyAuthority("ADMIN")
                 .antMatchers("/createproduct").hasAnyAuthority("USER")
                 .anyRequest().authenticated()
                 .and()
@@ -56,7 +56,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .failureUrl("/login-error")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/default")
+                .defaultSuccessUrl("/index")
                 .permitAll()
                 .and()
                 .logout().permitAll()
