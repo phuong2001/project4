@@ -1,10 +1,7 @@
 package com.project.lpd.service;
 
 import com.project.lpd.entity.*;
-import com.project.lpd.repository.CartRepo;
-import com.project.lpd.repository.OrderItemRepo;
-import com.project.lpd.repository.OrderRepo;
-import com.project.lpd.repository.ProductRepo;
+import com.project.lpd.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +16,6 @@ public class OrderItemServiceImpl implements OrderItemService{
     CartRepo cartRepo;
     @Autowired
     ProductRepo productRepo;
-
 
     @Override
     public OrderItem saveItem(OrderItem orderItem) {

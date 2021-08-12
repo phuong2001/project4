@@ -68,6 +68,9 @@ public class CheckoutController {
             userService.updateUser(userEntity);
             orderService.createOrder(orderEntity);
             orderItemService.saveOrderItem(userEntity,orderEntity);
+            UserEntity admin = userService.getUserByName("admin");
+            admin.setWallet(admin.getWallet() + totalPrice);
+            userService.updateUser(admin);
             return "redirect:/";
         } else {
             redirectAttributes.addFlashAttribute("error","Not Enough money please add more !");

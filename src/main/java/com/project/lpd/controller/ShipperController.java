@@ -1,17 +1,8 @@
 package com.project.lpd.controller;
 
-import com.project.lpd.entity.ActiveEntity;
-import com.project.lpd.entity.ShipActivateEntity;
 import com.project.lpd.entity.ShipperEntity;
-import com.project.lpd.model.BaseResponse;
-import com.project.lpd.service.ActivateService;
-import com.project.lpd.service.ActiveService;
 import com.project.lpd.service.ShipperService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -24,12 +15,6 @@ public class  ShipperController {
     @Autowired
     private ShipperService shipperService;
 
-
-    @Autowired
-    ActivateService activateService;
-
-    @Autowired
-    ActiveService activeService;
     @GetMapping("/Shipper_Admin")
     private String listShippera(Model model){
         List<ShipperEntity> shipper1 = shipperService.getAll();
@@ -37,12 +22,6 @@ public class  ShipperController {
         return "Shipper_Admin";
     }
 
-    @GetMapping("/Edit_Shipper")
-    private String listShipper(Model model){
-        List<ShipActivateEntity> activate1 = activateService.getall();
-        model.addAttribute("activate1", activate1);
-        return "Edit_Shipper";
-    }
     @PostMapping("/new")
     private String createMember(@ModelAttribute ShipperEntity shipperEntity , Model model){
         shipperService.creatMember(shipperEntity);
@@ -61,25 +40,12 @@ public class  ShipperController {
         return "redirect:/Shipper_Admin";
     }
 
-    @ModelAttribute("list_active")
-    private List<ActiveEntity> listActive(){
-        return activeService.getAllAc();
-    }
-
-    @ModelAttribute("list_type")
-    private List<ShipActivateEntity> listActivate(){
-        return activateService.getall();
-    }
-
     @GetMapping("/Edit_Ship/{id}")
     private String find(@PathVariable(name = "id") int id , Model model){
         Optional<ShipperEntity> edit = shipperService.find(id);
         edit.ifPresent(shipperEntity -> model.addAttribute("shipper2" ,shipperEntity));
         return "Edit_Ship";
-
     }
-
-
     @GetMapping("/search_Shipper")
     public String searchShipper(Model model , @RequestParam("name") String name){
         List<ShipperEntity> listShipper = shipperService.findByNameShipper(name);
