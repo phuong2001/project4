@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/adminlayout/template_admin.html}">
+<head>
+
+    <title>
+       Dashboard
+    </title>
+
+
+</head>
+
+<body>
+<div class="main-panel" layout:fragment="content">
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Update </h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" th:action="@{/createProductUser}" th:object="${productUser}">
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <div class="form-group">
+                                        <label for="id" class="bmd-label-floating">ID</label>
+                                        <input type="text" name="id" th:field="${productUser.id}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-9">
+                                    <div class="form-group">
+                                        <label for="name" class="bmd-label-floating">Name</label>
+                                        <input type="text" name="name" th:field="${productUser.name}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="image" class="bmd-label-floating">Image</label>
+                                        <input type="text" name="image" th:field="${productUser.image}" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="price" class="bmd-label-floating">Price</label>
+                                        <input type="text" name="price" th:field="${productUser.price}" class="form-control">
+                                    </div>
+                                </div><div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="quantity" class="bmd-label-floating">Quantity</label>
+                                        <input type="text" name="quantity" th:field="${productUser.quantity}" class="form-control">
+                                    </div>
+                                </div><div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="description" class="bmd-label-floating">Description</label>
+                                        <input type="text" name="description" th:field="${productUser.description}" class="form-control">
+                                    </div>
+                                </div><div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="discount" class="bmd-label-floating">Discount</label>
+                                        <input type="text" name="discount" th:field="${productUser.discount}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <button type="submit" class="btn btn-primary pull-right">Update Product User</button>
+                            <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+</body>
+
+</html>

@@ -13,7 +13,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
 
 @Configuration
 @EnableWebSecurity
@@ -37,12 +36,15 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return auth;
     }
 
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/**").csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/login", "/productDetail", "/about", "/products", "/cart", "/pay",
-                         "/register", "/news", "/help","/list","/productdetail","/charge","/profile").permitAll()
+                .antMatchers("/", "/index", "/login", "/productDetail", "/about", "/products", "/cart", "/create_product", "/pay",
+                         "/register", "/news", "/help", "/listnew",
+                        "/updatenew", "/createnew", "/deletenew", "/adminIndex","/listProductUser",
+                        "/updateProductUser", "/createProductUser", "/deleteProductUser""/list","/productdetail","/charge","/profile").permitAll()
                 .antMatchers("/css/**", "/js/**", "/images/**", "vendors/**").permitAll()
                 .antMatchers("/adminIndex","/listrole", "/listnew","/updatenew", "/createnew", "/deletenew", "/adminIndex", "/updaterole").hasAnyAuthority("ADMIN")
                 .antMatchers("/createproduct").hasAnyAuthority("USER")
@@ -51,10 +53,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login_security")
-                .failureUrl("/login")
+                .failureUrl("/login-error")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/index")
+                .defaultSuccessUrl("/default")
                 .permitAll()
                 .and()
                 .logout().permitAll()
