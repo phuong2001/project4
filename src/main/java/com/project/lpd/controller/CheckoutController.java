@@ -70,7 +70,7 @@ public class CheckoutController {
             orderItemService.saveOrderItem(userEntity,orderEntity);
             return "redirect:/";
         } else {
-            redirectAttributes.addFlashAttribute("message","Not Enough money please add more !");
+            redirectAttributes.addFlashAttribute("error","Not Enough money please add more !");
             return "redirect:/charge";
         }
 

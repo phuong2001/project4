@@ -70,8 +70,7 @@ public class WebController {
     @GetMapping({"/about"})
     public String about2() { return "about"; }
 
-    @GetMapping({"/profile"})
-    public String profile() { return "profile"; }
+
 
     @GetMapping("/create_product")
     public String createProduct(){

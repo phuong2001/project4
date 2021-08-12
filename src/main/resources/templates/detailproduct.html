@@ -40,32 +40,24 @@
                             <div class="row">
                                 <figure th:object="${product}" class="product-main-image">
                                     <img id="product-zoom" th:src="@{${'/images/' + product.image}}"
-                                         data-zoom-image="images/index/products/product-3.jpg" alt="product image">
+                                         >
                                     </a>
                                 </figure><!-- End .product-main-image -->
 
                                 <div id="product-zoom-gallery" class="product-image-gallery">
-                                    <a class="product-gallery-item" href="#"
-                                       data-image="images/index/products/product-3.jpg"
-                                       data-zoom-image="images/index/products/product-3.jpg">
+                                    <a class="product-gallery-item" href="#">
                                         <img th:src="@{${'/images/' + product.image}}" alt="product side">
                                     </a>
 
-                                    <a class="product-gallery-item" href="#"
-                                       data-image="images/index/products/product-2.jpg"
-                                       data-zoom-image="images/index/products/product-2.jpg">
+                                    <a class="product-gallery-item" href="#">
                                         <img th:src="@{${'/images/' + product.image}}" alt="product cross">
                                     </a>
 
-                                    <a class="product-gallery-item" href="#"
-                                       data-image="images/index/products/product-3.jpg"
-                                       data-zoom-image="images/index/products/product-3.jpg">
+                                    <a class="product-gallery-item" href="#">
                                         <img th:src="@{${'/images/' + product.image}}" alt="product with model">
                                     </a>
 
-                                    <a class="product-gallery-item active" href="#"
-                                       data-image="images/index/products/product-4.jpg"
-                                       data-zoom-image="images/index/products/product-4.jpg">
+                                    <a class="product-gallery-item active" href="#">
                                         <img th:src="@{${'/images/' + product.image}}" alt="product back">
                                     </a>
                                 </div><!-- End .product-image-gallery -->
@@ -92,43 +84,27 @@
                                 <p th:text="${product.description}">Sed egestas, ante et vulputate volutpat, eros pede semper est, vitae luctus metus
                                     libero eu augue. Morbi purus libero.</p>
                                 <p th:text="${product.user.address}">Adress: Ha Noi</p>
+                               <p th:text="${product.quantity} + ' product available' ">
                             </div><!-- End .product-content -->
-                            <div class="details-filter-row details-row-size">
-                                <label for="size">Option:</label>
-                                <div class="select-custom">
-                                    <select name="size" id="size" class="form-control">
-                                        <option value="#" selected="selected">DVD</option>
-                                        <option value="s">DVD + Box</option>
-                                        <option value="m">DVD + Box + Figure</option>
-                                    </select>
-                                </div><!-- End .select-custom -->
-                            </div><!-- End .details-filter-row -->
+
 
                             <div class="product-details-action">
                                 <div class="details-action-col">
                                     <div class="product-details-quantity">
-                                        <input type="number" id="qty" class="form-control" value="1" min="1" max="10"
-                                               step="1" data-decimals="0" name="qty"
-                                               required="" style="display: none;">
+                                        <input type="number" id="qty" class="form-control" value="1" min="1" th:max="${product.quantity}" step="1" data-decimals="0" required>
                                     </div><!-- End .product-details-quantity -->
                                     <input type="hidden" name ="pid" id="pid" th:value ="${product.productid}">
                                     <button type="submit" class="btn-product btn-cart"><span><i class="las la-cart-plus"></i>add to cart</span></button>
                                 </div><!-- End .details-action-col -->
-
                                 <div class="details-action-wrapper">
-                                    <a href="#" class="btn-product btn-wishlist " title="Wishlist"><span><i
-                                            class="lar la-heart"></i>Add to Wishlist</span></a>
-                                    <a href="#" class="btn-product btn-compare"
-                                       title="Compare"><span>Shop</span></a>
-                                </div><!-- End .details-action-wrapper -->
+                                    <button class="btn-product btn-cart p-3"><span><i class="las la-store-alt"></i> Go to Shop</span></button>
+                                </div>
                             </div><!-- End .product-details-action -->
 
                             <div class="product-details-footer">
                                 <div class="product-cat">
                                     <span>Category:</span>
-                                    <a href="#">Action</a>,
-                                    <a href="#">Sports</a>,
-                                    <a href="#">Single player</a>
+                                    <a href="#" th:text="${product.category.name}">Single player</a>
                                 </div><!-- End .product-cat -->
 
                                 <div class="social-icons social-icons-sm">
@@ -291,265 +267,7 @@
                     </div><!-- .End .tab-pane -->
                 </div><!-- End .tab-content -->
             </div><!-- End .product-details-tab -->
-
             <h2 class="title text-center mb-4">You May Also Like</h2><!-- End .title text-center -->
-            <div class="owl-carousel owl-simple carousel-equal-height carousel-with-shadow owl-loaded owl-drag"
-                 data-toggle="owl" data-owl-options="{
-                            &quot;nav&quot;: false,
-                            &quot;dots&quot;: true,
-                            &quot;margin&quot;: 20,
-                            &quot;loop&quot;: false,
-                            &quot;responsive&quot;: {
-                                &quot;0&quot;: {
-                                    &quot;items&quot;:1
-                                },
-                                &quot;480&quot;: {
-                                    &quot;items&quot;:2
-                                },
-                                &quot;768&quot;: {
-                                    &quot;items&quot;:3
-                                },
-                                &quot;992&quot;: {
-                                    &quot;items&quot;:4
-                                },
-                                &quot;1200&quot;: {
-                                    &quot;items&quot;:4,
-                                    &quot;nav&quot;: true,
-                                    &quot;dots&quot;: false
-                                }
-                            }
-                        }">
-                <!-- End .product -->
-
-                <!-- End .product -->
-
-                <!-- End .product -->
-
-                <!-- End .product -->
-
-                <!-- End .product -->
-                <div class="owl-stage-outer">
-                    <div class="owl-stage"
-                         style="transform: translate3d(0px, 0px, 0px); transition: all 0s ease 0s; width: 1485px;">
-                        <div class="owl-item active" style="width: 277px; margin-right: 20px;">
-                            <div class="product product-7 text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-new">New</span>
-                                    <a href="product.html">
-                                        <img src="images/index/products/product-3.jpg" alt="Product image"
-                                             class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                                           title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare"
-                                           title="Compare"><span>Compare</span></a>
-                                    </div><!-- End .product-action-vertical -->
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart" th:href="/addcart"><span>add to cart</span></a>
-                                    </div><!-- End .product-action -->
-                                </figure><!-- End .product-media -->
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Women</a>
-                                    </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Brown paperbag waist <br>pencil
-                                        skirt</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $60.00
-                                    </div><!-- End .product-price -->
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-                                        </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 2 Reviews )</span>
-                                    </div><!-- End .rating-container -->
-
-                                    <div class="product-nav product-nav-dots">
-                                        <a href="#" class="active" style="background: #cc9966;"><span class="sr-only">Color name</span></a>
-                                        <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                        <a href="#" style="background: #806b3e;"><span class="sr-only">Color name</span></a>
-                                    </div><!-- End .product-nav -->
-                                </div><!-- End .product-body -->
-                            </div>
-                        </div>
-                        <div class="owl-item active" style="width: 277px; margin-right: 20px;">
-                            <div class="product product-7 text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-out">Out of Stock</span>
-                                    <a href="product.html">
-                                        <img src="images/index/products/product-3.jpg" alt="Product image"
-                                             class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                                           title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare"
-                                           title="Compare"><span>Compare</span></a>
-                                    </div><!-- End .product-action-vertical -->
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                    </div><!-- End .product-action -->
-                                </figure><!-- End .product-media -->
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Jackets</a>
-                                    </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Khaki utility boiler jumpsuit</a>
-                                    </h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        <span class="out-price">$120.00</span>
-                                    </div><!-- End .product-price -->
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                        </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 6 Reviews )</span>
-                                    </div><!-- End .rating-container -->
-                                </div><!-- End .product-body -->
-                            </div>
-                        </div>
-                        <div class="owl-item active" style="width: 277px; margin-right: 20px;">
-                            <div class="product product-7 text-center">
-                                <figure class="product-media">
-                                    <span class="product-label label-top">Top</span>
-                                    <a href="product.html">
-                                        <img src="images/index/products/product-3.jpg" alt="Product image"
-                                             class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                                           title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare"
-                                           title="Compare"><span>Compare</span></a>
-                                    </div><!-- End .product-action-vertical -->
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                    </div><!-- End .product-action -->
-                                </figure><!-- End .product-media -->
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Shoes</a>
-                                    </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Light brown studded Wide fit
-                                        wedges</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $110.00
-                                    </div><!-- End .product-price -->
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                        </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 1 Reviews )</span>
-                                    </div><!-- End .rating-container -->
-
-                                    <div class="product-nav product-nav-dots">
-                                        <a href="#" class="active" style="background: #8b513d;"><span class="sr-only">Color name</span></a>
-                                        <a href="#" style="background: #333333;"><span class="sr-only">Color name</span></a>
-                                        <a href="#" style="background: #d2b99a;"><span class="sr-only">Color name</span></a>
-                                    </div><!-- End .product-nav -->
-                                </div><!-- End .product-body -->
-                            </div>
-                        </div>
-                        <div class="owl-item active" style="width: 277px; margin-right: 20px;">
-                            <div class="product product-7 text-center">
-                                <figure class="product-media">
-                                    <a href="product.html">
-                                        <img src="images/index/products/product-3.jpg" alt="Product image"
-                                             class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                                           title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare"
-                                           title="Compare"><span>Compare</span></a>
-                                    </div><!-- End .product-action-vertical -->
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                    </div><!-- End .product-action -->
-                                </figure><!-- End .product-media -->
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Jumpers</a>
-                                    </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Yellow button front tea top</a>
-                                    </h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $56.00
-                                    </div><!-- End .product-price -->
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 0%;"></div><!-- End .ratings-val -->
-                                        </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 0 Reviews )</span>
-                                    </div><!-- End .rating-container -->
-                                </div><!-- End .product-body -->
-                            </div>
-                        </div>
-                        <div class="owl-item" style="width: 277px; margin-right: 20px;">
-                            <div class="product product-7 text-center">
-                                <figure class="product-media">
-                                    <a href="product.html">
-                                        <img src="images/index/products/product-3.jpg" alt="Product image"
-                                             class="product-image">
-                                    </a>
-
-                                    <div class="product-action-vertical">
-                                        <a href="#" class="btn-product-icon btn-wishlist btn-expandable"><span>add to wishlist</span></a>
-                                        <a href="popup/quickView.html" class="btn-product-icon btn-quickview"
-                                           title="Quick view"><span>Quick view</span></a>
-                                        <a href="#" class="btn-product-icon btn-compare"
-                                           title="Compare"><span>Compare</span></a>
-                                    </div><!-- End .product-action-vertical -->
-
-                                    <div class="product-action">
-                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                    </div><!-- End .product-action -->
-                                </figure><!-- End .product-media -->
-
-                                <div class="product-body">
-                                    <div class="product-cat">
-                                        <a href="#">Jeans</a>
-                                    </div><!-- End .product-cat -->
-                                    <h3 class="product-title"><a href="product.html">Blue utility pinafore denim
-                                        dress</a></h3><!-- End .product-title -->
-                                    <div class="product-price">
-                                        $76.00
-                                    </div><!-- End .product-price -->
-                                    <div class="ratings-container">
-                                        <div class="ratings">
-                                            <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-                                        </div><!-- End .ratings -->
-                                        <span class="ratings-text">( 2 Reviews )</span>
-                                    </div><!-- End .rating-container -->
-                                </div><!-- End .product-body -->
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="owl-nav">
-                    <button type="button" role="presentation" class="owl-prev disabled"><i class="icon-angle-left"></i>
-                    </button>
-                    <button type="button" role="presentation" class="owl-next"><i class="icon-angle-right"></i></button>
-                </div>
-                <div class="owl-dots disabled"></div>
-            </div><!-- End .owl-carousel -->
         </div><!-- End .container -->
     </div><!-- End .page-content -->
 </main>

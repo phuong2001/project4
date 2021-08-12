@@ -71,6 +71,10 @@ public class CartServiceImpl implements CartService {
         cartRepo.deleteByUserAndProduct(user, productEntity);
     }
 
+    public void DeleteCart(int id){
+        cartRepo.deleteById(id);
+    }
+
     @Override
     public void clear(){
         cartRepo.deleteAll();

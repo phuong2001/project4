@@ -4,6 +4,7 @@ import com.project.lpd.entity.*;
 import com.project.lpd.repository.CartRepo;
 import com.project.lpd.repository.OrderItemRepo;
 import com.project.lpd.repository.OrderRepo;
+import com.project.lpd.repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,9 @@ public class OrderItemServiceImpl implements OrderItemService{
     OrderItemRepo orderItemRepo;
     @Autowired
     CartRepo cartRepo;
+    @Autowired
+    ProductRepo productRepo;
+
 
     @Override
     public OrderItem saveItem(OrderItem orderItem) {
@@ -31,7 +35,11 @@ public class OrderItemServiceImpl implements OrderItemService{
             item.setQuantity(cart.getQuantity());
             item.setUnitPrice(cart.getQuantity() * cart.getProduct().getPrice());
             item.setOrders(orderEntity);
+            ProductEntity product = productRepo.getById(cart.getProductid());
+            product.setQuantity(product.getQuantity() - cart.getQuantity());
+            productRepo.save(product);
             orderItemRepo.save(item);
+            cartRepo.deleteById(cart.getCartid());
         }
 
     }
