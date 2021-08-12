@@ -36,5 +36,9 @@ public class CartItemEntity {
     @Column(name = "subTotal")
     private double subtotal;
 
+    @Transient
+    public double getSubtotal(){
+        return this.product.getPrice() * quantity;
+    }
 
 }
