@@ -37,24 +37,26 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return auth;
     }
 
+
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/**").csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/login", "/productDetail", "/about", "/products", "/cart", "/pay",
-                         "/register", "/news", "/help","/list","/productdetail","/charge","/profile").permitAll()
+                .antMatchers("/", "/index", "/login", "/productDetail", "/about", "/products", "/cart", "/createproduct", "/pay",
+                         "/register", "/news", "/help", "/listnew","/updatenew", "/createnew", "/deletenew", "/adminIndex", "/updaterole","/listrole","/list").permitAll()
                 .antMatchers("/css/**", "/js/**", "/images/**", "vendors/**").permitAll()
-                .antMatchers("/adminIndex","/listrole", "/listnew","/updatenew", "/createnew", "/deletenew", "/adminIndex", "/updaterole").hasAnyAuthority("ADMIN")
-                .antMatchers("/createproduct").hasAnyAuthority("USER")
+                .antMatchers("/adminIndex","/listproduct").hasAnyAuthority("ADMIN")
+                .antMatchers("/profile","/listproductuser","/createproductuser","/updateproductuser","/deleteproductuser").hasAnyAuthority("USER")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
                 .loginPage("/login")
                 .loginProcessingUrl("/login_security")
-                .failureUrl("/login")
+                .failureUrl("/login-error")
                 .usernameParameter("username")
                 .passwordParameter("password")
-                .defaultSuccessUrl("/index")
+                .defaultSuccessUrl("/default")
                 .permitAll()
                 .and()
                 .logout().permitAll()
