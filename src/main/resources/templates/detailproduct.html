@@ -91,7 +91,7 @@
                             <div class="product-details-action">
                                 <div class="details-action-col">
                                     <div class="product-details-quantity">
-                                        <input type="number" id="qty" class="form-control" value="1" min="1" th:max="${product.quantity}" step="1" data-decimals="0" required>
+                                        <input type="number" name="qty" id="qty" class="form-control" value="1" min="1" th:max="${product.quantity}" step="1" data-decimals="0" required>
                                     </div><!-- End .product-details-quantity -->
                                     <input type="hidden" name ="pid" id="pid" th:value ="${product.productid}">
                                     <button type="submit" class="btn-product btn-cart"><span><i class="las la-cart-plus"></i>add to cart</span></button>
