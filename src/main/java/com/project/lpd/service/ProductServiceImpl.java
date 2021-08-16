@@ -28,6 +28,11 @@ public class ProductServiceImpl implements ProductService {
     public int getTotalPage(Pageable pageable) {
         return productRepo.findAll(pageable).getTotalPages();
     }
+      @Override
+    public List<ProductEntity> getProductByUser(UserEntity userEntity) {
+        return productRepo.findByUser(userEntity);
+    }
+
 
 
     @Override
