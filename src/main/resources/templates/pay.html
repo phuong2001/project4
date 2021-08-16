@@ -30,7 +30,6 @@
                     <div class="row">
                         <div class="col-lg-9">
                             <h2 class="checkout-title">Billing Details</h2><!-- End .checkout-title -->
-                            <div class="alert alert-primary" th:text="${error}" th:if="${error}" ></div>
                             <div class="row">
                                 <div class="col-sm-12">
                                     <label>Full Name *</label>
@@ -71,22 +70,21 @@
                                     </thead>
 
                                     <tbody>
-                                    <tr>
-                                        <td><a href="#">Beige knitted elastic runner shoes</a></td>
-                                        <td>$84.00</td>
-                                    </tr>
-
-                                    <tr>
-                                        <td><a href="#">Blue utility pinafore denimdress</a></td>
-                                        <td>$76,00</td>
+                                    <tr th:each="cartItem : ${carts}">
+                                        <td><a href="#" th:text="${cartItem.product.name}">Beige knitted elastic runner shoes</a></td>
+                                        <td th:text="${cartItem.product.price}">$84.00</td>
                                     </tr>
                                     <tr class="summary-subtotal">
                                         <td>Subtotal:</td>
-                                        <td>$160.00</td>
+                                        <td th:text="${total}">$160.00</td>
                                     </tr><!-- End .summary-subtotal -->
                                     <tr>
                                         <td>Shipping:</td>
-                                        <td>Free shipping</td>
+                                        <td>
+                                            <select class="form-control">
+                                                <option>GHTK</option>
+                                            </select>
+                                        </td>
                                     </tr>
                                     <tr class="summary-total">
                                         <td>Total:</td>
@@ -94,8 +92,6 @@
                                     </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->
-
-
 
                                 <button type="submit" class="btn btn-outline-primary-2 btn-order btn-block">
                                     <span class="btn-text">Place Order</span>

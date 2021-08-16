@@ -44,8 +44,18 @@ public class CheckoutController {
 
 
     @GetMapping("/pay")
-    public String payIndex(Model model){
+    public String payIndex(Model model, Authentication authentication){
+        double totalPrice = 0;
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
+        List<CartItemEntity> carts = cartService.getCartByUser(userEntity);
+        for (CartItemEntity itemcart : carts){
+            totalPrice += (itemcart.getSubtotal());
+        }
+        model.addAttribute("carts",carts);
+        model.addAttribute("total",totalPrice);
         model.addAttribute("order", new OrderDto());
+
         return "pay";
     }
     @PostMapping(value = "/pay")
