@@ -50,8 +50,16 @@ public class OrderController {
 
     @PostMapping("/user_confirm")
     public String ConfirmOrder(@ModelAttribute OrderEntity orderEntity){
-
+        OrderEntity order = orderService.getById(orderEntity.getOrderid());
+        order.setStatus("Done");
+        orderService.saveOrder(order);
         return "redirect:/profile";
     }
+//
+//    @GetMapping({"/listOrderProduct"})
+//    public String listOrderProduct(Model model){
+//
+//    }
+
 
 }

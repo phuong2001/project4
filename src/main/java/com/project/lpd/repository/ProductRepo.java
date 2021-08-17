@@ -11,4 +11,5 @@ public interface ProductRepo extends JpaRepository<ProductEntity, Integer> {
     @Query("select b from ProductEntity b where b.name like %:name%")
     List<ProductEntity> findByProductName(String name);
     ProductEntity findById(int Id);
+    List<ProductEntity> findByUser(UserEntity userEntity);
 }

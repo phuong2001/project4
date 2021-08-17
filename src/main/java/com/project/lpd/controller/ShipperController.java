@@ -16,7 +16,7 @@ public class  ShipperController {
     private ShipperService shipperService;
 
     @GetMapping("/Shipper_Admin")
-    private String listShippera(Model model){
+    private String listShipper(Model model){
         List<ShipperEntity> shipper1 = shipperService.getAll();
         model.addAttribute("shipper1", shipper1);
         return "Shipper_Admin";

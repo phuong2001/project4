@@ -16,5 +16,5 @@ public interface ProductService {
      ProductEntity getProductById(int id);
      void deleteProduct(int id);
      int getTotalPage(Pageable pageable);
-
+//     List<ProductEntity> getProductByUser(UserEntity userEntity);
 }

@@ -37,6 +37,10 @@ public class OrderItemServiceImpl implements OrderItemService{
             orderItemRepo.save(item);
             cartRepo.deleteById(cart.getCartid());
         }
-
     }
+    @Override
+    public List<OrderItem> findByProduct(ProductEntity productEntity) {
+        return orderItemRepo.findByProducts(productEntity);
+    }
+
 }

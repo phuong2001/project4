@@ -3,10 +3,7 @@ package com.project.lpd.controller;
 import com.paypal.api.payments.Links;
 import com.paypal.api.payments.Payment;
 import com.paypal.base.rest.PayPalRESTException;
-import com.project.lpd.entity.Card;
-import com.project.lpd.entity.CartItemEntity;
-import com.project.lpd.entity.OrderEntity;
-import com.project.lpd.entity.UserEntity;
+import com.project.lpd.entity.*;
 import com.project.lpd.model.OrderDto;
 import com.project.lpd.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +35,8 @@ public class CheckoutController {
 
     @Autowired
     PaypalService paypalService;
+    @Autowired
+    ShipperService shipperService;
 
     public static final String SUCCESS_URL = "pay/success";
     public static final String CANCEL_URL = "pay/cancel";
@@ -49,13 +48,14 @@ public class CheckoutController {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         List<CartItemEntity> carts = cartService.getCartByUser(userEntity);
+        List<ShipperEntity> ship = shipperService.getAll();
         for (CartItemEntity itemcart : carts){
             totalPrice += (itemcart.getSubtotal());
         }
         model.addAttribute("carts",carts);
         model.addAttribute("total",totalPrice);
         model.addAttribute("order", new OrderDto());
-
+        model.addAttribute("ship",ship);
         return "pay";
     }
     @PostMapping(value = "/pay")

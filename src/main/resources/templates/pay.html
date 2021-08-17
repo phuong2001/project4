@@ -81,8 +81,9 @@
                                     <tr>
                                         <td>Shipping:</td>
                                         <td>
-                                            <select class="form-control">
-                                                <option>GHTK</option>
+                                            <select aria-label="Shipping" class="form-control" name="ship">
+                                                <option th:each="item:${ship}"
+                                                th:text="${item.name} + ' - ' + ${item.price}">GHTK</option>
                                             </select>
                                         </td>
                                     </tr>
