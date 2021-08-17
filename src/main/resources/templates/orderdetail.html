@@ -1,20 +1,19 @@
+
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/template.html}">
-<title>list order</title>
-
-<body >
-<div class="main-panel" layout:fragment="content">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<main class="main" layout:fragment="content">
     <div class="content">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
                     <div class="card">
-                        <div class="card-header card-header-primary">
-                            <h4 class="card-title ">List </h4>
-                            <p class="card-category"> Here are list</p>
-                        </div>
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table">
@@ -26,13 +25,12 @@
                                     <th scope="col">Price total</th>
                                     </thead>
                                     <tbody>
-                                    <tr th:each="ord : ${orderItem}">
+                                    <tr th:object="${ord}">
                                         <td th:text="${ord.phone}"></td>
-                                        <td th:text="${ord.description}"></td>
+                                        <td th:text="${ord.description}"  ></td>
                                         <td th:text="${ord.address}"></td>
                                         <td th:text="${ord.fullname}"></td>
                                         <td th:text="${ord.priceTotal}"></td>
-                                        <th ><a  th:href="@{/orderdetail(id=${ord.Orderid})}">detaile</a></th>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -43,8 +41,7 @@
             </div>
         </div>
     </div>
-</div>
+</main><!-- End .main -->
 
 </body>
-
 </html>
