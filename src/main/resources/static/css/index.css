@@ -6,6 +6,17 @@ body {
     background-repeat: no-repeat
 }
 
+.done{
+    width: 50vw;
+    height: 40vh;
+    margin: 10vh auto;
+    padding: 10vh 0 10vh 0;
+}
+.done h1{
+    font-size: 6rem;
+    color: #fcb842
+}
+
 .container {
     width: 1190px;
     max-width: 100%;

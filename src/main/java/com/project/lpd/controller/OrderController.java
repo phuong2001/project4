@@ -72,6 +72,10 @@ public class OrderController {
         }
         return "buyer_order";
     }
+    @GetMapping("/success")
+    public String done(){
+        return "success";
+    }
 
 
 }

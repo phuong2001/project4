@@ -84,7 +84,7 @@ public class CheckoutController {
             UserEntity admin = userService.getUserByName("admin");
             admin.setWallet(admin.getWallet() + totalPrice);
             userService.updateUser(admin);
-            return "redirect:/";
+            return "redirect:/success";
         } else {
             redirectAttributes.addFlashAttribute("error","Not Enough money please add more !");
             return "redirect:/charge";
