@@ -36,6 +36,9 @@ public class WebController {
         return "AdminIndex";
     }
 
+    @GetMapping("/userIndex")
+    public String userIndex(){return "UserIndex";}
+
     @GetMapping("/login")
     public String Login(){return "login";}
 

@@ -48,4 +48,10 @@ public class OrderController {
         return "listorder";
     }
 
+    @PostMapping("/user_confirm")
+    public String ConfirmOrder(@ModelAttribute OrderEntity orderEntity){
+
+        return "redirect:/profile";
+    }
+
 }

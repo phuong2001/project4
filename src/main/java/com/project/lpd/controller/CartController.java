@@ -44,18 +44,19 @@ public class CartController {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         cartService.AddProductToCart(userEntity,productid,quantity);
-
         return "redirect:/cart";
     }
 
-/*
+
     @PostMapping("/updatecart")
-    public String updateCart(@PathVariable("pid") int productid, @PathVariable("qty") int editQuantity ){
-        cartService.UpdateCart(productid,editQuantity);
+    public String updateCart(Authentication authentication, @PathVariable("qty") int editQuantity ){
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
+        cartService.UpdateCart(userEntity,editQuantity);
         return "cart";
     }
 
- */
+
     @GetMapping("/removecart")
     public String removeCart(@RequestParam(value = "id" ,defaultValue = "0") int productid , Authentication authentication ){
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();

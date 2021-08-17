@@ -30,6 +30,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-lg-9">
+                            <form action="/updatecart" method="post">
                             <table class="table table-cart table-mobile">
                                 <thead>
                                 <tr>
@@ -61,8 +62,8 @@
                                         <td class="price-col" th:text="${item.product.price}">84.00</td>
                                         <td class="quantity-col">
                                             <div class="cart-product-quantity">
-                                                <input type="number" name="qty" class="form-control" th:min="1" th:max="10" step="1"
-                                                       data-decimals="0" required th:value="${item.quantity}">
+                                                <input type="number" name="qty" class="form-control" th:min="1" th:max="${item.product.quantity}" step="1"
+                                                       data-decimals="0" required th:value="${item.quantity}" th:name="qty">
                                             </div><!-- End .cart-product-quantity -->
                                         </td>
                                         <td class="total-col productSubtotal" th:text="${item.subtotal}">$84.00</td>
@@ -75,7 +76,6 @@
 
                             <div class="cart-bottom">
                                 <div class="cart-discount">
-                                    <form action="#">
                                         <div class="input-group">
                                             <input type="text" class="form-control" required placeholder="coupon code">
                                             <div class="input-group-append">
@@ -83,11 +83,12 @@
                                                         class="las la-long-arrow-alt-right"></i></button>
                                             </div><!-- .End .input-group-append -->
                                         </div><!-- End .input-group -->
-                                    </form>
+
                                 </div><!-- End .cart-discount -->
                                 <button type="submit" class="btn btn-outline-dark-2 update-cart"><span>UPDATE CART</span><i
                                         class="icon-refresh"></i></button>
                             </div><!-- End .cart-bottom -->
+                            </form>
                         </div><!-- End .col-lg-9 -->
                         <aside class="col-lg-3">
                             <div class="summary summary-cart">

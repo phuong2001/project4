@@ -13,11 +13,12 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
     <!-- CSS Files -->
     <link rel="stylesheet" th:href="@{css/adminpage/material-dashboard.css}">
+
     <link rel="stylesheet" th:href="@{css/adminpage/index_admin.css}">
 </head>
 <body>
 <div class="wrapper">
-    <div layout:replace="layout/adminlayout/sidebar :: sidebar"></div>
+    <div layout:replace="layout/adminlayout/sidebar_user :: sidebar_user"></div>
     <div layout:fragment="content"></div>
 </div>
 <!--   Core JS Files   -->

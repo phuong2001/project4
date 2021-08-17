@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div class="sidebar" data-color="purple" data-background-color="white" data-image="../assets/img/sidebar-1.jpg" layout:fragment="sidebar_user">
+    <!--
+      Tip 1: You can change the color of the sidebar using: data-color="purple | azure | green | orange | danger"
+
+      Tip 2: you can also add an image using data-image tag
+  -->
+    <div class="logo"><a href="/adminIndex" class="simple-text logo-normal">
+        LPD Store
+    </a></div>
+    <div class="sidebar-wrapper">
+        <ul class="nav">
+            <li class="nav-item active  ">
+                <a class="nav-link" href="./dashboard.html">
+                    <i class="material-icons">dashboard</i>
+                    <p>Dashboard</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/list">
+                    <i class="material-icons">manage_accounts</i>
+                    <p>My information</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/listProductUser">
+                    <i class="material-icons">content_paste</i>
+                    <p>My Product</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" th:href="@{/listnew}">
+                    <i class="material-icons">library_books</i>
+                    <p>My order</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/Shipper_Admin">
+                    <i class="material-icons">local_shipping</i>
+                    <p>Buyer Order</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="./map.html">
+                    <i class="material-icons">receipt</i>
+                    <p>History</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="./rtl.html">
+                    <i class="material-icons">language</i>
+                    <p>Support</p>
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>
+</body>
+</html>
