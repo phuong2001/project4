@@ -18,5 +18,5 @@ public class ShipperEntity {
     @Column(name = "name")
     private String name;
     @Column(name = "price")
-    private double price;
+    private int price;
 }

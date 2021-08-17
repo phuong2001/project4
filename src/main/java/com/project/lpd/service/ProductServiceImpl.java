@@ -2,6 +2,7 @@ package com.project.lpd.service;
 
 import com.project.lpd.entity.ProductEntity;
 import com.project.lpd.entity.RoleEntity;
+import com.project.lpd.entity.UserEntity;
 import com.project.lpd.model.ProductDto;
 import com.project.lpd.repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +30,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepo.findAll(pageable).getTotalPages();
     }
 
+    @Override
+    public List<ProductEntity> getProductByUser(UserEntity userEntity) {
+        return productRepo.findByUser(userEntity);
+    }
+
 
     @Override
     public ProductEntity createProduct(ProductEntity productEntity){
@@ -36,6 +42,8 @@ public class ProductServiceImpl implements ProductService {
 
         return productRepo.save(productEntity);
     }
+
+
 
     @Override
     public void updateProduct(ProductEntity p) {

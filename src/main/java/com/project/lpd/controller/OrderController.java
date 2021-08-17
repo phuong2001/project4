@@ -1,10 +1,9 @@
 package com.project.lpd.controller;
 
-import com.project.lpd.entity.CartItemEntity;
-import com.project.lpd.entity.NewsEntity;
-import com.project.lpd.entity.OrderEntity;
-import com.project.lpd.entity.UserEntity;
+import com.project.lpd.entity.*;
+import com.project.lpd.service.OrderItemService;
 import com.project.lpd.service.OrderService;
+import com.project.lpd.service.ProductService;
 import com.project.lpd.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -26,6 +25,12 @@ public class OrderController {
 
     @Autowired
     UserService userService;
+
+    @Autowired
+    ProductService productService;
+
+    @Autowired
+    OrderItemService orderItemService;
 
     //list_user
     @GetMapping("/order")
@@ -55,11 +60,18 @@ public class OrderController {
         orderService.saveOrder(order);
         return "redirect:/profile";
     }
-//
-//    @GetMapping({"/listOrderProduct"})
-//    public String listOrderProduct(Model model){
-//
-//    }
+
+    @GetMapping({"/listOrderProduct"})
+    public String listOrderProduct(Model model, Authentication authentication){
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
+        List<ProductEntity> products = productService.getProductByUser(userEntity);
+        for (ProductEntity product : products){
+            List<OrderItem> orderitems = orderItemService.findByProduct(product);
+            model.addAttribute("orderitem",orderitems);
+        }
+        return "buyer_order";
+    }
 
 
 }
