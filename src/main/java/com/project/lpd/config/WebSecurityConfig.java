@@ -42,7 +42,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.antMatcher("/**").csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/index", "/login", "/productDetail", "/about", "/products", "/cart", "/create_product",
-                        "/pay","/register", "/news", "/help", "/adminIndex", "/list", "/productdetail", "/charge","/profile","/success").permitAll()
+                        "/pay","/register", "/news", "/help", "/adminIndex", "/list", "/productdetail", "/charge","/profile","/success","/sellerproduct").permitAll()
                 .antMatchers("/css/**", "/js/**", "/images/**", "vendors/**").permitAll()
                 .antMatchers("/adminIndex", "/listrole", "/listnew", "/updatenew", "/createnew", "/deletenew", "/updaterole").hasAnyAuthority("ADMIN")
                 .antMatchers("/createproduct","/userIndex").hasAnyAuthority("USER")
@@ -51,7 +51,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .formLogin()
                 .loginPage("/login")
-                .loginProcessingUrl("/login_security")
                 .failureUrl("/login?error")
                 .defaultSuccessUrl("/index")
                 .permitAll()

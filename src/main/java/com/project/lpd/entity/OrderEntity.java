@@ -27,6 +27,8 @@ public class OrderEntity {
     private String address;
     @Column(name = "fullname")
     private String fullname;
+    @Column(name = "subtotal")
+    private double subtotal;
     @Column(name = "userid")
     private int userid;
     @ManyToOne

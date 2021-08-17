@@ -59,7 +59,7 @@ public class CheckoutController {
         return "pay";
     }
     @PostMapping(value = "/pay")
-    public String checkout(Authentication authentication, @ModelAttribute("order")OrderDto orderDto, RedirectAttributes redirectAttributes){
+    public String checkout(Authentication authentication, @ModelAttribute("order")OrderDto orderDto, @RequestParam(value = "ship") int ship){
         double totalPrice = 0;
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
@@ -69,6 +69,7 @@ public class CheckoutController {
         }
         if( userEntity.getWallet() >= totalPrice){
             orderDto.setStatus("PENDING");
+            orderDto.setFeeship(ship);
             OrderEntity orderEntity = new OrderEntity();
             orderEntity.setDescription(orderDto.getDescription());
             orderEntity.setStatus(orderDto.getStatus());
@@ -77,6 +78,7 @@ public class CheckoutController {
             orderEntity.setAddress(orderDto.getAddress());
             orderEntity.setFullname(orderDto.getFullname());
             orderEntity.setPhone(orderDto.getPhone());
+            orderEntity.setSubtotal(totalPrice + orderDto.getFeeship());
             userEntity.setWallet(userEntity.getWallet() - totalPrice);
             userService.updateUser(userEntity);
             orderService.createOrder(orderEntity);
@@ -86,7 +88,7 @@ public class CheckoutController {
             userService.updateUser(admin);
             return "redirect:/success";
         } else {
-            redirectAttributes.addFlashAttribute("error","Not Enough money please add more !");
+
             return "redirect:/charge";
         }
 

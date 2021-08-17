@@ -16951,7 +16951,7 @@ button:focus {
 }
 
 [class^="icon-"]:before, [class*=" icon-"]:before {
-     font-family: "LineAwesome";
+    font-family: "LineAwesome";
     font-style: normal;
     font-weight: normal;
     speak: none;
@@ -17042,6 +17042,7 @@ button:focus {
 }
 
 .icon-refresh:before {
+    font-family: "LineAwesome";
     content: '\e813'
 }
 

@@ -18,4 +18,5 @@ public class OrderDto {
     private String address;
     private String fullname;
     private String phone;
+    private double feeship;
 }

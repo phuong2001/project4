@@ -12,8 +12,7 @@
                 <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
-                            <h4 class="card-title ">List </h4>
-                            <p class="card-category"> Here are list</p>
+                            <h4 class="card-title ">List Order </h4>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -24,6 +23,7 @@
                                     <th scope="col">Address</th>
                                     <th scope="col">fullname</th>
                                     <th scope="col">Price total</th>
+                                    <th scope="col">Status</th>
                                     </thead>
                                     <tbody>
                                     <tr th:each="ord : ${orderItem}">
@@ -32,6 +32,7 @@
                                         <td th:text="${ord.address}"></td>
                                         <td th:text="${ord.fullname}"></td>
                                         <td th:text="${ord.priceTotal}"></td>
+                                        <td th:text="${ord.status}"></td>
                                     </tr>
                                     </tbody>
                                 </table>

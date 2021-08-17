@@ -59,14 +59,14 @@
                                                 </h3><!-- End .product-title -->
                                             </div><!-- End .product -->
                                         </td>
-                                        <td class="price-col" th:text="${item.product.price}">84.00</td>
+                                        <td class="price-col" th:text="'$' + ${item.product.price}">84.00</td>
                                         <td class="quantity-col">
                                             <div class="cart-product-quantity">
                                                 <input type="number" name="qty" class="form-control" th:min="1" th:max="${item.product.quantity}" step="1"
                                                        data-decimals="0" required th:value="${item.quantity}" th:name="qty">
                                             </div><!-- End .cart-product-quantity -->
                                         </td>
-                                        <td class="total-col productSubtotal" th:text="${item.subtotal}">$84.00</td>
+                                        <td class="total-col productSubtotal" th:text="'$' + ${item.subtotal}">$84.00</td>
                                         <td class="remove-col" >
                                                 <a th:href="@{/removecart(id=${item.product.productid})}" class="btn-remove"><i class="las la-times"></i></a>
                                         </td>
@@ -85,8 +85,7 @@
                                         </div><!-- End .input-group -->
 
                                 </div><!-- End .cart-discount -->
-                                <button type="submit" class="btn btn-outline-dark-2 update-cart"><span>UPDATE CART</span><i
-                                        class="icon-refresh"></i></button>
+                                <button type="submit" class="btn btn-outline-dark-2 update-cart"><span>UPDATE CART</span><i class="las la-sync"></i></button>
                             </div><!-- End .cart-bottom -->
                             </form>
                         </div><!-- End .col-lg-9 -->

@@ -41,9 +41,6 @@ public class UserEntity  {
     private List<ReviewEntity> review;
 
     @OneToMany(mappedBy = "user")
-    private List<TransactionEntity> transaction;
-
-    @OneToMany(mappedBy = "user")
     private List<ProductEntity> products;
 
     public UserEntity(String username,String fullName, String email, String password, Collection<RoleEntity> roles,double wallet) {

@@ -76,7 +76,7 @@
                                 <a class="ratings-text" href="#product-review-link" id="review-link">( 2 Reviews )</a>
                             </div><!-- End .rating-container -->
 
-                            <div th:text="${product.price}" class="product-price">
+                            <div th:text="'$' + ${product.price}" class="product-price">
                                 $76.00
                             </div><!-- End .product-price -->
 

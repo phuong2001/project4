@@ -36,7 +36,7 @@ import java.util.List;
 
 @Controller
 public class ProductController {
-    public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/images";
+    public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/images/upload";
 
     @Autowired
     ProductService productService;

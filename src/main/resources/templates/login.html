@@ -15,7 +15,7 @@
         </div>
         <div class="row clearfix">
             <div class="">
-                <form name="f" method="POST" th:action="@{/login_security}">
+                <form name="f" method="POST" th:action="@{/login}">
                     <div class="alert" th:if="${errorMessage}" th:text="${errorMessage}"></div>
                     <div class="input_field"> <span><i aria-hidden="true" class="fa fa-user"></i></span>
                         <input type="text" name="username" placeholder="Username" required th:autofocus="true" />
