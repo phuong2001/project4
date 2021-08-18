@@ -95,12 +95,13 @@
 
                             <div class="products mb-3">
                                 <div class="row justify-content-center">
-                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3" th:each="pr : ${products}">
+                                    <div class="col-6 col-md-4 col-lg-4 col-xl-3" th:each="product : ${products}">
                                         <div class="product product-7 text-center">
+                                            <a href="@{/seller}">  <p th:text="${product.user.username}"></p></a>
                                             <figure class="product-media">
                                                 <span class="product-label label-out">Out of Stock</span>
-                                                <a>
-                                                    <img th:src="@{${'/images/' + pr.image}}" alt="Product image" class="product-image">
+                                                <a th:href="@{/productdetail(id=${product.productid})}">
+                                                    <img th:src="@{${'/images/' + product.image}}" alt="Product image" class="product-image" enctype="multipart">
                                                 </a>
                                                 <div class="product-action">
                                                     <button type="submit" class="btn-product btn-cart" ><span>add to cart</span></button>
@@ -109,11 +110,11 @@
 
                                             <div class="product-body">
                                                 <div class="product-cat">
-                                                    <a href="#" th:text="${pr.category.name}">Jackets</a>
+                                                    <a href="#" th:text="${product.category.name}">Jackets</a>
                                                 </div><!-- End .product-cat -->
-                                                <h3 class="product-title" ><a th:text="${pr.name}">Khaki utility boiler jumpsuit</a></h3><!-- End .product-title -->
+                                                <h3 class="product-title" ><a th:href="@{/productdetail(id=${product.productid})}" th:text="${product.name}">Khaki utility boiler jumpsuit</a></h3><!-- End .product-title -->
                                                 <div class="product-price">
-                                                    <span class="out-price" th:text="${pr.price}">$120.00</span>
+                                                    <span class="out-price" th:text="${product.price}">$120.00</span>
                                                 </div><!-- End .product-price -->
                                                 <div class="ratings-container">
                                                     <div class="ratings">
@@ -328,4 +329,3 @@
 </div>
 </body>
 </html>
-
