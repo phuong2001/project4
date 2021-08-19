@@ -20,18 +20,18 @@
                                 <table class="table">
                                     <thead class=" text-primary">
                                     <th scope="col">Phone</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Address</th>
                                     <th scope="col">fullname</th>
                                     <th scope="col">Price total</th>
+                                    <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
                                     </thead>
                                     <tbody>
                                     <tr th:each="ord : ${orderItem}">
                                         <td th:text="${ord.phone}"></td>
-                                        <td th:text="${ord.description}"></td>
-                                        <td th:text="${ord.address}"></td>
                                         <td th:text="${ord.fullname}"></td>
                                         <td th:text="${ord.priceTotal}"></td>
+                                        <td th:text="${ord.status}"></td>
+                                        <td><a href="#" class="btn btn-primary">Received</a> </td>
                                         <th ><a  th:href="@{/orderdetail(id=${ord.Orderid})}">detaile</a></th>
                                     </tr>
                                     </tbody>
