@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/adminlayout/template_user.html}">
+      layout:decorate="~{layout/adminlayout/template_admin.html}">
 <title>list order</title>
 
 <body >
@@ -24,6 +24,7 @@
                                     <th scope="col">fullname</th>
                                     <th scope="col">Price total</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">Action</th>
                                     </thead>
                                     <tbody>
                                     <tr th:each="ord : ${orderItem}">
@@ -31,8 +32,9 @@
                                         <td th:text="${ord.description}"></td>
                                         <td th:text="${ord.address}"></td>
                                         <td th:text="${ord.fullname}"></td>
-                                        <td th:text="${ord.priceTotal}"></td>
+                                        <td th:text="${ord.subtotal}"></td>
                                         <td th:text="${ord.status}"></td>
+                                        <td><a href="#" class="btn btn-primary">Received</a> </td>
                                     </tr>
                                     </tbody>
                                 </table>

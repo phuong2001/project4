@@ -16,6 +16,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 
+import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
@@ -36,11 +37,12 @@ public class WebController {
         return "AdminIndex";
     }
 
-    @GetMapping("/userIndex")
-    public String userIndex(){return "UserIndex";}
 
     @GetMapping("/login")
-    public String Login(){return "login";}
+    public String Login(Model model){
+        UserDto userDto = new UserDto();
+        model.addAttribute("user",userDto);
+        return "LoginPage";}
 
     @GetMapping("/login-error")
     public String login(HttpServletRequest request, Model model) {
@@ -55,14 +57,6 @@ public class WebController {
         }
         model.addAttribute("errorMessage", errorMessage);
         return "login";
-    }
-
-
-    @GetMapping("/register")
-    public String register(Model model){
-        UserDto userDto = new UserDto();
-        model.addAttribute("user",userDto);
-        return "register";
     }
 
     @PostMapping("/register")
