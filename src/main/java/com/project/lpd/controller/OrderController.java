@@ -41,6 +41,12 @@ public class OrderController {
         model.addAttribute("orderItem",orderItem);
         return "order";
     }
+    @GetMapping("/orderdetail")
+    public String orderUserDetail(Model model, @RequestParam(value = "id", defaultValue = "0") int id){
+        OrderEntity order = orderService.getById(id);
+        model.addAttribute("ord", order);
+        return "orderdetail";
+    }
     //list_admin
     @GetMapping({"/listorder"})
     public String ListOrder(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "5") int size) {
