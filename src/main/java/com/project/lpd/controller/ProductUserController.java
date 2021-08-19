@@ -1,9 +1,13 @@
 package com.project.lpd.controller;
 
 import com.project.lpd.entity.ProductUserEntity;
+import com.project.lpd.entity.UserEntity;
 import com.project.lpd.service.ProductUserService;
+import com.project.lpd.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -18,6 +22,9 @@ public class ProductUserController {
     @Autowired
     ProductUserService productUserService;
 
+    @Autowired
+    UserService userService;
+
     @GetMapping({"/users"})
     public String News(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "5") int size) {
         List<ProductUserEntity> productUsers = productUserService.getAllProductUser(PageRequest.of(page, size));
@@ -30,9 +37,12 @@ public class ProductUserController {
     }
 
     @GetMapping({"/listProductUser"})
-    public String pageableNews(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "10") int size) {
+    public String pageableNews(Model model, @RequestParam(value = "page", defaultValue = "0") int page,
+                               @RequestParam(value = "size", defaultValue = "10") int size , Authentication authentication) {
         List<ProductUserEntity> productUsers = productUserService.getAllProductUser(PageRequest.of(page, size));
         int totalPage  = productUserService.getTotalPage(PageRequest.of(page, size));
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("size", size);
         model.addAttribute("page", page);

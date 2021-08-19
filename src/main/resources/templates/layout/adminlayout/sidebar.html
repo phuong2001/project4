@@ -30,12 +30,6 @@
                     <p>User</p>
                 </a>
             </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="/listproduct">
-                    <i class="material-icons">content_paste</i>
-                    <p>Table List</p>
-                </a>
-            </li>
             <li class="nav-item " th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}">
                 <a class="nav-link" th:href="@{/listnew}">
                     <i class="material-icons">library_books</i>
@@ -54,8 +48,8 @@
                     <p>Notifications</p>
                 </a>
             </li>
-            <li class="nav-item " th:if="${#authorization.expression('hasAuthority(''USER'')')}">
-                <a class="nav-link" href="/listProductUser">
+            <li class="nav-item ">
+                <a class="nav-link" href="/listproduct">
                     <i class="material-icons">content_paste</i>
                     <p>My Product</p>
                 </a>

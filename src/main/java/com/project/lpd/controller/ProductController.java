@@ -100,7 +100,7 @@ public class ProductController {
         model.addAttribute("size", size);
         model.addAttribute("page", page);
         model.addAttribute("products", products);
-        return "listProductUser";
+        return "listproduct";
     }
 
     @GetMapping("/productdetail")
