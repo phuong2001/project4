@@ -20,60 +20,60 @@
                 <div class="card">
                     <div class="card-header card-header-primary">
                         <h4 class="card-title">Add product user </h4>
-                        <p class="card-category">Create your </p>
                     </div>
                     <div class="card-body">
-                        <form method="post" th:action="@{/createProductUser}" th:object="${model}">
+                        <form method="post" action="/createproduct" th:object="${productDto}" enctype="multipart/form-data">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="name" class="bmd-label-floating">Name</label>
-                                        <input type="text" name="name"  th:field="${model.name}" class="form-control">
+                                        <input type="text" name="name" id="name" th:field="${productDto.name}" class="form-control">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="image"class="bmd-label-floating">Image</label>
-                                        <input type="text" name="Image"  th:field="${model.image}" class="form-control">
+                                        <label for="pr" class="bmd-label-floating">Price</label>
+                                        <input id="pr" type="text" th:field="${productDto.price}" name="price" class="form-control">
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="price" class="bmd-label-floating">Price</label>
-                                        <input type="text" name="price" th:field="${model.price}" class="form-control">
+                                        <label for="quantity"  class="bmd-label-floating">Quantity product</label><br/>
+                                        <input type="number"  id="quantity" name="quantity" th:field="${productDto.quantity}" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="quantity" class="bmd-label-floating">Quantity</label>
-                                        <input type="text" name="quantity" th:field="${model.quantity}" class="form-control">
+                                        <label for="description" class="bmd-label-floating">Description product</label>
+                                        <textarea id="description" rows="5" cols="126%" th:field="${productDto.description}" name="description"></textarea>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="description" class="bmd-label-floating">Description</label>
-                                        <input type="text" name="description" th:field="${model.description}" class="form-control">
+                                        <div class="custom-file">
+                                            <input type="file"  class="custom-file-input" id="filename" name="filename"  accept="image/jpeg,image/png,image/jpg">
+                                            <label class="custom-file-label" for="filename">Choose file</label>
+                                        </div>
+                                        <input type="hidden" name="imgname" th:value="${productDto.image}" >
                                     </div>
                                 </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="discount" class="bmd-label-floating">Discount</label>
-                                        <input type="text" name="discount" th:field="${model.discount}" class="form-control">
+                                        <div class="select-custom">
+                                            <label for="categoryid">Category</label>
+                                            <select class="form-control" aria-label="category" id="categoryid" name="categoryid" >
+                                                <option th:each="item:${category}"
+                                                        th:text="${item.name}"
+                                                        th:value="${item.categoryid}"
+                                                ></option>
+                                            </select>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <button type="submit" class="btn btn-primary pull-right">Create</button>
+                            <button type="submit" class="btn btn-primary pull-right">Create product</button>
                             <div class="clearfix"></div>
                         </form>
                     </div>
@@ -82,6 +82,10 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+<script>
+    bsCustomFileInput.init();
+</script>
 
 </body>
 

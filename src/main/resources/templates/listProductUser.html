@@ -14,7 +14,7 @@
                         <h4 class="card-title ">Product User </h4>
                     </div>
                     <div class="card-body">
-                        <a href="/createProductUser" class="btn btn-primary">Create product</a>
+                        <a href="/createproduct" class="btn btn-primary">Create product</a>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead class=" text-primary">
@@ -24,23 +24,19 @@
                                 <th scope="col">Price</th>
                                 <th scope="col">Quantity</th>
                                 <th scope="col">Description</th>
-                                <th scope="col">Discount</th>
-                                <th scope="col">createdAt</th>
-                                <th scope="col">updatedAt</th>
+                                <!--                                    <th scope="col">createdAt</th>-->
+                                <th scope="col"></th>
                                 </thead>
                                 <tbody>
-                                <tr th:each="users : ${productUsers}">
-                                    <th scope="row" th:text="${users.id}"></th>
-                                    <td th:text="${users.name}"></td>
-                                    <td th:text="${users.image}"></td>
-                                    <td th:text="${users.price}"></td>
-                                    <td th:text="${users.quantity}"></td>
-                                    <td th:text="${users.description}"></td>
-                                    <td th:text="${users.discount}"></td>
-                                    <td th:text="${users.createdAt}"></td>
-                                    <td th:text="${users.updatedAt}"></td>
-                                    <td><a th:href="@{/updateProductUser(id=${users.id})}" th:text="Edit"></a></td>
-                                    <td><a th:href="@{/deleteProductUser(id=${users.id})}" th:text="Delete"></a></td>
+                                <tr th:each="product : ${products}">
+                                    <th scope="row" th:text="${product.productid}"></th>
+                                    <td th:text="${product.name}"></td>
+                                    <td > <img th:src="@{${'/images/' + product.image}}"height="50px"width="50px"></td>
+                                    <td th:text="${product.price}"></td>
+                                    <td th:text="${product.quantity}"></td>
+                                    <td th:text="${product.description}"></td>
+                                    <!--                                        <td th:text="${product.createdAt}"></td>-->
+                                    <td><a th:href="@{/updateproduct(id=${product.productid})}" th:text="Edit"></a></td>
                                 </tr>
                                 </tbody>
                             </table>

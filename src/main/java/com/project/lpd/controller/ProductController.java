@@ -49,7 +49,7 @@ public class ProductController {
     public String CreateProductForm(Model model) {
         model.addAttribute("category", categoryService.getAllCategory());
         model.addAttribute("productDto", new ProductDto());
-        return "create_product";
+        return "createProductUser";
     }
     @PostMapping(value = "/createproduct")
     public String CreateProduct(@ModelAttribute("productDto") ProductDto productDto,
@@ -100,7 +100,7 @@ public class ProductController {
         model.addAttribute("size", size);
         model.addAttribute("page", page);
         model.addAttribute("products", products);
-        return "listproduct";
+        return "listProductUser";
     }
 
     @GetMapping("/productdetail")

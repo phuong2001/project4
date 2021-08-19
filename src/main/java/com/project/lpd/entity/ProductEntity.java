@@ -3,6 +3,7 @@ package com.project.lpd.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.persistence.*;
@@ -29,8 +30,10 @@ public class ProductEntity {
     private String description;
 //    @Column(name = "discount")
 //    private double discount;
-//    @Column(name = "createAt")
-//    private Date createdAt;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "createAt")
+    private Date createdAt;
     @Lob
     @Column(name = "image")
     private String image;
