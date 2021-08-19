@@ -31,8 +31,9 @@
                                         <td th:text="${ord.fullname}"></td>
                                         <td th:text="${ord.priceTotal}"></td>
                                         <td th:text="${ord.status}"></td>
-                                        <td><a href="#" class="btn btn-primary">Received</a> </td>
-                                        <th ><a  th:href="@{/orderdetail(id=${ord.Orderid})}">detaile</a></th>
+                                        <td><a href="#" class="btn btn-primary">Received</a>
+                                            <a class="btn btn-success" th:href="@{/orderdetail(id=${ord.orderid})}">Detail</a>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>

@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org"
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorate="~{layout/adminlayout/template_user.html}">
+      layout:decorate="~{layout/adminlayout/template_admin.html}">
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
@@ -21,8 +21,9 @@
                                     <th scope="col">Phone</th>
                                     <th scope="col">Description</th>
                                     <th scope="col">Address</th>
-                                    <th scope="col">fullname</th>
+                                    <th scope="col">Fullname</th>
                                     <th scope="col">Price total</th>
+                                    <th scope="col">Status</th>
                                     </thead>
                                     <tbody>
                                     <tr th:object="${ord}">
@@ -31,6 +32,7 @@
                                         <td th:text="${ord.address}"></td>
                                         <td th:text="${ord.fullname}"></td>
                                         <td th:text="${ord.priceTotal}"></td>
+                                        <td th:text="${ord.status}"></td>
                                     </tr>
                                     </tbody>
                                 </table>
