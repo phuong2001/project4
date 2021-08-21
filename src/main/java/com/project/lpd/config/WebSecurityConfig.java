@@ -46,7 +46,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.antMatcher("/**").csrf().disable()
                 .authorizeRequests()
-                .antMatchers("/", "/index", "/login", "/productDetail", "/about", "/products", "/cart", "/create_product",
+                .antMatchers("/", "/index", "/productDetail", "/about", "/products", "/cart", "/create_product",
                         "/pay","/register", "/news", "/help", "/adminIndex", "/list", "/productdetail", "/charge","/profile","/success","/sellerproduct").permitAll()
                 .antMatchers("/css/**", "/js/**", "/images/**", "vendors/**").permitAll()
                 .antMatchers( "/listrole", "/listnew", "/updatenew", "/createnew", "/deletenew", "/updaterole").hasAnyAuthority("ADMIN")
@@ -55,12 +55,13 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
-                .loginPage("/login")
+                .loginPage("/logout")
+                .loginProcessingUrl("/login")
                 .failureUrl("/login?error=true")
-                .defaultSuccessUrl("/")
+                .defaultSuccessUrl("/index")
                 .permitAll()
                 .and()
-                .logout().permitAll()
+                .logout().logoutSuccessUrl("/login?logout=true").permitAll()
                 .and()
                 .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
