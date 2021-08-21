@@ -122,6 +122,9 @@
                                                     </div><!-- End .ratings -->
                                                     <span class="ratings-text">( 6 Reviews )</span>
                                                 </div><!-- End .rating-container -->
+                                                 <div class="username">
+                                            <a th:href="@{/selleruser(username=${product.user.username})}" th:text="${product.user.username}"></a>
+                                                </div>
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product -->
                                     </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
