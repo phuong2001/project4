@@ -68,7 +68,7 @@ public class CheckoutController {
             totalPrice += (itemcart.getSubtotal());
         }
         if( userEntity.getWallet() >= totalPrice){
-            orderDto.setStatus("PENDING");
+            orderDto.setStatus("PAID");
             orderDto.setFeeship(ship);
             OrderEntity orderEntity = new OrderEntity();
             orderEntity.setDescription(orderDto.getDescription());

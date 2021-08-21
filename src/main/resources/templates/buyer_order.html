@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/adminlayout/template_admin.html}">
 
-<body >
+<body>
 <div class="main-panel" layout:fragment="content">
     <div class="content">
         <div class="container-fluid">
@@ -16,24 +16,36 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
+
                                 <table class="table">
-                                    <thead class=" text-primary">
-                                    <th scope="col">Buyer</th>
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Total</th>
-                                    <th scope="col">Status</th>
-                                    <!--                                    <th scope="col">createdAt</th>-->
-                                    <th scope="col"></th>
-                                    </thead>
-                                    <tbody>
-                                    <tr th:each="item : ${orderitem}">
-                                        <th scope="row" th:text="${item.products.user.username}"></th>
-                                        <td th:text="${item.products.name}"></td>
-                                        <td th:text="${item.orders.priceTotal}"></td>
-                                        <td th:text="${item.orders.status}"></td>
-                                    </tr>
-                                    </tbody>
+                                    <form method="post" action="/seller_confirm">
+                                        <thead class=" text-primary">
+                                        <th scope="col">Buyer</th>
+                                        <th scope="col">Product</th>
+                                        <th scope="col">Total</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
+                                        <th scope="col">createdAt</th>
+                                        <th scope="col"></th>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="item : ${orderitem}">
+                                            <th scope="row" th:text="${item.products.user.username}"></th>
+                                            <td th:text="${item.products.name}"></td>
+                                            <td th:text="${item.orders.priceTotal}"></td>
+                                            <td th:text="${item.orders.status}"></td>
+                                            <td th:text="${item.orders.status}"></td>
+                                            <td th:text="${item.orders.createdAt}"></td>
+                                            <td>
+                                                <input type="hidden" name="id" th:value="${item.orders.orderid}">
+                                                <button type="submit" class="btn btn-primary">CONFIRM</button>
+                                                <!--                                        <a class="btn btn-success" th:href="@{/orderdetail(id=${ord.orderid})}">Detail</a>-->
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </form>
                                 </table>
+
                             </div>
                         </div>
                     </div>

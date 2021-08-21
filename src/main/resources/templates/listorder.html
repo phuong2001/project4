@@ -4,7 +4,8 @@
       layout:decorate="~{layout/adminlayout/template_admin.html}">
 <title>list order</title>
 
-<body >
+<body>
+
 <div class="main-panel" layout:fragment="content">
     <div class="content">
         <div class="container-fluid">
@@ -17,34 +18,38 @@
                         <div class="card-body">
                             <div class="table-responsive">
                                 <table class="table">
-                                    <thead class=" text-primary">
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">fullname</th>
-                                    <th scope="col">Price total</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">Action</th>
-                                    </thead>
-                                    <tbody>
-                                    <tr th:each="ord : ${orderItem}">
-                                        <td th:text="${ord.phone}"></td>
-                                        <td th:text="${ord.address}"></td>
-                                        <td th:text="${ord.fullname}"></td>
-                                        <td th:text="${ord.subtotal}"></td>
-                                        <td th:text="${ord.status}"></td>
-                                        <td><a href="#" class="btn btn-primary">Received</a>
-                                            <a class="btn btn-success" th:href="@{/orderdetail(id=${ord.orderid})}">Detail</a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
+                                    <form method="post" action="/user_confirm">
+                                        <thead class=" text-primary">
+                                        <th scope="col">Phone</th>
+                                        <th scope="col">Address</th>
+                                        <th scope="col">fullname</th>
+                                        <th scope="col">Price total</th>
+                                        <th scope="col">Status</th>
+                                        <th scope="col">Action</th>
+                                        </thead>
+                                        <tbody>
+                                        <tr th:each="ord : ${orderItem}">
+                                            <td th:text="${ord.phone}"></td>
+                                            <td th:text="${ord.address}"></td>
+                                            <td th:text="${ord.fullname}"></td>
+                                            <td th:text="${ord.subtotal}"></td>
+                                            <td th:text="${ord.status}"></td>
+                                            <td>
+                                                <input type="hidden" name="id" th:value="${ord.orderid}">
+                                                <button type="submit" class="btn btn-primary">Received</button>
+                                                <a class="btn btn-success" th:href="@{/orderdetail(id=${ord.orderid})}">Detail</a>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </form>
                                 </table>
-<!--                                <nav aria-label="Page navigation">-->
-<!--                                    <ul class="pagination">-->
-<!--                                        <li th:if="${totalPage > 0}" class="page-item" th:each="t : ${#numbers.sequence( 0, (totalPage - 1)/1)}" th:classappend="${t==page} ? active">-->
-<!--                                            <a class="page-link" th:href="@{/listorder(size=${size}, page=${t})}" th:text="${t+1}"></a>-->
-<!--                                        </li>-->
-<!--                                    </ul>-->
-<!--                                </nav>-->
+                                <!--                                <nav aria-label="Page navigation">-->
+                                <!--                                    <ul class="pagination">-->
+                                <!--                                        <li th:if="${totalPage > 0}" class="page-item" th:each="t : ${#numbers.sequence( 0, (totalPage - 1)/1)}" th:classappend="${t==page} ? active">-->
+                                <!--                                            <a class="page-link" th:href="@{/listorder(size=${size}, page=${t})}" th:text="${t+1}"></a>-->
+                                <!--                                        </li>-->
+                                <!--                                    </ul>-->
+                                <!--                                </nav>-->
                             </div>
                         </div>
                     </div>
@@ -55,5 +60,4 @@
 </div>
 
 </body>
-
 </html>

@@ -2,6 +2,7 @@ package com.project.lpd.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -29,6 +30,10 @@ public class OrderEntity {
     private String fullname;
     @Column(name = "subtotal")
     private double subtotal;
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "createAt")
+    private Date createdAt;
     @Column(name = "userid")
     private int userid;
     @ManyToOne

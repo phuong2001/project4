@@ -11,11 +11,10 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
+import javax.jws.WebParam;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -38,7 +37,13 @@ public class OrderController {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         List<OrderEntity> orderItem = orderService.getOrderByUser(userEntity);
-        model.addAttribute("orderItem",orderItem);
+        List<OrderEntity> Items = new ArrayList<>();
+        for (OrderEntity ord : orderItem){
+            if (ord.getStatus().equals("DELIVERED") || ord.getStatus().equals("PAID")){
+                Items.add(ord);
+            }
+        }
+        model.addAttribute("orderItem",Items);
         return "listorder";
     }
 
@@ -62,11 +67,11 @@ public class OrderController {
 //    }
 
     @PostMapping("/user_confirm")
-    public String ConfirmOrder(@ModelAttribute OrderEntity orderEntity){
-        OrderEntity order = orderService.getById(orderEntity.getOrderid());
-        order.setStatus("Done");
+    public String ConfirmOrder(@ModelAttribute OrderEntity orderEntity, @RequestParam("id") int id){
+        OrderEntity order = orderService.getById(id);
+        order.setStatus("RECEIVED");
         orderService.saveOrder(order);
-        return "redirect:/profile";
+        return "redirect:/listorder";
     }
 
     @GetMapping({"/listOrderProduct"})
@@ -79,6 +84,13 @@ public class OrderController {
             model.addAttribute("orderitem",orderitems);
         }
         return "buyer_order";
+    }
+    @PostMapping({"/seller_confirm"})
+    public String SellerUpdate(@ModelAttribute OrderEntity orderEntity, @RequestParam("id") int id){
+        OrderEntity order = orderService.getById(id);
+        order.setStatus("DELIVERED");
+        orderService.saveOrder(order);
+        return "redirect:/buyer_order";
     }
     @GetMapping("/success")
     public String done(){
