@@ -12,4 +12,5 @@ public interface CategoryService {
     CategoryEntity createCategory(CategoryEntity p);
     void deleteCategory(int id);
     CategoryEntity updateCategory(CategoryEntity p);
+    CategoryEntity getCategoryByName(String name);
 }
