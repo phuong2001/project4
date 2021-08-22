@@ -8,4 +8,5 @@ import java.util.List;
 public interface CategoryRepo extends JpaRepository<CategoryEntity, Integer> {
     CategoryEntity findByCategoryid(int id);
     List<CategoryEntity> findAll();
+     CategoryEntity findByName(String name);
 }
