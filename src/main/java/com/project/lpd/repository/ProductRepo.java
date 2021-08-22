@@ -1,5 +1,6 @@
 package com.project.lpd.repository;
 
+import com.project.lpd.entity.CategoryEntity;
 import com.project.lpd.entity.ProductEntity;
 import com.project.lpd.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;

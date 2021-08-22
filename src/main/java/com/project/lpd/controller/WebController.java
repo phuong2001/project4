@@ -42,22 +42,9 @@ public class WebController {
     public String Login(Model model){
         UserDto userDto = new UserDto();
         model.addAttribute("user",userDto);
-        return "LoginPage";}
-
-    @GetMapping("/login-error")
-    public String login(HttpServletRequest request, Model model) {
-        HttpSession session = request.getSession(false);
-        String errorMessage = null;
-        if (session != null) {
-            AuthenticationException ex = (AuthenticationException) session
-                    .getAttribute(WebAttributes.AUTHENTICATION_EXCEPTION);
-            if (ex != null) {
-                errorMessage = ex.getMessage();
-            }
-        }
-        model.addAttribute("errorMessage", errorMessage);
-        return "login";
+        return "LoginPage";
     }
+
 
     @PostMapping("/register")
     public String register(@ModelAttribute("user") UserDto userDto, Model model){

@@ -6,11 +6,8 @@
     <title>
         Dashboard
     </title>
-
-
 </head>
-
-<body >
+<body>
 <div class="main-panel" layout:fragment="content">
     <div class="content">
         <div class="container-fluid">
@@ -27,7 +24,8 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="name" class="bmd-label-floating">Name</label>
-                                            <input id="name" type="text" name="name" th:field="${shipper2.name}" class="form-control">
+                                            <input id="name" type="text" name="name" th:field="${shipper2.name}"
+                                                   class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -35,12 +33,13 @@
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="phone" class="bmd-label-floating">Phone</label>
-                                            <input id="phone" type="text" name="phone" th:field="${shipper2.phone}" class="form-control"><br/>
+                                            <input id="phone" type="text" name="phone" th:field="${shipper2.phone}"
+                                                   class="form-control"><br/>
                                         </div>
                                     </div>
 
-                                <button type="submit" class="btn btn-primary pull-right">Create</button>
-                                <div class="clearfix"></div>
+                                    <button type="submit" class="btn btn-primary pull-right">Create</button>
+                                    <div class="clearfix"></div>
                             </form>
                         </div>
                     </div>
