@@ -22,12 +22,11 @@ public class SellerProductController {
     UserService userService;
 
 
-    @GetMapping("/sellerproduct")
-    public String showListProductUser(Model model, Authentication authentication){
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
-        List<ProductEntity> product = productService.getProductByUser(userEntity);
-        model.addAttribute("products",product);
-        return "sellerproduct";
+     @GetMapping({"/selleruser"})
+    public String sellerProduct(Model model,@RequestParam(value = "username", defaultValue = "user")String  username) {
+        UserEntity userEntity = userService.getUserByName(username);
+        List<ProductEntity> products = productService.getProductByUser(userEntity);
+        model.addAttribute("products", products);
+        return "selleruser";
     }
 }
