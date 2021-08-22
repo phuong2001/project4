@@ -37,4 +37,8 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryEntity updateCategory(CategoryEntity p) {
         return categoryRepo.save(p);
     }
+        @Override
+    public CategoryEntity getCategoryByName(String name) {
+        return categoryRepo.findByName(name);
+    }
 }

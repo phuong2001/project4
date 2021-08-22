@@ -81,14 +81,16 @@ public class ProductController {
     }
 
 
-    @GetMapping({"/products"})
+     @GetMapping({"/products"})
     public String ListProduct(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "12") int size) {
         List<ProductEntity> product = productService.AllProduct(PageRequest.of(page, size));
         int totalPage  = productService.getTotalPage(PageRequest.of(page, size));
+        List<CategoryEntity> category = categoryService.getAllCategory();
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("size", size);
         model.addAttribute("page", page);
         model.addAttribute("products", product);
+        model.addAttribute("categorys",category);
         return "products";
     }
 
