@@ -80,7 +80,6 @@
                     <div class="card">
                         <div class="card-header card-header-primary">
                             <h4 class="card-title ">List </h4>
-                            <p class="card-category"> Here are list</p>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -88,20 +87,17 @@
                                     <thead class=" text-primary">
                                     <th scope="col">ID</th>
                                     <th scope="col">Name</th>
-                                    <th scope="col">Phone</th>
                                     <th scope="col">Price</th>
-                                    <th scope="col">Ship Type</th>
-                                    <th scope="col">Pays</th>
-                                    <th scope="col"></th>
                                     <th scope="col"></th>
                                     </thead>
                                     <tbody>
                                     <tr th:each="shipper : ${shipper1}" >
                                         <th scope="row" th:text="${shipper.id}"></th>
                                         <td th:text="${shipper.name}"></td>
-                                        <td th:text="${shipper.phone}"></td>
-                                        <td><a th:href="@{'/Edit_Ship/' + ${shipper.id}}" th:text="Edit"></a></td>
-                                        <td><a th:href="@{'/delete/' + ${shipper.id}}" th:text="Delete"></a></td>
+                                        <td>
+                                            <a th:href="@{'/Edit_Ship/' + ${shipper.id}}" th:text="Edit"></a>
+                                            <a th:href="@{'/delete/' + ${shipper.id}}" th:text="Delete"></a>
+                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>

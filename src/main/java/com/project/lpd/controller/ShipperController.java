@@ -50,7 +50,6 @@ public class  ShipperController {
     public String searchShipper(Model model , @RequestParam("name") String name){
         List<ShipperEntity> listShipper = shipperService.findByNameShipper(name);
         model.addAttribute("listShipper" , listShipper );
-        //model.addAttribute("name" , name);
         return ("Shipper_Admin");
     }
     //  @GetMapping("/Shipper_Admin/name")

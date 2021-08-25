@@ -47,15 +47,6 @@ public class ShipperServiceImpl implements ShipperService{
         return shippeRepo.findAllByName(name);
     }
 
-    @Override
-    public Page<ShipperEntity> findAllByShipper(Pageable pageable) {
-        return shippeRepo.findAll(pageable);
-    }
-
-    @Override
-    public Page<ShipperEntity> findAllByName(String name, Pageable pageable) {
-        return shippeRepo.findAllByName(name, pageable);
-    }
 
 
 }

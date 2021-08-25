@@ -14,6 +14,4 @@ public interface ShipperService {
     Optional<ShipperEntity> find(int id);
 
     List<ShipperEntity> findByNameShipper(String name);
-    Page<ShipperEntity> findAllByShipper(Pageable pageable);
-    Page<ShipperEntity> findAllByName(String name, Pageable pageable);
 }
