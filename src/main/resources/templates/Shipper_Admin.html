@@ -94,6 +94,7 @@
                                     <tr th:each="shipper : ${shipper1}" >
                                         <th scope="row" th:text="${shipper.id}"></th>
                                         <td th:text="${shipper.name}"></td>
+                                        <td th:text="${shipper.price}"></td>
                                         <td>
                                             <a th:href="@{'/Edit_Ship/' + ${shipper.id}}" th:text="Edit"></a>
                                             <a th:href="@{'/delete/' + ${shipper.id}}" th:text="Delete"></a>
