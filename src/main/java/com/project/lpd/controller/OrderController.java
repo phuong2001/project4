@@ -47,6 +47,8 @@ public class OrderController {
         return "listorder";
     }
 
+
+
     @GetMapping("/orderdetail")
     public String orderUserDetail(Model model, @RequestParam(value = "id", defaultValue = "0") int id){
         OrderEntity order = orderService.getById(id);
@@ -85,16 +87,33 @@ public class OrderController {
         }
         return "buyer_order";
     }
+
     @PostMapping({"/seller_confirm"})
     public String SellerUpdate(@ModelAttribute OrderEntity orderEntity, @RequestParam("id") int id){
         OrderEntity order = orderService.getById(id);
         order.setStatus("DELIVERED");
         orderService.saveOrder(order);
-        return "redirect:/buyer_order";
+        return "redirect:/listOrderProduct";
     }
+
     @GetMapping("/success")
     public String done(){
         return "success";
+    }
+
+    @GetMapping("/history")
+    public String History(Model model, Authentication authentication){
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
+        List<OrderEntity> orderItem = orderService.getOrderByUser(userEntity);
+        List<OrderEntity> Items = new ArrayList<>();
+        for (OrderEntity ord : orderItem){
+            if (ord.getStatus().equals("RECEIVED")){
+                Items.add(ord);
+            }
+        }
+        model.addAttribute("orderItem",Items);
+        return "history";
     }
 
 

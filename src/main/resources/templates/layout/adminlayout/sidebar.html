@@ -48,12 +48,6 @@
                     <p>Shipper</p>
                 </a>
             </li>
-            <li class="nav-item " th:if="${#authorization.expression('hasAuthority(''USER'')')}">
-                <a class="nav-link" href="/listProductUser">
-                    <i class="material-icons">notifications</i>
-                    <p>Notifications</p>
-                </a>
-            </li>
             <li class="nav-item ">
                 <a class="nav-link" href="/listproduct">
                     <i class="material-icons">content_paste</i>
@@ -70,6 +64,12 @@
                 <a class="nav-link" href="/listOrderProduct">
                     <i class="material-icons">local_shipping</i>
                     <p>Buyer Order</p>
+                </a>
+            </li>
+            <li class="nav-item " th:if="${#authorization.expression('hasAuthority(''USER'')')}">
+                <a class="nav-link" href="/history">
+                    <i class="material-icons">notifications</i>
+                    <p>History order</p>
                 </a>
             </li>
             <li class="nav-item ">
