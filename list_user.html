@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/adminlayout/template_admin.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Home Page</title>
+</head>
+<body>
+<div class="main-panel" layout:fragment="content">
+
+    <form method="post" th:action="@{/search}" class="navbar-form col-md-4" style="float: right; margin-top: 30px">
+        <div class="input-group no-border">
+            <input type="text" name="name" value="" class="form-control" placeholder="Search...">
+            <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                <i class="material-icons">search</i>
+                <div class="ripple-container"></div>
+            </button>
+        </div>
+    </form>
+
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title ">List User</h4>
+                            <p class="card-category"> Here are list users</p>
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead class=" text-primary">
+                                    <th scope="col">ID</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">User Name</th>
+                                    <th scope="col">Phone</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Address</th>
+                                    <th scope="col">Action</th>
+
+                                    </thead>
+                                    <tbody>
+                                    <tr th:each="user:${users}">
+                                        <th scope="row" th:text="${user.id}"></th>
+                                        <td th:text="${user.fullName}"></td>
+                                        <td th:text="${user.username}"></td>
+                                        <td th:text="${user.phone}"></td>
+                                        <td th:text="${user.email}"></td>
+                                        <td th:text="${user.address}"></td>
+                                        <td>
+                                            <a th:href="@{/update(id=${user.id})}" th:text="Edit"></a>
+                                            <a th:href="@{/delete(id=${user.id})}" th:text="Delete"></a>
+                                        </td>
+                                    </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <div class="container-fluid">
+            <nav class="float-left">
+                <ul>
+                    <li>
+                        <a href="https://www.creative-tim.com">
+                            Creative Tim
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://creative-tim.com/presentation">
+                            About Us
+                        </a>
+                    </li>
+                    <li>
+                        <a href="http://blog.creative-tim.com">
+                            Blog
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://www.creative-tim.com/license">
+                            Licenses
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <div class="copyright float-right">
+                &copy;
+                <script>
+                    document.write(new Date().getFullYear())
+                </script>, made with <i class="material-icons">favorite</i> by
+                <a href="https://www.creative-tim.com" target="_blank">Creative Tim</a> for a better web.
+            </div>
+        </div>
+    </footer>
+</div>
+</body>
+</html>
