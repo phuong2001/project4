@@ -1,9 +1,6 @@
 package com.project.lpd.controller;
 
-import com.project.lpd.entity.CartItemEntity;
-import com.project.lpd.entity.NewsEntity;
-import com.project.lpd.entity.RoleEntity;
-import com.project.lpd.entity.UserEntity;
+import com.project.lpd.entity.*;
 import com.project.lpd.service.OrderService;
 import com.project.lpd.service.RoleService;
 import com.project.lpd.service.UserService;
@@ -12,12 +9,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class ProfileController {
@@ -42,6 +34,12 @@ public class ProfileController {
         return "profile";
     }
 
+    @GetMapping("/updateprofile")
+    public String updateUserProfile(Model model, @RequestParam(value = "id", defaultValue = "0") int id){
+        UserEntity userentity = userService.getUserById(id);
+        model.addAttribute("userentity",userentity);
+        return "updateprofile";
+    }
 
     @PostMapping("/updateprofile")
     public String updateUserP(@ModelAttribute UserEntity userEntity) {

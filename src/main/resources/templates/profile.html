@@ -180,11 +180,11 @@
                                         <div class="card card-dashboard">
                                             <div class="card-body" th:object="${userEntity}">
                                                 <h3 class="card-title">Billing Address</h3><!-- End .card-title -->
-
+                                                <p th:text="${userEntity.id}"></p>
                                                 <p th:text="${userEntity.username}"></p>
                                                 <p th:text="${userEntity.email}"></p>
                                                 <p th:text="${userEntity.phone}"></p>
-                                                   <!-- <a  data-toggle="tab" href="#tab-account" role="tab" aria-controls="tab-account" aria-selected="false" th:text="Edit">Edit <i class="icon-edit"></i></a>-->
+                                                    <a  th:href="@{/updateprofile(id=${userEntity.id})}" th:text="Edit">Edit <i class="icon-edit"></i></a>
                                             </div><!-- End .card-body -->
                                         </div><!-- End .card-dashboard -->
                                     </div><!-- End .col-lg-6 -->
@@ -202,21 +202,21 @@
                                 </div><!-- End .row -->
                             </div><!-- .End .tab-pane -->
 
-                            <div class="tab-pane fade" id="tab-account" role="tabpanel" aria-labelledby="tab-account-link">
-                                <form method="post" action="/updateprofile" th:object="${userEntity}" >
+                            <!--<div class="tab-pane fade" id="tab-account" role="tabpanel" aria-labelledby="tab-account-link">
+                                <form method="post" action="/updateprofile" th:action="@{/updateprofile/{id}(id=${userentity.id})}" th:object="${userentity}" >
 
                                     <label for="phone">Phone</label>
-                                    <input type="text" name="phone"  th:field="${userEntity.phone}" class="form-control" >
+                                    <input type="text" name="phone"  th:field="${userentity.phone}" class="form-control" >
 
                                     <label for="email">Email</label>
-                                    <input type="text" name="email" th:field="${userEntity.email}" class="form-control">
+                                    <input type="text" name="email" th:field="${userentity.email}" class="form-control">
 
                                     <button type="submit" class="btn btn-outline-primary-2">
                                         <span>SAVE CHANGES</span>
                                         <i class="icon-long-arrow-right"></i>
                                     </button>
                                 </form>
-                            </div><!-- .End .tab-pane -->
+                            </div>&lt;!&ndash; .End .tab-pane &ndash;&gt;-->
                         </div>
                     </div><!-- End .col-lg-9 -->
                 </div><!-- End .row -->
