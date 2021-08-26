@@ -25,6 +25,12 @@
                 </a>
             </li>
             <li class="nav-item ">
+                <a class="nav-link" href="/index">
+                    <i class="material-icons">home</i>
+                    <p>Back to Shop</p>
+                </a>
+            </li>
+            <li class="nav-item ">
                 <a class="nav-link" href="/list" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}">
                     <i class="material-icons">manage_accounts</i>
                     <p>User</p>

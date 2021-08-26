@@ -77,7 +77,7 @@ public class ProductController {
        CategoryEntity category = categoryService.getCategoryById(id);
        product.setCategoryid(category.getCategoryid());
        productService.createProduct(product);
-       return "redirect:/products";
+       return "redirect:/listproduct";
     }
 
 
