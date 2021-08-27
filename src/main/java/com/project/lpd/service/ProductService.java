@@ -12,6 +12,7 @@ import java.util.List;
 
 public interface ProductService {
      List<ProductEntity> AllProduct(Pageable pageable);
+     List<ProductEntity> getAllProduct();
      ProductEntity createProduct(ProductEntity productEntity);
      void updateProduct(ProductEntity p);
      ProductEntity getProductById(int id);

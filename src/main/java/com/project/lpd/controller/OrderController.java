@@ -51,6 +51,11 @@ public class OrderController {
 
     @GetMapping("/orderdetail")
     public String orderUserDetail(Model model, @RequestParam(value = "id", defaultValue = "0") int id){
+        List<ProductEntity> products = productService.getAllProduct();
+        for (ProductEntity product : products){
+            List<OrderItem> orderitems = orderItemService.findByProduct(product);
+            model.addAttribute("orderitem",orderitems);
+        }
         OrderEntity order = orderService.getById(id);
         model.addAttribute("ord", order);
         return "orderdetail";

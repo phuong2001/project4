@@ -9,6 +9,13 @@
 </head>
 <body>
 <div class="main-panel" layout:fragment="content">
+    <div class="user-detail" th:object="${ord}">
+        <p >Phone</p><p th:text="${ord.phone}"></p>
+        <p >Description</p><p th:text="${ord.description}"  ></p>
+        <p >Address</p><p th:text="${ord.address}"></p>
+        <p >Fullname</p><p th:text="${ord.fullname}"></p>
+        <p >Price total</p><p th:text="${ord.priceTotal}"></p>
+    </div>
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -18,21 +25,17 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class=" text-primary">
-                                    <th scope="col">Phone</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Address</th>
-                                    <th scope="col">Fullname</th>
-                                    <th scope="col">Price total</th>
+                                    <th scope="col">Product</th>
+                                    <th scope="col">Total</th>
                                     <th scope="col">Status</th>
+                                    <th scope="col">createdAt</th>
                                     </thead>
                                     <tbody>
-                                    <tr th:object="${ord}">
-                                        <td th:text="${ord.phone}"></td>
-                                        <td th:text="${ord.description}"  ></td>
-                                        <td th:text="${ord.address}"></td>
-                                        <td th:text="${ord.fullname}"></td>
-                                        <td th:text="${ord.priceTotal}"></td>
-                                        <td th:text="${ord.status}"></td>
+                                    <tr th:each="item : ${orderitem}">
+                                        <td th:text="${item.products.name}"></td>
+                                        <td th:text="${item.orders.priceTotal}"></td>
+                                        <td th:text="${item.orders.status}"></td>
+                                        <td th:text="${item.orders.createdAt}"></td>
                                     </tr>
                                     </tbody>
                                 </table>
