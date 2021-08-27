@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/adminlayout/template_admin.html}">
+<head>
+
+    <title>
+        Dashboard
+    </title>
+
+
+</head>
+
+<body>
+<div class="main-panel" layout:fragment="content">
+    <div class="content">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header card-header-primary">
+                            <h4 class="card-title">Update </h4>
+                        </div>
+                        <div class="card-body">
+                            <form method="post" th:action="@{/editProductManager}" th:object="${product}">
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <div class="form-group">
+                                            <label for="id" class="bmd-label-floating">ID</label>
+                                            <input type="text" name="id" th:field="${product.productid}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-9">
+                                        <div class="form-group">
+                                            <label for="name" class="bmd-label-floating">Name</label>
+                                            <input type="text" name="name" th:field="${product.name}" class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="image" class="bmd-label-floating">Image</label>
+                                            <input type="text" name="image" th:field="${product.image}" class="form-control" enctype="multipart/form-data">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label for="price" class="bmd-label-floating">Price</label>
+                                            <input type="text" name="price" th:field="${product.price}" class="form-control">
+                                        </div>
+                                    </div><div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="quantity" class="bmd-label-floating">Quantity</label>
+                                        <input type="text" name="quantity" th:field="${product.quantity}" class="form-control">
+                                    </div>
+                                </div><div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="description" class="bmd-label-floating">Description</label>
+                                        <input type="text" name="description" th:field="${product.description}" class="form-control">
+                                    </div>
+                                </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+
+                                            <label for="description" class="bmd-label-floating" >Category</label>
+                                            <input type="text" name="categoryid" th:text="${product.category.name}" th:value="${product.category.categoryid}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+
+                                            <label for="description" class="bmd-label-floating">User</label>
+                                            <input type="text" name="categoryid" th:text="${product.user.username}" th:hidden="${product.user.id}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn btn-primary pull-right">Update Product User</button>
+                                    <div class="clearfix"></div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
