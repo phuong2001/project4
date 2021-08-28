@@ -16,6 +16,7 @@
                             <h4 class="card-title ">Product admin</h4>
                         </div>
                         <div class="card-body">
+                            <div th:if="${mess}" th:text="${mess}" class="bg-success text-white p-2"/>
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class=" text-primary">
@@ -33,12 +34,15 @@
                                             <td th:text="${item.orders.priceTotal}"></td>
                                             <td th:text="${item.orders.status}"></td>
                                             <td th:text="${item.orders.createdAt}"></td>
-                                            <td>
+                                            <td th:if="${item.orders.status} != 'DELIVERED' ">
                                                 <form method="post" action="/seller_confirm">
                                                 <input type="hidden" name="id" th:value="${item.orders.orderid}">
                                                 <button type="submit" class="btn btn-primary">CONFIRM</button>
                                                 <!--                                        <a class="btn btn-success" th:href="@{/orderdetail(id=${ord.orderid})}">Detail</a>-->
                                                 </form>
+                                            </td>
+                                            <td th:if="${item.orders.status} == 'DELIVERED' ">
+                                                <p class="font-weight-bold">CONFIRMED</p>
                                             </td>
                                         </tr>
                                     </tbody>

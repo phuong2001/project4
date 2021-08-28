@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.jws.WebParam;
 import java.util.ArrayList;
@@ -89,10 +90,11 @@ public class OrderController {
     }
 
     @PostMapping({"/seller_confirm"})
-    public String SellerUpdate(@ModelAttribute OrderEntity orderEntity, @RequestParam("id") int id){
+    public String SellerUpdate(@ModelAttribute OrderEntity orderEntity, @RequestParam("id") int id, RedirectAttributes att){
         OrderEntity order = orderService.getById(id);
         order.setStatus("DELIVERED");
         orderService.saveOrder(order);
+        att.addFlashAttribute("mess","You has been confirm customer order.We will get your products as soon as possible ! ");
         return "redirect:/listOrderProduct";
     }
 
