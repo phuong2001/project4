@@ -14,6 +14,7 @@
                             <h4 class="card-title ">List Order </h4>
                         </div>
                         <div class="card-body">
+                            <div th:if="${mess}" th:text="${mess}" class="bg-success text-white p-2"/>
                             <div class="table-responsive">
                                 <table class="table">
                                         <thead class=" text-primary">
@@ -40,7 +41,6 @@
                                                 </form>
                                             </td>
                                         </tr>
-
                                         </tbody>
                                 </table>
                                 <!--                                <nav aria-label="Page navigation">-->

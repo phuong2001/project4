@@ -13,4 +13,5 @@ public interface OrderService {
     List<OrderEntity> getOrderByUser(UserEntity userEntity);
 //    List<OrderEntity> getOrderSeller(UserEntity user);
     OrderEntity getById(int id);
+
 }

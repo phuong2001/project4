@@ -70,10 +70,23 @@ public class OrderController {
 //    }
 
     @PostMapping("/user_confirm")
-    public String ConfirmOrder(@ModelAttribute OrderEntity orderEntity, @RequestParam("id") int id){
+    public String ConfirmOrder(@ModelAttribute OrderEntity orderEntity, @RequestParam("id") int id ,RedirectAttributes att){
         OrderEntity order = orderService.getById(id);
         order.setStatus("RECEIVED");
         orderService.saveOrder(order);
+        att.addFlashAttribute("mess","Your order has been done ! You can check again in order history.");
+        List<OrderItem> orderItems = orderItemService.getListOrderItem(order);
+        for (OrderItem item : orderItems){
+            UserEntity seller = userService.getUserById(item.getProducts().getUserid());
+            double total = item.getUnitPrice();
+            double sellermoney = total * 80 / 100;
+            seller.setWallet(seller.getWallet() + sellermoney);
+            userService.updateUser(seller);
+            double adminMoney = total * 20 / 100;
+            UserEntity admin = userService.getUserById(1);
+            admin.setWallet(admin.getWallet() + adminMoney);
+        }
+
         return "redirect:/listorder";
     }
 

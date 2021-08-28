@@ -11,4 +11,5 @@ public interface OrderItemService {
     OrderItem saveItem(OrderItem orderItem);
     void saveOrderItem( UserEntity userEntity , OrderEntity orderEntity);
     List<OrderItem> findByProduct(ProductEntity productEntity);
+    List<OrderItem> getListOrderItem(OrderEntity orderEntity);
 }
