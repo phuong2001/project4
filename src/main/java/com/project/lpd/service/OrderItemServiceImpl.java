@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class OrderItemServiceImpl implements OrderItemService{
@@ -41,6 +42,16 @@ public class OrderItemServiceImpl implements OrderItemService{
     @Override
     public List<OrderItem> findByProduct(ProductEntity productEntity) {
         return orderItemRepo.findByProducts(productEntity);
+    }
+
+    @Override
+    public List<OrderItem> getAllOr() {
+        return orderItemRepo.findAll();
+    }
+
+    @Override
+    public List<OrderItem> findByOrders(OrderEntity orderEntity) {
+        return orderItemRepo.findByOrders(orderEntity);
     }
 
 }

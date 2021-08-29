@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.jws.WebParam;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class OrderController {
@@ -50,14 +51,11 @@ public class OrderController {
 
 
     @GetMapping("/orderdetail")
-    public String orderUserDetail(Model model, @RequestParam(value = "id", defaultValue = "0") int id){
-        List<ProductEntity> products = productService.getAllProduct();
-        for (ProductEntity product : products){
-            List<OrderItem> orderitems = orderItemService.findByProduct(product);
-            model.addAttribute("orderitem",orderitems);
-        }
+    public String orderUserDetail(Model model, @RequestParam(value = "id", defaultValue = "0") int id, Authentication authentication){
         OrderEntity order = orderService.getById(id);
-        model.addAttribute("ord", order);
+        List<OrderItem> orderitem = orderItemService.findByOrders(order);
+        model.addAttribute("orderitem",orderitem);
+        model.addAttribute("order",order);
         return "orderdetail";
     }
 

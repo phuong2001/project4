@@ -9,8 +9,11 @@ public interface OrderService {
     OrderEntity createOrder(OrderEntity p);
     OrderEntity saveOrder(OrderEntity p);
     List<OrderEntity> getAllOrder(Pageable pageable);
+    List<OrderEntity> getAllOrd();
     int getTotalPage(Pageable pageable);
     List<OrderEntity> getOrderByUser(UserEntity userEntity);
+    List<OrderEntity> findByOrderItems(OrderItem orderItem);
 //    List<OrderEntity> getOrderSeller(UserEntity user);
     OrderEntity getById(int id);
+
 }

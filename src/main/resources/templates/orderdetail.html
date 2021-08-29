@@ -9,13 +9,6 @@
 </head>
 <body>
 <div class="main-panel" layout:fragment="content">
-    <div class="user-detail" th:object="${ord}">
-        <p >Phone</p><p th:text="${ord.phone}"></p>
-        <p >Description</p><p th:text="${ord.description}"  ></p>
-        <p >Address</p><p th:text="${ord.address}"></p>
-        <p >Fullname</p><p th:text="${ord.fullname}"></p>
-        <p >Price total</p><p th:text="${ord.priceTotal}"></p>
-    </div>
     <div class="content">
         <div class="container-fluid">
             <div class="row">
@@ -25,22 +18,40 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class=" text-primary">
-                                    <th scope="col">Product</th>
-                                    <th scope="col">Total</th>
-                                    <th scope="col">Status</th>
-                                    <th scope="col">createdAt</th>
+                                    <th scope="col">user</th>
+                                    <th scope="col">Product Name</th>
+                                    <th scope="col">Product Price</th>
+                                    <th scope="col">Quantity</th>
+                                    <th scope="col">Product Seller</th>
+                                    <th scope="col">Unit Price</th>
                                     </thead>
                                     <tbody>
                                     <tr th:each="item : ${orderitem}">
-                                        <td th:text="${item.products.name}"></td>
-                                        <td th:text="${item.orders.priceTotal}"></td>
-                                        <td th:text="${item.orders.status}"></td>
-                                        <td th:text="${item.orders.createdAt}"></td>
+                                        <td scope="row"  th:text="${item.products.name}"></td>
+                                        <th th:text="${item.products.price}"></th>
+                                        <td th:text="${item.quantity}"></td>
+                                        <th th:text="${item.products.user.username}"></th>
+                                        <th th:text="${item.unitPrice}"></th>
                                     </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                    </div>
+                    <div class="user_order" th:object="${order}">
+                        <div class="col-md-12">
+                            <div class="col-md-6">
+                                <span>Customer: <p th:text="${order.user.username}"></p></span>
+                                <span>Description: <p th:text="${order.description}"></p></span>
+                                <span>Phone: <p th:text="${order.phone}"></p></span>
+                                <span>Address: <p th:text="${order.address}"></p></span>
+                                <span>createdAt: <p th:text="${order.createdAt}"></p></span>
+                            </div>
+                            <div class="col-md-6" >
+                                <span>Total: <p th:text="${order.subtotal}"></p></span>
+                            </div>
+                        </div>
+
                     </div>
                 </div>
             </div>
