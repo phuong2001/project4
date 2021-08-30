@@ -26,7 +26,6 @@
                                         <th scope="col">Action</th>
                                         </thead>
                                         <tbody>
-
                                         <tr th:each="ord : ${orderItem}">
                                             <td th:text="${ord.phone}"></td>
                                             <td th:text="${ord.address}"></td>
@@ -36,7 +35,7 @@
                                             <td>
                                                 <form method="post" action="/user_confirm">
                                                 <input type="hidden" name="id" th:value="${ord.orderid}">
-                                                <button type="submit" class="btn btn-primary">Received</button>
+                                                <button type="submit" class="btn btn-primary" th:if="${ord.status} == 'DELIVERED' ">Received</button>
                                                 <a class="btn btn-success" th:href="@{/orderdetail(id=${ord.orderid})}">Detail</a>
                                                 </form>
                                             </td>
