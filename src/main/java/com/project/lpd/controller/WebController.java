@@ -9,7 +9,10 @@ import com.project.lpd.service.UserService;
 import com.project.lpd.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -44,7 +47,6 @@ public class WebController {
         model.addAttribute("user",userDto);
         return "LoginPage";
     }
-
 
     @PostMapping("/register")
     public String register(@ModelAttribute("user") UserDto userDto, Model model){
