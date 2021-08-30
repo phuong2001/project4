@@ -15,5 +15,6 @@ public interface OrderService {
     List<OrderEntity> findByOrderItems(OrderItem orderItem);
 //    List<OrderEntity> getOrderSeller(UserEntity user);
     OrderEntity getById(int id);
+    List<OrderEntity> getTopOrder(int top);
 
 }

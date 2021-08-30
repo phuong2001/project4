@@ -307,148 +307,35 @@
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
 
-                        <div class="product">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="images/index/products/product-2.jpg" alt="Product image"
-                                         class="product-image">
-                                </a>
+                        <div class="col-6 col-md-4" th:each="products : ${products}">
+                            <div class="product">
+                                <figure class="product-media">
+                                    <a href="product.html" th:href="@{/productdetail(id=${products.productid})}">
+                                        <img  th:src="@{${'/images/' + products.image}}" alt="Product image" class="product-image">
+                                    </a>
 
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to Wishlist"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action-vertical -->
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"
+                                           title="Add to Wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
 
-                                <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                                    <div class="product-action">
+                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
 
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Shooter</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">World War Z</a></h3>
-                                <!-- End .product-title -->
-                                <div class="product-price">
-                                    $39.99
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product">
-                            <figure class="product-media">
-                                <span class="product-label label-top">Top</span>
-                                <a href="product.html">
-                                    <img src="images/index/products/product-3.jpg" alt="Product image"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to Wishlist"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action-vertical -->
-
-                                <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Shooter</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">Borderlands: <br>The Handsome
-                                    Collection</a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    $59.99
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="images/index/products/product-4.jpg" alt="Product image"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to Wishlist"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action-vertical -->
-
-                                <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Action & adventure</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">The Witcher 3: Wild Hunt</a></h3>
-                                <!-- End .product-title -->
-                                <div class="product-price">
-                                    $39.99
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product">
-                            <figure class="product-media">
-                                <span class="product-label label-sale">Sale</span>
-                                <a href="product.html">
-                                    <img src="images/index/products/product-5.jpg" alt="Product image"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to Wishlist"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action-vertical -->
-
-                                <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Action & adventure</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">GTA Online: Criminal Enterprise Starter
-                                    Pack</a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    <span class="new-price">$19.49</span>
-                                    <span class="old-price">Was $24.49</span>
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="images/index/products/product-6.jpg" alt="Product image"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to Wishlist"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action-vertical -->
-
-                                <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Shooter</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">Tom Clancy’s <br>Ghost Recon Wildlands</a>
-                                </h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    $49.99
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
+                                <div class="product-body">
+                                    <div class="product-cat">
+                                        <a href="#" th:text="${products.category.name}">Sport</a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title"><a href="product.html" th:href="@{/productdetail(id=${products.productid})}" th:text="${products.name}" >NBA 2K19 450,000 VC</a></h3>
+                                    <!-- End .product-title -->
+                                    <div class="product-price" th:text="${products.price}">
+                                        $74.99
+                                    </div><!-- End .product-price -->
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
+                        </div>
                     </div><!-- End .owl-carousel -->
                 </div><!-- .End .tab-pane -->
                 <div class="tab-pane p-0 fade" id="products-new-tab" role="tabpanel"
@@ -506,150 +393,35 @@
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
 
-                        <div class="product">
-                            <figure class="product-media">
-                                <span class="product-label label-sale">Sale</span>
-                                <a href="product.html">
-                                    <img src="images/index/products/product-5.jpg" alt="Product image"
-                                         class="product-image">
-                                </a>
+                        <div class="col-6 col-md-4" th:each="products : ${products}">
+                            <div class="product">
+                                <figure class="product-media">
+                                    <a href="product.html" th:href="@{/productdetail(id=${products.productid})}">
+                                        <img  th:src="@{${'/images/' + products.image}}" alt="Product image" class="product-image">
+                                    </a>
 
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to Wishlist"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action-vertical -->
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"
+                                           title="Add to Wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
 
-                                <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                                    <div class="product-action">
+                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
 
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Action & adventure</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">GTA Online: Criminal Enterprise Starter
-                                    Pack</a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    <span class="new-price">$19.49</span>
-                                    <span class="old-price">Was $24.49</span>
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="images/index/products/product-2.jpg" alt="Product image"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to Wishlist"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action-vertical -->
-
-                                <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Shooter</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">World War Z</a></h3>
-                                <!-- End .product-title -->
-                                <div class="product-price">
-                                    $39.99
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product">
-                            <figure class="product-media">
-                                <span class="product-label label-sale">Sale</span>
-                                <a href="product.html">
-                                    <img src="images/index/products/product-1.jpg" alt="Product image"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to Wishlist"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action-vertical -->
-
-                                <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Shooter</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">Call of Duty <br>WWII - Gold
-                                    Edition</a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    <span class="new-price">$24.00</span>
-                                    <span class="old-price">Was $59.99</span>
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product">
-                            <figure class="product-media">
-                                <span class="product-label label-top">Top</span>
-                                <a href="product.html">
-                                    <img src="images/index/products/product-3.jpg" alt="Product image"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to Wishlist"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action-vertical -->
-
-                                <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Shooter</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">Borderlands: <br>The Handsome
-                                    Collection</a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    $59.99
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="images/index/products/product-4.jpg" alt="Product image"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to Wishlist"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action-vertical -->
-
-                                <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Action & adventure</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">The Witcher 3: Wild Hunt</a></h3>
-                                <!-- End .product-title -->
-                                <div class="product-price">
-                                    $39.99
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
+                                <div class="product-body">
+                                    <div class="product-cat">
+                                        <a href="#" th:text="${products.category.name}">Sport</a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title"><a href="product.html" th:href="@{/productdetail(id=${products.productid})}" th:text="${products.name}" >NBA 2K19 450,000 VC</a></h3>
+                                    <!-- End .product-title -->
+                                    <div class="product-price" th:text="${products.price}">
+                                        $74.99
+                                    </div><!-- End .product-price -->
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
+                        </div>
                     </div><!-- End .owl-carousel -->
                 </div><!-- .End .tab-pane -->
                 <div class="tab-pane p-0 fade" id="products-best-tab" role="tabpanel"
@@ -708,119 +480,35 @@
                             </div><!-- End .product-body -->
                         </div><!-- End .product -->
 
-                        <div class="product">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="images/index/products/product-2.jpg" alt="Product image"
-                                         class="product-image">
-                                </a>
+                        <div class="col-6 col-md-4" th:each="products : ${products}">
+                            <div class="product">
+                                <figure class="product-media">
+                                    <a href="product.html" th:href="@{/productdetail(id=${products.productid})}">
+                                        <img  th:src="@{${'/images/' + products.image}}" alt="Product image" class="product-image">
+                                    </a>
 
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to Wishlist"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action-vertical -->
+                                    <div class="product-action-vertical">
+                                        <a href="#" class="btn-product-icon btn-wishlist"
+                                           title="Add to Wishlist"><span>add to wishlist</span></a>
+                                    </div><!-- End .product-action-vertical -->
 
-                                <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
+                                    <div class="product-action">
+                                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                                    </div><!-- End .product-action -->
+                                </figure><!-- End .product-media -->
 
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Shooter</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">World War Z</a></h3>
-                                <!-- End .product-title -->
-                                <div class="product-price">
-                                    $39.99
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="images/index/products/product-4.jpg" alt="Product image"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to Wishlist"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action-vertical -->
-
-                                <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Action & adventure</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">The Witcher 3: Wild Hunt</a></h3>
-                                <!-- End .product-title -->
-                                <div class="product-price">
-                                    $39.99
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product">
-                            <figure class="product-media">
-                                <span class="product-label label-sale">Sale</span>
-                                <a href="product.html">
-                                    <img src="images/index/products/product-5.jpg" alt="Product image"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to Wishlist"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action-vertical -->
-
-                                <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Action & adventure</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">GTA Online: Criminal Enterprise Starter
-                                    Pack</a></h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    <span class="new-price">$19.49</span>
-                                    <span class="old-price">Was $24.49</span>
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
-
-                        <div class="product">
-                            <figure class="product-media">
-                                <a href="product.html">
-                                    <img src="images/index/products/product-6.jpg" alt="Product image"
-                                         class="product-image">
-                                </a>
-
-                                <div class="product-action-vertical">
-                                    <a href="#" class="btn-product-icon btn-wishlist" title="Add to Wishlist"><span>add to wishlist</span></a>
-                                </div><!-- End .product-action-vertical -->
-
-                                <div class="product-action">
-                                    <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                </div><!-- End .product-action -->
-                            </figure><!-- End .product-media -->
-
-                            <div class="product-body">
-                                <div class="product-cat">
-                                    <a href="#">Shooter</a>
-                                </div><!-- End .product-cat -->
-                                <h3 class="product-title"><a href="product.html">Tom Clancy’s <br>Ghost Recon Wildlands</a>
-                                </h3><!-- End .product-title -->
-                                <div class="product-price">
-                                    $49.99
-                                </div><!-- End .product-price -->
-                            </div><!-- End .product-body -->
-                        </div><!-- End .product -->
+                                <div class="product-body">
+                                    <div class="product-cat">
+                                        <a href="#" th:text="${products.category.name}">Sport</a>
+                                    </div><!-- End .product-cat -->
+                                    <h3 class="product-title"><a href="product.html" th:href="@{/productdetail(id=${products.productid})}" th:text="${products.name}" >NBA 2K19 450,000 VC</a></h3>
+                                    <!-- End .product-title -->
+                                    <div class="product-price" th:text="${products.price}">
+                                        $74.99
+                                    </div><!-- End .product-price -->
+                                </div><!-- End .product-body -->
+                            </div><!-- End .product -->
+                        </div>
                     </div><!-- End .owl-carousel -->
                 </div><!-- .End .tab-pane -->
             </div><!-- End .tab-content -->
@@ -924,12 +612,11 @@
                                 </div><!-- End .product -->
                             </div><!-- End .col-sm-6 col-md-4 -->
 
-                            <div class="col-6 col-md-4">
+                            <div class="col-6 col-md-4" th:each="products : ${products}">
                                 <div class="product">
                                     <figure class="product-media">
-                                        <a href="product.html">
-                                            <img src="images/index/products/product-7.jpg" alt="Product image"
-                                                 class="product-image">
+                                        <a href="product.html" th:href="@{/productdetail(id=${products.productid})}">
+                                            <img  th:src="@{${'/images/' + products.image}}" alt="Product image" class="product-image">
                                         </a>
 
                                         <div class="product-action-vertical">
@@ -944,140 +631,18 @@
 
                                     <div class="product-body">
                                         <div class="product-cat">
-                                            <a href="#">Sport</a>
+                                            <a href="#" th:text="${products.category.name}">Sport</a>
                                         </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">NBA 2K19 450,000 VC</a></h3>
+                                        <h3 class="product-title"><a href="product.html" th:href="@{/productdetail(id=${products.productid})}" th:text="${products.name}" >NBA 2K19 450,000 VC</a></h3>
                                         <!-- End .product-title -->
-                                        <div class="product-price">
+                                        <div class="product-price" th:text="${products.price}">
                                             $74.99
                                         </div><!-- End .product-price -->
                                     </div><!-- End .product-body -->
                                 </div><!-- End .product -->
                             </div><!-- End .col-sm-6 col-md-4 -->
 
-                            <div class="col-6 col-md-4">
-                                <div class="product">
-                                    <figure class="product-media">
-                                        <a href="product.html">
-                                            <img src="images/index/products/product-8.jpg" alt="Product image"
-                                                 class="product-image">
-                                        </a>
 
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist"
-                                               title="Add to Wishlist"><span>add to wishlist</span></a>
-                                        </div><!-- End .product-action-vertical -->
-
-                                        <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
-
-                                    <div class="product-body">
-                                        <div class="product-cat">
-                                            <a href="#">Shooter</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">STAR WARS Battlefront II</a>
-                                        </h3><!-- End .product-title -->
-                                        <div class="product-price">
-                                            $24.99
-                                        </div><!-- End .product-price -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-                            </div><!-- End .col-sm-6 col-md-4 -->
-
-                            <div class="col-6 col-md-4">
-                                <div class="product">
-                                    <figure class="product-media">
-                                        <a href="product.html">
-                                            <img src="images/index/products/product-9.jpg" alt="Product image"
-                                                 class="product-image">
-                                        </a>
-
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist"
-                                               title="Add to Wishlist"><span>add to wishlist</span></a>
-                                        </div><!-- End .product-action-vertical -->
-
-                                        <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
-
-                                    <div class="product-body">
-                                        <div class="product-cat">
-                                            <a href="#">Shooter</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">Call of Duty: Black Ops 4
-                                            Spectre Rising Edition</a></h3><!-- End .product-title -->
-                                        <div class="product-price">
-                                            $39.99
-                                        </div><!-- End .product-price -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-                            </div><!-- End .col-sm-6 col-md-4 -->
-
-                            <div class="col-6 col-md-4">
-                                <div class="product">
-                                    <figure class="product-media">
-                                        <a href="product.html">
-                                            <img src="images/index/products/product-10.jpg" alt="Product image"
-                                                 class="product-image">
-                                        </a>
-
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist"
-                                               title="Add to Wishlist"><span>add to wishlist</span></a>
-                                        </div><!-- End .product-action-vertical -->
-
-                                        <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart"><span>Pre-order Now</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
-
-                                    <div class="product-body">
-                                        <div class="product-cat">
-                                            <a href="#">Role playing</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">Diablo III: <br>Eternal
-                                            Collection</a></h3><!-- End .product-title -->
-                                        <div class="product-price">
-                                            $19.99
-                                        </div><!-- End .product-price -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-                            </div><!-- End .col-sm-6 col-md-4 -->
-
-                            <div class="col-6 col-md-4">
-                                <div class="product">
-                                    <figure class="product-media">
-                                        <a href="product.html">
-                                            <img src="images/index/products/product-11.jpg" alt="Product image"
-                                                 class="product-image">
-                                        </a>
-
-                                        <div class="product-action-vertical">
-                                            <a href="#" class="btn-product-icon btn-wishlist"
-                                               title="Add to Wishlist"><span>add to wishlist</span></a>
-                                        </div><!-- End .product-action-vertical -->
-
-                                        <div class="product-action">
-                                            <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                                        </div><!-- End .product-action -->
-                                    </figure><!-- End .product-media -->
-
-                                    <div class="product-body">
-                                        <div class="product-cat">
-                                            <a href="#">Role playing</a>
-                                        </div><!-- End .product-cat -->
-                                        <h3 class="product-title"><a href="product.html">Tom Clancy's <br>The Division 2</a>
-                                        </h3><!-- End .product-title -->
-                                        <div class="product-price">
-                                            $24.99
-                                        </div><!-- End .product-price -->
-                                    </div><!-- End .product-body -->
-                                </div><!-- End .product -->
-                            </div><!-- End .col-sm-6 col-md-4 -->
                         </div><!-- End .row -->
                     </div><!-- End .products -->
                 </div><!-- End .col-lg-7 -->
@@ -1210,13 +775,12 @@
                         $149.99
                     </div><!-- End .product-price -->
                 </div><!-- End .product-body -->
-            </div><!-- End .product -->
-
+            </div>
             <div class="product">
                 <figure class="product-media">
-                    <span class="product-label label-top">Top</span>
+                    <span class="product-label label-new">New</span>
                     <a href="product.html">
-                        <img src="images/index/products/product-13.jpg" alt="Product image" class="product-image">
+                        <img src="images/index/products/product-12.jpg" alt="Product image" class="product-image">
                     </a>
 
                     <div class="product-action-vertical">
@@ -1230,18 +794,18 @@
                 </figure><!-- End .product-media -->
 
                 <div class="product-body">
-                    <h3 class="product-title"><a href="product.html">Sony - PlayStation 4 1TB Console - Black</a></h3>
+                    <h3 class="product-title"><a href="product.html">Microsoft - Xbox Elite Wireless Controller</a></h3>
                     <!-- End .product-title -->
                     <div class="product-price">
-                        $299.99
+                        $149.99
                     </div><!-- End .product-price -->
                 </div><!-- End .product-body -->
-            </div><!-- End .product -->
-
+            </div>
             <div class="product">
                 <figure class="product-media">
+                    <span class="product-label label-new">New</span>
                     <a href="product.html">
-                        <img src="images/index/products/product-14.jpg" alt="Product image" class="product-image">
+                        <img src="images/index/products/product-12.jpg" alt="Product image" class="product-image">
                     </a>
 
                     <div class="product-action-vertical">
@@ -1255,7 +819,57 @@
                 </figure><!-- End .product-media -->
 
                 <div class="product-body">
-                    <h3 class="product-title"><a href="product.html">Nintendo - Switch 32GB Console</a></h3>
+                    <h3 class="product-title"><a href="product.html">Microsoft - Xbox Elite Wireless Controller</a></h3>
+                    <!-- End .product-title -->
+                    <div class="product-price">
+                        $149.99
+                    </div><!-- End .product-price -->
+                </div><!-- End .product-body -->
+            </div>
+            <div class="product">
+                <figure class="product-media">
+                    <span class="product-label label-new">New</span>
+                    <a href="product.html">
+                        <img src="images/index/products/product-12.jpg" alt="Product image" class="product-image">
+                    </a>
+
+                    <div class="product-action-vertical">
+                        <a href="#" class="btn-product-icon btn-wishlist"
+                           title="Add to Wishlist"><span>add to wishlist</span></a>
+                    </div><!-- End .product-action-vertical -->
+
+                    <div class="product-action">
+                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                    </div><!-- End .product-action -->
+                </figure><!-- End .product-media -->
+
+                <div class="product-body">
+                    <h3 class="product-title"><a href="product.html">Microsoft - Xbox Elite Wireless Controller</a></h3>
+                    <!-- End .product-title -->
+                    <div class="product-price">
+                        $149.99
+                    </div><!-- End .product-price -->
+                </div><!-- End .product-body -->
+            </div>
+            <div class="product">
+                <figure class="product-media">
+                    <span class="product-label label-new">New</span>
+                    <a href="product.html">
+                        <img src="images/index/products/product-12.jpg" alt="Product image" class="product-image">
+                    </a>
+
+                    <div class="product-action-vertical">
+                        <a href="#" class="btn-product-icon btn-wishlist"
+                           title="Add to Wishlist"><span>add to wishlist</span></a>
+                    </div><!-- End .product-action-vertical -->
+
+                    <div class="product-action">
+                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
+                    </div><!-- End .product-action -->
+                </figure><!-- End .product-media -->
+
+                <div class="product-body">
+                    <h3 class="product-title"><a href="product.html">Microsoft - Xbox Elite Wireless Controller</a></h3>
                     <!-- End .product-title -->
                     <div class="product-price">
                         $149.99
@@ -1263,56 +877,10 @@
                 </div><!-- End .product-body -->
             </div><!-- End .product -->
 
-            <div class="product">
-                <figure class="product-media">
-                    <span class="product-label label-top">Top</span>
-                    <a href="product.html">
-                        <img src="images/index/products/product-15.jpg" alt="Product image" class="product-image">
-                    </a>
 
-                    <div class="product-action-vertical">
-                        <a href="#" class="btn-product-icon btn-wishlist"
-                           title="Add to Wishlist"><span>add to wishlist</span></a>
-                    </div><!-- End .product-action-vertical -->
 
-                    <div class="product-action">
-                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                    </div><!-- End .product-action -->
-                </figure><!-- End .product-media -->
 
-                <div class="product-body">
-                    <h3 class="product-title"><a href="product.html">HyperX - Cloud Alpha Wired Stereo Gaming
-                        Headset</a></h3><!-- End .product-title -->
-                    <div class="product-price">
-                        $99.99
-                    </div><!-- End .product-price -->
-                </div><!-- End .product-body -->
-            </div><!-- End .product -->
 
-            <div class="product">
-                <figure class="product-media">
-                    <a href="product.html">
-                        <img src="images/index/products/product-16.jpg" alt="Product image" class="product-image">
-                    </a>
-
-                    <div class="product-action-vertical">
-                        <a href="#" class="btn-product-icon btn-wishlist"
-                           title="Add to Wishlist"><span>add to wishlist</span></a>
-                    </div><!-- End .product-action-vertical -->
-
-                    <div class="product-action">
-                        <a href="#" class="btn-product btn-cart"><span>add to cart</span></a>
-                    </div><!-- End .product-action -->
-                </figure><!-- End .product-media -->
-
-                <div class="product-body">
-                    <h3 class="product-title"><a href="product.html">Logitech - G502 HERO Wired Optical Gaming Mouse
-                        Pack</a></h3><!-- End .product-title -->
-                    <div class="product-price">
-                        $59.99
-                    </div><!-- End .product-price -->
-                </div><!-- End .product-body -->
-            </div><!-- End .product -->
         </div><!-- End .owl-carousel -->
 
         <div class="mb-5"></div><!-- End .mb-4 -->

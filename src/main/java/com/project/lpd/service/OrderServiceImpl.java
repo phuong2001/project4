@@ -65,6 +65,10 @@ public class OrderServiceImpl implements OrderService {
     public OrderEntity getById(int id) {
         return orderRepo.findById(id).get();
     }
+    @Override
+    public List<OrderEntity> getTopOrder(int top) {
+        return orderRepo.findTopOrder(top);
+    }
 
 
 //    @Override
