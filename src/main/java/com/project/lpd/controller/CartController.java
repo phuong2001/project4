@@ -31,10 +31,15 @@ public class CartController {
 
     @GetMapping("/cart")
     public String showCart(Model model, Authentication authentication){
+        double totalPrice =0;
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         List<CartItemEntity> cartItem = cartService.getCartByUser(userEntity);
+        for (CartItemEntity itemcart : cartItem){
+            totalPrice += (itemcart.getSubtotal());
+        }
         model.addAttribute("cartItem",cartItem);
+        model.addAttribute("total", totalPrice);
         return "cart";
     }
 
@@ -49,11 +54,15 @@ public class CartController {
 
 
     @PostMapping("/updatecart")
-    public String updateCart(Authentication authentication, @PathVariable("qty") int editQuantity ){
+    public String updateCart(Authentication authentication, @RequestParam("qty") int editQuantity ){
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
-        cartService.UpdateCart(userEntity,editQuantity);
-        return "cart";
+        List<CartItemEntity> carts = cartService.getCartByUser(userEntity);
+        for (CartItemEntity item : carts){
+            item.setQuantity(editQuantity);
+            cartService.UpdateCart(item);
+        }
+        return "redirect:/cart";
     }
 
 

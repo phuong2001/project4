@@ -25,6 +25,7 @@
                                     <th scope="col">Total</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">createdAt</th>
+                                    <th scope="col">Money Recived</th>
                                     <th scope="col">Action</th>
                                     </thead>
                                     <tbody>
@@ -34,6 +35,7 @@
                                             <td th:text="${item.orders.priceTotal}"></td>
                                             <td th:text="${item.orders.status}"></td>
                                             <td th:text="${item.orders.createdAt}"></td>
+                                            <td th:text="${money} + ' (-20% fee)'"></td>
                                             <td th:if="${item.orders.status} != 'DELIVERED' ">
                                                 <form method="post" action="/seller_confirm">
                                                 <input type="hidden" name="id" th:value="${item.orders.orderid}">

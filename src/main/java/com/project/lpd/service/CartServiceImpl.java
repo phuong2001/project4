@@ -57,12 +57,8 @@ public class CartServiceImpl implements CartService {
         return addQuantity;
     }
 
-    public void UpdateCart(UserEntity user, int editQuantity){
-        List<CartItemEntity> carts = cartRepo.findByUser(user);
-        for (CartItemEntity item : carts){
-            item.setQuantity(editQuantity);
-        }
-        cartRepo.saveAll(carts);
+    public void UpdateCart(CartItemEntity cartItemEntity){
+        cartRepo.save(cartItemEntity);
     }
 
     @Override

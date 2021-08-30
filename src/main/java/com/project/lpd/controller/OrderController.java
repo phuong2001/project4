@@ -101,6 +101,10 @@ public class OrderController {
         for (ProductEntity product : products){
             List<OrderItem> orderitems = orderItemService.findByProduct(product);
             model.addAttribute("orderitem",orderitems);
+            for (OrderItem item : orderitems){
+               double sellermoney = item.getUnitPrice() * 80 /100;
+               model.addAttribute("money",sellermoney);
+            }
         }
         return "buyer_order";
     }
