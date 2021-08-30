@@ -184,7 +184,7 @@
                                                 <p th:text="${userEntity.username}"></p>
                                                 <p th:text="${userEntity.email}"></p>
                                                 <p th:text="${userEntity.phone}"></p>
-                                                    <a  th:href="@{/updateprofile(id=${userEntity.id})}" th:text="Edit">Edit <i class="icon-edit"></i></a>
+                                              <!--      <a  href="/tab-account" th:text="Edit">Edit <i class="icon-edit"></i></a>-->
                                             </div><!-- End .card-body -->
                                         </div><!-- End .card-dashboard -->
                                     </div><!-- End .col-lg-6 -->
@@ -202,21 +202,21 @@
                                 </div><!-- End .row -->
                             </div><!-- .End .tab-pane -->
 
-                            <!--<div class="tab-pane fade" id="tab-account" role="tabpanel" aria-labelledby="tab-account-link">
-                                <form method="post" action="/updateprofile" th:action="@{/updateprofile/{id}(id=${userentity.id})}" th:object="${userentity}" >
+                            <div class="tab-pane fade" id="tab-account" role="tabpanel" aria-labelledby="tab-account-link">
+                                <form method="post" action="#" th:action="@{/updateprofile/{id}(id=${userEntity.id})}" th:object="${userEntity}" >
 
                                     <label for="phone">Phone</label>
-                                    <input type="text" name="phone"  th:field="${userentity.phone}" class="form-control" >
+                                    <input type="text" name="phone"  th:field="${userEntity.phone}" class="form-control" placeholder="Phone">
 
                                     <label for="email">Email</label>
-                                    <input type="text" name="email" th:field="${userentity.email}" class="form-control">
+                                    <input type="text" name="email" th:field="${userEntity.email}" class="form-control" placeholder="Email">
 
                                     <button type="submit" class="btn btn-outline-primary-2">
                                         <span>SAVE CHANGES</span>
                                         <i class="icon-long-arrow-right"></i>
                                     </button>
                                 </form>
-                            </div>&lt;!&ndash; .End .tab-pane &ndash;&gt;-->
+                            </div><!-- .End .tab-pane -->
                         </div>
                     </div><!-- End .col-lg-9 -->
                 </div><!-- End .row -->

@@ -34,16 +34,11 @@ public class ProfileController {
         return "profile";
     }
 
-    @GetMapping("/updateprofile")
-    public String updateUserProfile(Model model, @RequestParam(value = "id", defaultValue = "0") int id){
-        UserEntity userentity = userService.getUserById(id);
-        model.addAttribute("userentity",userentity);
-        return "updateprofile";
-    }
-
-    @PostMapping("/updateprofile")
-    public String updateUserP(@ModelAttribute UserEntity userEntity) {
+    @PostMapping("/updateprofile/{id}")
+    public String updateUserP(Model model, Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         userService.updateUserProfile(userEntity);
-        return "redirect:/";
+        return "redirect:/profile";
     }
 }
