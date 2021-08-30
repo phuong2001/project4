@@ -44,6 +44,16 @@ public class OrderItemServiceImpl implements OrderItemService{
     }
 
     @Override
+    public List<OrderItem> getAllOr() {
+        return orderItemRepo.findAll();
+    }
+
+    @Override
+    public List<OrderItem> findByOrders(OrderEntity orderEntity) {
+        return orderItemRepo.findByOrders(orderEntity);
+    }
+
+    @Override
     public List<OrderItem> getListOrderItem(OrderEntity orderEntity) {
         return orderItemRepo.findByOrders(orderEntity);
     }

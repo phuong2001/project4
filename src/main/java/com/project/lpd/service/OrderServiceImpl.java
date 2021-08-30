@@ -42,6 +42,11 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<OrderEntity> getAllOrd() {
+        return orderRepo.findAll();
+    }
+
+    @Override
     public int getTotalPage(Pageable pageable) {
         return orderRepo.findAll(pageable).getTotalPages();
     }
@@ -52,9 +57,15 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
+    public List<OrderEntity> findByOrderItems(OrderItem orderItem) {
+        return orderRepo.findByOrderItems(orderItem);
+    }
+
+    @Override
     public OrderEntity getById(int id) {
         return orderRepo.findById(id).get();
     }
+
 
 //    @Override
 //    public List<OrderEntity> getOrderSeller(UserEntity user) {
