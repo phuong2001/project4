@@ -18,7 +18,6 @@
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead class=" text-primary">
-                                    <th scope="col">user</th>
                                     <th scope="col">Product Name</th>
                                     <th scope="col">Product Price</th>
                                     <th scope="col">Quantity</th>
@@ -39,19 +38,27 @@
                         </div>
                     </div>
                     <div class="user_order" th:object="${order}">
-                        <div class="col-md-12">
-                            <div class="col-md-6">
-                                <span>Customer: <p th:text="${order.user.username}"></p></span>
-                                <span>Description: <p th:text="${order.description}"></p></span>
-                                <span>Phone: <p th:text="${order.phone}"></p></span>
-                                <span>Address: <p th:text="${order.address}"></p></span>
-                                <span>createdAt: <p th:text="${order.createdAt}"></p></span>
-                            </div>
-                            <div class="col-md-6" >
-                                <span>Total: <p th:text="${order.subtotal}"></p></span>
-                            </div>
-                        </div>
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="card card-dashboard">
+                                    <div class="card-body">
+                                        <span>Customer: <p th:text="${order.user.username}"></p></span>
+                                        <span>Description: <p th:text="${order.description}"></p></span>
+                                        <span>Phone: <p th:text="${order.phone}"></p></span>
+                                        <span>Address: <p th:text="${order.address}"></p></span>
+                                        <span>createdAt: <p th:text="${order.createdAt}"></p></span>
+                                    </div><!-- End .card-body -->
+                                </div><!-- End .card-dashboard -->
+                            </div><!-- End .col-lg-6 -->
 
+                            <div class="col-lg-6">
+                                <div class="card card-dashboard">
+                                    <div class="card-body">
+                                        <span>Total: <p th:text="${order.subtotal}"></p></span>
+                                    </div><!-- End .card-body -->
+                                </div><!-- End .card-dashboard -->
+                            </div><!-- End .col-lg-6 -->
+                        </div><!-- End .row -->
                     </div>
                 </div>
             </div>

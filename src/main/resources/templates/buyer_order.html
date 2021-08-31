@@ -46,6 +46,7 @@
                                             <td th:if="${item.orders.status} == 'DELIVERED' ">
                                                 <p class="font-weight-bold">CONFIRMED</p>
                                             </td>
+                                            <td><a class="btn btn-success" th:href="@{/orderdetail(id=${item.orders.orderid})}">Detail</a></td>
                                         </tr>
                                     </tbody>
                                 </table>
