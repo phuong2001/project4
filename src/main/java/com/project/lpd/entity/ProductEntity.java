@@ -57,4 +57,6 @@ public class ProductEntity {
     @ManyToOne()
     @JoinColumn(name = "userid", insertable = false, updatable = false)
     private UserEntity user;
+
+
 }

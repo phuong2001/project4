@@ -43,4 +43,9 @@ public class NewsServiceImpl implements NewsService{
     public NewsEntity updateNew(NewsEntity p) {
         return newsRepo.save(p);
     }
+
+    @Override
+    public List<NewsEntity> getNewsByFullName(String name) {
+        return newsRepo.findByFullName(name);
+    }
 }

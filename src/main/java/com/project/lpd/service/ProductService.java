@@ -20,5 +20,11 @@ public interface ProductService {
      int getTotalPage(Pageable pageable);
      List<ProductEntity> getProductByUser(UserEntity userEntity);
      List<ProductEntity> getProductByCategory(CategoryEntity categoryEntity);
+
+     List<ProductEntity> getProductByFullName(String name);
+
+
+
+
      int CountProduct(int id);
 }

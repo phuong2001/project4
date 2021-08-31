@@ -20,6 +20,7 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     ProductRepo productRepo;
 
+
     @Override
     public List<ProductEntity> AllProduct(Pageable pageable) {
             return productRepo.findAll(pageable).getContent();
@@ -71,4 +72,13 @@ public class ProductServiceImpl implements ProductService {
     public int CountProduct(int id) {
         return productRepo.CountById(id);
     }
+
+    @Override
+    public List<ProductEntity> getProductByFullName(String name) {
+        return productRepo.findByFullName(name);
+    }
+
+
 }
+
+

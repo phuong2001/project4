@@ -1,5 +1,7 @@
 package com.project.lpd.controller;
 
+import com.project.lpd.entity.CategoryEntity;
+import com.project.lpd.entity.ProductEntity;
 import com.project.lpd.entity.RoleEntity;
 import com.project.lpd.entity.UserEntity;
 import com.project.lpd.model.MapperDto;
@@ -8,12 +10,11 @@ import com.project.lpd.service.ProductService;
 import com.project.lpd.service.RoleService;
 import com.project.lpd.service.UserService;
 import com.project.lpd.service.UserServiceImpl;
+import com.project.lpd.service.*;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.web.WebAttributes;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,10 +32,15 @@ public class WebController {
     @Autowired
     UserService userService;
     @Autowired
+    CategoryService categoryService;
+    @Autowired
     ProductService productService;
 
     @GetMapping({"/", "/index"})
-    public String index() {
+    public String index(Model model , @RequestParam (value = "name" ,defaultValue = "") String name)
+    {
+        List<CategoryEntity> category = categoryService.getAllCategory();
+        model.addAttribute("categorys", category);
         return "index";
     }
 
@@ -54,6 +60,20 @@ public class WebController {
         UserDto userDto = new UserDto();
         model.addAttribute("user",userDto);
         return "LoginPage";
+    }
+
+
+    @PostMapping("/searchProduct")
+    public String indexSearch(Model model , @RequestParam (defaultValue ="name") String name, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "12") int size){
+        List<ProductEntity> products = productService.getProductByFullName(name);
+        List<CategoryEntity> category = categoryService.getAllCategory();
+        int totalPage  = productService.getTotalPage(PageRequest.of(page, size));
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("size", size);
+        model.addAttribute("page", page);
+        model.addAttribute("products" , products);
+        model.addAttribute("categorys", category);
+        return "/products";
     }
 
     @PostMapping("/register")
