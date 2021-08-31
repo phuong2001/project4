@@ -83,9 +83,6 @@ public class CheckoutController {
             userService.updateUser(userEntity);
             orderService.createOrder(orderEntity);
             orderItemService.saveOrderItem(userEntity,orderEntity);
-            UserEntity admin = userService.getUserByName("admin");
-            admin.setWallet(admin.getWallet() + totalPrice);
-            userService.updateUser(admin);
             return "redirect:/success";
         } else {
 

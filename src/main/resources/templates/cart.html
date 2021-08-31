@@ -53,7 +53,7 @@
                                                 </figure>
 
                                                 <h3 class="product-title">
-                                                    <a href="#" th:text="${item.product.name}">Beige knitted elastic runner shoes</a>
+                                                    <a th:href="@{/productdetail(id=${item.product.productid})}" th:text="${item.product.name}">Beige knitted elastic runner shoes</a>
                                                     <span th:text="${item.user.address}">Address seller:So 8,Ton That Thuyet, Ha Noi</span>
                                                 </h3><!-- End .product-title -->
                                             </div><!-- End .product -->

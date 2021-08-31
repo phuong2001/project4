@@ -95,6 +95,7 @@ public class    OrderController {
 
     @GetMapping({"/listOrderProduct"})
     public String listOrderProduct(Model model, Authentication authentication){
+        double seller = 0 ;
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         List<ProductEntity> products = productService.getProductByUser(userEntity);
@@ -102,9 +103,9 @@ public class    OrderController {
             List<OrderItem> orderitems = orderItemService.findByProduct(product);
             model.addAttribute("orderitem",orderitems);
             for (OrderItem item : orderitems){
-               double sellermoney = item.getUnitPrice() * 80 /100;
-               model.addAttribute("money",sellermoney);
+                seller = item.getUnitPrice() * 80 /100;
             }
+            model.addAttribute("money", seller);
         }
         return "buyer_order";
     }
@@ -114,7 +115,7 @@ public class    OrderController {
         OrderEntity order = orderService.getById(id);
         order.setStatus("DELIVERED");
         orderService.saveOrder(order);
-        att.addFlashAttribute("mess","You has been confirm customer order.We will get your products as soon as possible ! ");
+        att.addFlashAttribute("mess","You has been confirm customer order. We will get your products as soon as possible ! ");
         return "redirect:/listOrderProduct";
     }
 
