@@ -48,12 +48,19 @@
                     <p>Notifications</p>
                 </a>
             </li>
-            <li class="nav-item ">
+            <li class="nav-item " th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}">
                 <a class="nav-link" href="/listproduct">
                     <i class="material-icons">content_paste</i>
-                    <p>My Product</p>
+                    <p>Products</p>
                 </a>
             </li>
+            <li class="nav-item " th:if="${#authorization.expression('hasAuthority(''USER'')')}">
+                <a class="nav-link" href="/listProductManager">
+                    <i class="material-icons">content_paste</i>
+                    <p>My Products</p>
+                </a>
+            </li>
+
             <li class="nav-item " th:if="${#authorization.expression('hasAuthority(''USER'')')}">
                 <a class="nav-link" href="/listorder">
                     <i class="material-icons">library_books</i>

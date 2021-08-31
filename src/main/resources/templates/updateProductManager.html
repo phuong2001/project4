@@ -3,14 +3,10 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/adminlayout/template_admin.html}">
 <head>
-
     <title>
-        Dashboard
+       Update Product
     </title>
-
-
 </head>
-
 <body>
 <div class="main-panel" layout:fragment="content">
     <div class="content">
@@ -22,60 +18,57 @@
                             <h4 class="card-title">Update </h4>
                         </div>
                         <div class="card-body">
-                            <form method="post" th:action="@{/editProductManager}" th:object="${product}">
+                            <form method="post" th:action="@{/editProductManager}" th:object="${product}" enctype="multipart/form-data">
                                 <div class="row">
                                     <div class="col-md-3">
                                         <div class="form-group">
-                                            <label for="id" class="bmd-label-floating">ID</label>
-                                            <input type="text" name="id" th:field="${product.productid}" class="form-control">
+                                            <input type="hidden" th:name="id" th:value="${product.productid}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="col-md-9">
                                         <div class="form-group">
                                             <label for="name" class="bmd-label-floating">Name</label>
-                                            <input type="text" name="name" th:field="${product.name}" class="form-control">
+                                            <input type="text" th:name="name" th:value="${product.name}" th:field ="*{name}"  class="form-control">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class="col-md-6">
                                         <div class="form-group">
-                                            <label for="image" class="bmd-label-floating">Image</label>
-                                            <input type="text" name="image" th:field="${product.image}" class="form-control" enctype="multipart/form-data">
+                                            <div class="custom-file">
+                                                <input type="file" class="custom-file-input" id="filename" th:name="filename" accept="image/jpeg,image/png,image/jpg">
+                                                <label class="custom-file-label" for="filename">Choose file</label>
+                                                <input type="hidden" name="imgname" th:value="${product.image}" >
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
                                             <label for="price" class="bmd-label-floating">Price</label>
-                                            <input type="text" name="price" th:field="${product.price}" class="form-control">
+                                            <input type="text" th:name="price" th:value="${product.price}" th:field ="*{price}"  class="form-control">
                                         </div>
                                     </div><div class="col-md-6">
                                     <div class="form-group">
                                         <label for="quantity" class="bmd-label-floating">Quantity</label>
-                                        <input type="text" name="quantity" th:field="${product.quantity}" class="form-control">
+                                        <input id="quantity" type="text" th:name="quantity" th:value="${product.quantity}" th:field ="*{quantity}"  class="form-control">
                                     </div>
                                 </div><div class="col-md-6">
                                     <div class="form-group">
                                         <label for="description" class="bmd-label-floating">Description</label>
-                                        <input type="text" name="description" th:field="${product.description}" class="form-control">
+                                        <input id = "description"type="text" th:name="description" th:value="${product.description}" th:field ="*{description}"  class="form-control">
+
                                     </div>
                                 </div>
                                     <div class="col-md-6">
                                         <div class="form-group">
 
-                                            <label for="description" class="bmd-label-floating" >Category</label>
-                                            <input type="text" name="categoryid" th:text="${product.category.name}" th:value="${product.category.categoryid}" class="form-control">
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-
-                                            <label for="description" class="bmd-label-floating">User</label>
-                                            <input type="text" name="categoryid" th:text="${product.user.username}" th:hidden="${product.user.id}" class="form-control">
+                                            <label for="category" class="bmd-label-floating" >Category</label>
+                                            <input  id="category" type="text" th:name="categoryid" th:text="${product.category.name}" th:value="${product.category.categoryid}" class="form-control">
                                         </div>
                                     </div>
                                     <button type="submit" class="btn btn-primary pull-right">Update Product User</button>
                                     <div class="clearfix"></div>
+                                </div>
                             </form>
                         </div>
                     </div>
@@ -84,6 +77,10 @@
         </div>
     </div>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+<script>
+    bsCustomFileInput.init();
+</script>
 </body>
 
 </html>
