@@ -86,6 +86,7 @@
                                         <th scope="col">Address</th>
                                         <th scope="col">fullname</th>
                                         <th scope="col">Price total</th>
+                                        <th scope="col">Create at</th>
                                         <th scope="col">Status</th>
                                         <th scope="col">Action</th>
                                         </thead>
@@ -95,6 +96,7 @@
                                             <td th:text="${ord.address}"></td>
                                             <td th:text="${ord.fullname}"></td>
                                             <td th:text="${ord.subtotal}"></td>
+                                            <td th:text="${ord.createdAt}"></td>
                                             <td th:text="${ord.status}"></td>
                                             <td>
                                                 <form method="post" action="/user_confirm">

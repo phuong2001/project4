@@ -81,9 +81,11 @@
                         <aside class="col-lg-3">
                             <div class="summary summary-cart">
                                 <h3 class="summary-title">Cart Total</h3><!-- End .summary-title -->
+                                <table class="table table-summary">
+                                <tbody>
                                     <tr class="summary-total">
                                         <td>Total:</td>
-                                        <td th:text="${total}">$160.00</td>
+                                        <td th:text=" '$' + ${total}">$160.00</td>
                                     </tr><!-- End .summary-total -->
                                     </tbody>
                                 </table><!-- End .table table-summary -->
