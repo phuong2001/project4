@@ -29,25 +29,28 @@
                                     <th scope="col">Action</th>
                                     </thead>
                                     <tbody>
-                                        <tr th:each="item : ${orderitem}">
-                                            <th scope="row" th:text="${item.products.user.username}"></th>
-                                            <td th:text="${item.products.name}"></td>
-                                            <td th:text="${item.orders.priceTotal}"></td>
-                                            <td th:text="${item.orders.status}"></td>
-                                            <td th:text="${item.orders.createdAt}"></td>
-                                            <td th:text="${money} + ' (-20% fee)'"></td>
-                                            <td th:if="${item.orders.status} != 'DELIVERED' ">
-                                                <form method="post" action="/seller_confirm">
+                                    <tr th:each="item : ${orderitem}">
+                                        <th scope="row" th:text="${item.orders.user.username}"></th>
+                                        <td th:text="${item.products.name}"></td>
+                                        <td th:text="${item.orders.priceTotal}"></td>
+                                        <td th:text="${item.orders.status}"></td>
+                                        <td th:text="${item.orders.createdAt}"></td>
+                                        <td th:text="${money} + ' (-20% fee)'"></td>
+                                        <td th:if="${item.orders.status} == 'PAID' ">
+                                            <form method="post" action="/seller_confirm">
                                                 <input type="hidden" name="id" th:value="${item.orders.orderid}">
                                                 <button type="submit" class="btn btn-primary">CONFIRM</button>
                                                 <!--                                        <a class="btn btn-success" th:href="@{/orderdetail(id=${ord.orderid})}">Detail</a>-->
-                                                </form>
-                                            </td>
-                                            <td th:if="${item.orders.status} == 'DELIVERED' ">
-                                                <p class="font-weight-bold">CONFIRMED</p>
-                                            </td>
-                                            <td><a class="btn btn-success" th:href="@{/orderdetail(id=${item.orders.orderid})}">Detail</a></td>
-                                        </tr>
+                                            </form>
+                                        </td>
+                                        <td th:if="${item.orders.status} == 'DELIVERED'">
+                                            <p class="font-weight-bold">CONFIRMED</p>
+                                        </td>
+                                        <td th:if="${item.orders.status} == 'RECEIVED'">
+                                            <p class="font-weight-bold">DONE</p>
+                                        </td>
+                                        <td><a class="btn btn-success" th:href="@{/orderdetail(id=${item.orders.orderid})}">Detail</a></td>
+                                    </tr>
                                     </tbody>
                                 </table>
                             </div>
@@ -60,3 +63,4 @@
 </div>
 </body>
 </html>
+
