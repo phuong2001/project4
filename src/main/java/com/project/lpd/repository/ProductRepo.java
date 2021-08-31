@@ -9,9 +9,13 @@ import org.springframework.data.jpa.repository.Query;
 import java.util.List;
 
 public interface ProductRepo extends JpaRepository<ProductEntity, Integer> {
-    @Query("select b from ProductEntity b where b.name like %:name%")
-    List<ProductEntity> findByProductName(String name);
     ProductEntity findById(int Id);
     List<ProductEntity> findByUser(UserEntity userEntity);
     List<ProductEntity> findByCategory(CategoryEntity categoryEntity);
+
+    @Query("select b from ProductEntity b where "
+            + "concat(b.name ,b.category.name ,b.price , b.description)"
+            + "like %?1%" )
+    List<ProductEntity> findByFullName(String name);
+
 }

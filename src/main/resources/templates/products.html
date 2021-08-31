@@ -8,6 +8,7 @@
 </head>
 <body>
 <div layout:fragment="content">
+
     <div class="wrap-container">
         <main class="main">
             <div class="page-header text-center">
@@ -18,7 +19,7 @@
             <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
                 <div class="container">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+                        <li class="breadcrumb-item"><a href="/index">Home</a></li>
                         <li class="breadcrumb-item"><a href="#">Shop</a></li>
                         <li class="breadcrumb-item active" aria-current="page">Products</li>
                     </ol>
@@ -92,7 +93,6 @@
                                     </div><!-- End .toolbox-layout -->
                                 </div><!-- End .toolbox-right -->
                             </div><!-- End .toolbox -->
-
                             <div class="products mb-3">
                                 <div class="row justify-content-center">
                                     <div class="col-6 col-md-4 col-lg-4 col-xl-3" th:each="product : ${products}">
@@ -124,18 +124,19 @@
                                             </div><!-- End .product-body -->
                                         </div><!-- End .product -->
                                     </div><!-- End .col-sm-6 col-lg-4 col-xl-3 -->
-
-                                </div><!-- End .row -->
+                                </div>
                             </div><!-- End .products -->
-
-                            <nav aria-label="Page navigation ">
-                                <ul class="pagination justify-content-center">
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
                                     <li th:if="${totalPage > 0}" class="page-item" th:each="t : ${#numbers.sequence( 0, (totalPage - 1)/1)}" th:classappend="${t==page} ? active">
                                         <a class="page-link" th:href="@{/products(size=${size}, page=${t})}" th:text="${t+1}"></a>
                                     </li>
+
                                 </ul>
                             </nav>
+
                         </div><!-- End .col-lg-9 -->
+
                         <aside class="col-lg-3 order-lg-first">
                             <div class="sidebar sidebar-shop">
                                 <div class="widget widget-clean">
@@ -161,61 +162,6 @@
                                                     <span class="item-count">3</span>
                                                 </div><!-- End .filter-item -->
 
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="cat-2">
-                                                        <label class="custom-control-label" for="cat-2">T-shirts</label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                    <span class="item-count">0</span>
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="cat-3">
-                                                        <label class="custom-control-label" for="cat-3">Bags</label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                    <span class="item-count">4</span>
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="cat-4">
-                                                        <label class="custom-control-label" for="cat-4">Jackets</label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                    <span class="item-count">2</span>
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="cat-5">
-                                                        <label class="custom-control-label" for="cat-5">Shoes</label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                    <span class="item-count">2</span>
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="cat-6">
-                                                        <label class="custom-control-label" for="cat-6">Jumpers</label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                    <span class="item-count">1</span>
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="cat-7">
-                                                        <label class="custom-control-label" for="cat-7">Jeans</label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                    <span class="item-count">1</span>
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="cat-8">
-                                                        <label class="custom-control-label" for="cat-8">Sportwear</label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                    <span class="item-count">0</span>
-                                                </div><!-- End .filter-item -->
                                             </div><!-- End .filter-items -->
                                         </div><!-- End .widget-body -->
                                     </div><!-- End .collapse -->

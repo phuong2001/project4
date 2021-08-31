@@ -20,8 +20,12 @@ public class CategoryController {
     CategoryService categoryService;
 
     @GetMapping({"/listcategory"})
-    public String pageableCategory(Model model) {
-        List<CategoryEntity> categorys = categoryService.getAllCategory();
+    public String pageableCategory(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "5") int size ) {
+        List<CategoryEntity> categorys = categoryService.getAll(PageRequest.of(page,size));
+        int totalPage  = categoryService.getTotalPage(PageRequest.of(page, size));
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("size", size);
+        model.addAttribute("page", page);
         model.addAttribute("categorys", categorys);
         return "listcategory";
     }
@@ -59,4 +63,17 @@ public class CategoryController {
         categoryService.updateCategory(categoryEntity);
         return "redirect:/listcategory";
     }
+
+    @PostMapping("/searchcategorys")
+    public String searcha(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "5") int size , @RequestParam(defaultValue = "name") String name) {
+        List<CategoryEntity> categorys = categoryService.getCategoryByFullName(name);
+        int totalPage  = categoryService.getTotalPage(PageRequest.of(page, size));
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("size", size);
+        model.addAttribute("page", page);
+        model.addAttribute("categorys" , categorys);
+        return "listcategory";
+    }
+
+
 }

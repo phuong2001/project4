@@ -51,11 +51,11 @@
                         <div class="header-center">
                             <div class="header-search header-search-extended header-search-visible d-none d-lg-block">
                                 <a href="#" class="search-toggle" role="button"><i class="icon-search"></i></a>
-                                <form action="#" method="get">
+                                <form method="post" th:action="@{/searchProduct}"  >
                                     <div class="header-search-wrapper search-wrapper-wide">
-                                        <label for="q" class="sr-only">Search</label>
+                                        <label for="name" class="sr-only">Search</label>
                                         <button class="btn btn-primary" type="submit"><i class="las la-search"></i></button>
-                                        <input type="search" class="form-control" name="q" id="q" placeholder="Search product ..." required>
+                                        <input type="text" class="form-control" name="name" value="" id="name" placeholder="Search product ...">
                                     </div><!-- End .header-search-wrapper -->
                                 </form>
                             </div><!-- End .header-search -->
@@ -95,7 +95,7 @@
                                             <div class="product">
                                                 <div class="product-cart-details">
                                                     <h4 class="product-title">
-                                                        <a href="product.html">Beige knitted elastic runner shoes</a>
+                                                        <a href="/products">Beige knitted elastic runner shoes</a>
                                                     </h4>
 
                                                     <span class="cart-product-info">
@@ -105,7 +105,7 @@
                                                 </div><!-- End .product-cart-details -->
 
                                                 <figure class="product-image-container">
-                                                    <a href="product.html" class="product-image">
+                                                    <a href="/products" class="product-image">
                                                         <img src="images/index/products/product-5.jpg" alt="product">
                                                     </a>
                                                 </figure>

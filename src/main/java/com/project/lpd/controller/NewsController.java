@@ -82,5 +82,15 @@ public class NewsController{
         return "redirect:/listnew";
     }
 
+    @PostMapping("/newssearch")
+    public String newssearch(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "5") int size , @RequestParam(defaultValue = "name")String name){
+        List<NewsEntity> gameNews = newsService.getNewsByFullName(name);
+        int totalPage  = newsService.getTotalPage(PageRequest.of(page, size));
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("size", size);
+        model.addAttribute("page", page);
+        model.addAttribute("gameNews" ,gameNews);
+        return "listnew";
+    }
 
 }

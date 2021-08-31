@@ -19,7 +19,7 @@ public class UserController {
     
 
     @GetMapping({"/list"})
-    public String pageableUser(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "10") int size) {
+    public String pageableUser(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "1") int size) {
         List<UserEntity> users = userService.getAllUser(PageRequest.of(page, size));
         int totalPage  = userService.getTotalPage(PageRequest.of(page, size));
         model.addAttribute("totalPage", totalPage);
@@ -51,8 +51,12 @@ public class UserController {
     }
 
   @PostMapping("/search")
-  public String userSearch(@RequestParam String name, Model model) {
+  public String userSearch(@RequestParam String name, Model model,@RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "10") int size) {
       List<UserEntity> users = userService.getUserByFullName(name);
+      int totalPage = userService.getTotalPage(PageRequest.of(page,size));
+      model.addAttribute("totalPage", totalPage);
+      model.addAttribute("page",page);
+      model.addAttribute("size",size);
       model.addAttribute("users", users);
       return  "list_user";
   }

@@ -62,4 +62,13 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductEntity> getProductByCategory(CategoryEntity categoryEntity) {
         return productRepo.findByCategory(categoryEntity);
     }
+
+    @Override
+    public List<ProductEntity> getProductByFullName(String name) {
+        return productRepo.findByFullName(name);
+    }
+
+
 }
+
+

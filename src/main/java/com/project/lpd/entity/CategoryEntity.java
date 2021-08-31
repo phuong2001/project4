@@ -22,4 +22,28 @@ public class CategoryEntity {
 
     @OneToMany(mappedBy = "category" ,fetch = FetchType.LAZY,cascade = CascadeType.ALL)
     private List<ProductEntity> product;
+
+    public int getCategoryid() {
+        return categoryid;
+    }
+
+    public void setCategoryid(int categoryid) {
+        this.categoryid = categoryid;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<ProductEntity> getProduct() {
+        return product;
+    }
+
+    public void setProduct(List<ProductEntity> product) {
+        this.product = product;
+    }
 }

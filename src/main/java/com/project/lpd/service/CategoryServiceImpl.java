@@ -7,11 +7,13 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class CategoryServiceImpl implements CategoryService {
     @Autowired
     CategoryRepo categoryRepo;
+
 
     @Override
     public List<CategoryEntity> getAllCategory() {
@@ -41,4 +43,30 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryEntity getCategoryByName(String name) {
         return categoryRepo.findByName(name);
     }
+
+    @Override
+    public List<CategoryEntity> getCategoryByFullName(String name) {
+        return categoryRepo.findByFullName(name);
+    }
+
+    @Override
+    public int getTotalPage(Pageable pageable) {
+        return categoryRepo.findAll(pageable).getTotalPages();
+    }
+
+    @Override
+    public CategoryEntity getFullCategorys(String name) {
+        return categoryRepo.findByName(name);
+    }
+
+    @Override
+    public List<CategoryEntity> getAll(Pageable pageable) {
+        return categoryRepo.findAll(pageable).getContent();
+    }
+
+
+
+
+
+
 }

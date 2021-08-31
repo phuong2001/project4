@@ -12,4 +12,5 @@ public interface NewsService {
     NewsEntity createNew(NewsEntity p);
     void deleteNew(int id);
     NewsEntity updateNew(NewsEntity p);
+    List<NewsEntity> getNewsByFullName(String name);
 }
