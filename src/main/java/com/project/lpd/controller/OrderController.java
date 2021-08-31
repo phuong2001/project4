@@ -133,12 +133,13 @@ public class OrderController {
         model.addAttribute("orderItem",Items);
         return "history";
     }
-    @GetMapping("/topindex")
+    @GetMapping("/index")
     public String topOrder(Model model) {
         List<OrderEntity> products;
         int top=15;
         products= orderService.getTopOrder(top);
         model.addAttribute("top",top);
+        model.addAttribute("products",products);
         return "index";
     }
 
