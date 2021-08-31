@@ -4,6 +4,7 @@ import com.project.lpd.entity.RoleEntity;
 import com.project.lpd.entity.UserEntity;
 import com.project.lpd.model.MapperDto;
 import com.project.lpd.model.UserDto;
+import com.project.lpd.service.ProductService;
 import com.project.lpd.service.RoleService;
 import com.project.lpd.service.UserService;
 import com.project.lpd.service.UserServiceImpl;
@@ -29,6 +30,8 @@ import java.util.List;
 public class WebController {
     @Autowired
     UserService userService;
+    @Autowired
+    ProductService productService;
 
     @GetMapping({"/", "/index"})
     public String index() {
@@ -36,7 +39,12 @@ public class WebController {
     }
 
     @GetMapping("/adminIndex")
-    public String adminindex() {
+    public String adminindex(Authentication authentication , Model model) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
+        int countProduct = productService.CountProduct(userEntity.getId());
+        model.addAttribute("user",userEntity);
+        model.addAttribute("product",countProduct);
         return "AdminIndex";
     }
 

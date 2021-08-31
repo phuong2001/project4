@@ -14,4 +14,6 @@ public interface ProductRepo extends JpaRepository<ProductEntity, Integer> {
     ProductEntity findById(int Id);
     List<ProductEntity> findByUser(UserEntity userEntity);
     List<ProductEntity> findByCategory(CategoryEntity categoryEntity);
+    @Query("SELECT count (u) FROM ProductEntity u where u.userid = :id")
+    int CountById(int id);
 }
