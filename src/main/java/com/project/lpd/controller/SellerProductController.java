@@ -24,10 +24,16 @@ public class SellerProductController {
 
 
      @GetMapping({"/selleruser"})
-    public String sellerProduct(Model model,@RequestParam(value = "username", defaultValue = "user")String  username) {
+    public String sellerProduct(Model model,@RequestParam(value = "username", defaultValue = "")String  username,@RequestParam   (value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "12") int size) {
         UserEntity userEntity = userService.getUserByName(username);
         List<ProductEntity> products = productService.getProductByUser(userEntity);
-        model.addAttribute("products", products);
-        return "selleruser";
+         List<CategoryEntity> category = categoryService.getAllCategory();
+         int totalPage  = productService.getTotalPage(PageRequest.of(page, size));
+         model.addAttribute("totalPage", totalPage);
+         model.addAttribute("size", size);
+         model.addAttribute("page", page);
+         model.addAttribute("categorys",category);
+         model.addAttribute("products", products);
+        return "sellerproduct";
     }
 }
