@@ -100,7 +100,7 @@
                                             <figure class="product-media">
                                                 <span class="product-label label-out">Out of Stock</span>
                                                 <a th:href="@{/productdetail(id=${product.productid})}">
-                                                    <img th:src="@{${'/images/' + product.image}}" alt="Product image" class="product-image">
+                                                    <img th:src="@{${'/images/' + product.images[0].name}}" alt="Product image" class="product-image">
                                                 </a>
                                             </figure><!-- End .product-media -->
 

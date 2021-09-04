@@ -34,9 +34,12 @@ public class ProductEntity {
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "createAt")
     private Date createdAt;
-    @Lob
-    @Column(name = "image")
-    private String image;
+//    @Lob
+//    @Column(name = "image")
+//    private String image;
+
+    @OneToMany(mappedBy = "products")
+    private List<Image> images;
 
     @Column(name = "userid")
     private int userid;

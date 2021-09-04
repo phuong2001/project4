@@ -5,6 +5,7 @@ import com.project.lpd.entity.*;
 import com.project.lpd.model.MapperDto;
 import com.project.lpd.model.ProductDto;
 import com.project.lpd.service.CategoryService;
+import com.project.lpd.service.ImageService;
 import com.project.lpd.service.ProductService;
 import com.project.lpd.service.UserService;
 import com.project.lpd.ultils.FileUploadUtil;
@@ -31,12 +32,13 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.security.Principal;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Base64;
 import java.util.List;
 
 @Controller
 public class ProductController {
-    public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/images/upload";
+
 
     @Autowired
     ProductService productService;
@@ -44,6 +46,9 @@ public class ProductController {
     UserService userService;
     @Autowired
     CategoryService categoryService;
+    @Autowired
+    ImageService imageService;
+    public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/images/upload";
 
     @GetMapping("/createproduct")
     public String CreateProductForm(Model model) {
@@ -54,30 +59,33 @@ public class ProductController {
 
     @PostMapping(value = "/createproduct")
     public String CreateProduct(@ModelAttribute("productDto") ProductDto productDto,
-                                @RequestParam("filename") MultipartFile file,
-                                @RequestParam("imgname") String imgname,
+                                @RequestParam("files") MultipartFile[] files,
                                 @RequestParam(value = "categoryid") int id,
                                 Authentication authentication) throws IOException {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         ProductEntity product = new ProductEntity();
+        List<Image> image = new ArrayList<>();
         product.setName(productDto.getName());
         product.setQuantity(productDto.getQuantity());
         product.setPrice(productDto.getPrice());
         product.setDescription(productDto.getDescription());
-        String imageUUID;
-        if (!file.isEmpty()) {
-            imageUUID = file.getOriginalFilename();
-            Path filenamePath = Paths.get(uploadDir, imageUUID);
-            Files.write(filenamePath, file.getBytes());
-        } else {
-            imageUUID = imgname;
-        }
-        product.setImage(imageUUID);
         product.setUserid(userEntity.getId());
         CategoryEntity category = categoryService.getCategoryById(id);
         product.setCategoryid(category.getCategoryid());
-        productService.createProduct(product);
+            for (MultipartFile item : files ){
+                {
+                        Image Itemimage = new Image();
+                        String imageUUID = item.getOriginalFilename();
+                        Path filenamePath = Paths.get(uploadDir, imageUUID);
+                        Files.write(filenamePath, item.getBytes());
+                        Itemimage.setProducts(product);
+                        Itemimage.setName(imageUUID);
+                        image.add(Itemimage);
+                }
+            }
+            imageService.createImage(image);
+            productService.createProduct(product);
         return "redirect:/listproduct";
     }
 

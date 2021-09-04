@@ -54,17 +54,25 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <div class="custom-file">
-                                            <input type="file"  class="custom-file-input" id="filename" name="filename"  accept="image/jpeg,image/png,image/jpg">
+                                            <input type="file"  class="custom-file-input" id="filename" name="files"
+                                                   accept="image/jpeg,image/png,image/jpg" >
                                             <label class="custom-file-label" for="filename">Choose file</label>
                                         </div>
-                                        <input type="hidden" name="imgname" th:value="${productDto.image}" >
+                                   </div>
+
+                                    <div class="form-group">
+                                        <div class="custom-file">
+                                            <input type="file"  class="custom-file-input" id="filename2" name="files"
+                                                   accept="image/jpeg,image/png,image/jpg" >
+                                            <label class="custom-file-label" for="filename2">Choose file</label>
+                                        </div>
                                     </div>
-                                </div>
+
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <div class="select-custom">
                                             <label for="categoryid">Category</label>
-                                            <select class="form-control" aria-label="category" id="categoryid" name="categoryid" >
+                                            <select class="form-control" aria-label="category" id="categoryid" th:name="categoryid" >
                                                 <option th:each="item:${category}"
                                                         th:text="${item.name}"
                                                         th:value="${item.categoryid}"
