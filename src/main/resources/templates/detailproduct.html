@@ -32,80 +32,94 @@
 
     <div class="page-content">
         <div class="container">
-            <form method="POST" action="/addcart" >
-                <div class="product-details-top mb-2" >
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="product-gallery product-gallery-vertical">
-                            <div class="row" >
-                                <figure th:object="${product}" class="product-main-image">
-                                    <img id="product-zoom" th:src="@{${'/images/' + product.images[0].name}}"                                        >
-                                    </a>
-                                </figure><!-- End .product-main-image -->
+            <form method="POST" action="/addcart">
+                <div class="product-details-top mb-2" th:object="${product}">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="product-gallery product-gallery-vertical">
+                                <div class="row">
+                                    <figure class="product-main-image">
+                                        <img id="product-zoom" th:src="@{${'/images/' + product.images[0].name}}">
+                                        </a>
+                                    </figure><!-- End .product-main-image -->
 
-                                <div id="product-zoom-gallery" class="product-image-gallery"  >
-                                    <a class="product-gallery-item" href="#" th:each="image:${product.images}">
-                                        <img th:src="@{${'/images/' + image.name}}" alt="product side">
-                                    </a>
-                                </div><!-- End .product-image-gallery -->
-                            </div><!-- End .row -->
-                        </div><!-- End .product-gallery -->
-                    </div><!-- End .col-md-6 -->
+                                    <div id="product-zoom-gallery" class="product-image-gallery">
 
-                    <div class="col-md-6">
-                        <div class="product-details product-details-centered">
-                            <h1 th:text="${product.name}" class="product-title">Beige metal hoop tote bag</h1><!-- End .product-title -->
-
-                            <div class="ratings-container">
-                                <div class="ratings">
-                                    <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
-                                </div><!-- End .ratings -->
-                                <a class="ratings-text" href="#product-review-link" id="review-link">( 2 Reviews )</a>
-                            </div><!-- End .rating-container -->
-
-                            <div th:text="'$' + ${product.price}" class="product-price">
-                                $76.00
-                            </div><!-- End .product-price -->
-
-                            <div class="product-content">
-                                <p th:text="${product.user.address}">Adress: Ha Noi</p>
-                               <p th:text="${product.quantity} + ' product available' ">
-                            </div><!-- End .product-content -->
+                                        <a class="product-gallery-item active" href="#"
+                                           th:each="image:${product.images}" th:if="${image == product.images[0]}"
+                                           th:data-image="${'/images/' + image.name}">
+                                            <img th:src="@{${'/images/' + image.name}}" alt="product side">
+                                        </a>
+                                        <a class="product-gallery-item" href="#" th:each="image:${product.images}"
+                                           th:data-image="${'/images/' + image.name}"
+                                           th:if="${image != product.images[0]}">
+                                            <img th:src="@{${'/images/' + image.name}}" alt="product side">
+                                        </a>
 
 
-                            <div class="product-details-action">
-                                <div class="details-action-col">
-                                    <div class="product-details-quantity">
-                                        <input type="number" name="qty" id="qty" class="form-control" value="1" min="1" th:max="${product.quantity}" step="1" data-decimals="0" required>
-                                    </div><!-- End .product-details-quantity -->
-                                    <input type="hidden" name ="pid" id="pid" th:value ="${product.productid}">
-                                    <button type="submit" class="btn-product btn-cart"><span><i class="las la-cart-plus"></i>add to cart</span></button>
-                                </div><!-- End .details-action-col -->
-                                <div class="details-action-wrapper">
-                                    <button class="btn-product btn-cart p-3"><span><i class="las la-store-alt"></i> Go to Shop</span></button>
-                                </div>
-                            </div><!-- End .product-details-action -->
+                                    </div><!-- End .product-image-gallery -->
+                                </div><!-- End .row -->
+                            </div><!-- End .product-gallery -->
+                        </div><!-- End .col-md-6 -->
 
-                            <div class="product-details-footer">
-                                <div class="product-cat">
-                                    <span>Category:</span>
-                                    <a href="#" th:text="${product.category.name}">Single player</a>
-                                </div><!-- End .product-cat -->
+                        <div class="col-md-6">
+                            <div class="product-details product-details-centered">
+                                <h1 th:text="${product.name}" class="product-title">Beige metal hoop tote bag</h1>
+                                <!-- End .product-title -->
 
-                                <div class="social-icons social-icons-sm">
-                                    <span class="social-label">Share:</span>
-                                    <a href="#" class="social-icon" title="Facebook" target="_blank"><i
-                                            class="lab la-facebook-f"></i></a>
-                                    <a href="#" class="social-icon" title="Twitter" target="_blank"><i
-                                            class="lab la-twitter"></i></a>
-                                    <a href="#" class="social-icon" title="Instagram" target="_blank"><i
-                                            class="lab la-instagram"></i></a>
-                                </div>
-                            </div><!-- End .product-details-footer -->
-                        </div><!-- End .product-details -->
-                    </div><!-- End .col-md-6 -->
-                </div><!-- End .row -->
-            </div><!-- End .product-details-top -->
+                                <div class="ratings-container">
+                                    <div class="ratings">
+                                        <div class="ratings-val" style="width: 80%;"></div><!-- End .ratings-val -->
+                                    </div><!-- End .ratings -->
+                                    <a class="ratings-text" href="#product-review-link" id="review-link">( 2 Reviews
+                                        )</a>
+                                </div><!-- End .rating-container -->
+
+                                <div th:text="'$' + ${product.price}" class="product-price">
+                                    $76.00
+                                </div><!-- End .product-price -->
+
+                                <div class="product-content">
+                                    <p th:text="${product.user.address}">Adress: Ha Noi</p>
+                                    <p th:text="${product.quantity} + ' product available' ">
+                                </div><!-- End .product-content -->
+                                <div class="product-details-action">
+                                    <div class="details-action-col">
+                                        <div class="product-details-quantity">
+                                            <input type="number" name="qty" id="qty" class="form-control" value="1"
+                                                   min="1" th:max="${product.quantity}" step="1" data-decimals="0"
+                                                   required>
+                                        </div><!-- End .product-details-quantity -->
+                                        <input type="hidden" name="pid" id="pid" th:value="${product.productid}">
+                                        <button type="submit" class="btn-product btn-cart"><span><i
+                                                class="las la-cart-plus"></i>add to cart</span></button>
+                                    </div><!-- End .details-action-col -->
+                                    <div class="details-action-wrapper">
+                                        <button class="btn-product btn-cart p-3"><span><i class="las la-store-alt"></i> Go to Shop</span>
+                                        </button>
+                                    </div>
+                                </div><!-- End .product-details-action -->
+
+                                <div class="product-details-footer">
+                                    <div class="product-cat">
+                                        <span>Category:</span>
+                                        <a href="#" th:text="${product.category.name}">Single player</a>
+                                    </div><!-- End .product-cat -->
+
+                                    <div class="social-icons social-icons-sm">
+                                        <span class="social-label">Share:</span>
+                                        <a href="#" class="social-icon" title="Facebook" target="_blank"><i
+                                                class="lab la-facebook-f"></i></a>
+                                        <a href="#" class="social-icon" title="Twitter" target="_blank"><i
+                                                class="lab la-twitter"></i></a>
+                                        <a href="#" class="social-icon" title="Instagram" target="_blank"><i
+                                                class="lab la-instagram"></i></a>
+                                    </div>
+                                </div><!-- End .product-details-footer -->
+                            </div><!-- End .product-details -->
+                        </div><!-- End .col-md-6 -->
+                    </div><!-- End .row -->
+                </div><!-- End .product-details-top -->
             </form>
             <div class="product-details-tab">
                 <ul class="nav nav-pills justify-content-center" role="tablist">
@@ -128,7 +142,8 @@
                          aria-labelledby="product-desc-link">
                         <div class="product-desc-content">
                             <h3>Product Information</h3>
-                            <p th:text="${product.description}">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Donec odio. Quisque volutpat
+                            <p th:text="${product.description}">Lorem ipsum dolor sit amet, consectetuer adipiscing
+                                elit. Donec odio. Quisque volutpat
                                 mattis eros. Nullam malesuada erat ut turpis. Suspendisse urna viverra non, semper
                                 suscipit, posuere a, pede. Donec nec justo eget felis facilisis fermentum. Aliquam
                                 porttitor mauris sit amet orci. Aenean dignissim pellentesque felis. Phasellus ultrices
