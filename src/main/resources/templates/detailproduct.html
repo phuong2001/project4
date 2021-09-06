@@ -39,7 +39,7 @@
                             <div class="product-gallery product-gallery-vertical">
                                 <div class="row">
                                     <figure class="product-main-image">
-                                        <img id="product-zoom" th:src="@{${'/images/' + product.images[0].name}}">
+                                        <img id="product-zoom" th:src="@{${'/images/upload/' + product.images[0].name}}">
                                         </a>
                                     </figure><!-- End .product-main-image -->
 
@@ -47,13 +47,13 @@
 
                                         <a class="product-gallery-item active" href="#"
                                            th:each="image:${product.images}" th:if="${image == product.images[0]}"
-                                           th:data-image="${'/images/' + image.name}">
-                                            <img th:src="@{${'/images/' + image.name}}" alt="product side">
+                                           th:data-image="${'/images/upload/' + image.name}">
+                                            <img th:src="@{${'/images/upload/' + image.name}}" alt="product side">
                                         </a>
                                         <a class="product-gallery-item" href="#" th:each="image:${product.images}"
-                                           th:data-image="${'/images/' + image.name}"
+                                           th:data-image="${'/images/upload/' + image.name}"
                                            th:if="${image != product.images[0]}">
-                                            <img th:src="@{${'/images/' + image.name}}" alt="product side">
+                                            <img th:src="@{${'/images/upload/' + image.name}}" alt="product side">
                                         </a>
 
 
