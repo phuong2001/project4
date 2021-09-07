@@ -35,17 +35,17 @@ public class    OrderController {
 
     //list_user
     @GetMapping("/listorder")
-    public String showCart(Model model, Authentication authentication,@RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(defaultValue = "name") String fullname, @RequestParam(value = "size", defaultValue = "5") int size){
+    public String showCart(Model model, Authentication authentication,@RequestParam(value = "page", defaultValue = "1") int page, @RequestParam(value = "size", defaultValue = "5") int size){
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         List<OrderEntity> orderItem = orderService.getOrderByUser(userEntity);
         List<OrderEntity> Items = new ArrayList<>();
-        List<ProductEntity> products = productService.getProductByFullName(fullname);
-        int totalPage = productService.getTotalPage(PageRequest.of(page, size));
+        List<OrderEntity> orders = orderService.getAllOrder(PageRequest.of(size,page));
+        int totalPage = orderService.getTotalPage(PageRequest.of(page, size));
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("size", size);
         model.addAttribute("page", page);
-        model.addAttribute("products", products);
+        model.addAttribute("orders", orders);
         for (OrderEntity ord : orderItem){
             if (ord.getStatus().equals("DELIVERED") || ord.getStatus().equals("PAID")){
                 Items.add(ord);
@@ -100,7 +100,13 @@ public class    OrderController {
     }
 
     @GetMapping({"/listOrderProduct"})
-    public String listOrderProduct(Model model, Authentication authentication){
+    public String listOrderProduct(Model model, Authentication authentication,@RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(defaultValue = "name") String fullname, @RequestParam(value = "size", defaultValue = "5") int size){
+        List<ProductEntity> product1 = productService.getProductByFullName(fullname);
+        int totalPage = productService.getTotalPage(PageRequest.of(page, size));
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("size", size);
+        model.addAttribute("page", page);
+        model.addAttribute("products", product1);
         double seller = 0 ;
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
@@ -148,12 +154,22 @@ public class    OrderController {
 
     @PostMapping("/OrderSearch")
     public String indexSearch(Model model, @RequestParam(defaultValue = "name") String fullname, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "12") int size) {
-        List<ProductEntity> products = productService.getProductByFullName(fullname);
-        int totalPage = productService.getTotalPage(PageRequest.of(page, size));
+        List<OrderEntity> orders = orderService.getOrderByFullName(fullname);
+        int totalPage = orderService.getTotalPage(PageRequest.of(page, size));
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("size", size);
         model.addAttribute("page", page);
-        model.addAttribute("products", products);
+        model.addAttribute("orders", orders);
         return "/listorder";
+    }
+    @PostMapping("/OrderSearchbuyer")
+    public String indexSearch1(Model model, @RequestParam(defaultValue = "name") String fullname, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "12") int size) {
+        List<OrderEntity> orders = orderService.getOrderByFullName(fullname);
+        int totalPage = orderService.getTotalPage(PageRequest.of(page, size));
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("size", size);
+        model.addAttribute("page", page);
+        model.addAttribute("orders", orders);
+        return "/buyer_order";
     }
 }

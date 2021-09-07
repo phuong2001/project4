@@ -17,7 +17,7 @@
                 <span class="navbar-toggler-icon icon-bar"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end">
-                <form method="post" th:action="@{/OrderSearch}" class="navbar-form col-md-4" style="float: right; margin-top: 30px">
+                <form method="post" th:action="@{/OrderSearchbuyer}" class="navbar-form col-md-4" style="float: right; margin-top: 30px">
                     <div class="input-group no-border">
                         <input type="text" name="name" value="" class="form-control" placeholder="Search...">
                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
@@ -117,7 +117,7 @@
                                 <nav aria-label="Page navigation">
                                     <ul class="pagination">
                                         <li th:if="${totalPage > 0}" class="page-item" th:each="t : ${#numbers.sequence( 0, (totalPage - 1)/1)}" th:classappend="${t==page} ? active">
-                                            <a class="page-link" th:href="@{/listorder(size=${size}, page=${t})}" th:text="${t+1}"></a>
+                                            <a class="page-link" th:href="@{/buyer_order(size=${size}, page=${t})}" th:text="${t+1}"></a>
                                         </li>
                                     </ul>
                                 </nav>
