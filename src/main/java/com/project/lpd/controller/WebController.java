@@ -1,9 +1,6 @@
 package com.project.lpd.controller;
 
-import com.project.lpd.entity.CategoryEntity;
-import com.project.lpd.entity.ProductEntity;
-import com.project.lpd.entity.RoleEntity;
-import com.project.lpd.entity.UserEntity;
+import com.project.lpd.entity.*;
 import com.project.lpd.model.MapperDto;
 import com.project.lpd.model.UserDto;
 import com.project.lpd.service.ProductService;
@@ -37,14 +34,21 @@ public class WebController {
     CategoryService categoryService;
     @Autowired
     ProductService productService;
+    @Autowired
+    OrderService orderService;
+
+    @Autowired
+    OrderItemService orderItemService;
 
     @GetMapping({"/", "/index"})
     public String index(Model model , @RequestParam (value = "name" ,defaultValue = "") String name)
     {
         List<CategoryEntity> category = categoryService.getAllCategory();
         List<ProductEntity> date = productService.getTopByDate();
+        List<OrderItem> topOrder = orderItemService.getTopOrder();
         model.addAttribute("categorys", category);
         model.addAttribute("dates",date);
+        model.addAttribute("topOrders",topOrder);
         return "index";
     }
 

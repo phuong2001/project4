@@ -14,4 +14,6 @@ public interface OrderItemService {
     List<OrderItem> getAllOr();
     List<OrderItem> findByOrders(OrderEntity orderEntity);
     List<OrderItem> getListOrderItem(OrderEntity orderEntity);
+    List<OrderItem> getTopOrder();
+
 }
