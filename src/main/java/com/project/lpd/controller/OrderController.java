@@ -35,11 +35,17 @@ public class    OrderController {
 
     //list_user
     @GetMapping("/listorder")
-    public String showCart(Model model, Authentication authentication){
+    public String showCart(Model model, Authentication authentication,@RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(defaultValue = "name") String fullname, @RequestParam(value = "size", defaultValue = "5") int size){
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         List<OrderEntity> orderItem = orderService.getOrderByUser(userEntity);
         List<OrderEntity> Items = new ArrayList<>();
+        List<ProductEntity> products = productService.getProductByFullName(fullname);
+        int totalPage = productService.getTotalPage(PageRequest.of(page, size));
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("size", size);
+        model.addAttribute("page", page);
+        model.addAttribute("products", products);
         for (OrderEntity ord : orderItem){
             if (ord.getStatus().equals("DELIVERED") || ord.getStatus().equals("PAID")){
                 Items.add(ord);
@@ -60,9 +66,9 @@ public class    OrderController {
         return "orderdetail";
     }
 
-//    //list_admin
-//    @GetMapping({"/listorder"})
-//    public String ListOrder(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "5") int size) {
+    //list_admin
+//    @GetMapping({"/listorder1"})
+//    public String ListOrder(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(defaultValue = "name") String fullname, @RequestParam(value = "size", defaultValue = "5") int size) {
 //        List<OrderEntity> orderItem = orderService.getAllOrder(PageRequest.of(page, size));
 //        int totalPage  = orderService.getTotalPage(PageRequest.of(page, size));
 //        model.addAttribute("totalPage", totalPage);
@@ -140,4 +146,14 @@ public class    OrderController {
     }
 
 
+    @PostMapping("/OrderSearch")
+    public String indexSearch(Model model, @RequestParam(defaultValue = "name") String fullname, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "12") int size) {
+        List<ProductEntity> products = productService.getProductByFullName(fullname);
+        int totalPage = productService.getTotalPage(PageRequest.of(page, size));
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("size", size);
+        model.addAttribute("page", page);
+        model.addAttribute("products", products);
+        return "/listorder";
+    }
 }

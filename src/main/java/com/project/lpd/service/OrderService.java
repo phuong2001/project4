@@ -16,4 +16,5 @@ public interface OrderService {
 //    List<OrderEntity> getOrderSeller(UserEntity user);
     OrderEntity getById(int id);
 
+    List<OrderEntity> getOrderByFullName(String fullname);
 }

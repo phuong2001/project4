@@ -66,6 +66,12 @@ public class OrderServiceImpl implements OrderService {
         return orderRepo.findById(id).get();
     }
 
+    @Override
+    public List<OrderEntity> getOrderByFullName(String fullname) {
+        return orderRepo.findByFullName(fullname);
+    }
+
+
 
 //    @Override
 //    public List<OrderEntity> getOrderSeller(UserEntity user) {
