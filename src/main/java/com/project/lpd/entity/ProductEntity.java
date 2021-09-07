@@ -27,7 +27,7 @@ public class ProductEntity {
     @Column(name = "quantity")
     private int quantity;
     @Lob
-    @Column(name = "description", length = 10000)
+    @Column(name = "description", columnDefinition = "TEXT")
     private String description;
 //    @Column(name = "discount")
 //    private double discount;
