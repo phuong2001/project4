@@ -201,7 +201,7 @@
 
                                 <div class="product-body">
                                     <div class="product-cat">
-                                        <a href="#">Shooter</a>
+                                        <a th:href="@{/list_product_category(name=${date.category.name})}" th:text="${date.category.name}">Shooter</a>
                                     </div><!-- End .product-cat -->
                                     <h3 class="product-title"><a th:href="@{/productdetail(id=${date.productid})}" th:text="${date.name}">Call of Duty <br>WWII - Gold
                                         Edition</a></h3><!-- End .product-title -->
