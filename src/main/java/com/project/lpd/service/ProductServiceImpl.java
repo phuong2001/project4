@@ -7,7 +7,7 @@ import com.project.lpd.entity.UserEntity;
 import com.project.lpd.model.ProductDto;
 import com.project.lpd.repository.ProductRepo;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import org.springframework.web.multipart.MultipartFile;
@@ -72,6 +72,12 @@ public class ProductServiceImpl implements ProductService {
     public int CountProduct(int id) {
         return productRepo.CountById(id);
     }
+
+    @Override
+    public List<ProductEntity> getTopByDate() {
+        return productRepo.findFirst15ByOrderByCreatedAtDesc();
+    }
+
 
     @Override
     public List<ProductEntity> getProductByFullName(String name) {

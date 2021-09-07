@@ -6,6 +6,7 @@ import com.project.lpd.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 public interface ProductRepo extends JpaRepository<ProductEntity, Integer> {
@@ -21,5 +22,10 @@ public interface ProductRepo extends JpaRepository<ProductEntity, Integer> {
             + "concat(b.name ,b.category.name ,b.price , b.description)"
             + "like %?1%" )
     List<ProductEntity> findByFullName(String name);
+
+    @Query("select  b from ProductEntity b order by b.createdAt DESC ")
+    List<ProductEntity> findAllByCreatedAt(Pageable pageable);
+
+    List<ProductEntity> findFirst15ByOrderByCreatedAtDesc();
 
 }

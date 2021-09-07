@@ -42,7 +42,9 @@ public class WebController {
     public String index(Model model , @RequestParam (value = "name" ,defaultValue = "") String name)
     {
         List<CategoryEntity> category = categoryService.getAllCategory();
+        List<ProductEntity> date = productService.getTopByDate();
         model.addAttribute("categorys", category);
+        model.addAttribute("dates",date);
         return "index";
     }
 

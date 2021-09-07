@@ -28,6 +28,7 @@ public class ListProductByCategoryController {
         List<ProductEntity> products = productService.getProductByCategory(categoryEntity);
         model.addAttribute("products", products);
         model.addAttribute("categorys",category);
+        model.addAttribute("name",name);
         return "listproductcategory";
     }
 

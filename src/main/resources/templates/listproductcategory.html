@@ -4,7 +4,7 @@
       layout:decorate="~{layout/template.html}">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Product By Category</title>
 </head>
 <body>
 <div layout:fragment="content">
@@ -12,7 +12,7 @@
         <main class="main">
             <div class="page-header text-center">
                 <div class="container">
-                    <h1 class="page-title">Products<span>Shop</span></h1>
+                    <h1 class="page-title" th:text="'Category: ' + ${name}">Products<span>Shop</span></h1>
                 </div><!-- End .container -->
             </div><!-- End .page-header -->
             <nav aria-label="breadcrumb" class="breadcrumb-nav mb-2">
@@ -32,7 +32,7 @@
                             <div class="toolbox">
                                 <div class="toolbox-left">
                                     <div class="toolbox-info">
-                                        Showing <span>9 of 56</span> Products
+                                        Showing Products
                                     </div><!-- End .toolbox-info -->
                                 </div><!-- End .toolbox-left -->
 
@@ -47,49 +47,6 @@
                                             </select>
                                         </div>
                                     </div><!-- End .toolbox-sort -->
-                                    <div class="toolbox-layout">
-                                        <a href="category-list.html" class="btn-layout">
-                                            <svg width="16" height="10">
-                                                <rect x="0" y="0" width="4" height="4"></rect>
-                                                <rect x="6" y="0" width="10" height="4"></rect>
-                                                <rect x="0" y="6" width="4" height="4"></rect>
-                                                <rect x="6" y="6" width="10" height="4"></rect>
-                                            </svg>
-                                        </a>
-
-                                        <a href="category-2cols.html" class="btn-layout">
-                                            <svg width="10" height="10">
-                                                <rect x="0" y="0" width="4" height="4"></rect>
-                                                <rect x="6" y="0" width="4" height="4"></rect>
-                                                <rect x="0" y="6" width="4" height="4"></rect>
-                                                <rect x="6" y="6" width="4" height="4"></rect>
-                                            </svg>
-                                        </a>
-
-                                        <a href="listproductcategory.html" class="btn-layout">
-                                            <svg width="16" height="10">
-                                                <rect x="0" y="0" width="4" height="4"></rect>
-                                                <rect x="6" y="0" width="4" height="4"></rect>
-                                                <rect x="12" y="0" width="4" height="4"></rect>
-                                                <rect x="0" y="6" width="4" height="4"></rect>
-                                                <rect x="6" y="6" width="4" height="4"></rect>
-                                                <rect x="12" y="6" width="4" height="4"></rect>
-                                            </svg>
-                                        </a>
-
-                                        <a href="category-4cols.html" class="btn-layout active">
-                                            <svg width="22" height="10">
-                                                <rect x="0" y="0" width="4" height="4"></rect>
-                                                <rect x="6" y="0" width="4" height="4"></rect>
-                                                <rect x="12" y="0" width="4" height="4"></rect>
-                                                <rect x="18" y="0" width="4" height="4"></rect>
-                                                <rect x="0" y="6" width="4" height="4"></rect>
-                                                <rect x="6" y="6" width="4" height="4"></rect>
-                                                <rect x="12" y="6" width="4" height="4"></rect>
-                                                <rect x="18" y="6" width="4" height="4"></rect>
-                                            </svg>
-                                        </a>
-                                    </div><!-- End .toolbox-layout -->
                                 </div><!-- End .toolbox-right -->
                             </div><!-- End .toolbox -->
 
@@ -101,7 +58,7 @@
                                             <figure class="product-media">
                                                 <span class="product-label label-out">Out of Stock</span>
                                                 <a th:href="@{/productdetail(id=${product.productid})}">
-                                                    <img th:src="@{${'/images/' + product.image}}" alt="Product image" class="product-image" enctype="multipart">
+                                                    <img th:src="@{${'/images/upload/' + product.images[0].name}}" alt="Product image" class="product-image" enctype="multipart">
                                                 </a>
                                                 <div class="product-action">
                                                     <button type="submit" class="btn-product btn-cart" ><span>add to cart</span></button>
@@ -235,91 +192,6 @@
                                                     <span class="item-count">0</span>
                                                 </div>&lt;!&ndash; End .filter-item &ndash;&gt;-->
                                             </div><!-- End .filter-items -->
-                                        </div><!-- End .widget-body -->
-                                    </div><!-- End .collapse -->
-                                </div><!-- End .widget -->
-
-                                <div class="widget widget-collapsible">
-                                    <h3 class="widget-title">
-                                        <a data-toggle="collapse" href="#widget-4" role="button" aria-expanded="true" aria-controls="widget-4">
-                                            Brand
-                                        </a>
-                                    </h3><!-- End .widget-title -->
-
-                                    <div class="collapse show" id="widget-4">
-                                        <div class="widget-body">
-                                            <div class="filter-items">
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="brand-1">
-                                                        <label class="custom-control-label" for="brand-1">Next</label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="brand-2">
-                                                        <label class="custom-control-label" for="brand-2">River Island</label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="brand-3">
-                                                        <label class="custom-control-label" for="brand-3">Geox</label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="brand-4">
-                                                        <label class="custom-control-label" for="brand-4">New Balance</label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="brand-5">
-                                                        <label class="custom-control-label" for="brand-5">UGG</label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="brand-6">
-                                                        <label class="custom-control-label" for="brand-6">F&amp;F</label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                </div><!-- End .filter-item -->
-
-                                                <div class="filter-item">
-                                                    <div class="custom-control custom-checkbox">
-                                                        <input type="checkbox" class="custom-control-input" id="brand-7">
-                                                        <label class="custom-control-label" for="brand-7">Nike</label>
-                                                    </div><!-- End .custom-checkbox -->
-                                                </div><!-- End .filter-item -->
-
-                                            </div><!-- End .filter-items -->
-                                        </div><!-- End .widget-body -->
-                                    </div><!-- End .collapse -->
-                                </div><!-- End .widget -->
-
-                                <div class="widget widget-collapsible">
-                                    <h3 class="widget-title">
-                                        <a data-toggle="collapse" href="#widget-5" role="button" aria-expanded="true" aria-controls="widget-5">
-                                            Price
-                                        </a>
-                                    </h3><!-- End .widget-title -->
-
-                                    <div class="collapse show" id="widget-5">
-                                        <div class="widget-body">
-                                            <div class="filter-price">
-                                                <div class="filter-price-text">
-                                                    Price Range:
-                                                    <span id="filter-price-range">$0 - $750</span>
-                                                </div><!-- End .filter-price-text -->
-
-                                                <div id="price-slider" class="noUi-target noUi-ltr noUi-horizontal"><div class="noUi-base"><div class="noUi-connects"><div class="noUi-connect" style="transform: translate(0%, 0px) scale(0.75, 1);"></div></div><div class="noUi-origin" style="transform: translate(-100%, 0px); z-index: 5;"><div class="noUi-handle noUi-handle-lower" data-handle="0" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="0.0" aria-valuemax="550.0" aria-valuenow="0.0" aria-valuetext="$0"><div class="noUi-touch-area"></div><div class="noUi-tooltip">$0</div></div></div><div class="noUi-origin" style="transform: translate(-25%, 0px); z-index: 4;"><div class="noUi-handle noUi-handle-upper" data-handle="1" tabindex="0" role="slider" aria-orientation="horizontal" aria-valuemin="200.0" aria-valuemax="1000.0" aria-valuenow="750.0" aria-valuetext="$750"><div class="noUi-touch-area"></div><div class="noUi-tooltip">$750</div></div></div></div></div><!-- End #price-slider -->
-                                            </div><!-- End .filter-price -->
                                         </div><!-- End .widget-body -->
                                     </div><!-- End .collapse -->
                                 </div><!-- End .widget -->

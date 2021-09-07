@@ -4,7 +4,9 @@ import com.project.lpd.entity.CategoryEntity;
 import com.project.lpd.entity.ProductEntity;
 import com.project.lpd.entity.UserEntity;
 import com.project.lpd.model.ProductDto;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.Query;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
@@ -22,4 +24,5 @@ public interface ProductService {
      List<ProductEntity> getProductByCategory(CategoryEntity categoryEntity);
      List<ProductEntity> getProductByFullName(String name);
      int CountProduct(int id);
+     List<ProductEntity> getTopByDate();
 }

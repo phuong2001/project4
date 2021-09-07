@@ -47,11 +47,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http.antMatcher("/**").csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/index", "/productDetail", "/about", "/products", "/cart", "/create_product",
-                        "/pay","/register", "/news", "/help", "/adminIndex", "/list", "/productdetail", "/charge","/profile","/success","/sellerproduct" ,"/IndexSearch").permitAll()
+                        "/pay", "/register", "/news", "/help", "/adminIndex", "/list", "/productdetail", "/charge", "/profile", "/success",
+                        "/sellerproduct", "/IndexSearch", "/list_product_category").permitAll()
                 .antMatchers("/css/**", "/js/**", "/images/**", "vendors/**").permitAll()
-                .antMatchers( "/listrole", "/listnew", "/updatenew", "/createnew", "/deletenew", "/updaterole").hasAnyAuthority("ADMIN")
-                .antMatchers("/createproduct","/userIndex").hasAnyAuthority("USER")
-                .antMatchers("/listProductUser","/updateProductUser", "/createProductUser", "/deleteProductUser","/listOrderProduct","/adminIndex").hasAnyAuthority("USER", "ADMIN")
+                .antMatchers("/listrole", "/listnew", "/updatenew", "/createnew", "/deletenew", "/updaterole").hasAnyAuthority("ADMIN")
+                .antMatchers("/createproduct", "/userIndex").hasAnyAuthority("USER")
+                .antMatchers("/listProductUser", "/updateProductUser", "/createProductUser", "/deleteProductUser", "/listOrderProduct", "/adminIndex").hasAnyAuthority("USER", "ADMIN")
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
