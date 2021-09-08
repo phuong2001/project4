@@ -38,17 +38,26 @@ public class WebController {
     OrderService orderService;
 
     @Autowired
+    NewsService newsService;
+
+    @Autowired
     OrderItemService orderItemService;
 
     @GetMapping({"/", "/index"})
-    public String index(Model model , @RequestParam (value = "name" ,defaultValue = "") String name)
+    public String index(Model model,@RequestParam(value = "name", defaultValue = "")String  name)
     {
         List<CategoryEntity> category = categoryService.getAllCategory();
+        CategoryEntity categoryEntity = categoryService.getCategoryByName("Consoles & Accessories");
+        List<ProductEntity> product = productService.getConsoleProduct(categoryEntity);
         List<ProductEntity> date = productService.getTopByDate();
+        List<NewsEntity> blog = newsService.getBlogByDate();
         List<OrderItem> topOrder = orderItemService.getTopOrder();
         List<ProductEntity> top = productService.getTopPrice();
+        model.addAttribute("products", product);
+        model.addAttribute("categoryEntity", categoryEntity);
         model.addAttribute("categorys", category);
         model.addAttribute("dates",date);
+        model.addAttribute("blogs", blog);
         model.addAttribute("topOrders",topOrder);
         model.addAttribute("top",top);
         return "index";

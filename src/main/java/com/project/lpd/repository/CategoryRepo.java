@@ -11,6 +11,8 @@ import java.util.Optional;
 public interface CategoryRepo extends JpaRepository<CategoryEntity, Integer> {
     CategoryEntity findByCategoryid(int id);
     List<CategoryEntity> findAll();
+
+    @Query(value = " select c from CategoryEntity c where c.name = :name ")
      CategoryEntity findByName(String name);
     @Query("select b from CategoryEntity b where b.name like %:name%")
      List<CategoryEntity> findByFullName(String name);

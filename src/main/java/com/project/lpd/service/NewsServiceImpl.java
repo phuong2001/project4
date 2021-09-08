@@ -48,4 +48,9 @@ public class NewsServiceImpl implements NewsService{
     public List<NewsEntity> getNewsByFullName(String name) {
         return newsRepo.findByFullName(name);
     }
+
+    @Override
+    public List<NewsEntity> getBlogByDate() {
+        return newsRepo.findFirst8ByOrderByCreatedAtDesc();}
+
 }
