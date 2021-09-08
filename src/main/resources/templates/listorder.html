@@ -71,58 +71,174 @@
     </nav>
     <div class="content">
         <div class="container-fluid">
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-header card-header-primary">
-                            <h4 class="card-title ">List Order </h4>
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link active font-weight-bold" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">PAID <span class="badge badge-primary" th:text="${#lists.size(Paid)}">5</span></a>
+                    <a class="nav-item nav-link font-weight-bold" id="nav-profile-tab " data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">DELIVERING <span class="badge badge-warning" th:text="${#lists.size(Delivered)}">5</span></a>
+                    <a class="nav-item nav-link font-weight-bold" id="nav-contact-tab" data-toggle="tab" href="#nav-contact" role="tab" aria-controls="nav-contact" aria-selected="false">DONE <span class="badge badge-success" th:text="${#lists.size(Done)}">5</span></a>
+                </div>
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">List Order paid </h4>
+                                </div>
+                                <div class="card-body">
+                                    <div th:if="${mess}" th:text="${mess}" class="bg-success text-white p-2"/>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class=" text-primary">
+                                            <th scope="col">Phone</th>
+                                            <th scope="col">Address</th>
+                                            <th scope="col">fullname</th>
+                                            <th scope="col">Price total</th>
+                                            <th scope="col">Create at</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="ord : ${Paid}">
+                                                <td th:text="${ord.phone}"></td>
+                                                <td th:text="${ord.address}"></td>
+                                                <td th:text="${ord.fullname}"></td>
+                                                <td th:text="${ord.subtotal}"></td>
+                                                <td th:text="${ord.createdAt}"></td>
+                                                <td th:text="${ord.status}"></td>
+                                                <td>
+                                                    <form method="post" action="/user_confirm">
+                                                        <input type="hidden" name="id" th:value="${ord.orderid}">
+                                                        <button type="submit" class="btn btn-primary" th:if="${ord.status} == 'DELIVERED' ">Received</button>
+                                                        <a class="btn btn-success" th:href="@{/orderdetail(id=${ord.orderid})}">Detail</a>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination">
+                                                <li th:if="${totalPage > 0}" class="page-item" th:each="t : ${#numbers.sequence( 0, (totalPage - 1)/1)}" th:classappend="${t==page} ? active">
+                                                    <a class="page-link" th:href="@{/listorder(size=${size}, page=${t})}" th:text="${t+1}"></a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="card-body">
-                            <div th:if="${mess}" th:text="${mess}" class="bg-success text-white p-2"/>
-                            <div class="table-responsive">
-                                <table class="table">
-                                        <thead class=" text-primary">
-                                        <th scope="col">Phone</th>
-                                        <th scope="col">Address</th>
-                                        <th scope="col">fullname</th>
-                                        <th scope="col">Price total</th>
-                                        <th scope="col">Create at</th>
-                                        <th scope="col">Status</th>
-                                        <th scope="col">Action</th>
-                                        </thead>
-                                        <tbody>
-                                        <tr th:each="ord : ${orderItem}">
-                                            <td th:text="${ord.phone}"></td>
-                                            <td th:text="${ord.address}"></td>
-                                            <td th:text="${ord.fullname}"></td>
-                                            <td th:text="${ord.subtotal}"></td>
-                                            <td th:text="${ord.createdAt}"></td>
-                                            <td th:text="${ord.status}"></td>
-                                            <td>
-                                                <form method="post" action="/user_confirm">
-                                                <input type="hidden" name="id" th:value="${ord.orderid}">
-                                                <button type="submit" class="btn btn-primary" th:if="${ord.status} == 'DELIVERED' ">Received</button>
-                                                <a class="btn btn-success" th:href="@{/orderdetail(id=${ord.orderid})}">Detail</a>
-                                                </form>
-                                            </td>
-                                        </tr>
-                                        </tbody>
-                                </table>
-                                                               <nav aria-label="Page navigation">
-                                                                    <ul class="pagination">
-                                                                        <li th:if="${totalPage > 0}" class="page-item" th:each="t : ${#numbers.sequence( 0, (totalPage - 1)/1)}" th:classappend="${t==page} ? active">
-                                                                            <a class="page-link" th:href="@{/listorder(size=${size}, page=${t})}" th:text="${t+1}"></a>
-                                                                        </li>
-                                                                    </ul>
-                                                                </nav>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">List Order paid </h4>
+                                </div>
+                                <div class="card-body">
+                                    <div th:if="${mess}" th:text="${mess}" class="bg-success text-white p-2"/>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class=" text-primary">
+                                            <th scope="col">Phone</th>
+                                            <th scope="col">Address</th>
+                                            <th scope="col">fullname</th>
+                                            <th scope="col">Price total</th>
+                                            <th scope="col">Create at</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="ord : ${Delivered}">
+                                                <td th:text="${ord.phone}"></td>
+                                                <td th:text="${ord.address}"></td>
+                                                <td th:text="${ord.fullname}"></td>
+                                                <td th:text="${ord.subtotal}"></td>
+                                                <td th:text="${ord.createdAt}"></td>
+                                                <td th:text="${ord.status}"></td>
+                                                <td>
+                                                    <form method="post" action="/user_confirm">
+                                                        <input type="hidden" name="id" th:value="${ord.orderid}">
+                                                        <button type="submit" class="btn btn-primary" th:if="${ord.status} == 'DELIVERED' ">Received</button>
+                                                        <a class="btn btn-success" th:href="@{/orderdetail(id=${ord.orderid})}">Detail</a>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination">
+                                                <li th:if="${totalPage > 0}" class="page-item" th:each="t : ${#numbers.sequence( 0, (totalPage - 1)/1)}" th:classappend="${t==page} ? active">
+                                                    <a class="page-link" th:href="@{/listorder(size=${size}, page=${t})}" th:text="${t+1}"></a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="tab-pane fade" id="nav-contact" role="tabpanel" aria-labelledby="nav-contact-tab">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="card">
+                                <div class="card-header card-header-primary">
+                                    <h4 class="card-title ">List Order paid </h4>
+                                </div>
+                                <div class="card-body">
+                                    <div th:if="${mess}" th:text="${mess}" class="bg-success text-white p-2"/>
+                                    <div class="table-responsive">
+                                        <table class="table">
+                                            <thead class=" text-primary">
+                                            <th scope="col">Phone</th>
+                                            <th scope="col">Address</th>
+                                            <th scope="col">fullname</th>
+                                            <th scope="col">Price total</th>
+                                            <th scope="col">Create at</th>
+                                            <th scope="col">Status</th>
+                                            <th scope="col">Action</th>
+                                            </thead>
+                                            <tbody>
+                                            <tr th:each="ord : ${Done}">
+                                                <td th:text="${ord.phone}"></td>
+                                                <td th:text="${ord.address}"></td>
+                                                <td th:text="${ord.fullname}"></td>
+                                                <td th:text="${ord.subtotal}"></td>
+                                                <td th:text="${ord.createdAt}"></td>
+                                                <td th:text="${ord.status}"></td>
+                                                <td>
+                                                    <form method="post" action="/user_confirm">
+                                                        <input type="hidden" name="id" th:value="${ord.orderid}">
+                                                        <button type="submit" class="btn btn-primary" th:if="${ord.status} == 'DELIVERED' ">Received</button>
+                                                        <a class="btn btn-success" th:href="@{/orderdetail(id=${ord.orderid})}">Detail</a>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                            </tbody>
+                                        </table>
+                                        <nav aria-label="Page navigation">
+                                            <ul class="pagination">
+                                                <li th:if="${totalPage > 0}" class="page-item" th:each="t : ${#numbers.sequence( 0, (totalPage - 1)/1)}" th:classappend="${t==page} ? active">
+                                                    <a class="page-link" th:href="@{/listorder(size=${size}, page=${t})}" th:text="${t+1}"></a>
+                                                </li>
+                                            </ul>
+                                        </nav>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
         </div>
     </div>
 </div>
+
+
 
 </body>
 </html>

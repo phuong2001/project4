@@ -58,14 +58,12 @@ public class WebController {
         return "AdminIndex";
     }
 
-
     @GetMapping("/login")
     public String Login(Model model){
         UserDto userDto = new UserDto();
         model.addAttribute("user",userDto);
         return "LoginPage";
     }
-
 
     @PostMapping("/searchProduct")
     public String indexSearch(Model model , @RequestParam (defaultValue ="name") String name, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "12") int size){
@@ -89,8 +87,6 @@ public class WebController {
     @GetMapping({"/about"})
     public String about2() { return "about"; }
 
-
-
     @GetMapping("/create_product")
     public String createProduct(){
         return "create_product";
@@ -100,8 +96,6 @@ public class WebController {
     public String Help(){
         return "help";
     }
-
-
 
     @GetMapping("/error")
     public String ErrorPage(){return "error";}

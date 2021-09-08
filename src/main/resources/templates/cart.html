@@ -47,11 +47,10 @@
                                             <div class="product">
                                                 <figure class="product-media">
                                                     <a href="#">
-                                                        <img th:src="@{${'/images/' + item.product.image}}"
+                                                        <img th:src="@{${'/images/' + item.product.images[0].name}}"
                                                              alt="Product image">
                                                     </a>
                                                 </figure>
-
                                                 <h3 class="product-title">
                                                     <a th:href="@{/productdetail(id=${item.product.productid})}" th:text="${item.product.name}">Beige knitted elastic runner shoes</a>
                                                     <span th:text="${item.user.address}">Address seller:So 8,Ton That Thuyet, Ha Noi</span>

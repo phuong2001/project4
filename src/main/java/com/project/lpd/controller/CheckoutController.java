@@ -32,9 +32,6 @@ public class CheckoutController {
 
     @Autowired
     OrderItemService orderItemService;
-
-    @Autowired
-    PaypalService paypalService;
     @Autowired
     ShipperService shipperService;
 
@@ -58,6 +55,7 @@ public class CheckoutController {
         model.addAttribute("ship",ship);
         return "pay";
     }
+
     @PostMapping(value = "/pay")
     public String checkout(Authentication authentication, @ModelAttribute("order")OrderDto orderDto, @RequestParam(value = "ship") int ship){
         double totalPrice = 0;
@@ -85,55 +83,12 @@ public class CheckoutController {
             orderItemService.saveOrderItem(userEntity,orderEntity);
             return "redirect:/success";
         } else {
-
             return "redirect:/charge";
         }
-
     }
-
-    @GetMapping("/charge")
-    public String chargeIndex(Model model){
-        model.addAttribute("order", new Card());
-        return "charge";
-    }
-
-    @PostMapping("/charge")
-    public String payment(@ModelAttribute("order")Card card) {
-        try {
-            Payment payment = paypalService.createPayment(card.getPrice(), card.getCurrency(),
-                    card.getDescription(), "http://localhost:8080/" + CANCEL_URL,
-                    "http://localhost:8080/" + SUCCESS_URL);
-            for(Links link:payment.getLinks()) {
-                if(link.getRel().equals("approval_url")) {
-                    return "redirect:"+link.getHref();
-                }
-            }
-
-        } catch (PayPalRESTException e) {
-
-            e.printStackTrace();
-        }
-        return "redirect:/";
-    }
-
     @GetMapping(value = CANCEL_URL)
     public String cancelPay() {
         return "cancel";
     }
-
-    @GetMapping(value = SUCCESS_URL)
-    public String successPay(@RequestParam("paymentId") String paymentId, @RequestParam("PayerID") String payerId) {
-        try {
-            Payment payment = paypalService.executePayment(paymentId, payerId);
-            System.out.println(payment.toJSON());
-            if (payment.getState().equals("approved")) {
-                return "success";
-            }
-        } catch (PayPalRESTException e) {
-            System.out.println(e.getMessage());
-        }
-        return "redirect:/";
-    }
-
 
 }

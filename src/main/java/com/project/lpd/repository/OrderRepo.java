@@ -14,4 +14,5 @@ public interface OrderRepo extends JpaRepository<OrderEntity , Integer> {
             + "concat(b.fullname ,b.address ,b.phone , b.user.fullName)"
             + "like %?1%")
      List<OrderEntity> findByFullName(String fullname);
+     List<OrderEntity> findByStatus(String status);
 }

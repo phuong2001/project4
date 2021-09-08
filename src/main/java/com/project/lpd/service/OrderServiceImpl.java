@@ -71,6 +71,10 @@ public class OrderServiceImpl implements OrderService {
         return orderRepo.findByFullName(fullname);
     }
 
+    @Override
+    public List<OrderEntity> geyOrderByStatus(String status) {
+        return orderRepo.findByStatus(status);
+    }
 
 
 //    @Override

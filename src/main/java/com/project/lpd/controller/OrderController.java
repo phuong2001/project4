@@ -35,11 +35,13 @@ public class    OrderController {
 
     //list_user
     @GetMapping("/listorder")
-    public String showCart(Model model, Authentication authentication,@RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(defaultValue = "name") String fullname, @RequestParam(value = "size", defaultValue = "5") int size){
+    public String listOrder(Model model, Authentication authentication,@RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(defaultValue = "name") String fullname, @RequestParam(value = "size", defaultValue = "5") int size){
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         List<OrderEntity> orderItem = orderService.getOrderByUser(userEntity);
-        List<OrderEntity> Items = new ArrayList<>();
+        List<OrderEntity> Paid = new ArrayList<>();
+        List<OrderEntity> Delivered = new ArrayList<>();
+        List<OrderEntity> Done = new ArrayList<>();
         List<ProductEntity> products = productService.getProductByFullName(fullname);
         int totalPage = productService.getTotalPage(PageRequest.of(page, size));
         model.addAttribute("totalPage", totalPage);
@@ -47,11 +49,17 @@ public class    OrderController {
         model.addAttribute("page", page);
         model.addAttribute("products", products);
         for (OrderEntity ord : orderItem){
-            if (ord.getStatus().equals("DELIVERED") || ord.getStatus().equals("PAID")){
-                Items.add(ord);
+            if (ord.getStatus().equals("PAID")){
+                Paid.add(ord);
+            } else if (ord.getStatus().equals("DELIVERED")){
+                Delivered.add(ord);
+            } else if (ord.getStatus().equals("DONE")){
+                Done.add(ord);
             }
         }
-        model.addAttribute("orderItem",Items);
+        model.addAttribute("Paid",Paid);
+        model.addAttribute("Delivered",Delivered);
+        model.addAttribute("Done",Done);
         return "listorder";
     }
 
@@ -88,10 +96,10 @@ public class    OrderController {
         for (OrderItem item : orderItems){
             UserEntity seller = userService.getUserById(item.getProducts().getUserid());
             double total = item.getUnitPrice();
-            double sellermoney = total * 80 / 100;
+            double sellermoney = total * 98 / 100;
             seller.setWallet(seller.getWallet() + sellermoney);
             userService.updateUser(seller);
-            double adminMoney = total * 20 / 100;
+            double adminMoney = total * 2 / 100;
             UserEntity admin = userService.getUserById(1);
             admin.setWallet(admin.getWallet() + adminMoney);
         }
@@ -109,7 +117,7 @@ public class    OrderController {
             List<OrderItem> orderitems = orderItemService.findByProduct(product);
             model.addAttribute("orderitem",orderitems);
             for (OrderItem item : orderitems){
-                seller = item.getUnitPrice() * 80 /100;
+                seller = item.getUnitPrice() * 98 /100;
             }
             model.addAttribute("money", seller);
         }
