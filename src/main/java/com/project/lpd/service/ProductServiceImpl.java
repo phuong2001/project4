@@ -80,7 +80,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public List<ProductEntity> getTopPrice() {
-        return productRepo.findFirst6ByOrderByPrice();
+        return productRepo.findFirst6ByOrderByPriceAsc();
     }
 
 
