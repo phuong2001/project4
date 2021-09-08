@@ -46,9 +46,11 @@ public class WebController {
         List<CategoryEntity> category = categoryService.getAllCategory();
         List<ProductEntity> date = productService.getTopByDate();
         List<OrderItem> topOrder = orderItemService.getTopOrder();
+        List<ProductEntity> top = productService.getTopPrice();
         model.addAttribute("categorys", category);
         model.addAttribute("dates",date);
         model.addAttribute("topOrders",topOrder);
+        model.addAttribute("top",top);
         return "index";
     }
 
