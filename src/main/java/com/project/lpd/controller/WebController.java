@@ -102,11 +102,6 @@ public class WebController {
     @GetMapping({"/about"})
     public String about2() { return "about"; }
 
-    @GetMapping("/create_product")
-    public String createProduct(){
-        return "create_product";
-    }
-
     @GetMapping("/help")
     public String Help(){
         return "help";
