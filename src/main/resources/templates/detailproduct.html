@@ -102,7 +102,7 @@
                                 <div class="product-details-footer">
                                     <div class="product-cat">
                                         <span>Category:</span>
-                                        <a href="#" th:text="${product.category.name}">Single player</a>
+                                        <a th:href="@{/list_product_category(name=${product.category.name})}" th:text="${product.category.name}">Single player</a>
                                     </div><!-- End .product-cat -->
 
                                     <div class="social-icons social-icons-sm">
@@ -254,26 +254,22 @@
                                 }
                             }
                         }'>
-                <div class="product product-7 text-center">
+                <div class="product product-7 text-center" th:each="item:${list}">
                     <figure class="product-media">
-                        <span class="product-label label-new">New</span>
-                        <a href="product.html">
-                            <img src="assets/images/products/product-4.jpg" alt="Product image" class="product-image">
+                        <a th:href="@{/productdetail(id=${item.productid})}">
+                            <img th:src="@{${'/images/upload/' + item.images[0].name}}" alt="Product image" class="product-image">
                         </a>
                     </figure><!-- End .product-media -->
 
                     <div class="product-body">
                         <div class="product-cat">
-                            <a href="#">Women</a>
+                            <a th:href="@{/list_product_category(name=${item.category.name})}" th:text="${item.category.name}">Women</a>
                         </div><!-- End .product-cat -->
-                        <h3 class="product-title"><a href="product.html">Brown paperbag waist <br>pencil skirt</a></h3><!-- End .product-title -->
-                        <div class="product-price">
+                        <h3 class="product-title"><a th:href="@{/productdetail(id=${item.productid})}" th:text="${item.name}">Brown paperbag waist</a></h3><!-- End .product-title -->
+                        <div class="product-price" th:text=" '$' + ${item.price}">
                             $60.00
                         </div><!-- End .product-price -->
                         <div class="ratings-container">
-                            <div class="ratings">
-                                <div class="ratings-val" style="width: 20%;"></div><!-- End .ratings-val -->
-                            </div><!-- End .ratings -->
                             <span class="ratings-text">( 2 Reviews )</span>
                         </div><!-- End .rating-container -->
                     </div><!-- End .product-body -->
@@ -282,6 +278,5 @@
         </div><!-- End .container -->
     </div><!-- End .page-content -->
 </main>
-
 </body>
 </html>

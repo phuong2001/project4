@@ -81,6 +81,7 @@ public class CheckoutController {
             userService.updateUser(userEntity);
             orderService.createOrder(orderEntity);
             orderItemService.saveOrderItem(userEntity,orderEntity);
+
             return "redirect:/success";
         } else {
             return "redirect:/charge";

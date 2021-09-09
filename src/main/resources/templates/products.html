@@ -63,7 +63,7 @@
 
                                             <div class="product-body">
                                                 <div class="product-cat">
-                                                    <a href="#" th:text="${product.category.name}">Jackets</a>
+                                                    <a th:href="@{/list_product_category(name=${product.category.name})}" th:text="${product.category.name}">Jackets</a>
                                                 </div><!-- End .product-cat -->
                                                 <h3 class="product-title"><a
                                                         th:href="@{/productdetail(id=${product.productid})}"

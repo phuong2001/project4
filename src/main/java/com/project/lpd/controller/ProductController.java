@@ -117,7 +117,9 @@ public class ProductController {
     @GetMapping("/productdetail")
     public String productDetail(Model model, @RequestParam(value = "id", defaultValue = "0") int id) {
         ProductEntity product = productService.getProductById(id);
+        List<ProductEntity> list = productService.getProductByUser(product.getUser());
         model.addAttribute("product", product);
+        model.addAttribute("list",list);
         return "detailproduct";
     }
 

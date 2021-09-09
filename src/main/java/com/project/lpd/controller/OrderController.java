@@ -103,7 +103,6 @@ public class    OrderController {
             UserEntity admin = userService.getUserById(1);
             admin.setWallet(admin.getWallet() + adminMoney);
         }
-
         return "redirect:/listorder";
     }
 
@@ -136,21 +135,6 @@ public class    OrderController {
     @GetMapping("/success")
     public String done(){
         return "success";
-    }
-
-    @GetMapping("/history")
-    public String History(Model model, Authentication authentication){
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
-        List<OrderEntity> orderItem = orderService.getOrderByUser(userEntity);
-        List<OrderEntity> Items = new ArrayList<>();
-        for (OrderEntity ord : orderItem){
-            if (ord.getStatus().equals("RECEIVED")){
-                Items.add(ord);
-            }
-        }
-        model.addAttribute("orderItem",Items);
-        return "history";
     }
 
 
