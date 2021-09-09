@@ -25,4 +25,6 @@ public interface ProductService {
      List<ProductEntity> getProductByFullName(String name);
      int CountProduct(int id);
      List<ProductEntity> getTopByDate();
+     List<ProductEntity> getTopPrice();
+     List<ProductEntity> getConsoleProduct( CategoryEntity categoryEntity);
 }

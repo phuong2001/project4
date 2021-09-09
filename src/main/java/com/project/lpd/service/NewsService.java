@@ -13,4 +13,5 @@ public interface NewsService {
     void deleteNew(int id);
     NewsEntity updateNew(NewsEntity p);
     List<NewsEntity> getNewsByFullName(String name);
+    List<NewsEntity> getBlogByDate();
 }

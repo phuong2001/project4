@@ -78,6 +78,16 @@ public class ProductServiceImpl implements ProductService {
         return productRepo.findFirst15ByOrderByCreatedAtDesc();
     }
 
+    @Override
+    public List<ProductEntity> getTopPrice() {
+        return productRepo.findFirst6ByOrderByPrice();
+    }
+
+    @Override
+    public List<ProductEntity> getConsoleProduct(CategoryEntity categoryEntity) {
+        return productRepo.findFirst15OrderByCategory(categoryEntity);
+    }
+
 
     @Override
     public List<ProductEntity> getProductByFullName(String name) {
