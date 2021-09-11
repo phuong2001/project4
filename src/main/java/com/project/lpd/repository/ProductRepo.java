@@ -29,6 +29,7 @@ public interface ProductRepo extends JpaRepository<ProductEntity, Integer> {
     List<ProductEntity> findFirst15ByOrderByCreatedAtDesc();
     List<ProductEntity> findFirst6ByOrderByPriceAsc();
     List<ProductEntity> findFirst15OrderByCategory(CategoryEntity categoryEntity);
+    List<ProductEntity> findFirst7ByUserOrderByCreatedAtDesc(UserEntity userEntity);
 
 
 
