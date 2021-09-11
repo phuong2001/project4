@@ -104,8 +104,10 @@ public class ProductController {
     }
 
     @GetMapping({"/listproduct"})
-    public String AdminProduct(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "12") int size) {
-        List<ProductEntity> products = productService.AllProduct(PageRequest.of(page, size));
+    public String AdminProduct(Model model,Authentication authentication, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "12") int size) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
+        List<ProductEntity> products = productService.getProductByUser(userEntity);
         int totalPage = productService.getTotalPage(PageRequest.of(page, size));
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("size", size);
