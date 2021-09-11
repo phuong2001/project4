@@ -60,8 +60,9 @@ public class OrderItemServiceImpl implements OrderItemService{
 
     @Override
     public List<OrderItem> getTopOrder() {
-        return orderItemRepo.findFirst10ByOrderByProductsDesc();
+        return orderItemRepo.findTopOrder();
     }
+
 
 
 }

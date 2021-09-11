@@ -28,6 +28,8 @@ public interface ProductRepo extends JpaRepository<ProductEntity, Integer> {
     List<ProductEntity> findFirst15OrderByCategory(CategoryEntity categoryEntity);
     @Query(value = "SELECT * FROM product INNER JOIN orderitem ON product.productid = orderitem.productid ORDER BY SUM(orderitem.quantity) DESC LIMIT 0,10",nativeQuery = true)
     List<ProductEntity> getTopProduct();
+    @Query(nativeQuery=true, value="SELECT *  FROM product ORDER BY RAND() LIMIT 15")
+    List<ProductEntity> findRandamProduct();
 
 
 

@@ -53,6 +53,7 @@ public class WebController {
         List<NewsEntity> blog = newsService.getBlogByDate();
         List<OrderItem> topOrder = orderItemService.getTopOrder();
         List<ProductEntity> top = productService.getTopPrice();
+        List<ProductEntity> random = productService.getRandom();
         model.addAttribute("products", product);
         model.addAttribute("categoryEntity", categoryEntity);
         model.addAttribute("categorys", category);
@@ -60,6 +61,7 @@ public class WebController {
         model.addAttribute("blogs", blog);
         model.addAttribute("topOrders",topOrder);
         model.addAttribute("top",top);
+        model.addAttribute("randoms",random);
         return "index";
     }
 

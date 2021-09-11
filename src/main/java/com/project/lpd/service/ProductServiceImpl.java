@@ -99,6 +99,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepo.findByFullName(name);
     }
 
+    @Override
+    public List<ProductEntity> getRandom() {
+        return productRepo.findRandamProduct();
+    }
+
 
 }
 

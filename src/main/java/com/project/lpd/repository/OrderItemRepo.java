@@ -11,7 +11,9 @@ import java.util.List;
 public interface OrderItemRepo extends JpaRepository<OrderItem,Integer> {
     List<OrderItem> findByProducts(ProductEntity productEntity);
     List<OrderItem> findByOrders(OrderEntity orderEntity);
-    List<OrderItem> findFirst10ByOrderByProductsDesc();
+    @Query(value = "SELECT *, SUM(orderitem.quantity) AS total FROM orderitem GROUP BY productid ORDER BY SUM(orderitem.quantity) DESC LIMIT 10", nativeQuery = true)
+    List<OrderItem> findTopOrder();
+
 
 
 }
