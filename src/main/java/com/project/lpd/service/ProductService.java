@@ -26,5 +26,6 @@ public interface ProductService {
      int CountProduct(int id);
      List<ProductEntity> getTopByDate();
      List<ProductEntity> getTopPrice();
+     List<ProductEntity> getRandom();
      List<ProductEntity> getConsoleProduct( CategoryEntity categoryEntity);
 }
