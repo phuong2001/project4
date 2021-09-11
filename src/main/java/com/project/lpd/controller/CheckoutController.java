@@ -34,6 +34,8 @@ public class CheckoutController {
     OrderItemService orderItemService;
     @Autowired
     ShipperService shipperService;
+    @Autowired
+    ProductService productService;
 
     public static final String SUCCESS_URL = "pay/success";
     public static final String CANCEL_URL = "pay/cancel";
@@ -78,6 +80,11 @@ public class CheckoutController {
             orderEntity.setPhone(orderDto.getPhone());
             orderEntity.setSubtotal(totalPrice + orderDto.getFeeship());
             userEntity.setWallet(userEntity.getWallet() - totalPrice);
+            for (CartItemEntity itemcart : carts){
+                ProductEntity product = productService.getProductById(itemcart.getProductid());
+                product.setQuantity(product.getQuantity() - itemcart.getQuantity());
+                productService.updateProduct(product);
+            }
             userService.updateUser(userEntity);
             orderService.createOrder(orderEntity);
             orderItemService.saveOrderItem(userEntity,orderEntity);

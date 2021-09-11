@@ -50,6 +50,19 @@ public class UserController {
         return "redirect:/list";
     }
 
+    @GetMapping("/addfund")
+    public String AddfundView(Model model,@RequestParam(value = "id") int id){
+        UserEntity userEntity = userService.getUserById(id);
+        model.addAttribute("user",userEntity);
+        return "addfund";
+    }
+
+    @PostMapping("/addfund")
+    public String Addfund(@ModelAttribute UserEntity userEntity){
+        userService.updateUser(userEntity);
+        return "redirect:/list";
+    }
+
   @PostMapping("/search")
   public String userSearch(@RequestParam String name, Model model,@RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "10") int size) {
       List<UserEntity> users = userService.getUserByFullName(name);

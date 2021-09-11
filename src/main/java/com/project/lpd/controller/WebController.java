@@ -68,6 +68,8 @@ public class WebController {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         int countProduct = productService.CountProduct(userEntity.getId());
+        List<ProductEntity> top = productService.getTopProduct();
+        model.addAttribute("top",top);
         model.addAttribute("user",userEntity);
         model.addAttribute("product",countProduct);
         return "AdminIndex";

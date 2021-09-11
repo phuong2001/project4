@@ -89,7 +89,7 @@ public class    OrderController {
     @PostMapping("/user_confirm")
     public String ConfirmOrder(@ModelAttribute OrderEntity orderEntity, @RequestParam("id") int id ,RedirectAttributes att){
         OrderEntity order = orderService.getById(id);
-        order.setStatus("RECEIVED");
+        order.setStatus("DONE");
         orderService.saveOrder(order);
         att.addFlashAttribute("mess","Your order has been done ! You can check again in order history.");
         List<OrderItem> orderItems = orderItemService.getListOrderItem(order);
@@ -116,7 +116,8 @@ public class    OrderController {
             List<OrderItem> orderitems = orderItemService.findByProduct(product);
             model.addAttribute("orderitem",orderitems);
             for (OrderItem item : orderitems){
-                seller = item.getUnitPrice() * 98 /100;
+                double sellerMoney = item.getUnitPrice() * 98 /100;
+                seller = (double) Math.round(sellerMoney*1000) / 1000;
             }
             model.addAttribute("money", seller);
         }
