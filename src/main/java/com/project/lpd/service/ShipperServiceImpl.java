@@ -44,7 +44,7 @@ public class ShipperServiceImpl implements ShipperService{
 
     @Override
     public List<ShipperEntity> findByNameShipper(String name) {
-        return shippeRepo.findAllByName(name);
+        return shippeRepo.findByName(name);
     }
 
 
