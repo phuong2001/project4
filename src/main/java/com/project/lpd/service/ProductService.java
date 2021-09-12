@@ -30,4 +30,5 @@ public interface ProductService {
      List<ProductEntity> getConsoleProduct( CategoryEntity categoryEntity);
      List<ProductEntity> getTopProduct();
      int CountProduct();
+     List<ProductEntity> getProductBy(UserEntity userEntity,String name);
 }

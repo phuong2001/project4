@@ -12,6 +12,7 @@ import java.util.List;
 public interface ProductRepo extends JpaRepository<ProductEntity, Integer> {
     @Query("select b from ProductEntity b where b.name like %:name%")
     List<ProductEntity> findByProductName(String name);
+    List<ProductEntity> findByUserAndName(UserEntity userEntity,String name);
     ProductEntity findById(int Id);
     List<ProductEntity> findByUser(UserEntity userEntity);
     List<ProductEntity> findByCategory(CategoryEntity categoryEntity);

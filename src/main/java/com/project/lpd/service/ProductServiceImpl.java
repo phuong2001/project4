@@ -98,6 +98,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepo.CountProduct();
     }
 
+    @Override
+    public List<ProductEntity> getProductBy(UserEntity userEntity,String name) {
+        return productRepo.findByUserAndName(userEntity,name);
+    }
+
 
     @Override
     public List<ProductEntity> getProductByFullName(String name) {

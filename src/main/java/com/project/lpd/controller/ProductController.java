@@ -163,4 +163,16 @@ public class ProductController {
         model.addAttribute("products", products);
         return "/listproduct";
     }
+    @PostMapping("/productSearchAD")
+    public String indexSearchAD(Model model, @RequestParam(defaultValue = "name") String name, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "12") int size, Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
+        List<ProductEntity> products = productService.getProductBy(userEntity,name);
+        int totalPage = productService.getTotalPage(PageRequest.of(page, size));
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("size", size);
+        model.addAttribute("page", page);
+        model.addAttribute("products", products);
+        return "/listproduct";
+    }
 }

@@ -17,7 +17,16 @@
                 <span class="navbar-toggler-icon icon-bar"></span>
             </button>
             <div class="collapse navbar-collapse justify-content-end">
-                <form method="post" th:action="@{/productSearch}" class="navbar-form col-md-4" style="float: right; margin-top: 30px">
+                <form method="post" th:action="@{/productSearch}" class="navbar-form col-md-4" style="float: right; margin-top: 30px" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}">
+                    <div class="input-group no-border">
+                        <input type="text" name="name" value="" class="form-control" placeholder="Search...">
+                        <button type="submit" class="btn btn-white btn-round btn-just-icon">
+                            <i class="material-icons">search</i>
+                            <div class="ripple-container"></div>
+                        </button>
+                    </div>
+                </form>
+                <form method="post" th:action="@{/productSearchAD}" class="navbar-form col-md-4" style="float: right; margin-top: 30px" th:if="${#authorization.expression('hasAuthority(''USER'')')}">
                     <div class="input-group no-border">
                         <input type="text" name="name" value="" class="form-control" placeholder="Search...">
                         <button type="submit" class="btn btn-white btn-round btn-just-icon">
