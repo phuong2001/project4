@@ -76,6 +76,16 @@ public class OrderServiceImpl implements OrderService {
         return orderRepo.findByStatus(status);
     }
 
+    @Override
+    public int getCountOrderDone() {
+        return orderRepo.countAllDone();
+    }
+
+    @Override
+    public int getCountOrderPaid() {
+        return orderRepo.countAllPaid();
+    }
+
 
 //    @Override
 //    public List<OrderEntity> getOrderSeller(UserEntity user) {

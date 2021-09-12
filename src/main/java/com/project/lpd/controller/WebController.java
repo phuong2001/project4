@@ -71,9 +71,15 @@ public class WebController {
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         int countProduct = productService.CountProduct(userEntity.getId());
         List<ProductEntity> top = productService.getTopProduct();
+        int orderDone = orderService.getCountOrderDone();
+        int orderPaid = orderService.getCountOrderPaid();
+        int quantityUser = userService.quantityUser();
         model.addAttribute("top",top);
         model.addAttribute("user",userEntity);
         model.addAttribute("product",countProduct);
+        model.addAttribute("orderDone",orderDone);
+        model.addAttribute("orderPaid",orderPaid);
+        model.addAttribute("quantityUser",quantityUser);
         return "AdminIndex";
     }
 

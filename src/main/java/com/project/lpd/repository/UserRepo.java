@@ -14,4 +14,6 @@ public interface UserRepo extends JpaRepository<UserEntity,Integer> {
         UserEntity findByEmail(String email);
         @Query("select b from UserEntity b where b.fullName like %:name%")
         List<UserEntity> findByFullName(String name);
+        @Query(value = "SELECT COUNT(id) FROM user", nativeQuery = true)
+        int quantityUser();
 }

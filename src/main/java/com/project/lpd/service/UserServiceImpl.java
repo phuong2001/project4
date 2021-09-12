@@ -70,6 +70,12 @@ public class UserServiceImpl implements UserService {
         return userRepo.findByFullName(name);
 
     }
+
+    @Override
+    public int quantityUser() {
+        return userRepo.quantityUser();
+    }
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity userEntity = userRepo.findByUsername(username);
