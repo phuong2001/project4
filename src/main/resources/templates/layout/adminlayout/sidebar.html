@@ -49,7 +49,13 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="/listproduct">
+                <a class="nav-link" href="/listproductadmin" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}">
+                    <i class="material-icons">content_paste</i>
+                    <p>Product</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/listproduct" th:if="${#authorization.expression('hasAuthority(''USER'')')}">
                     <i class="material-icons">content_paste</i>
                     <p>My Product</p>
                 </a>

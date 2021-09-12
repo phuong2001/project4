@@ -93,6 +93,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepo.getTopProduct();
     }
 
+    @Override
+    public int CountProduct() {
+        return productRepo.CountProduct();
+    }
+
 
     @Override
     public List<ProductEntity> getProductByFullName(String name) {

@@ -29,4 +29,5 @@ public interface ProductService {
      List<ProductEntity> getRandom();
      List<ProductEntity> getConsoleProduct( CategoryEntity categoryEntity);
      List<ProductEntity> getTopProduct();
+     int CountProduct();
 }

@@ -77,13 +77,13 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public int getCountOrderDone() {
-        return orderRepo.countAllDone();
+    public int getCountOrderDone(int id) {
+        return orderRepo.countAllDone(id);
     }
 
     @Override
-    public int getCountOrderPaid() {
-        return orderRepo.countAllPaid();
+    public int getCountOrderPaid(int id) {
+        return orderRepo.countAllPaid(id);
     }
 
 

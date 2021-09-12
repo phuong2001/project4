@@ -17,6 +17,8 @@ public interface ProductRepo extends JpaRepository<ProductEntity, Integer> {
     List<ProductEntity> findByCategory(CategoryEntity categoryEntity);
     @Query("SELECT count (u) FROM ProductEntity u where u.userid = :id")
     int CountById(int id);
+    @Query(value = "SELECT COUNT(productid) AS done FROM product", nativeQuery = true)
+    int CountProduct();
     @Query("select b from ProductEntity b where "
             + "concat(b.name ,b.category.name ,b.price , b.description)"
             + "like %?1%" )

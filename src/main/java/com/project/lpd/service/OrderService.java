@@ -17,6 +17,6 @@ public interface OrderService {
     OrderEntity getById(int id);
     List<OrderEntity> getOrderByFullName(String fullname);
     List<OrderEntity> geyOrderByStatus(String status);
-    int getCountOrderDone();
-    int getCountOrderPaid();
+    int getCountOrderDone(int id);
+    int getCountOrderPaid(int id);
 }
