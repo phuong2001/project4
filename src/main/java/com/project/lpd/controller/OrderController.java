@@ -74,18 +74,6 @@ public class    OrderController {
         return "orderdetail";
     }
 
-    //list_admin
-//    @GetMapping({"/listorder1"})
-//    public String ListOrder(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(defaultValue = "name") String fullname, @RequestParam(value = "size", defaultValue = "5") int size) {
-//        List<OrderEntity> orderItem = orderService.getAllOrder(PageRequest.of(page, size));
-//        int totalPage  = orderService.getTotalPage(PageRequest.of(page, size));
-//        model.addAttribute("totalPage", totalPage);
-//        model.addAttribute("size", size);
-//        model.addAttribute("page", page);
-//        model.addAttribute("orderItem", orderItem);
-//        return "listorder";
-//    }
-
     @PostMapping("/user_confirm")
     public String ConfirmOrder(@ModelAttribute OrderEntity orderEntity, @RequestParam("id") int id ,RedirectAttributes att){
         OrderEntity order = orderService.getById(id);
@@ -109,17 +97,30 @@ public class    OrderController {
     @GetMapping({"/listOrderProduct"})
     public String listOrderProduct(Model model, Authentication authentication){
         double seller = 0 ;
+        List<OrderItem> Paid = new ArrayList<>();
+        List<OrderItem> Delivered = new ArrayList<>();
+        List<OrderItem> Done = new ArrayList<>();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         List<ProductEntity> products = productService.getProductByUser(userEntity);
         for (ProductEntity product : products){
             List<OrderItem> orderitems = orderItemService.findByProduct(product);
             model.addAttribute("orderitem",orderitems);
-            for (OrderItem item : orderitems){
-                double sellerMoney = item.getUnitPrice() * 98 /100;
+            for (OrderItem ord : orderitems){
+                double sellerMoney = ord.getUnitPrice() * 98 /100;
                 seller = (double) Math.round(sellerMoney*1000) / 1000;
+                if (ord.getOrders().getStatus().equals("PAID")){
+                    Paid.add(ord);
+                } else if (ord.getOrders().getStatus().equals("DELIVERED")){
+                    Delivered.add(ord);
+                } else if (ord.getOrders().getStatus().equals("DONE")){
+                    Done.add(ord);
+                }
             }
             model.addAttribute("money", seller);
+            model.addAttribute("Paid",Paid);
+            model.addAttribute("Delivered",Delivered);
+            model.addAttribute("Done",Done);
         }
         return "buyer_order";
     }
