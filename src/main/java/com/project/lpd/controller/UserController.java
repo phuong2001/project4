@@ -58,10 +58,13 @@ public class UserController {
     }
 
     @PostMapping("/addfund")
-    public String Addfund(@ModelAttribute UserEntity userEntity){
+    public String Addfund(@ModelAttribute UserEntity userEntity,@RequestParam("fund") double fund){
+        userEntity.setWallet(fund);
         userService.updateUser(userEntity);
         return "redirect:/list";
     }
+
+
 
   @PostMapping("/search")
   public String userSearch(@RequestParam String name, Model model,@RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "10") int size) {
