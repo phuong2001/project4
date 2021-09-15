@@ -1,6 +1,7 @@
 package com.project.lpd.controller;
 
 import com.project.lpd.entity.UserEntity;
+import com.project.lpd.model.UserDto;
 import com.project.lpd.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.PageRequest;
@@ -45,7 +46,10 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String updateUser(@ModelAttribute UserEntity userEntity, Model model) {
+    public String updateUser(@ModelAttribute("userEntity") UserDto userDto, Model model) {
+        UserEntity userEntity = userService.getUserByName(userDto.getUsername());
+        userEntity.setEmail(userDto.getEmail());
+        userEntity.setPhone(userDto.getPhone());
         userService.updateUser(userEntity);
         return "redirect:/list";
     }

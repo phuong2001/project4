@@ -10,6 +10,7 @@ import lombok.NoArgsConstructor;
 public class UserDto {
     private String fullName;
     private String password;
+    private String phone;
     private String email;
     private String username;
     private double wallet;

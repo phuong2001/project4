@@ -1,6 +1,7 @@
 package com.project.lpd.controller;
 
 import com.project.lpd.entity.*;
+import com.project.lpd.model.UserDto;
 import com.project.lpd.service.OrderService;
 import com.project.lpd.service.RoleService;
 import com.project.lpd.service.UserService;
@@ -35,9 +36,10 @@ public class ProfileController {
     }
 
     @PostMapping("/updateprofile/{id}")
-    public String updateUserP(Model model, Authentication authentication) {
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
+    public String updateUserP(@ModelAttribute("userEntity")UserDto userDto, @PathVariable("id") int id ) {
+        UserEntity userEntity = userService.getUserById(id);
+        userEntity.setEmail(userDto.getEmail());
+        userEntity.setPhone(userDto.getPhone());
         userService.updateUserProfile(userEntity);
         return "redirect:/profile";
     }
