@@ -14,10 +14,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import javax.jws.WebParam;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Controller
 public class    OrderController {
@@ -136,7 +134,7 @@ public class    OrderController {
 
     @GetMapping("/success")
     public String done(){
-        return "success";
+        return "result";
     }
 
 

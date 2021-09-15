@@ -1,20 +1,17 @@
 package com.project.lpd.controller;
 
-import com.paypal.api.payments.Links;
-import com.paypal.api.payments.Payment;
-import com.paypal.base.rest.PayPalRESTException;
 import com.project.lpd.entity.*;
 import com.project.lpd.model.OrderDto;
 import com.project.lpd.service.*;
+import com.stripe.exception.StripeException;
+import com.stripe.model.Charge;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
@@ -37,8 +34,13 @@ public class CheckoutController {
     @Autowired
     ProductService productService;
 
+    @Autowired
+    StripeService paymentsService;
+
     public static final String SUCCESS_URL = "pay/success";
     public static final String CANCEL_URL = "pay/cancel";
+    @Value("${STRIPE_PUBLIC_KEY}")
+    private String stripePublicKey;
 
 
     @GetMapping("/pay")
@@ -97,6 +99,32 @@ public class CheckoutController {
     @GetMapping(value = CANCEL_URL)
     public String cancelPay() {
         return "cancel";
+    }
+
+    @PostMapping("/charge")
+    public String charge(ChargeRequest chargeRequest, Model model) throws StripeException {
+        chargeRequest.setDescription("Example charge");
+        chargeRequest.setCurrency(ChargeRequest.Currency.EUR);
+        Charge charge = paymentsService.charge(chargeRequest);
+        model.addAttribute("id", charge.getId());
+        model.addAttribute("status", charge.getStatus());
+        model.addAttribute("chargeId", charge.getId());
+        model.addAttribute("balance_transaction", charge.getBalanceTransaction());
+        return "result";
+    }
+
+    @ExceptionHandler(StripeException.class)
+    public String handleError(Model model, StripeException ex) {
+        model.addAttribute("error", ex.getMessage());
+        return "result";
+    }
+
+    @RequestMapping("/charge")
+    public String checkout(Model model, @RequestParam(value = "amount", required = false, defaultValue = "0") int amount) {
+        model.addAttribute("amount",  amount*100); // in cents
+        model.addAttribute("stripePublicKey", stripePublicKey);
+        model.addAttribute("currency", ChargeRequest.Currency.EUR);
+        return "charge";
     }
 
 }
