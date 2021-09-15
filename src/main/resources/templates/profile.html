@@ -29,23 +29,11 @@
                 <div class="row">
                     <aside class="col-md-4 col-lg-3">
                         <ul class="nav nav-dashboard flex-column mb-3 mb-md-0" role="tablist">
-                           <!-- <li class="nav-item">
-                                <a class="nav-link active" id="tab-dashboard-link" data-toggle="tab" href="#tab-dashboard" role="tab" aria-controls="tab-dashboard" aria-selected="true">Dashboard</a>
+                            <li class="nav-item">
+                                <a class="nav-link" id="tab-address-link" data-toggle="tab" href="#tab-address" role="tab" aria-controls="tab-address" aria-selected="false">Account Details</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" id="tab-orders-link" data-toggle="tab" href="#tab-orders" role="tab" aria-controls="tab-orders" aria-selected="false">My Shop</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="tab-downloads-link" data-toggle="tab" href="#tab-downloads" role="tab" aria-controls="tab-downloads" aria-selected="false">My orders</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="tab-list-buyer" data-toggle="tab" href="#tab-buyer" role="tab" aria-controls="tab-buyer" aria-selected="false">Buyer orders</a>
-                            </li>-->
-                            <li class="nav-item">
-                                <a class="nav-link" id="tab-address-link" data-toggle="tab" href="#tab-address" role="tab" aria-controls="tab-address" aria-selected="false">Adresses</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" id="tab-account-link" data-toggle="tab" href="#tab-account" role="tab" aria-controls="tab-account" aria-selected="false">Account Details</a>
+                                <a class="nav-link" id="tab-account-link" data-toggle="tab" href="#tab-account" role="tab" aria-controls="tab-account" aria-selected="false">Edit Profile</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Sign Out</a>
@@ -55,135 +43,18 @@
 
                     <div class="col-md-8 col-lg-9">
                         <div class="tab-content">
-                          <!--  <div class="tab-pane fade show active" id="tab-dashboard" role="tabpanel" aria-labelledby="tab-dashboard-link">
-                                <p>Hello <span class="font-weight-normal text-dark">User</span> (not <span class="font-weight-normal text-dark">User</span>? <a href="#">Log out</a>)
-                                    <br>
-                                    From your account dashboard you can view your <a href="#tab-orders" class="tab-trigger-link link-underline">recent orders</a>, manage your <a href="#tab-address" class="tab-trigger-link">shipping and billing addresses</a>, and <a href="#tab-account" class="tab-trigger-link">edit your password and account details</a>.</p>
-                            </div>&lt;!&ndash; .End .tab-pane &ndash;&gt;
-
-                            <div class="tab-pane fade" id="tab-orders" role="tabpanel" aria-labelledby="tab-orders-link">
-                                <div class="col-lg-12">
-                                    <table class="table table-cart table-mobile">
-                                        <thead>
-                                        <div><p class="font-weight-bold">User Buyer name</p></div>
-                                        <tr>
-                                            <th>Product</th>
-                                            <th>Price</th>
-                                            <th>Quantity</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td class="product-col">
-                                                <div class="product">
-                                                    <h3 class="product-title">
-                                                        <a href="#">Beige knitted elastic runner shoes</a>
-                                                    </h3>&lt;!&ndash; End .product-title &ndash;&gt;
-                                                </div>&lt;!&ndash; End .product &ndash;&gt;
-                                            </td>
-                                            <td class="price-col">$84.00</td>
-                                            <td class="quantity-col">
-                                                <div class="cart-product-quantity">8</div>&lt;!&ndash; End .cart-product-quantity &ndash;&gt;
-                                            </td>
-                                            <td class="total-col">$84.00</td>
-                                            <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>&lt;!&ndash; End .table table-wishlist &ndash;&gt;
-                                </div>
-                              </div>&lt;!&ndash; .End .tab-pane &ndash;&gt;
-
-                            <div class="tab-pane fade" id="tab-downloads" role="tabpanel" aria-labelledby="tab-downloads-link">
-                                <div class="col-lg-12">
-                                    <a href="/createproduct" class="btn btn-outline-primary-2"><span>Create Product</span><i class="las la-long-arrow-alt-right"></i></a>
-                                </div>
-                                <div class="col-lg-12">
-                                   <form action="" method="post">
-                                    <table class="table table-cart table-mobile">
-                                        <thead>
-                                        <tr>
-                                            <th>Product</th>
-                                            <th>Price</th>
-                                            <th>Quantity</th>
-                                            <th>Total</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td class="product-col">
-                                                <div class="product">
-                                                    <h3 class="product-title">
-                                                        <a href="#">Beige knitted elastic runner shoes</a>
-                                                    </h3>&lt;!&ndash; End .product-title &ndash;&gt;
-                                                </div>&lt;!&ndash; End .product &ndash;&gt;
-                                            </td>
-                                            <td class="price-col">$84.00</td>
-                                            <td class="quantity-col">
-                                                <div class="cart-product-quantity">8</div>&lt;!&ndash; End .cart-product-quantity &ndash;&gt;
-                                            </td>
-                                            <td class="total-col">$84.00</td>
-                                        </tr>
-                                        <tr>
-                                            <td><span>Seller: user</span></td>
-                                            <td><span>Subtotal: 15$</span></td>
-                                            <td colspan="2"><span><a href="" class="btn btn-primary float-right">Product received</a> </span></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>&lt;!&ndash; End .table table-wishlist &ndash;&gt;
-                                   </form>
-                                </div>
-
-                            </div>&lt;!&ndash; .End .tab-pane &ndash;&gt;
-
-                            <div class="tab-pane fade" id="tab-buyer" role="tabpanel" aria-labelledby="tab-buyer">
-
-                                <div class="col-lg-12">
-                                    <a href="category.html" class="btn btn-outline-primary-2"><span>GO SHOP</span><i class="las la-long-arrow-alt-right"></i></a>
-                                    <table class="table table-cart table-mobile">
-                                        <thead>
-                                        <tr>
-                                            <th>Product</th>
-                                            <th>Price</th>
-                                            <th>Quantity</th>
-                                            <th>Status</th>
-                                        </tr>
-                                        </thead>
-                                        <tbody>
-                                        <tr>
-                                            <td class="product-col">
-                                                <div class="product">
-                                                    <h3 class="product-title">
-                                                        <a href="#">Beige knitted elastic runner shoes</a>
-                                                    </h3>&lt;!&ndash; End .product-title &ndash;&gt;
-                                                </div>&lt;!&ndash; End .product &ndash;&gt;
-                                            </td>
-                                            <td class="price-col">$84.00</td>
-                                            <td class="quantity-col">
-                                                <div class="cart-product-quantity">8</div>&lt;!&ndash; End .cart-product-quantity &ndash;&gt;
-                                            </td>
-                                            <td class="total-col">$84.00</td>
-                                            <td class="remove-col"><button class="btn-remove"><i class="icon-close"></i></button></td>
-                                        </tr>
-                                        </tbody>
-                                    </table>&lt;!&ndash; End .table table-wishlist &ndash;&gt;
-                                </div>
-
-                            </div>&lt;!&ndash; .End .tab-pane &ndash;&gt;
-
--->
                             <div class="tab-pane fade" id="tab-address" role="tabpanel" aria-labelledby="tab-address-link">
-                                <p>The following addresses will be used on the checkout page by default.</p>
+                                <p></p>
 
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="card card-dashboard">
                                             <div class="card-body" th:object="${userEntity}">
-                                                <h3 class="card-title">Billing Address</h3><!-- End .card-title -->
-                                                <p th:text="${userEntity.id}"></p>
+                                                <h3 class="card-title">Account Details</h3><!-- End .card-title -->
                                                 <p th:text="${userEntity.username}"></p>
                                                 <p th:text="${userEntity.email}"></p>
                                                 <p th:text="${userEntity.phone}"></p>
+                                                <p th:text="${userEntity.address}"></p>
                                               <!--      <a  href="/tab-account" th:text="Edit">Edit <i class="icon-edit"></i></a>-->
                                             </div><!-- End .card-body -->
                                         </div><!-- End .card-dashboard -->
@@ -210,6 +81,10 @@
 
                                     <label for="email">Email</label>
                                     <input type="text" name="email" th:field="${userEntity.email}" class="form-control" placeholder="Email">
+
+                                    <label for="address">Address</label>
+                                    <input type="text" name="address" th:field="${userEntity.address}" class="form-control" placeholder="Address">
+
 
                                     <button type="submit" class="btn btn-outline-primary-2">
                                         <span>SAVE CHANGES</span>

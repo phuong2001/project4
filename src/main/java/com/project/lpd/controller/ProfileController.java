@@ -40,6 +40,7 @@ public class ProfileController {
         UserEntity userEntity = userService.getUserById(id);
         userEntity.setEmail(userDto.getEmail());
         userEntity.setPhone(userDto.getPhone());
+        userEntity.setAddress(userDto.getAddress());
         userService.updateUserProfile(userEntity);
         return "redirect:/profile";
     }
