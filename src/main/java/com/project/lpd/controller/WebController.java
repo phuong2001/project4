@@ -75,6 +75,9 @@ public class WebController {
         int orderPaid = orderService.getCountOrderPaid(userEntity.getId());
         int quantityUser = userService.quantityUser();
         int countP = productService.CountProduct();
+        double totalDone = orderService.TotalDone();
+        double totalExtra = totalDone * 2/100;
+        model.addAttribute("totalExtra",totalExtra);
         model.addAttribute("top",top);
         model.addAttribute("user",userEntity);
         model.addAttribute("product",countProduct);
