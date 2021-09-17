@@ -3,7 +3,6 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/adminlayout/template_admin.html}">
 <title>list game news</title>
-
 <body >
 <div class="main-panel" layout:fragment="content">
     <nav class="navbar navbar-expand-lg navbar-transparent navbar-absolute fixed-top ">
@@ -97,9 +96,9 @@
                                     <tr th:each="news : ${gameNews}">
                                         <th scope="row" th:text="${news.id}"></th>
                                         <td th:text="${news.name}"></td>
-                                        <td th:text="${news.image}"></td>
-                                        <td th:text="${news.description}"></td>
-                                        <td th:text="${news.detailed_description}"></td>
+                                        <td ><div style="overflow: auto;width: 200px;height: 110px;" th:text="${news.image}"></div></td>
+                                        <td ><div style="overflow: auto;width: 200px;height: 110px;" th:text="${news.description}"></div></td>
+                                        <td ><div style="overflow: auto;width: 200px;height: 110px;" th:text="${news.description_detaile}"></div></td>
                                         <td th:text="${news.createdAt}"></td>
                                         <td th:text="${news.updatedAt}"></td>
                                         <td><a th:href="@{/updatenew(id=${news.id})}" th:text="Edit"></a></td>

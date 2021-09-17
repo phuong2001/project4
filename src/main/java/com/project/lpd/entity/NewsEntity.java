@@ -6,6 +6,7 @@ import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
 import java.util.Date;
 
 @Entity
@@ -22,8 +23,8 @@ public class NewsEntity {
     private String image;
     @Column(name = "description")
     private String description;
-    @Column(name = "detailed_description")
-    private String detailed_description;
+    @Column(name = "description_detaile",length = 6555500)
+    private String description_detaile;
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "createAt")

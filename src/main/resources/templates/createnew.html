@@ -15,7 +15,7 @@
     <div class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-12">
                     <div class="card">
                         <div class="card-header card-header-primary">
                             <h4 class="card-title">Add </h4>
@@ -49,7 +49,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="detailed_description" class="bmd-label-floating">Detailed description</label>
-                                            <input type="text" name="detailed_description" th:field="${model.detailed_description}" class="form-control">
+                                            <textarea type="text" name="detailed_description" rows="3" id="detailed_description" th:field="${model.description_detaile}" class="form-control"></textarea>
                                         </div>
                                     </div>
                                 </div>
