@@ -31,4 +31,5 @@ public interface ProductService {
      List<ProductEntity> getTopProduct();
      int CountProduct();
      List<ProductEntity> getProductBy(UserEntity userEntity,String name);
+     List<ProductEntity> getProductCreateByUser(UserEntity userEntity);
 }

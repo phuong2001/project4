@@ -24,11 +24,14 @@ public interface ProductRepo extends JpaRepository<ProductEntity, Integer> {
             + "concat(b.name ,b.category.name ,b.price , b.description)"
             + "like %?1%" )
     List<ProductEntity> findByFullName(String name);
+
     @Query("select  b from ProductEntity b order by b.createdAt DESC ")
     List<ProductEntity> findAllByCreatedAt(Pageable pageable);
+
     List<ProductEntity> findFirst15ByOrderByCreatedAtDesc();
     List<ProductEntity> findFirst6ByOrderByPriceAsc();
     List<ProductEntity> findFirst15OrderByCategory(CategoryEntity categoryEntity);
+    List<ProductEntity> findFirst7ByUserOrderByCreatedAtDesc(UserEntity userEntity);
     @Query(value = "SELECT * FROM product INNER JOIN orderitem ON product.productid = orderitem.productid ORDER BY SUM(orderitem.quantity) DESC LIMIT 0,10",nativeQuery = true)
     List<ProductEntity> getTopProduct();
     @Query(nativeQuery=true, value="SELECT *  FROM product ORDER BY RAND() LIMIT 15")

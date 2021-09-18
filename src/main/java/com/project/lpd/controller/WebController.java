@@ -69,6 +69,8 @@ public class WebController {
     public String adminindex(Authentication authentication , Model model) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
+        List<ProductEntity> products = productService.getProductCreateByUser(userEntity);
+        /*List<OrderItem> orderItems = orderItemService.getTopOrderByUser(userEntity);*/
         int countProduct = productService.CountProduct(userEntity.getId());
         List<ProductEntity> top = productService.getTopProduct();
         int orderDone = orderService.getCountOrderDone(userEntity.getId());
@@ -77,6 +79,8 @@ public class WebController {
         int countP = productService.CountProduct();
         model.addAttribute("top",top);
         model.addAttribute("user",userEntity);
+        /*model.addAttribute("orderItem", orderItems);*/
+        model.addAttribute("products",products);
         model.addAttribute("product",countProduct);
         model.addAttribute("orderDone",orderDone);
         model.addAttribute("orderPaid",orderPaid);

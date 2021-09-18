@@ -103,6 +103,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepo.findByUserAndName(userEntity,name);
     }
 
+    @Override
+    public List<ProductEntity> getProductCreateByUser(UserEntity userEntity) {
+        return productRepo.findFirst7ByUserOrderByCreatedAtDesc(userEntity);
+    }
+
 
     @Override
     public List<ProductEntity> getProductByFullName(String name) {
