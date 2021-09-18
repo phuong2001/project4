@@ -22,10 +22,12 @@ public class NewsController{
     public String News(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "5") int size) {
         List<NewsEntity> gameNews = newsService.getAllNews(PageRequest.of(page, size));
         int totalPage  = newsService.getTotalPage(PageRequest.of(page, size));
+        List<NewsEntity> blog = newsService.getBlogByDate();
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("size", size);
         model.addAttribute("page", page);
         model.addAttribute("gameNews", gameNews);
+        model.addAttribute("blogs", blog);
         return "news";
     }
 
@@ -91,6 +93,17 @@ public class NewsController{
         model.addAttribute("page", page);
         model.addAttribute("gameNews" ,gameNews);
         return "listnew";
+    }
+
+    @PostMapping("/newsIndexsearch")
+    public String newsIndexsearch(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "5") int size , @RequestParam(defaultValue = "name")String name){
+        List<NewsEntity> gameNews = newsService.getNewsByFullName(name);
+        int totalPage  = newsService.getTotalPage(PageRequest.of(page, size));
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("size", size);
+        model.addAttribute("page", page);
+        model.addAttribute("gameNews" ,gameNews);
+        return "news";
     }
 
 }

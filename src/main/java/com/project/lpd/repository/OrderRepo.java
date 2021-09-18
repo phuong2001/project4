@@ -22,4 +22,8 @@ public interface OrderRepo extends JpaRepository<OrderEntity , Integer> {
 
     @Query(value = "SELECT COUNT(status) AS paid FROM order_detail WHERE status='PAID' AND order_detail.userid=:id", nativeQuery = true)
     int countAllPaid(int id);
+
+    @Query(value = "SELECT SUM(order_detail.price_total) FROM order_detail WHERE order_detail.status='DONE'", nativeQuery = true)
+    double TotalDone();
+
 }
