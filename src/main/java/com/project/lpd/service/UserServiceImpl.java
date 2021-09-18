@@ -13,16 +13,16 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.*;
 import java.util.stream.Collectors;
 
 @Service
+@Transactional
 public class UserServiceImpl implements UserService {
 
     @Autowired
@@ -46,12 +46,12 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserEntity getUserById(int id) {
-        return userRepo.findById( id).get();
+        return userRepo.findById(id).get();
     }
 
     @Override
-    public UserEntity getUserByName(String name) {
-        return userRepo.findByUsername(name);
+    public UserEntity getUserByName(String username) {
+        return userRepo.findByUsername(username);
     }
 
     @Override
@@ -63,6 +63,11 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserEntity updateUser(UserEntity p) {
         return userRepo.save(p);
+    }
+
+    @Override
+    public UserEntity updateUserProfile(UserEntity userEntity) {
+        return userRepo.save(userEntity);
     }
 
     @Override
