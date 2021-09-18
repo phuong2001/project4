@@ -104,6 +104,22 @@
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
                     <div class="card card-stats">
+                        <div class="card-header card-header-success card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">store</i>
+                            </div>
+                            <p class="card-category">Sale Money</p>
+                            <h3 class="card-title" th:text="${sumUserExtra}">$34,245</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
                         <div class="card-header card-header-danger card-header-icon">
                             <div class="card-icon">
                                 <i class="material-icons">assignment</i>
@@ -215,12 +231,12 @@
                                 <th>Country</th>
                                 </thead>
                                 <tbody>
-                                <tr th:each="orderItems : ${orderItem}">
-                                    <td th:text="${orderItems.products.productid}">1</td>
-                                    <td th:text="${orderItems.products.name}">Dakota Rice</td>
-                                    <td>$36,738</td>
-                                    <td>Niger</td>
-                                </tr>
+<!--                                <tr th:each="orderItems : ${orderItem}">-->
+<!--                                    <td th:text="${orderItems.products.productid}">1</td>-->
+<!--                                    <td th:text="${orderItems.products.name}">Dakota Rice</td>-->
+<!--                                    <td>$36,738</td>-->
+<!--                                    <td>Niger</td>-->
+<!--                                </tr>-->
                                 </tbody>
                             </table>
                         </div>
@@ -242,13 +258,13 @@
                                 <th>Quantity</th>
                                 </thead>
                                 <tbody >
-                                <tr th:each="products : ${products}" style="text-align: center">
-                                    <td th:text="${products.productid}">1</td>
-                                    <td th:text="${products.name}">Dakota Rice</td>
-                                    <td > <img th:src="@{${'/images/upload/' + products.images[0].name}}"height="50px"width="50px"></td>
-                                    <td th:text="${products.price}">$36,738</td>
-                                    <td th:text="${products.quantity}">Niger</td>
-                                </tr>
+<!--                                <tr th:each="products : ${products}" style="text-align: center">-->
+<!--                                    <td th:text="${products.productid}">1</td>-->
+<!--                                    <td th:text="${products.name}">Dakota Rice</td>-->
+<!--                                    <td > <img th:src="@{${'/images/upload/' + products.images[0].name}}"height="50px"width="50px"></td>-->
+<!--                                    <td th:text="${products.price}">$36,738</td>-->
+<!--                                    <td th:text="${products.quantity}">Niger</td>-->
+<!--                                </tr>-->
                                 </tbody>
                             </table>
                             <div class="heading-right" style="text-align: right" >

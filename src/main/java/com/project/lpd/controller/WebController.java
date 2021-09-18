@@ -79,7 +79,10 @@ public class WebController {
         int countP = productService.CountProduct();
         double totalDone = orderService.TotalDone();
         double totalExtra = totalDone * 2/100;
+        double sumUser = orderService.sumPriceUser(userEntity.getId());
+        double sumUserExtra = sumUser * 98/100;
         model.addAttribute("totalExtra",totalExtra);
+        model.addAttribute("sumUserExtra",sumUserExtra);
         model.addAttribute("top",top);
         model.addAttribute("user",userEntity);
         /*model.addAttribute("orderItem", orderItems);*/
