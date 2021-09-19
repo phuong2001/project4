@@ -29,8 +29,7 @@ public class ProductEntity {
     @Lob
     @Column(name = "description", columnDefinition = "TEXT")
     private String description;
-//    @Column(name = "discount")
-//    private double discount;
+    
     @CreationTimestamp
     @Temporal(TemporalType.TIMESTAMP)
     @Column(name = "createAt")
@@ -61,6 +60,9 @@ public class ProductEntity {
     @ManyToOne()
     @JoinColumn(name = "userid", insertable = false, updatable = false)
     private UserEntity user;
+
+    @OneToOne(mappedBy = "product")
+    private BannerEntity bannerEntity;
 
 
 }

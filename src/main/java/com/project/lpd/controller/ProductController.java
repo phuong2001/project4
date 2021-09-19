@@ -137,8 +137,6 @@ public class ProductController {
     public String updateRole(@ModelAttribute ProductEntity productEntity, Model model) {
         productService.updateProduct(productEntity);
         return "redirect:/listproduct";
-
-
     }
 
     @PostMapping("/productSearch")

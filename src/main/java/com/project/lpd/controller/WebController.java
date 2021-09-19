@@ -113,7 +113,7 @@ public class WebController {
     }
 
     @PostMapping("/register")
-    public String register(@ModelAttribute("user") UserDto userDto, Model model){
+    public String register(@ModelAttribute("user") UserDto userDto){
         userService.signUpUser(userDto);
         return "redirect:/index";
     }
