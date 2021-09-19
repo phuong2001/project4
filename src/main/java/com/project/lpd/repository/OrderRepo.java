@@ -16,11 +16,11 @@ public interface OrderRepo extends JpaRepository<OrderEntity , Integer> {
      List<OrderEntity> findByFullName(String fullname);
      List<OrderEntity> findByStatus(String status);
 
-    @Query(value = "SELECT COUNT(status) AS done FROM order_detail  WHERE status='DONE' AND order_detail.userid=:id", nativeQuery = true)
+    @Query(value = "SELECT COUNT(order_detail.status) FROM order_detail INNER JOIN product INNER JOIN orderitem INNER JOIN user ON order_detail.orderid=orderitem.orderid AND product.productid = orderitem.productid AND user.id=product.userid WHERE order_detail.status='DONE' AND user.id=:id", nativeQuery = true)
     int countAllDone(int id);
 
 
-    @Query(value = "SELECT COUNT(status) AS paid FROM order_detail WHERE status='PAID' AND order_detail.userid=:id", nativeQuery = true)
+    @Query(value = "SELECT COUNT(order_detail.status) FROM order_detail INNER JOIN product INNER JOIN orderitem INNER JOIN user ON order_detail.orderid=orderitem.orderid AND product.productid = orderitem.productid AND user.id=product.userid WHERE order_detail.status='PAID' AND user.id=:id", nativeQuery = true)
     int countAllPaid(int id);
 
     @Query(value = "SELECT SUM(order_detail.price_total) FROM order_detail WHERE order_detail.status='DONE' ", nativeQuery = true)
