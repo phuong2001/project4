@@ -54,6 +54,8 @@ public class WebController {
         List<OrderItem> topOrder = orderItemService.getTopOrder();
         List<ProductEntity> top = productService.getTopPrice();
         List<ProductEntity> random = productService.getRandom();
+        List<ProductEntity> topsale = productService.get2Productsale();
+        model.addAttribute("topsale", topsale);
         model.addAttribute("products", product);
         model.addAttribute("categoryEntity", categoryEntity);
         model.addAttribute("categorys", category);

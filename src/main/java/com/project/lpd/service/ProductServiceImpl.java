@@ -108,6 +108,11 @@ public class ProductServiceImpl implements ProductService {
         return productRepo.findFirst7ByUserOrderByCreatedAtDesc(userEntity);
     }
 
+    @Override
+    public List<ProductEntity> get2Productsale() {
+        return productRepo.findFirst2ByOrderByPriceAsc();
+    }
+
 
     @Override
     public List<ProductEntity> getProductByFullName(String name) {

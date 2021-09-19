@@ -32,4 +32,6 @@ public interface ProductService {
      int CountProduct();
      List<ProductEntity> getProductBy(UserEntity userEntity,String name);
      List<ProductEntity> getProductCreateByUser(UserEntity userEntity);
+
+     List<ProductEntity> get2Productsale();
 }

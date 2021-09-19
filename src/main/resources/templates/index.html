@@ -416,31 +416,20 @@
                                         "loop": false,
                                         "items":1
                                     }'>
-                        <div class="banner banner-overlay product-banner">
+                        <div class="banner banner-overlay product-banner" th:each="too : ${topsale}">
                             <a href="#">
-                                <img src="images/index/banners/banner-9.jpg" alt="Banner">
+                                <img th:src="@{${'/images/upload/' + too.images[0].name}}" alt="Product image">
                             </a>
                             <div class="banner-content align-items-center center">
-                                <img class="banner-title-img mb-1" src="images/index/banners/banner-9-title.png"
-                                     alt="Banner-9">
-                                <h4 class="banner-price mb-2" style="font-weight: 600;">$29.99</h4>
-                                <a href="#" class="banner-link size-lg">Pre-Order Now<i
+                                <p class="banner-title-img mb-1"
+                                   style="text-transform: uppercase;font-size: 23px;font-weight: bold;color: #0b2e13">game of the year</p>
+
+                                <h4 class="banner-price mb-2" style="font-weight: 600;" th:text="'$' + ${too.price}">$29.99</h4>
+                                <a th:href="@{/productdetail(id=${too.productid})}" class="banner-link size-lg">Pre-Order Now<i
                                         class="icon-long-arrow-right"></i></a>
                             </div>
                         </div><!-- End .banner -->
 
-                        <div class="banner banner-overlay product-banner">
-                            <a href="#">
-                                <img src="images/index/banners/banner-10.jpg" alt="Banner">
-                            </a>
-                            <div class="banner-content align-items-center">
-                                <h4 class="banner-subtitle" style="letter-spacing: 0.1em;">Out 14 May 2019</h4>
-                                <img class="banner-title-img mb-1" src="images/index/banners/banner-10-title.png"
-                                     alt="Banner-10">
-                                <a href="#" class="banner-link size-lg">Pre-Order Now<i
-                                        class="icon-long-arrow-right"></i></a>
-                            </div>
-                        </div><!-- End .banner -->
 
                     </div><!-- End .owl-carousel -->
                 </div><!-- End .col-lg-5 -->
@@ -541,9 +530,6 @@
                     <h2 class="title mb-0">From Our Blog</h2><!-- End .title -->
                 </div><!-- End .heading-left -->
 
-                <div class="heading-right" >
-                    <a class="title-link">View more articles <i class="las la-arrow-right"></i></a>
-                </div><!-- End .heading-right -->
             </div><!-- End .heading -->
 
             <div class="owl-carousel owl-simple carousel-equal-height" data-toggle="owl"
