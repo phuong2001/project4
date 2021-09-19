@@ -92,8 +92,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public double sumPriceUser(int id) {
-        return orderRepo.sumPriceUser(id);
+    public List<OrderEntity> listOrderDoneUser(int id) {
+        return orderRepo.listOrderDoneUser(id);
     }
 
 
