@@ -16,4 +16,6 @@ public interface UserRepo extends JpaRepository<UserEntity,Integer> {
         List<UserEntity> findByFullName(String name);
         @Query(value = "SELECT COUNT(id) FROM user", nativeQuery = true)
         int quantityUser();
+        /*List<UserEntity> findFirst10OrderByCreatedAt();*/
+        List<UserEntity> findFirs10tByOrderByCreatedAt();
 }

@@ -77,6 +77,11 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
+    public List<UserEntity> getNewUser() {
+        return userRepo.findFirs10tByOrderByCreatedAt();
+    }
+
+    @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity userEntity = userRepo.findByUsername(username);
         if (userEntity == null) {

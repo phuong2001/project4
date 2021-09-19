@@ -79,12 +79,6 @@
                                 <small>$</small>
                             </h3>
                         </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons text-danger">warning</i>
-                                <a href="javascript:;">Get More Space...</a>
-                            </div>
-                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -96,11 +90,7 @@
                             <p class="card-category">Product</p>
                             <h3 class="card-title" th:text="${product}">$34,245</h3>
                         </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">date_range</i> Last 24 Hours
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -112,11 +102,7 @@
                             <p class="card-category">Order pending</p>
                             <h3 class="card-title" th:text="${orderPaid}">75</h3>
                         </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">local_offer</i> Tracked from Github
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -127,11 +113,6 @@
                             </div>
                             <p class="card-category">Order done</p>
                             <h3 class="card-title" th:text="${orderDone}">+245</h3>
-                        </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">update</i> Just Updated
-                            </div>
                         </div>
                     </div>
                 </div>
@@ -148,12 +129,7 @@
                                 <small>$</small>
                             </h3>
                         </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons text-danger">warning</i>
-                                <a href="javascript:;">Get More Space...</a>
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -165,11 +141,7 @@
                             <p class="card-category">Product</p>
                             <h3 class="card-title" th:text="${products}">$34,245</h3>
                         </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">date_range</i> Last 24 Hours
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -181,11 +153,7 @@
                             <p class="card-category">Quantity User</p>
                             <h3 class="card-title" th:text="${quantityUser}">75</h3>
                         </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">local_offer</i> Tracked from Github
-                            </div>
-                        </div>
+
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -197,38 +165,40 @@
                             <p class="card-category">Order done</p>
                             <h3 class="card-title" th:text="${orderDone}">+245</h3>
                         </div>
-                        <div class="card-footer">
-                            <div class="stats">
-                                <i class="material-icons">update</i> Just Updated
-                            </div>
-                        </div>
+
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" th:if="${#authorization.expression('hasAuthority(''USER'')')}">
                 <div class="col-lg-6 col-md-12">
                     <div class="card">
                         <div class="card-header card-header-warning">
-                            <h4 class="card-title">Employees Stats</h4>
-                            <p class="card-category">New employees on 15th September, 2016</p>
+                            <h4 class="card-title">New Orders</h4>
+                            <p class="card-category">10 Unconfirmed Orders</p>
                         </div>
                         <div class="card-body table-responsive">
                             <table class="table table-hover">
                                 <thead class="text-warning">
-                                <th>ID</th>
-                                <th>Name</th>
-                                <th>Salary</th>
-                                <th>Country</th>
+                                <th scope="col">Buyer</th>
+                                <th scope="col">Product</th>
+                                <th scope="col">Total</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">createdAt</th>
                                 </thead>
                                 <tbody>
-                                <tr th:each="orderItems : ${orderItem}">
-                                    <td th:text="${orderItems.products.productid}">1</td>
-                                    <td th:text="${orderItems.products.name}">Dakota Rice</td>
-                                    <td>$36,738</td>
-                                    <td>Niger</td>
+                                <tr th:each="item : ${Paid}">
+                                    <th scope="row" th:text="${item.orders.user.username}"></th>
+                                    <td th:text="${item.products.name}"></td>
+                                    <td th:text="${item.orders.priceTotal}"></td>
+                                    <td th:text="${item.orders.status}"></td>
+                                    <td th:text="${item.orders.createdAt}"></td>
                                 </tr>
+
                                 </tbody>
                             </table>
+                            <div class="heading-right" style="text-align: right" >
+                                <a href="/listOrderProduct" class="title-link">View all orders <i class="las la-arrow-right"></i></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -248,7 +218,7 @@
                                 <th>Quantity</th>
                                 </thead>
                                 <tbody >
-                                <tr th:each="products : ${products}" style="text-align: center">
+                                <tr th:each="products : ${productcra}" style="text-align: center">
                                     <td th:text="${products.productid}">1</td>
                                     <td th:text="${products.name}">Dakota Rice</td>
                                     <td > <img th:src="@{${'/images/upload/' + products.images[0].name}}"height="50px"width="50px"></td>
@@ -264,6 +234,70 @@
                     </div>
                 </div>
             </div>
+            <div class="row" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}">
+
+                <div class="col-lg-6 col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-warning">
+                            <h4 class="card-title">List New Users</h4>
+                            <p class="card-category"> Latest 10 users</p>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table class="table table-hover">
+                                <thead class="text-warning" style="text-align: center">
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>User Name</th>
+                                <th>Phone</th>
+                                <th>Email</th>
+                                </thead>
+                                <tbody >
+                                <tr th:each="newUser : ${newUsers}" style="text-align: center">
+                                    <td th:text="${newUser.id}">1</td>
+                                    <td th:text="${newUser.fullName}">Dakota Rice</td>
+                                    <td th:text="${newUser.username}">Dakota Rice</td>
+                                    <td th:text="${newUser.phone}"></td>
+                                    <td th:text="${newUser.email}">$36,738</td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="heading-right" style="text-align: right" >
+                                <a href="/list" class="title-link">View all users <i class="las la-arrow-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6 col-md-12">
+                    <div class="card">
+                        <div class="card-header card-header-warning">
+                            <h4 class="card-title">Top Order</h4>
+                            <p class="card-category">Top 10 Order Products</p>
+                        </div>
+                        <div class="card-body table-responsive">
+                            <table class="table table-hover">
+                                <thead class="text-warning">
+                                <th scope="col">Seller</th>
+                                <th scope="col">Name</th>
+                                <th scope="col">Image</th>
+                                <th scope="col">Price</th>
+                                </thead>
+                                <tbody>
+                                <tr th:each="topOrder : ${topOrders}">
+                                    <td  th:text="${topOrder.products.user.username}"></td>
+                                    <td  th:text="${topOrder.products.name}"></td>
+                                    <td> <img th:src="@{${'/images/upload/' + topOrder.products.images[0].name}}"height="50px"width="50px"></td>
+                                    <td th:text="${topOrder.products.price}"></td>
+                                </tr>
+
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
