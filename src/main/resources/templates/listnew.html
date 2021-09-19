@@ -102,7 +102,7 @@
                                         <td th:text="${news.createdAt}"></td>
                                         <td th:text="${news.updatedAt}"></td>
                                         <td><a th:href="@{/updatenew(id=${news.id})}" th:text="Edit"></a></td>
-                                        <td><a th:href="@{/deletenew(id=${news.id})}" th:text="Delete"></a></td>
+                                        <td><a th:href="@{/deletenew(id=${news.id})}"  title="delete" class="delete" onclick="return confirm('Are you sure you want to Delete?')" th:text="Delete"></a></td>
                                     </tr>
                                     </tbody>
                                 </table>
@@ -121,7 +121,6 @@
         </div>
     </div>
 </div>
-
 </body>
 
 </html>

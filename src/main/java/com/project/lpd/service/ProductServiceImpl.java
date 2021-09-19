@@ -108,7 +108,6 @@ public class ProductServiceImpl implements ProductService {
         return productRepo.findFirst7ByUserOrderByCreatedAtDesc(userEntity);
     }
 
-
     @Override
     public List<ProductEntity> getProductByFullName(String name) {
         return productRepo.findByFullName(name);
@@ -118,8 +117,10 @@ public class ProductServiceImpl implements ProductService {
     public List<ProductEntity> getRandom() {
         return productRepo.findRandamProduct();
     }
-
-
+    @Override
+    public List<ProductEntity> getProductByUsers(UserEntity userEntity) {
+        return productRepo.findFirst10ByUser(userEntity);
+    }
 }
 
 
