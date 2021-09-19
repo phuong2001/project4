@@ -21,4 +21,5 @@ public interface UserService extends UserDetailsService {
     UserEntity updateUserProfile(UserEntity userEntity);
     List<UserEntity> getUserByFullName(String name);
     int quantityUser();
+    List<UserEntity>getNewUser();
 }

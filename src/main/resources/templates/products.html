@@ -33,22 +33,10 @@
                             <div class="toolbox">
                                 <div class="toolbox-left">
                                     <div class="toolbox-info">
-                                        Showing <span th:text="${totalPage} + ' pages'"></span> Products
+                                        Showing <span th:text="${page+1} + ' pages'"></span> Products
                                     </div><!-- End .toolbox-info -->
                                 </div><!-- End .toolbox-left -->
 
-<!--                                <div class="toolbox-right">-->
-<!--                                    <div class="toolbox-sort">-->
-<!--                                        <label for="sortby">Sort by:</label>-->
-<!--                                        <div class="select-custom">-->
-<!--                                            <select name="sortby" id="sortby" class="form-control">-->
-<!--                                                <option value="popularity" selected="selected">Most Popular</option>-->
-<!--                                                <option value="rating">Most Rated</option>-->
-<!--                                                <option value="date">Date</option>-->
-<!--                                            </select>-->
-<!--                                        </div>-->
-<!--                                    </div>&lt;!&ndash; End .toolbox-sort &ndash;&gt;-->
-<!--                                </div>&lt;!&ndash; End .toolbox-right &ndash;&gt;-->
                             </div><!-- End .toolbox -->
                             <div class="products mb-3">
                                 <div class="row justify-content-center">
@@ -92,13 +80,9 @@
 
                             <nav aria-label="Page navigation">
                                 <ul class="pagination justify-content-center">
-                                    <li class="page-item"
-                                        th:each="t : ${#numbers.sequence( 0, (totalPage - 1)/1)}"
-                                        th:classappend="${t==page} ? active">
-                                        <a class="page-link" th:href="@{/products(size=${size}, page=${t})}"
-                                           th:text="${t+1}"></a>
+                                    <li th:if="${totalPage > 0}" class="page-item" th:each="t : ${#numbers.sequence( 0, (totalPage - 1)/1)}" th:classappend="${t==page} ? active">
+                                        <a class="page-link" th:href="@{/products(size=${size}, page=${t})}" th:text="${t+1}"></a>
                                     </li>
-                                    <li class="page-item-total" th:text="'of ' + ${totalPage}">of 6</li>
                                 </ul>
                             </nav>
                         </div><!-- End .col-lg-9 -->

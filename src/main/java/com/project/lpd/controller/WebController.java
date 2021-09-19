@@ -24,6 +24,7 @@ import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -67,23 +68,38 @@ public class WebController {
 
     @GetMapping("/adminIndex")
     public String adminindex(Authentication authentication , Model model) {
+        double seller =0;
+        List<OrderItem> Paid = new ArrayList<>();
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
         UserEntity userEntity = userService.getUserByName(userDetails.getUsername());
         List<ProductEntity> products = productService.getProductCreateByUser(userEntity);
-        /*List<OrderItem> orderItems = orderItemService.getTopOrderByUser(userEntity);*/
+        List<OrderItem> topOrder = orderItemService.getTopOrder();
         int countProduct = productService.CountProduct(userEntity.getId());
         List<ProductEntity> top = productService.getTopProduct();
         int orderDone = orderService.getCountOrderDone(userEntity.getId());
         int orderPaid = orderService.getCountOrderPaid(userEntity.getId());
         int quantityUser = userService.quantityUser();
         int countP = productService.CountProduct();
-        double totalDone = orderService.TotalDone();
-        double totalExtra = totalDone * 2/100;
-        model.addAttribute("totalExtra",totalExtra);
+        List<UserEntity> newUser = userService.getNewUser();
+        List<ProductEntity> productpaid = productService.getProductByUsers(userEntity);
+        for (ProductEntity product : productpaid) {
+            List<OrderItem> orderitems = orderItemService.findByProduct(product);
+            model.addAttribute("orderitem", orderitems);
+            for (OrderItem ord : orderitems) {
+                double sellerMoney = ord.getUnitPrice() * 98 / 100;
+                seller = (double) Math.round(sellerMoney * 1000) / 1000;
+                if (ord.getOrders().getStatus().equals("PAID")) {
+                    Paid.add(ord);
+                }
+            }
+            model.addAttribute("money", seller);
+            model.addAttribute("Paid", Paid);
+        }
+        model.addAttribute("newUsers", newUser);
         model.addAttribute("top",top);
         model.addAttribute("user",userEntity);
-        /*model.addAttribute("orderItem", orderItems);*/
-        model.addAttribute("products",products);
+        model.addAttribute("topOrders",topOrder);
+        model.addAttribute("productcra",products);
         model.addAttribute("product",countProduct);
         model.addAttribute("orderDone",orderDone);
         model.addAttribute("orderPaid",orderPaid);

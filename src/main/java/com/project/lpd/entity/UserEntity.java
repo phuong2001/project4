@@ -2,9 +2,11 @@ package com.project.lpd.entity;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import javax.persistence.*;
 import java.util.Collection;
+import java.util.Date;
 import java.util.List;
 
 @Data
@@ -29,6 +31,11 @@ public class UserEntity  {
     private String address;
     @Column(name = "wallet",nullable = true)
     private double wallet;
+
+    @CreationTimestamp
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "createAt")
+    private Date createdAt;
 
     @ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinTable(
