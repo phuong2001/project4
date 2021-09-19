@@ -36,7 +36,7 @@ public interface ProductRepo extends JpaRepository<ProductEntity, Integer> {
     List<ProductEntity> getTopProduct();
     @Query(nativeQuery=true, value="SELECT *  FROM product ORDER BY RAND() LIMIT 15")
     List<ProductEntity> findRandamProduct();
-
+    List<ProductEntity> findFirst10ByUser(UserEntity userEntity);
 
 
 }
