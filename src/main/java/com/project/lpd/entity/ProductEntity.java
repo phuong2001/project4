@@ -27,7 +27,7 @@ public class ProductEntity {
     @Column(name = "quantity")
     private int quantity;
     @Lob
-    @Column(name = "description", columnDefinition = "TEXT")
+    @Column(name = "description", columnDefinition = "MEDIUMTEXT")
     private String description;
     
     @CreationTimestamp

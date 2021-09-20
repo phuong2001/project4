@@ -36,8 +36,7 @@ public class CheckoutController {
     @Autowired
     StripeService paymentsService;
 
-    public static final String SUCCESS_URL = "pay/success";
-    public static final String CANCEL_URL = "pay/cancel";
+
     @Value("${STRIPE_PUBLIC_KEY}")
     private String stripePublicKey;
 
@@ -58,6 +57,8 @@ public class CheckoutController {
         model.addAttribute("ship",ship);
         return "pay";
     }
+
+
 
     @PostMapping(value = "/pay")
     public String checkout(Authentication authentication, @ModelAttribute("order")OrderDto orderDto, @RequestParam(value = "ship") int ship){
@@ -89,15 +90,10 @@ public class CheckoutController {
             userService.updateUser(userEntity);
             orderService.createOrder(orderEntity);
             orderItemService.saveOrderItem(userEntity,orderEntity);
-
-            return "redirect:/success";
+            return "redirect:/Success";
         } else {
             return "redirect:/charge";
         }
-    }
-    @GetMapping(value = CANCEL_URL)
-    public String cancelPay() {
-        return "cancel";
     }
 
     @PostMapping("/charge")
