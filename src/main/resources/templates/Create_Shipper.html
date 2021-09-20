@@ -32,28 +32,10 @@
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="phone" class="bmd-label-floating">Phone</label>
-                                            <input type="text" name="phone" th:field="${ship.phone}" class="form-control"><br/>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="form-group">
-                                            <label for="typeShip" class="bmd-label-floating">Type Ship</label>
-                                            <select id="typeShip" th:field="${ship.activateid}" class="selected">
-                                                <option th:each="activate : ${list_type}" th:value="${activate.id}" th:text="${activate.name}"></option>
-                                            </select><br/>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="active" class="bmd-label-floating">Active</label>
-                                            <select id="active" th:field="${ship.activeid}" class="selected">
-                                                <option th:each="active : ${list_active}" th:value="${active.activeid}" th:text="${active.name}"></option>
-                                            </select><br/>
+                                            <label for="phone" class="bmd-label-floating">Phone</label>
+                                            <input type="text" name="phone" th:field="${ship.price}" class="form-control"><br/>
                                         </div>
                                     </div>
                                 </div>
@@ -61,6 +43,7 @@
                                 <button type="submit" class="btn btn-primary pull-right">Create</button>
                                 <div class="clearfix"></div>
                             </form>
+
                         </div>
                     </div>
                 </div>

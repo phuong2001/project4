@@ -1,5 +1,6 @@
 package com.project.lpd.service;
 
+import com.project.lpd.entity.NewsEntity;
 import com.project.lpd.entity.ShipperEntity;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,4 +15,6 @@ public interface ShipperService {
     Optional<ShipperEntity> find(int id);
 
     List<ShipperEntity> findByNameShipper(String name);
+    ShipperEntity  getShipById(int id);
+    ShipperEntity updateShip(ShipperEntity s);
 }

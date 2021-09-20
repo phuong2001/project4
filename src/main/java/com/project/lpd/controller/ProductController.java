@@ -103,6 +103,17 @@ public class ProductController {
         return "products";
     }
 
+    @GetMapping({"/productall"})
+    public String ListProductAll(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "12") int size) {
+        List<ProductEntity> product = productService.AllProduct(PageRequest.of(page, size));
+        int totalPage = productService.getTotalPage(PageRequest.of(page, size));
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("size", size);
+        model.addAttribute("page", page);
+        model.addAttribute("products", product);
+        return "productall";
+    }
+
     @GetMapping({"/listproduct"})
     public String AdminProduct(Model model,Authentication authentication, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "12") int size) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
@@ -124,6 +135,7 @@ public class ProductController {
         model.addAttribute("list",list);
         return "detailproduct";
     }
+
 
 
     @GetMapping("/updateproduct")

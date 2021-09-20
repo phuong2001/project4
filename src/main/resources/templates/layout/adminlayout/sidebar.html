@@ -49,9 +49,15 @@
                 </a>
             </li>
             <li class="nav-item ">
-                <a class="nav-link" href="/listproductadmin" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}">
+                <a class="nav-link" href="/productall" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}">
                     <i class="material-icons">content_paste</i>
                     <p>Product</p>
+                </a>
+            </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/listcategory" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}">
+                    <i class="material-icons">language</i>
+                    <p>Category</p>
                 </a>
             </li>
             <li class="nav-item ">
@@ -70,12 +76,6 @@
                 <a class="nav-link" href="/listOrderProduct">
                     <i class="material-icons">local_shipping</i>
                     <p>Buyer Order</p>
-                </a>
-            </li>
-            <li class="nav-item ">
-                <a class="nav-link" href="./rtl.html">
-                    <i class="material-icons">language</i>
-                    <p>Support</p>
                 </a>
             </li>
         </ul>
