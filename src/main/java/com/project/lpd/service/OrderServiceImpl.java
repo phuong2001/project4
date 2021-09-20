@@ -91,6 +91,11 @@ public class OrderServiceImpl implements OrderService {
         return orderRepo.TotalDone();
     }
 
+    @Override
+    public double sumPriceUser(int id) {
+        return orderRepo.sumPriceUser(id);
+    }
+
 
 //    @Override
 //    public List<OrderEntity> getOrderSeller(UserEntity user) {

@@ -90,7 +90,27 @@
                             <p class="card-category">Product</p>
                             <h3 class="card-title" th:text="${product}">$34,245</h3>
                         </div>
+                        <div class="card-footer">
+                            <div class="stats">
 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-sm-6">
+                    <div class="card card-stats">
+                        <div class="card-header card-header-success card-header-icon">
+                            <div class="card-icon">
+                                <i class="material-icons">store</i>
+                            </div>
+                            <p class="card-category">Sale Money</p>
+                            <h3 class="card-title" th:text="${sumUserExtra}">$34,245</h3>
+                        </div>
+                        <div class="card-footer">
+                            <div class="stats">
+
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="col-lg-3 col-md-6 col-sm-6">
@@ -218,7 +238,7 @@
                                 <th>Quantity</th>
                                 </thead>
                                 <tbody >
-                                <tr th:each="products : ${productcra}" style="text-align: center">
+                                <tr th:each="products : ${products}" style="text-align: center">
                                     <td th:text="${products.productid}">1</td>
                                     <td th:text="${products.name}">Dakota Rice</td>
                                     <td > <img th:src="@{${'/images/upload/' + products.images[0].name}}"height="50px"width="50px"></td>
