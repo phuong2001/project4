@@ -96,6 +96,11 @@ public class OrderServiceImpl implements OrderService {
         return orderRepo.listOrderDoneUser(id);
     }
 
+    @Override
+    public int countOrder(int id) {
+        return orderRepo.countOrder(id);
+    }
+
 
 //    @Override
 //    public List<OrderEntity> getOrderSeller(UserEntity user) {

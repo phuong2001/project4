@@ -6,26 +6,16 @@
         <div class="wrap-container" layout:fragment="header">
             <header class="header header-intro-clearance header-3">
                 <div class="header-top">
-                    <div class="container">
+                    <div class="container" >
                         <div class="header-left">
                             <a href="tel:#"><i class="las la-phone"></i>Call: +0123 456 789</a>
                         </div><!-- End .header-left -->
-                        <div class="header-right">
+                        <div class="header-right" style="padding: 10px 0">
                             <ul class="top-menu">
                                 <li>
                                     <a href="#">Links</a>
                                     <ul>
-                                        <li>
-                                            <div class="header-dropdown">
-                                                <a href="#">USD</a>
-                                                <div class="header-menu">
-                                                    <ul>
-                                                        <li><a href="#">Eur</a></li>
-                                                        <li><a href="#">Usd</a></li>
-                                                    </ul>
-                                                </div><!-- End .header-menu -->
-                                            </div>
-                                        </li>
+                                        <li sec:authorize="isAuthenticated()"><a href="/profile">Profile</a></li>
                                         <li sec:authorize="!isAuthenticated()"><a href="/login">Sign in / Sign up</a></li>
                                         <li><a href="/adminIndex" sec:authorize="hasAnyAuthority('ADMIN')">Admin Page</a></li>
                                         <li><a href="/logout" sec:authorize="isAuthenticated()">Logout</a></li>
@@ -73,68 +63,68 @@
                                 </div><!-- End .compare-dropdown -->
 
                                 <div class="dropdown cart-dropdown">
-                                    <a href="#" class="dropdown-toggle" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static">
+                                    <a href="/cart" class="dropdown-toggle" >
                                         <div class="icon">
                                             <i class="las la-shopping-cart"></i>
-                                            <span class="cart-count">2</span>
+<!--                                            <span class="cart-count">2</span>-->
                                         </div>
                                         <p>Cart</p>
                                     </a>
 
-                                    <div class="dropdown-menu dropdown-menu-right">
-                                        <div class="dropdown-cart-products">
-                                            <div class="product">
-                                                <div class="product-cart-details">
-                                                    <h4 class="product-title">
-                                                        <a href="/products">Beige knitted elastic runner shoes</a>
-                                                    </h4>
+<!--                                    <div class="dropdown-menu dropdown-menu-right">-->
+<!--                                        <div class="dropdown-cart-products">-->
+<!--                                            <div class="product">-->
+<!--                                                <div class="product-cart-details">-->
+<!--                                                    <h4 class="product-title">-->
+<!--                                                        <a href="/products">Beige knitted elastic runner shoes</a>-->
+<!--                                                    </h4>-->
 
-                                                    <span class="cart-product-info">
-                                                        <span class="cart-product-qty">1</span>
-                                                        x $84.00
-                                                    </span>
-                                                </div><!-- End .product-cart-details -->
+<!--                                                    <span class="cart-product-info">-->
+<!--                                                        <span class="cart-product-qty">1</span>-->
+<!--                                                        x $84.00-->
+<!--                                                    </span>-->
+<!--                                                </div>&lt;!&ndash; End .product-cart-details &ndash;&gt;-->
 
-                                                <figure class="product-image-container">
-                                                    <a href="/products" class="product-image">
-                                                        <img src="images/index/products/product-5.jpg" alt="product">
-                                                    </a>
-                                                </figure>
-                                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                            </div><!-- End .product -->
+<!--                                                <figure class="product-image-container">-->
+<!--                                                    <a href="/products" class="product-image">-->
+<!--                                                        <img src="images/index/products/product-5.jpg" alt="product">-->
+<!--                                                    </a>-->
+<!--                                                </figure>-->
+<!--                                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>-->
+<!--                                            </div>&lt;!&ndash; End .product &ndash;&gt;-->
 
-                                            <div class="product">
-                                                <div class="product-cart-details">
-                                                    <h4 class="product-title">
-                                                        <a href="product.html">Blue utility pinafore denim dress</a>
-                                                    </h4>
+<!--                                            <div class="product">-->
+<!--                                                <div class="product-cart-details">-->
+<!--                                                    <h4 class="product-title">-->
+<!--                                                        <a href="product.html">Blue utility pinafore denim dress</a>-->
+<!--                                                    </h4>-->
 
-                                                    <span class="cart-product-info">
-                                                        <span class="cart-product-qty">1</span>
-                                                        x $76.00
-                                                    </span>
-                                                </div><!-- End .product-cart-details -->
+<!--                                                    <span class="cart-product-info">-->
+<!--                                                        <span class="cart-product-qty">1</span>-->
+<!--                                                        x $76.00-->
+<!--                                                    </span>-->
+<!--                                                </div>&lt;!&ndash; End .product-cart-details &ndash;&gt;-->
 
-                                                <figure class="product-image-container">
-                                                    <a href="product.html" class="product-image">
-                                                        <img src="images/index/products/product-5.jpg" alt="product">
-                                                    </a>
-                                                </figure>
-                                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>
-                                            </div><!-- End .product -->
-                                        </div><!-- End .cart-product -->
+<!--                                                <figure class="product-image-container">-->
+<!--                                                    <a href="product.html" class="product-image">-->
+<!--                                                        <img src="images/index/products/product-5.jpg" alt="product">-->
+<!--                                                    </a>-->
+<!--                                                </figure>-->
+<!--                                                <a href="#" class="btn-remove" title="Remove Product"><i class="icon-close"></i></a>-->
+<!--                                            </div>&lt;!&ndash; End .product &ndash;&gt;-->
+<!--                                        </div>&lt;!&ndash; End .cart-product &ndash;&gt;-->
 
-                                        <div class="dropdown-cart-total">
-                                            <span>Total</span>
+<!--                                        <div class="dropdown-cart-total">-->
+<!--                                            <span>Total</span>-->
 
-                                            <span class="cart-total-price">$160.00</span>
-                                        </div><!-- End .dropdown-cart-total -->
+<!--                                            <span class="cart-total-price">$160.00</span>-->
+<!--                                        </div>&lt;!&ndash; End .dropdown-cart-total &ndash;&gt;-->
 
-                                        <div class="dropdown-cart-action">
-                                            <a href="/cart" class="btn btn-primary">View Cart</a>
-                                            <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>
-                                        </div><!-- End .dropdown-cart-total -->
-                                    </div><!-- End .dropdown-menu -->
+<!--                                        <div class="dropdown-cart-action">-->
+<!--                                            <a href="/cart" class="btn btn-primary">View Cart</a>-->
+<!--                                            <a href="checkout.html" class="btn btn-outline-primary-2"><span>Checkout</span><i class="icon-long-arrow-right"></i></a>-->
+<!--                                        </div>&lt;!&ndash; End .dropdown-cart-total &ndash;&gt;-->
+<!--                                    </div>&lt;!&ndash; End .dropdown-menu &ndash;&gt;-->
                                 </div><!-- End .cart-dropdown -->
                             </div>
                         </div><!-- End .header-right -->

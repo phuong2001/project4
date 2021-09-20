@@ -24,6 +24,7 @@ import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -103,15 +104,18 @@ public class WebController {
         }
         model.addAttribute("newUsers", newUser);
         double totalDone = orderService.TotalDone();
-        double totalExtra = totalDone * 2/100;
+        double totalExtrass = totalDone * 2/100;
+        double totalExtra = Math.round(totalExtrass*100.0)/100.0;
         List<OrderEntity> listOrderDoneUser = orderService.listOrderDoneUser(userEntity.getId());
         double sumUser =0;
         for (OrderEntity or : listOrderDoneUser){
             sumUser += or.getPriceTotal();
-            double sumUserExtra = sumUser * 98/100;
+            double sumUserExtrass = sumUser * 98/100;
+            double sumUserExtra = Math.round(sumUserExtrass*100.0)/100.0;
             model.addAttribute("sumUserExtra",sumUserExtra);
         }
-
+        int countOrder =orderService.countOrder(userEntity.getId());
+        model.addAttribute("countOrder",countOrder);
         model.addAttribute("totalExtra",totalExtra);
         model.addAttribute("top",top);
         model.addAttribute("user",userEntity);
