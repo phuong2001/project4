@@ -24,6 +24,7 @@ import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -43,10 +44,14 @@ public class WebController {
     @Autowired
     OrderItemService orderItemService;
 
+    @Autowired
+    BannerService bannerService;
+
     @GetMapping({"/", "/index"})
     public String index(Model model,@RequestParam(value = "name", defaultValue = "")String  name)
     {
-        List<CategoryEntity> category = categoryService.getAllCategory();
+        List<BannerEntity> banner = bannerService.showAll();
+        List<CategoryEntity> categorys = categoryService.getAllCategory();
         CategoryEntity categoryEntity = categoryService.getCategoryByName("Consoles & Accessories");
         List<ProductEntity> product = productService.getConsoleProduct(categoryEntity);
         List<ProductEntity> date = productService.getTopByDate();
@@ -54,9 +59,10 @@ public class WebController {
         List<OrderItem> topOrder = orderItemService.getTopOrder();
         List<ProductEntity> top = productService.getTopPrice();
         List<ProductEntity> random = productService.getRandom();
+        model.addAttribute("banner",banner);
         model.addAttribute("products", product);
         model.addAttribute("categoryEntity", categoryEntity);
-        model.addAttribute("categorys", category);
+        model.addAttribute("categorys", categorys);
         model.addAttribute("dates",date);
         model.addAttribute("blogs", blog);
         model.addAttribute("topOrders",topOrder);

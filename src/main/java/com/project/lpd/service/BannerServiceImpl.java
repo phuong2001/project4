@@ -13,12 +13,23 @@ public class BannerServiceImpl implements BannerService {
     BannerRepo bannerRepo;
 
     @Override
-    public BannerEntity showAll() {
-        return bannerRepo.findAll().get(bannerRepo.findAll().size() - 1);
+    public List<BannerEntity> showAll() {
+        return bannerRepo.findAll();
     }
 
     @Override
     public BannerEntity create(BannerEntity bannerEntity) {
         return bannerRepo.save(bannerEntity);
     }
+
+    @Override
+    public BannerEntity updateBanner(BannerEntity banner) {
+        return bannerRepo.save(banner);
+    }
+
+    @Override
+    public BannerEntity getBannerById(int id) {
+        return bannerRepo.getById(id);
+    }
+
 }

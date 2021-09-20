@@ -8,7 +8,9 @@ import java.util.List;
 
 @Service
 public interface BannerService {
-    BannerEntity showAll();
+    List<BannerEntity> showAll();
     BannerEntity create(BannerEntity bannerEntity);
+    BannerEntity updateBanner(BannerEntity b);
+    BannerEntity getBannerById(int id);
 
 }

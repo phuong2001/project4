@@ -17,12 +17,14 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.security.PublicKey;
+import java.util.List;
 
 @Controller
 public class BannerController {
     @Autowired
     BannerService bannerService;
-    public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/images/upload";
+    public static String uploadDir = System.getProperty("user.dir") + "/src/main/resources/static/images/upload/banner";
 
     @GetMapping("/createBanner")
     public String createBannerView( Model model){
@@ -38,7 +40,27 @@ public class BannerController {
         Files.write(filenamepath1,file1.getBytes());
         banner.setImg(img1name);
         bannerService.create(banner);
-        return "BannerList";
+        return "updateBanner";
+    }
+
+    @GetMapping("/updateBanner")
+    public String viewUpdateBanner(@ModelAttribute BannerEntity bannerEntity,Model model){
+        List<BannerEntity> banners = bannerService.showAll();
+        model.addAttribute("Banner", new BannerEntity());
+        model.addAttribute("List",banners);
+        return "updateBanner";
+    }
+
+    @PostMapping("/updateBanner")
+    public String updateBanner(@ModelAttribute BannerEntity banner , @RequestParam("bannerid") int id,
+                               @RequestParam("file") MultipartFile file) throws IOException{
+        BannerEntity bannerEntity = bannerService.getBannerById(id);
+        String imgname = file.getOriginalFilename();
+        Path filenamepath = Paths.get(uploadDir,imgname);
+        Files.write(filenamepath,file.getBytes());
+        bannerEntity.setImg(imgname);
+        bannerService.updateBanner(bannerEntity);
+        return "Banner";
     }
 
 

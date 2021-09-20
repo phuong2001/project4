@@ -19,11 +19,24 @@
                         <h4 class="card-title">Add Banner </h4>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="/createBanner" th:object="${Banner}" enctype="multipart/form-data">
+                        <form method="post" action="/updateBanner">
                             <div class="row">
-                                <div class="col-md-12">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="name" class="bmd-label-floating">Productid</label>
+                                        <div class="select-custom">
+                                            <label for="bannerid">Banner list</label>
+                                            <select class="form-control" aria-label="category" id="bannerid" th:name="bannerid" >
+                                                <option th:each="item:${List}"
+                                                        th:text="${item.bannerid}"
+                                                        th:value="${item.bannerid}">
+                                                </option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="name" class="bmd-label-floating">ProductId</label>
                                         <input type="text" name="productid" id="name" th:field="${Banner.productid}"
                                                class="form-control">
                                     </div>
@@ -32,13 +45,13 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <div class="custom-file">
-                                        <input type="file" class="custom-file-input" id="filename" name="file"
+                                        <input type="file" class="custom-file-input" name="file" id="filename"
                                                accept="image/jpeg,image/png,image/jpg">
                                         <label class="custom-file-label" for="filename">Choose file</label>
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary pull-right">Create banner</button>
+                            <button type="submit" class="btn btn-primary pull-right">Update banner</button>
                         </form>
                     </div>
                 </div>
@@ -52,5 +65,3 @@
 </script>
 </body>
 </html>
-
-
