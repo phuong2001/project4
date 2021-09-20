@@ -42,6 +42,8 @@ public class DataLoad implements ApplicationListener<ContextRefreshedEvent> {
         createUserIfNotFound("admin","admin@gmail.com","Store game","123456",new ArrayList<>(Arrays.asList(admin)),0);
         alreadySetup = true;
     }
+
+
     @Transactional
     RoleEntity createRoleIfNotFound(final String name) {
         RoleEntity role = roleRepo.findByName(name);
@@ -51,6 +53,7 @@ public class DataLoad implements ApplicationListener<ContextRefreshedEvent> {
         role = roleRepo.save(role);
         return role;
     }
+
     @Transactional
     UserEntity createUserIfNotFound(final String username,final String email, final String fullName, final String password, final Collection<RoleEntity> roles,final double wallet) {
         UserEntity user = userRepo.findByEmail(email);
