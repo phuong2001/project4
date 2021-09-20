@@ -16,9 +16,9 @@
     <nav aria-label="breadcrumb" class="breadcrumb-nav mb-3">
         <div class="container">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Shop</a></li>
-                <li class="breadcrumb-item active" aria-current="page">My Account</li>
+                <li class="v1"><a href="/index">Home></a></li>
+                <li class="v2"><a href="/products">Shop></a></li>
+                <li class="v3 active" aria-current="page">My Account</li>
             </ol>
         </div><!-- End .container -->
     </nav><!-- End .breadcrumb-nav -->
@@ -48,7 +48,7 @@
                                 <a class="nav-link" id="tab-account-link" data-toggle="tab" href="#tab-account" role="tab" aria-controls="tab-account" aria-selected="false">Account Details</a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" href="#">Sign Out</a>
+                                <a class="nav-link" href="/logout" >Sign Out</a>
                             </li>
                         </ul>
                     </aside><!-- End .col-lg-3 -->
@@ -173,17 +173,17 @@
 
 -->
                             <div class="tab-pane fade" id="tab-address" role="tabpanel" aria-labelledby="tab-address-link">
-                                <p>The following addresses will be used on the checkout page by default.</p>
+                                <p></p>
 
                                 <div class="row">
-                                    <div class="col-lg-6">
+                                    <div class="col-lg-12">
                                         <div class="card card-dashboard">
                                             <div class="card-body" th:object="${userEntity}">
-                                                <h3 class="card-title">Billing Address</h3><!-- End .card-title -->
-                                                <p th:text="${userEntity.id}"></p>
-                                                <p th:text="${userEntity.username}"></p>
-                                                <p th:text="${userEntity.email}"></p>
-                                                <p th:text="${userEntity.phone}"></p>
+                                                <h3 class="card-title">Account Details</h3><!-- End .card-title -->
+                                                Name: <p th:text="${userEntity.username}"></p>
+                                                Email:<p th:text="${userEntity.email}"></p>
+                                                Phone:<p th:text="${userEntity.phone}"></p>
+                                                Address: <p th:text="${userEntity.address}"></p>
                                               <!--      <a  href="/tab-account" th:text="Edit">Edit <i class="icon-edit"></i></a>-->
                                             </div><!-- End .card-body -->
                                         </div><!-- End .card-dashboard -->
@@ -207,6 +207,8 @@
 
                                     <label for="phone">Phone</label>
                                     <input type="text" name="phone"  th:field="${userEntity.phone}" class="form-control" placeholder="Phone">
+                                    <label for="address">Address</label>
+                                    <input type="text" name="address" th:field="${userEntity.address}" class="form-control" placeholder="Address">
 
                                     <label for="email">Email</label>
                                     <input type="text" name="email" th:field="${userEntity.email}" class="form-control" placeholder="Email">

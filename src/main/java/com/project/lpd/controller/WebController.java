@@ -103,17 +103,26 @@ public class WebController {
             model.addAttribute("Paid", Paid);
         }
         model.addAttribute("newUsers", newUser);
-        double totalDone = orderService.TotalDone();
-        double totalExtra = totalDone * 2/100;
+
+        List<OrderEntity> totalDone = orderService.TotalDone();
+        double sumAdmin =0;
+        for (OrderEntity or : totalDone){
+            sumAdmin +=or.getPriceTotal();
+            double totalExtrass = sumAdmin * 2/100;
+            double totalExtra = Math.round(totalExtrass*100.0)/100.0;
+            model.addAttribute("totalExtra",totalExtra);
+        }
+
         List<OrderEntity> listOrderDoneUser = orderService.listOrderDoneUser(userEntity.getId());
         double sumUser =0;
         for (OrderEntity or : listOrderDoneUser){
             sumUser += or.getPriceTotal();
-            double sumUserExtra = sumUser * 98/100;
+            double sumUserExtrass = sumUser * 98/100;
+            double sumUserExtra = Math.round(sumUserExtrass*100.0)/100.0;
             model.addAttribute("sumUserExtra",sumUserExtra);
         }
-
-        model.addAttribute("totalExtra",totalExtra);
+        int countOrder =orderService.countOrder(userEntity.getId());
+        model.addAttribute("countOrder",countOrder);
         model.addAttribute("top",top);
         model.addAttribute("user",userEntity);
         model.addAttribute("topOrders",topOrder);

@@ -23,11 +23,14 @@ public interface OrderRepo extends JpaRepository<OrderEntity , Integer> {
     @Query(value = "SELECT COUNT(order_detail.status) FROM order_detail INNER JOIN product INNER JOIN orderitem INNER JOIN user ON order_detail.orderid=orderitem.orderid AND product.productid = orderitem.productid AND user.id=product.userid WHERE order_detail.status='PAID' AND user.id=:id", nativeQuery = true)
     int countAllPaid(int id);
 
-    @Query(value = "SELECT SUM(order_detail.price_total) FROM order_detail WHERE order_detail.status='DONE' ", nativeQuery = true)
-    double TotalDone();
+    @Query(value = "SELECT * FROM order_detail WHERE order_detail.status='DONE' ", nativeQuery = true)
+    List<OrderEntity> TotalDone();
 
     @Query(value = "SELECT * FROM order_detail INNER JOIN product INNER JOIN orderitem" +
             " INNER JOIN user ON order_detail.orderid=orderitem.orderid AND product.productid = orderitem.productid AND user.id=product.userid " +
             "WHERE order_detail.status='DONE' AND user.id=:id", nativeQuery = true)
     List<OrderEntity> listOrderDoneUser(int id);
+
+    @Query(value = "SELECT COUNT(order_detail.status) FROM order_detail INNER JOIN product INNER JOIN orderitem INNER JOIN user ON order_detail.orderid=orderitem.orderid AND product.productid = orderitem.productid AND user.id=product.userid WHERE  user.id=:id",nativeQuery = true)
+    int countOrder(int id);
 }

@@ -87,13 +87,18 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public double TotalDone() {
+    public List<OrderEntity> TotalDone() {
         return orderRepo.TotalDone();
     }
 
     @Override
     public List<OrderEntity> listOrderDoneUser(int id) {
         return orderRepo.listOrderDoneUser(id);
+    }
+
+    @Override
+    public int countOrder(int id) {
+        return orderRepo.countOrder(id);
     }
 
 

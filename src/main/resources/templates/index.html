@@ -158,7 +158,7 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" id="products-best-link" data-toggle="tab" href="#products-best-tab" role="tab"
-                       aria-controls="products-best-tab" aria-selected="false">Best-Rated</a>
+                       aria-controls="products-best-tab" aria-selected="false">Suggestions</a>
                 </li>
             </ul>
                 <div class="tab-content tab-content-carousel">
@@ -423,8 +423,7 @@
                                    style="text-transform: uppercase;font-size: 23px;font-weight: bold;color: #0b2e13">game of the year</p>
 
                                 <h4 class="banner-price mb-2" style="font-weight: 600;" th:text="'$' + ${too.price}">$29.99</h4>
-                                <a th:href="@{/productdetail(id=${too.productid})}" class="banner-link size-lg">Pre-Order Now<i
-                                        class="icon-long-arrow-right"></i></a>
+                                <a th:href="@{/productdetail(id=${too.productid})}" class="banner-link size-lg">Pre-Order Now<i class="las la-arrow-right"></i></a>
                             </div>
                         </div><!-- End .banner -->
 
