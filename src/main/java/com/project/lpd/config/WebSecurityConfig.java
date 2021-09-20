@@ -49,7 +49,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/index", "/productDetail", "/about", "/products", "/cart", "/create_product",
                         "/pay", "/register", "/news", "/help", "/adminIndex", "/list", "/productdetail", "/charge", "/profile", "/success",
                         "/sellerproduct", "/IndexSearch", "/list_product_category").permitAll()
-                .antMatchers("/css/**", "/js/**", "/images/**", "vendors/**").permitAll()
+                .antMatchers("/css/**", "/js/**", "/images/**", "vendors/**","static/**").permitAll()
                 .antMatchers("/listrole", "/listnew", "/updatenew", "/createnew", "/deletenew","/updaterole","/createBanner","/updateBanner").hasAnyAuthority("ADMIN")
                 .antMatchers("/createproduct", "/userIndex").hasAnyAuthority("USER")
                 .antMatchers("/listProductUser", "/updateProductUser", "/createProductUser", "/deleteProductUser", "/listOrderProduct", "/adminIndex").hasAnyAuthority("USER", "ADMIN")

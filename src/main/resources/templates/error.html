@@ -20,9 +20,9 @@
 
     <div class="error-content text-center" th:style="'background-image: url(images/error-bg.jpg)'">
         <div class="container">
-            <h1 class="error-title">Error 404</h1><!-- End .error-title -->
-            <p>We are sorry, the page you've requested is not available.</p>
-            <p></p>
+            <h1 class="error-title" th:text="'Error '+ ${status}"> 404</h1><!-- End .error-title -->
+            <p th:text="${error}"></p>
+            <p th:text="${message}"></p>
             <a href="index.html" class="btn btn-outline-primary-2 btn-minwidth-lg">
                 <span>BACK TO HOMEPAGE</span>
                 <i class="icon-long-arrow-right"></i>

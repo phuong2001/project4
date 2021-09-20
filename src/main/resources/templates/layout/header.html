@@ -15,20 +15,8 @@
                                 <li>
                                     <a href="#">Links</a>
                                     <ul>
-                                        <li>
-                                            <div class="header-dropdown">
-                                                <a href="#">USD</a>
-                                                <div class="header-menu">
-                                                    <ul>
-                                                        <li><a href="#">Eur</a></li>
-                                                        <li><a href="#">Usd</a></li>
-                                                    </ul>
-                                                </div><!-- End .header-menu -->
-                                            </div>
-                                        </li>
-                                        <li sec:authorize="!isAuthenticated()"><a href="/login">Sign in / Sign up</a></li>
-                                        <li><a href="/adminIndex" sec:authorize="hasAnyAuthority('ADMIN')">Admin Page</a></li>
-                                        <li><a href="/logout" sec:authorize="isAuthenticated()">Logout</a></li>
+                                        <li sec:authorize="!isAuthenticated()" class="m-2"><a href="/login" class="m-1">Sign in / Sign up</a></li>
+                                        <li class="m-2" sec:authorize="isAuthenticated()" ><a href="/logout" class="m-1" >Logout</a></li>
                                     </ul>
                                 </li>
                             </ul><!-- End .top-menu -->

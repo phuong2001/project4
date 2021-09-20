@@ -246,7 +246,7 @@
                                 <th>Quantity</th>
                                 </thead>
                                 <tbody >
-                                <tr th:each="products : ${products}" style="text-align: center">
+                                <tr th:each="products : ${productcra}" style="text-align: center">
                                     <td th:text="${products.productid}">1</td>
                                     <td th:text="${products.name}">Dakota Rice</td>
                                     <td > <img th:src="@{${'/images/upload/' + products.images[0].name}}"height="50px"width="50px"></td>
