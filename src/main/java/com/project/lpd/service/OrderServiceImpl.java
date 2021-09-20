@@ -87,7 +87,7 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public double TotalDone() {
+    public List<OrderEntity> TotalDone() {
         return orderRepo.TotalDone();
     }
 

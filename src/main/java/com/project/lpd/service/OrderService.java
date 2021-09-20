@@ -19,7 +19,7 @@ public interface OrderService {
     List<OrderEntity> geyOrderByStatus(String status);
     int getCountOrderDone(int id);
     int getCountOrderPaid(int id);
-    double TotalDone();
+    List<OrderEntity> TotalDone();
     List<OrderEntity> listOrderDoneUser(int id);
     int countOrder(int id);
 }
