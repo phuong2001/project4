@@ -1,5 +1,6 @@
 package com.project.lpd.controller;
 
+import com.project.lpd.entity.NewsEntity;
 import com.project.lpd.entity.ShipperEntity;
 import com.project.lpd.service.ShipperService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -40,12 +41,28 @@ public class  ShipperController {
         return "redirect:/Shipper_Admin";
     }
 
-    @GetMapping("/Edit_Ship/{id}")
+  /*  @GetMapping("/Edit_Ship/{id}")
     private String find(@PathVariable(name = "id") int id , Model model){
         Optional<ShipperEntity> edit = shipperService.find(id);
         edit.ifPresent(shipperEntity -> model.addAttribute("shipper2" ,shipperEntity));
         return "Edit_Ship";
+    }*/
+
+
+    @GetMapping("/edit_ship")
+    public String viewUpdateNew(Model model, @RequestParam(value = "id", defaultValue = "0") int id) {
+       ShipperEntity shippers = shipperService.getShipById(id);
+        model.addAttribute("shippers", shippers);
+        return "Edit_Ship";
     }
+
+    @PostMapping("/edit_ship")
+    public String updateNew(@ModelAttribute ShipperEntity shipperEntity, Model model) {
+        shipperService.updateShip(shipperEntity);
+        return "redirect:/Shipper_Admin";
+    }
+
+
     @GetMapping("/search_Shipper")
     public String searchShipper(Model model, @RequestParam(defaultValue = "name") String name){
         List<ShipperEntity> listShipper = shipperService.findByNameShipper(name);

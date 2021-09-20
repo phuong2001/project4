@@ -38,8 +38,6 @@
                                     <th scope="col">Phone</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Address</th>
-                                    <th scope="col">Action</th>
-
                                     </thead>
                                     <tbody>
                                     <tr th:each="user:${users}">
@@ -49,11 +47,6 @@
                                         <td th:text="${user.phone}"></td>
                                         <td th:text="${user.email}"></td>
                                         <td th:text="${user.address}"></td>
-                                        <td>
-                                            <a th:href="@{/update(id=${user.id})}" th:text="Edit"></a>
-                                            <a th:href="@{/delete(id=${user.id})}" th:text="Delete"></a>
-<!--                                            <a th:href="@{/addfund(id=${user.id})}" th:text="Add fund"></a>-->
-                                        </td>
                                     </tr>
                                     </tbody>
                                 </table>

@@ -19,21 +19,32 @@
                             <p class="card-category">Create your </p>
                         </div>
                         <div class="card-body">
-                            <form method="post" th:action="@{/new}" th:object="${shipper2}">
+                            <form method="post" action="/edit_ship" th:object="${shippers}">
+
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="name" class="bmd-label-floating">ID</label>
+                                            <input id="name" type="text" name="name" th:field="${shippers.id}"
+                                                   class="form-control">
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="name" class="bmd-label-floating">Name</label>
-                                            <input id="name" type="text" name="name" th:field="${shipper2.name}"
+                                            <input id="name" type="text" name="name" th:field="${shippers.name}"
                                                    class="form-control">
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row">
-                                    <div class="col-md-6">
+                                    <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="phone" class="bmd-label-floating">Phone</label>
-                                            <input id="phone" type="text" name="phone" th:field="${shipper2.phone}"
+                                            <input id="phone" type="text" name="phone" th:field="${shippers.price}"
                                                    class="form-control"><br/>
                                         </div>
                                     </div>

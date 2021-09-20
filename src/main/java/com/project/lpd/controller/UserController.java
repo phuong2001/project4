@@ -20,23 +20,28 @@ public class UserController {
     
 
     @GetMapping({"/list"})
-    public String pageableUser(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "1") int size) {
-        List<UserEntity> users = userService.getAllUser(PageRequest.of(page, size));
+    public String pageableUser(Model model, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "12") int size) {
+        List<UserEntity> user = userService.getAllUser(PageRequest.of(page, size));
         int totalPage  = userService.getTotalPage(PageRequest.of(page, size));
         model.addAttribute("totalPage", totalPage);
         model.addAttribute("size", size);
         model.addAttribute("page", page);
-        model.addAttribute("users", users);
+        model.addAttribute("users", user);
         return "list_user";
     }
 
-    @GetMapping("/delete")
+ /*   @GetMapping("/delete_user")
     public String deleteUser(Model model, @RequestParam(value = "id", defaultValue = "0") int id) {
         if (id != 0) {
             userService.deleteUser(id);
         }
         return "redirect:/list";
-    }
+    }*/
+ @GetMapping("/delete_user/{id}")
+ private String delete(@PathVariable(name = "id") int id ){
+     userService.deleteUser(id);
+     return "redirect:/list";
+ }
 
     @GetMapping("/update")
     public String viewUpdateUser(Model model, @RequestParam(value = "id", defaultValue = "0") int id) {

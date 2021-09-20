@@ -127,6 +127,18 @@ public class WebController {
         model.addAttribute("categorys", category);
         return "/products";
     }
+    @PostMapping("/searchProducts")
+    public String adminSearch(Model model , @RequestParam (defaultValue ="name") String name, @RequestParam(value = "page", defaultValue = "0") int page, @RequestParam(value = "size", defaultValue = "12") int size){
+        List<ProductEntity> products = productService.getProductByFullName(name);
+        List<CategoryEntity> category = categoryService.getAllCategory();
+        int totalPage  = productService.getTotalPage(PageRequest.of(page, size));
+        model.addAttribute("totalPage", totalPage);
+        model.addAttribute("size", size);
+        model.addAttribute("page", page);
+        model.addAttribute("products" , products);
+        model.addAttribute("categorys", category);
+        return "/productall";
+    }
 
     @PostMapping("/register")
     public String register(@ModelAttribute("user") UserDto userDto){

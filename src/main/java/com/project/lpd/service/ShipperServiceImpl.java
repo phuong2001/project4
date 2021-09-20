@@ -1,5 +1,6 @@
 package com.project.lpd.service;
 
+import com.project.lpd.entity.NewsEntity;
 import com.project.lpd.entity.ShipperEntity;
 import com.project.lpd.repository.ShippeRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,6 +48,15 @@ public class ShipperServiceImpl implements ShipperService{
         return shippeRepo.findByName(name);
     }
 
+    @Override
+    public ShipperEntity getShipById(int id) {
+        return shippeRepo.findById(id).get();
+    }
+
+    @Override
+    public ShipperEntity updateShip(ShipperEntity s) {
+        return shippeRepo.save(s);
+    }
 
 
 }
