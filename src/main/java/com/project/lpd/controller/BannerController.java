@@ -26,16 +26,19 @@ public class BannerController {
 
     @GetMapping("/createBanner")
     public String createBannerView( Model model){
-        return "BannerCreate";
+        model.addAttribute("Banner",new BannerEntity());
+        return "Banner";
     }
 
     @PostMapping("/createBanner")
     public String createBanner(@ModelAttribute BannerEntity banner,
-                               @RequestParam("file1") MultipartFile file1, Model model) throws IOException {
+                               @RequestParam("file") MultipartFile file1, Model model) throws IOException {
         String img1name = file1.getOriginalFilename();
         Path filenamepath1 = Paths.get(uploadDir,img1name);
         Files.write(filenamepath1,file1.getBytes());
-        return "Banner";
+        banner.setImg(img1name);
+        bannerService.create(banner);
+        return "BannerList";
     }
 
 

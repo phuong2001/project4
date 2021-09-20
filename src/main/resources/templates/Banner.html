@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/adminlayout/template_admin.html}">
+<head>
+    <title>
+        Create product
+    </title>
+</head>
+<body  layout:fragment="content">
+<div class="content">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-9">
+                <div class="card">
+                    <div class="card-header card-header-primary">
+                        <h4 class="card-title">Add product </h4>
+                    </div>
+                    <div class="card-body">
+                        <form method="post" action="/createnew" th:object="${Banner}" enctype="multipart/form-data">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="name" class="bmd-label-floating">Name</label>
+                                        <input type="text" name="name" id="name" th:field="${Banner.productid}" class="form-control">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file"  class="custom-file-input" id="filename" name="files"
+                                               accept="image/jpeg,image/png,image/jpg" multiple="multiple" >
+                                        <label class="custom-file-label" for="filename">Choose file</label>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary pull-right">Create banner</button>
+                                <div class="clearfix"></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+<script>
+    bsCustomFileInput.init();
+</script>
+
+</body>
+
+</html>
