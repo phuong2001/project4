@@ -24,7 +24,6 @@ import javax.jws.WebParam;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
-import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -59,6 +58,8 @@ public class WebController {
         List<OrderItem> topOrder = orderItemService.getTopOrder();
         List<ProductEntity> top = productService.getTopPrice();
         List<ProductEntity> random = productService.getRandom();
+        List<ProductEntity> topsale = productService.get2Productsale();
+        model.addAttribute("topsale", topsale);
         model.addAttribute("banner",banner);
         model.addAttribute("products", product);
         model.addAttribute("categoryEntity", categoryEntity);
@@ -103,10 +104,15 @@ public class WebController {
         model.addAttribute("newUsers", newUser);
         double totalDone = orderService.TotalDone();
         double totalExtra = totalDone * 2/100;
-        double sumUser = orderService.sumPriceUser(userEntity.getId());
-        double sumUserExtra = sumUser * 98/100;
+        List<OrderEntity> listOrderDoneUser = orderService.listOrderDoneUser(userEntity.getId());
+        double sumUser =0;
+        for (OrderEntity or : listOrderDoneUser){
+            sumUser += or.getPriceTotal();
+            double sumUserExtra = sumUser * 98/100;
+            model.addAttribute("sumUserExtra",sumUserExtra);
+        }
+
         model.addAttribute("totalExtra",totalExtra);
-        model.addAttribute("sumUserExtra",sumUserExtra);
         model.addAttribute("top",top);
         model.addAttribute("user",userEntity);
         model.addAttribute("topOrders",topOrder);

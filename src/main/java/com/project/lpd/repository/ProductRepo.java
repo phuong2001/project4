@@ -29,6 +29,8 @@ public interface ProductRepo extends JpaRepository<ProductEntity, Integer> {
     List<ProductEntity> findAllByCreatedAt(Pageable pageable);
 
     List<ProductEntity> findFirst15ByOrderByCreatedAtDesc();
+    List<ProductEntity> findFirst2ByOrderByPriceAsc();
+    @Query(value = "SELECT * FROM product ORDER BY product.price ASC LIMIT 2,6",nativeQuery = true)
     List<ProductEntity> findFirst6ByOrderByPriceAsc();
     List<ProductEntity> findFirst15OrderByCategory(CategoryEntity categoryEntity);
     List<ProductEntity> findFirst7ByUserOrderByCreatedAtDesc(UserEntity userEntity);

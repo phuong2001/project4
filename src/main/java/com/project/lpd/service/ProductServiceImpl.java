@@ -109,6 +109,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<ProductEntity> get2Productsale() {
+        return productRepo.findFirst2ByOrderByPriceAsc();
+    }
+
+
+    @Override
     public List<ProductEntity> getProductByFullName(String name) {
         return productRepo.findByFullName(name);
     }

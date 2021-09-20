@@ -20,5 +20,5 @@ public interface OrderService {
     int getCountOrderDone(int id);
     int getCountOrderPaid(int id);
     double TotalDone();
-    double sumPriceUser(int id);
+    List<OrderEntity> listOrderDoneUser(int id);
 }
