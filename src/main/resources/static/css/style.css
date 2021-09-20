@@ -12663,6 +12663,7 @@ button:focus {
     }
 
     .product-gallery-vertical .product-main-image {
+        margin: auto;
         flex: 0 0 80%;
         max-width: 80%
     }
