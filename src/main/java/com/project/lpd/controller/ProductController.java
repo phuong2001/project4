@@ -146,6 +146,12 @@ public class ProductController {
         return "updateProductUser";
     }
 
+    @GetMapping("/deleteProductManager/{id}")
+    private String deleteProduct(@PathVariable(name = "id") int id,Authentication authentication ){
+        productService.deleteProduct(id);
+        return "redirect:/listproduct";
+    }
+
     @PostMapping("/updateproduct")
     public String updateRole(@ModelAttribute("productDto") ProductDto productDto,
                              @RequestParam("files") MultipartFile[] files,
@@ -158,7 +164,7 @@ public class ProductController {
         product.setDescription(productDto.getDescription());
         CategoryEntity category = categoryService.getCategoryById(id);
         product.setCategoryid(category.getCategoryid());
-        for (MultipartFile item : files ){
+   /*     for (MultipartFile item : files ){
             {
                 Image Itemimage = new Image();
                 String imageUUID = item.getOriginalFilename();
@@ -168,8 +174,8 @@ public class ProductController {
                 Itemimage.setName(imageUUID);
                 image.add(Itemimage);
             }
-        }
-        imageService.createImage(image);
+        }*/
+        /*imageService.createImage(image);*/
         productService.updateProduct(product);
         return "redirect:/listproduct";
     }

@@ -109,6 +109,7 @@
                                         <td th:text="${product.quantity}"></td>
                                         <td th:text="${product.description}"></td>
                                         <td th:text="${product.createdAt}"></td>
+                                        <td><a th:href="@{'/deleteProductManager/' + ${product.productid}}" title="delete" class="delete" onclick="return confirm('Are you sure you want to Delete?')" th:text="Delete"></a></td>
                                         <td><a th:href="@{/updateproduct(id=${product.productid})}" th:text="Edit"></a></td>
                                     </tr>
                                     </tbody>
