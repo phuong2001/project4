@@ -67,8 +67,10 @@ public class UserController {
     }
 
     @PostMapping("/addfund")
-    public String Addfund(@ModelAttribute UserEntity userEntity,@RequestParam("fund") double fund){
-        userEntity.setWallet(fund);
+    public String Addfund(@ModelAttribute("user") UserDto userDto,
+                          @RequestParam(value = "fund",required = false,defaultValue = "0") double fund){
+        UserEntity userEntity = userService.getUserByName(userDto.getUsername());
+        userEntity.setWallet(userEntity.getWallet() + userDto.getWallet());
         userService.updateUser(userEntity);
         return "redirect:/list";
     }
