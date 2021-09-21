@@ -38,7 +38,7 @@ public class ProductEntity {
 //    @Column(name = "image")
 //    private String image;
 
-    @OneToMany(mappedBy = "products")
+    @OneToMany(mappedBy = "products", cascade = CascadeType.ALL,orphanRemoval = true )
     private List<Image> images;
 
     @Column(name = "userid")
