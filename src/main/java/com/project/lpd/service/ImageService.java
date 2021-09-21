@@ -7,4 +7,5 @@ import java.util.List;
 
 public interface ImageService {
     List<Image> createImage(List<Image> images);
+    List<Image> upDateImage(List<Image>images);
 }

@@ -158,18 +158,18 @@ public class ProductController {
         product.setDescription(productDto.getDescription());
         CategoryEntity category = categoryService.getCategoryById(id);
         product.setCategoryid(category.getCategoryid());
-        for (MultipartFile item : files ){
-            {
-                Image Itemimage = new Image();
-                String imageUUID = item.getOriginalFilename();
-                Path filenamePath = Paths.get(uploadDir, imageUUID);
-                Files.write(filenamePath, item.getBytes());
-                Itemimage.setProducts(product);
-                Itemimage.setName(imageUUID);
-                image.add(Itemimage);
-            }
-        }
-        imageService.createImage(image);
+//        for (MultipartFile item : files ){
+//            {
+//                Image Itemimage = new Image();
+//                String imageUUID = item.getOriginalFilename();
+//                Path filenamePath = Paths.get(uploadDir, imageUUID);
+//                Files.write(filenamePath, item.getBytes());
+//                Itemimage.setProducts(product);
+//                Itemimage.setName(imageUUID);
+//                image.add(Itemimage);
+//            }
+//        }
+//        imageService.upDateImage(image);
         productService.updateProduct(product);
         return "redirect:/listproduct";
     }

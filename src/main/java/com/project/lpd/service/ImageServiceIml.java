@@ -22,4 +22,9 @@ public class ImageServiceIml implements ImageService {
     public List<Image> createImage(List<Image> image) {
         return imageRepo.saveAll(image);
     }
+
+    @Override
+    public List<Image> upDateImage(List<Image> images) {
+        return imageRepo.saveAll(images);
+    }
 }
