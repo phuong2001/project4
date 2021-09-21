@@ -3,71 +3,77 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorate="~{layout/adminlayout/template_admin.html}">
 <head>
-
     <title>
-       Dashboard
+        Create product
     </title>
-
-
 </head>
-
-<body>
-<div class="main-panel" layout:fragment="content">
+<body  layout:fragment="content">
 <div class="content">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-3">
+            </div>
+            <div class="col-md-9">
                 <div class="card">
                     <div class="card-header card-header-primary">
-                        <h4 class="card-title">Update </h4>
+                        <h4 class="card-title">Add product </h4>
                     </div>
                     <div class="card-body">
-                        <form method="post" th:action="@{/createProductUser}" th:object="${productUser}">
+                        <form method="post" action="/updateproduct" th:object="${productDto}" enctype="multipart/form-data">
                             <div class="row">
-                                <div class="col-md-3">
-                                    <div class="form-group">
-                                        <label for="id" class="bmd-label-floating">ID</label>
-                                        <input type="text" name="id" th:field="${productUser.id}" class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-9">
+                                <input type="hidden" name="id" th:field="${productDto.productid}">
+                                <div class="col-md-12">
                                     <div class="form-group">
                                         <label for="name" class="bmd-label-floating">Name</label>
-                                        <input type="text" name="name" th:field="${productUser.name}" class="form-control">
+                                        <input type="text" name="name" id="name" th:field="${productDto.name}" class="form-control">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="image" class="bmd-label-floating">Image</label>
-                                        <input type="text" name="image" th:field="${productUser.image}" class="form-control">
+                                        <label for="pr" class="bmd-label-floating">Price</label>
+                                        <input id="pr" type="text" th:field="${productDto.price}" name="price" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label for="price" class="bmd-label-floating">Price</label>
-                                        <input type="text" name="price" th:field="${productUser.price}" class="form-control">
-                                    </div>
-                                </div><div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="quantity" class="bmd-label-floating">Quantity</label>
-                                        <input type="text" name="quantity" th:field="${productUser.quantity}" class="form-control">
-                                    </div>
-                                </div><div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="description" class="bmd-label-floating">Description</label>
-                                        <input type="text" name="description" th:field="${productUser.description}" class="form-control">
-                                    </div>
-                                </div><div class="col-md-6">
-                                    <div class="form-group">
-                                        <label for="discount" class="bmd-label-floating">Discount</label>
-                                        <input type="text" name="discount" th:field="${productUser.discount}" class="form-control">
+                                        <label for="quantity"  class="bmd-label-floating">Quantity product</label><br/>
+                                        <input type="number"  id="quantity" name="quantity" th:field="${productDto.quantity}" class="form-control">
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary pull-right">Update Product User</button>
-                            <div class="clearfix"></div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="description" class="bmd-label-floating">Description product</label>
+                                    <textarea id="description" rows="5" cols="126%" th:field="${productDto.description}" name="description"></textarea>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <div class="custom-file">
+                                        <input type="file"  class="custom-file-input" id="filename" name="files"
+                                               accept="image/jpeg,image/png,image/jpg" multiple="multiple" >
+                                        <label class="custom-file-label" for="filename">Choose file</label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="select-custom">
+                                            <label for="categoryid">Category</label>
+                                            <select class="form-control" aria-label="category" id="categoryid" th:name="categoryid" >
+                                                <option th:each="item:${category}"
+                                                        th:text="${item.name}"
+                                                        th:value="${item.categoryid}"
+                                                ></option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary pull-right">Update product</button>
+                                <div class="clearfix"></div>
+                            </div>
                         </form>
                     </div>
                 </div>
@@ -75,7 +81,11 @@
         </div>
     </div>
 </div>
-</div>
+<script src="https://cdn.jsdelivr.net/npm/bs-custom-file-input/dist/bs-custom-file-input.js"></script>
+<script>
+    bsCustomFileInput.init();
+</script>
+
 </body>
 
 </html>

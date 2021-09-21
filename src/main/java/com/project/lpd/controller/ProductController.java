@@ -141,13 +141,36 @@ public class ProductController {
     @GetMapping("/updateproduct")
     public String viewUpdateRole(Model model, @RequestParam(value = "id", defaultValue = "0") int id) {
         ProductEntity product = productService.getProductById(id);
-        model.addAttribute("role", product);
-        return "updateproduct";
+        model.addAttribute("productDto", product);
+        model.addAttribute("category", categoryService.getAllCategory());
+        return "updateProductUser";
     }
 
     @PostMapping("/updateproduct")
-    public String updateRole(@ModelAttribute ProductEntity productEntity, Model model) {
-        productService.updateProduct(productEntity);
+    public String updateRole(@ModelAttribute("productDto") ProductDto productDto,
+                             @RequestParam("files") MultipartFile[] files,
+                             @RequestParam(value = "categoryid") int id) throws IOException {
+        ProductEntity product = productService.getProductById(productDto.getProductid());
+        List<Image> image = new ArrayList<>();
+        product.setName(productDto.getName());
+        product.setQuantity(productDto.getQuantity());
+        product.setPrice(productDto.getPrice());
+        product.setDescription(productDto.getDescription());
+        CategoryEntity category = categoryService.getCategoryById(id);
+        product.setCategoryid(category.getCategoryid());
+        for (MultipartFile item : files ){
+            {
+                Image Itemimage = new Image();
+                String imageUUID = item.getOriginalFilename();
+                Path filenamePath = Paths.get(uploadDir, imageUUID);
+                Files.write(filenamePath, item.getBytes());
+                Itemimage.setProducts(product);
+                Itemimage.setName(imageUUID);
+                image.add(Itemimage);
+            }
+        }
+        imageService.createImage(image);
+        productService.updateProduct(product);
         return "redirect:/listproduct";
     }
 
