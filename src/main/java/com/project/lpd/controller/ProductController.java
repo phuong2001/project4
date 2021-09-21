@@ -148,7 +148,7 @@ public class ProductController {
 
     @PostMapping("/updateproduct")
     public String updateRole(@ModelAttribute("productDto") ProductDto productDto,
-                             @RequestParam("files") MultipartFile[] files,
+//                             @RequestParam("files") MultipartFile[] files,
                              @RequestParam(value = "categoryid") int id) throws IOException {
         ProductEntity product = productService.getProductById(productDto.getProductid());
         List<Image> image = new ArrayList<>();
