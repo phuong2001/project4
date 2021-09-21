@@ -34,7 +34,7 @@ public class BannerController {
 
     @PostMapping("/createBanner")
     public String createBanner(@ModelAttribute BannerEntity banner,
-                               @RequestParam("file") MultipartFile file1, Model model) throws IOException {
+                               @RequestParam("file") MultipartFile file1) throws IOException {
         String img1name = file1.getOriginalFilename();
         Path filenamepath1 = Paths.get(uploadDir,img1name);
         Files.write(filenamepath1,file1.getBytes());

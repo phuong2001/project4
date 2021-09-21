@@ -15,7 +15,6 @@
                                 <li>
                                     <a href="#">Links</a>
                                     <ul>
-                                        <li sec:authorize="isAuthenticated()"><a href="/profile">Profile</a></li>
                                         <li sec:authorize="!isAuthenticated()" class="m-2"><a href="/login" class="m-1">Sign in / Sign up</a></li>
                                         <li class="m-2" sec:authorize="isAuthenticated()" ><a href="/logout" class="m-1" >Logout</a></li>
                                     </ul>
@@ -53,11 +52,20 @@
                         <div class="header-right" sec:authorize="isAuthenticated()">
                             <div class="header-dropdown-link">
                                 <div class="account">
-                                    <a href="/adminIndex" title="My account">
+                                    <a href="/profile" title="My account">
                                         <div class="icon">
                                             <i class="las la-user"></i>
                                         </div>
                                         <p sec:authentication="name">Account</p>
+                                    </a>
+                                </div><!-- End .compare-dropdown -->
+
+                                <div class="account">
+                                    <a href="/adminIndex" title="Manager">
+                                        <div class="icon">
+                                            <i class="las la-chart-pie"></i>
+                                        </div>
+                                        <p>Management</p>
                                     </a>
                                 </div><!-- End .compare-dropdown -->
 
