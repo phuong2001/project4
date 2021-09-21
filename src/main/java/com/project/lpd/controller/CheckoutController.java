@@ -33,12 +33,12 @@ public class CheckoutController {
     @Autowired
     ProductService productService;
 
-    @Autowired
-    StripeService paymentsService;
+//    @Autowired
+//    StripeService paymentsService;
 
 
-    @Value("${STRIPE_PUBLIC_KEY}")
-    private String stripePublicKey;
+//    @Value("${STRIPE_PUBLIC_KEY}")
+//    private String stripePublicKey;
 
 
     @GetMapping("/pay")
@@ -92,34 +92,34 @@ public class CheckoutController {
             orderItemService.saveOrderItem(userEntity,orderEntity);
             return "redirect:/success";
         } else {
-            return "redirect:/charge";
+            return "redirect:/cancel";
         }
     }
 
-    @PostMapping("/charge")
-    public String charge(ChargeRequest chargeRequest, Model model) throws StripeException {
-        chargeRequest.setDescription("Example charge");
-        chargeRequest.setCurrency(ChargeRequest.Currency.EUR);
-        Charge charge = paymentsService.charge(chargeRequest);
-        model.addAttribute("id", charge.getId());
-        model.addAttribute("status", charge.getStatus());
-        model.addAttribute("chargeId", charge.getId());
-        model.addAttribute("balance_transaction", charge.getBalanceTransaction());
-        return "result";
-    }
+//    @PostMapping("/charge")
+//    public String charge(ChargeRequest chargeRequest, Model model) throws StripeException {
+//        chargeRequest.setDescription("Example charge");
+//        chargeRequest.setCurrency(ChargeRequest.Currency.EUR);
+//        Charge charge = paymentsService.charge(chargeRequest);
+//        model.addAttribute("id", charge.getId());
+//        model.addAttribute("status", charge.getStatus());
+//        model.addAttribute("chargeId", charge.getId());
+//        model.addAttribute("balance_transaction", charge.getBalanceTransaction());
+//        return "result";
+//    }
 
-  @GetMapping("/success")
-    public String Result (Model model, @RequestParam(value = "id") int id) {
-        model.addAttribute("order",orderService.getById(id));
-        return "result";
-    }
+//  @GetMapping("/success")
+//    public String Success(Model model, @RequestParam(value = "id") int id) {
+//        model.addAttribute("order",orderService.getById(id));
+//        return "Success";
+//    }
 
-    @RequestMapping("/charge")
-    public String checkout(Model model, @RequestParam(value = "amount", required = false, defaultValue = "0") int amount) {
-        model.addAttribute("amount",  amount*100); // in cents
-        model.addAttribute("stripePublicKey", stripePublicKey);
-        model.addAttribute("currency", ChargeRequest.Currency.EUR);
-        return "charge";
-    }
+//    @RequestMapping("/charge")
+//    public String checkout(Model model, @RequestParam(value = "amount", required = false, defaultValue = "0") int amount) {
+//        model.addAttribute("amount",  amount*100); // in cents
+//        model.addAttribute("stripePublicKey", stripePublicKey);
+//        model.addAttribute("currency", ChargeRequest.Currency.EUR);
+//        return "charge";
+//    }
 
 }

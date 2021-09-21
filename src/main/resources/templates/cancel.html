@@ -1,24 +1,18 @@
-<div class="col-md-12">
-    <table class="text-left table-bordered" style="font-size: 1.2rem" >
-        <thead>
-        <tr>
-            <th scope="col">Name</th>
-            <th scope="col">Detail</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td>Message</td>
-            <td th:text="${message}"></td>
-        </tr>
-        <tr>
-            <td>Exception</td>
-            <td th:text="${exception}"></td>
-        </tr>
-        <tr>
-            <td>Trace</td>
-            <td th:text="${trace}"></td>
-        </tr>
-        </tbody>
-    </table>
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layout/template.html}">
+<head>
+    <meta charset="UTF-8">
+    <title>Thank You</title>
+</head>
+
+<body>
+<div layout:fragment="content" class="text-center done" >
+    <h1><i class="las la-check-circle"></i></h1>
+    <h1>Error!</h1>
+    <p>Your order was not successful.</p>
+    <p>Please check your wallet ! </p>
 </div>
+</body>
+</html>
