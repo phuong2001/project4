@@ -90,7 +90,7 @@ public class CheckoutController {
             userService.updateUser(userEntity);
             orderService.createOrder(orderEntity);
             orderItemService.saveOrderItem(userEntity,orderEntity);
-            return "redirect:/Success";
+            return "redirect:/success";
         } else {
             return "redirect:/charge";
         }
@@ -108,9 +108,9 @@ public class CheckoutController {
         return "result";
     }
 
-    @ExceptionHandler(StripeException.class)
-    public String handleError(Model model, StripeException ex) {
-        model.addAttribute("error", ex.getMessage());
+  @GetMapping("/success")
+    public String Result (Model model, @RequestParam(value = "id") int id) {
+        model.addAttribute("order",orderService.getById(id));
         return "result";
     }
 
