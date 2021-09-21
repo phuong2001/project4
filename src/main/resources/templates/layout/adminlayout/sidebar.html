@@ -66,6 +66,12 @@
                     <p>My Product</p>
                 </a>
             </li>
+            <li class="nav-item ">
+                <a class="nav-link" href="/updateBanner" th:if="${#authorization.expression('hasAuthority(''ADMIN'')')}">
+                    <i class="material-icons">manage_accounts</i>
+                    <p>Banner</p>
+                </a>
+            </li>
             <li class="nav-item " th:if="${#authorization.expression('hasAuthority(''USER'')')}">
                 <a class="nav-link" href="/listorder">
                     <i class="material-icons">library_books</i>
