@@ -47,6 +47,9 @@ public class ProductEntity {
     @Column(name = "categoryid")
     private int categoryid;
 
+    @Column(name = "status")
+    private String status;
+
    @ManyToOne( fetch = FetchType.LAZY)
    @JoinColumn(name = "categoryid", insertable = false, updatable = false)
    private CategoryEntity category;

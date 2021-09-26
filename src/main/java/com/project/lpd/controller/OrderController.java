@@ -86,8 +86,9 @@ public class    OrderController {
             seller.setWallet(seller.getWallet() + sellermoney);
             userService.updateUser(seller);
             double adminMoney = total * 2 / 100;
-            UserEntity admin = userService.getUserById(1);
+            UserEntity admin = userService.getUserByName("admin");
             admin.setWallet(admin.getWallet() + adminMoney);
+            userService.updateUser(admin);
         }
         return "redirect:/listorder";
     }
